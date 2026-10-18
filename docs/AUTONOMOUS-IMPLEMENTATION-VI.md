@@ -40,7 +40,8 @@ Hai script cũ ngoài suite vẫn lỗi, đã chạy và chẩn đoán: `test-ho
 | Golden dataset duyệt độc lập và đo retrieval relevance | NOT IMPLEMENTED | Cần OPS review cùng nguồn/evidence và retrieval tracing; hiện reviewed=0/retrieval=null. |
 | Phân nhóm lỗi, chọn ưu tiên, chống thử lại, quality/path gates | IMPLEMENTED AND VERIFIED | Planner local, lỗi metadata có allowlist, gate yêu cầu cải thiện/no regression, history commit/issue/outcome và rollback ref; test không dùng API. Root cause hiện là nhãn heuristic cần điều tra. |
 | API coding-agent tám stage, container, tạo PR | REQUIRES CONFIGURATION | Code đã có, default off; cần trusted image digest, model, key và quyền GitHub. Chưa chạy end-to-end container/provider/PR, chưa chứng minh tự sửa mã thành công bằng API. |
-| Workflow QA sáu giờ, PR, knowledge hằng ngày, tổng hợp tuần | IMPLEMENTED BUT NOT VERIFIED | YAML đã parse, các command chạy cục bộ; chưa có run GitHub Actions xác nhận. Tổng hợp tuần là snapshot tại lần chạy, chưa phải xu hướng bảy ngày. |
+| CI trên pull request | IMPLEMENTED AND VERIFIED | GitHub Actions offline-qa Node 22 và 24 đều SUCCESS, đã kiểm tra check-runs của commit af558f5. |
+| Lịch QA sáu giờ, knowledge hằng ngày, tổng hợp tuần | IMPLEMENTED BUT NOT VERIFIED | YAML đã parse, các command chạy cục bộ; chưa chờ các lịch cron thực tế. Tổng hợp tuần là snapshot tại lần chạy, chưa phải xu hướng bảy ngày. |
 | Security checks và red-team | IMPLEMENTED AND VERIFIED | Scanner/artifact/workflow checks, adversarial cases; không coi regex hoặc sandbox config là bằng chứng an toàn tuyệt đối. |
 | PR của lần triển khai này | IMPLEMENTED AND VERIFIED | Đã tạo [PR #2](https://github.com/minhnguyenvietpay/quynh-huong-pos-expert/pull/2), nhánh feature đã push; chưa merge/deploy. |
 
