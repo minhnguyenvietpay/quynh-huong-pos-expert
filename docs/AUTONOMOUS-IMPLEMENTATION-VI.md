@@ -42,7 +42,7 @@ Hai script cũ ngoài suite vẫn lỗi, đã chạy và chẩn đoán: `test-ho
 | API coding-agent tám stage, container, tạo PR | REQUIRES CONFIGURATION | Code đã có, default off; cần trusted image digest, model, key và quyền GitHub. Chưa chạy end-to-end container/provider/PR, chưa chứng minh tự sửa mã thành công bằng API. |
 | Workflow QA sáu giờ, PR, knowledge hằng ngày, tổng hợp tuần | IMPLEMENTED BUT NOT VERIFIED | YAML đã parse, các command chạy cục bộ; chưa có run GitHub Actions xác nhận. Tổng hợp tuần là snapshot tại lần chạy, chưa phải xu hướng bảy ngày. |
 | Security checks và red-team | IMPLEMENTED AND VERIFIED | Scanner/artifact/workflow checks, adversarial cases; không coi regex hoặc sandbox config là bằng chứng an toàn tuyệt đối. |
-| PR của lần triển khai này | REQUIRES CONFIGURATION | Nhánh/commit có thể push qua Git proxy; tạo PR cần GitHub API đang bị proxy trả 403. Không merge tự động. |
+| PR của lần triển khai này | IMPLEMENTED AND VERIFIED | Đã tạo [PR #2](https://github.com/minhnguyenvietpay/quynh-huong-pos-expert/pull/2), nhánh feature đã push; chưa merge/deploy. |
 
 Knowledge report hiện có 5.000 mục unverified, 5.003 review items (một record có thể có nhiều lý do); không có exact duplicate hoặc same-question possible conflict được detector tìm thấy. Điều này không chứng minh không có trùng ngữ nghĩa/mâu thuẫn nghiệp vụ. Không thay đổi `knowledge.json`. Cổng source/evidence kiểm tra cấu trúc, không thay người xác minh nguồn.
 
