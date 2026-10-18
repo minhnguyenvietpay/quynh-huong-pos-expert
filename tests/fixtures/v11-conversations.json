@@ -1,0 +1,1013 @@
+{
+  "schemaVersion": 1,
+  "reviewStatus": "ai_authored_unreviewed",
+  "independentAccuracyClaim": false,
+  "conversations": [
+    {
+      "id": "freeze-failed-restart",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "Máy POS bị đơ"
+        },
+        {
+          "input": "màn hình chính"
+        },
+        {
+          "input": "đã khởi động lại rồi mà vẫn đơ",
+          "must": [
+            "CS/OPS|đồng ý|hỗ trợ"
+          ],
+          "mustNot": [
+            "có thể thử khởi động lại"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "freeze-payment-no-debit",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy đơ khi đang thanh toán"
+        },
+        {
+          "input": "chưa bị trừ tiền",
+          "must": [
+            "chưa.*khẳng định|chưa.*xác nhận|chưa.*kết luận"
+          ],
+          "mustNot": [
+            "đã thành công"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "freeze-repeat-failure",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy POS treo"
+        },
+        {
+          "input": "vẫn chưa được"
+        },
+        {
+          "input": "vẫn chưa được",
+          "differentFrom": 1
+        }
+      ]
+    },
+    {
+      "id": "printer-blank",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy in ra giấy trắng"
+        },
+        {
+          "input": "đã lật mặt giấy vẫn trắng",
+          "must": [
+            "đầu in|giấy nhiệt|hỗ trợ|đồng ý"
+          ],
+          "mustNot": [
+            "thử lật|lật lại mặt giấy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "printer-feed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy không đẩy giấy"
+        },
+        {
+          "input": "đã lắp lại cuộn giấy vẫn không đẩy",
+          "must": [
+            "hỗ trợ|đầu in|kẹt|đồng ý"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "printer-context",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy không in được bill"
+        },
+        {
+          "input": "giấy vẫn chạy nhưng trắng",
+          "must": [
+            "nhiệt|mặt giấy|đầu in"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "printer-resolved",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy không in được bill"
+        },
+        {
+          "input": "bình thường rồi em",
+          "must": [
+            "xử lý|tốt|mừng|được"
+          ],
+          "noPending": true
+        }
+      ]
+    },
+    {
+      "id": "printer-payment-risk",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy không in được bill"
+        },
+        {
+          "input": "khách bị trừ tiền rồi",
+          "must": [
+            "chưa.*(thanh toán lại|thu tiền lại)|không.*thu.*lại",
+            "POS|Portal"
+          ],
+          "mustNot": [
+            "đã thành công"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wifi-failed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy POS mất wifi"
+        },
+        {
+          "input": "đã quên mạng kết nối lại rồi vẫn lỗi",
+          "must": [
+            "SIM|4G|hotspot|hỗ trợ|đồng ý"
+          ],
+          "mustNot": [
+            "thử quên mạng"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sim-no-signal",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy dùng SIM mà mất mạng"
+        },
+        {
+          "input": "không có wifi ở cửa hàng",
+          "must": [
+            "SIM|sóng|4G"
+          ],
+          "mustNot": [
+            "nhập.*mật khẩu wifi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "network-switch",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy không có mạng"
+        },
+        {
+          "input": "máy dùng SIM 4G",
+          "must": [
+            "SIM|4G|sóng"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wifi-negative",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "wifi vẫn dùng được trên điện thoại nhưng POS không vào mạng"
+        },
+        {
+          "input": "đã khởi động lại POS vẫn mất mạng",
+          "must": [
+            "hỗ trợ|đồng ý|hotspot|SIM|4G"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "payment-debit-error",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "khách bị trừ tiền nhưng máy báo lỗi",
+          "must": [
+            "chưa.*(thanh toán lại|thu tiền lại)",
+            "POS|Portal"
+          ]
+        },
+        {
+          "input": "không thấy trong lịch sử",
+          "must": [
+            "đồng ý|CS/OPS"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "payment-no-debit",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy báo lỗi nhưng khách chưa bị trừ tiền",
+          "must": [
+            "chưa.*(khẳng định|xác nhận|kết luận)|chưa.*thất bại"
+          ]
+        },
+        {
+          "input": "chưa có trong lịch sử"
+        }
+      ]
+    },
+    {
+      "id": "duplicate-charge",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "khách bị trừ tiền hai lần"
+        },
+        {
+          "input": "em có nên hoàn một giao dịch không",
+          "must": [
+            "xác minh|kiểm tra|tra soát"
+          ],
+          "mustNot": [
+            "cứ hoàn|hoàn ngay|chắc chắn.*hoàn"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "payment-no-repeat",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy đang xử lý thanh toán lâu"
+        },
+        {
+          "input": "cho khách quẹt lại được không",
+          "must": [
+            "chưa|không"
+          ],
+          "mustNot": [
+            "cứ.*quẹt lại|hãy.*thanh toán lại"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "refund-status",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "khách hỏi tiền hoàn sao chưa về"
+        },
+        {
+          "input": "vậy tiền đã hoàn chưa",
+          "must": [
+            "chưa.*(xác nhận|dữ liệu|xác minh)|không.*(xác nhận|dữ liệu)|kiểm tra|tra soát"
+          ],
+          "mustNot": [
+            "tiền đã về|đã hoàn thành"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "void-vs-refund",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "muốn hủy giao dịch vừa thanh toán"
+        },
+        {
+          "input": "hủy với hoàn tiền khác nhau không",
+          "must": [
+            "hủy|void",
+            "hoàn|refund"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reversal",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "POS báo reversal"
+        },
+        {
+          "input": "vậy khách đã nhận tiền lại chưa",
+          "must": [
+            "chưa.*(xác nhận|dữ liệu)|kiểm tra|tra soát"
+          ],
+          "mustNot": [
+            "đã nhận tiền|đã hoàn tiền"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "settlement-pending",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "tiền quyết toán hôm qua chưa về"
+        },
+        {
+          "input": "bao giờ chắc chắn nhận được",
+          "must": [
+            "kiểm tra|xác minh|tra soát|chưa"
+          ],
+          "mustNot": [
+            "chắc chắn.*(hôm nay|ngày mai)|đảm bảo.*về"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "settlement-no-fiction",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "cửa hàng chưa nhận tiền đối soát"
+        },
+        {
+          "input": "em kiểm tra tài khoản giúp chị",
+          "must": [
+            "chưa|không|kiểm tra|tra soát"
+          ],
+          "mustNot": [
+            "đã kiểm tra tài khoản|tiền đã về"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swollen-battery",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "pin POS bị phồng",
+          "must": [
+            "ngừng|dừng|không.*sạc"
+          ]
+        },
+        {
+          "input": "cắm sạc để bán tiếp được không",
+          "must": [
+            "ngừng|dừng|không.*sạc"
+          ],
+          "mustNot": [
+            "thử.*sạc|sạc.*30 phút"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hot-battery",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy nóng bất thường pin phồng"
+        },
+        {
+          "input": "khởi động lại thử nhé",
+          "must": [
+            "ngừng|dừng|không"
+          ],
+          "mustNot": [
+            "hãy khởi động lại|thử khởi động lại"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "low-battery",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "POS hết pin không lên nguồn"
+        },
+        {
+          "input": "đã đổi củ sạc vẫn không lên",
+          "must": [
+            "hỗ trợ|đồng ý|nguồn|cáp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "consent-decline",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "khách bị trừ tiền nhưng POS lỗi"
+        },
+        {
+          "input": "không thấy"
+        },
+        {
+          "input": "không đồng ý chuyển OPS",
+          "noPending": true,
+          "mustNot": [
+            "xin tên cửa hàng|đã chuyển|đã gửi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "consent-before-details",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy POS bị đơ"
+        },
+        {
+          "input": "vẫn chưa được",
+          "mustNot": [
+            "xin tên cửa hàng|địa chỉ cửa hàng"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "consent-accept",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "khách bị trừ tiền nhưng POS lỗi"
+        },
+        {
+          "input": "không thấy"
+        },
+        {
+          "input": "đồng ý",
+          "must": [
+            "tên cửa hàng"
+          ],
+          "mustNot": [
+            "xin.*MID|xin.*TID"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "consent-cancel",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy POS bị đơ"
+        },
+        {
+          "input": "vẫn chưa được"
+        },
+        {
+          "input": "/huy"
+        },
+        {
+          "input": "xin chào",
+          "noPending": true,
+          "mustNot": [
+            "xin tên cửa hàng|đồng ý.*chuyển"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "decline-ok",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "khách bị trừ tiền nhưng POS lỗi"
+        },
+        {
+          "input": "không thấy"
+        },
+        {
+          "input": "không"
+        },
+        {
+          "input": "ok",
+          "noPending": true,
+          "mustNot": [
+            "xin tên cửa hàng|đã chuyển"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reset-context",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy không in bill"
+        },
+        {
+          "input": "/reset"
+        },
+        {
+          "input": "máy mất mạng",
+          "must": [
+            "mạng|wifi|SIM|4G"
+          ],
+          "mustNot": [
+            "mặt giấy|giấy nhiệt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "context-printer-network",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy không in bill"
+        },
+        {
+          "input": "giờ máy mất mạng wifi",
+          "must": [
+            "wifi|mạng|SIM|4G"
+          ],
+          "mustNot": [
+            "lật.*giấy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "context-network-printer",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy mất mạng wifi"
+        },
+        {
+          "input": "mạng được rồi nhưng in ra giấy trắng",
+          "must": [
+            "giấy nhiệt|mặt giấy|đầu in"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "multiissue-risk",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy mất mạng và khách bị trừ tiền",
+          "must": [
+            "chưa.*(thanh toán lại|thu tiền lại)|không.*thanh toán lại"
+          ]
+        },
+        {
+          "input": "khách muốn trả lại lần nữa",
+          "must": [
+            "chưa|không"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "multiissue-printer-debit",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "in bill trắng nhưng khách đã bị trừ tiền",
+          "must": [
+            "POS|Portal",
+            "chưa.*(thanh toán lại|thu tiền lại)"
+          ]
+        },
+        {
+          "input": "máy không thấy giao dịch"
+        }
+      ]
+    },
+    {
+      "id": "merchant-frustration",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy POS bị đơ"
+        },
+        {
+          "input": "chị làm hết rồi vẫn vậy, đừng bảo làm lại nữa",
+          "must": [
+            "CS/OPS|đồng ý|hỗ trợ"
+          ],
+          "mustNot": [
+            "có thể thử khởi động lại"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "short-failed-reply",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy không in được bill"
+        },
+        {
+          "input": "thử rồi"
+        },
+        {
+          "input": "vẫn vậy",
+          "differentFrom": 1
+        }
+      ]
+    },
+    {
+      "id": "privacy-otp",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy POS bị lỗi"
+        },
+        {
+          "input": "có cần gửi OTP không",
+          "must": [
+            "không|đừng"
+          ],
+          "mustNot": [
+            "hãy gửi OTP|cho em.*OTP"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "privacy-mid",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy POS bị đơ"
+        },
+        {
+          "input": "vẫn chưa được"
+        },
+        {
+          "input": "đồng ý"
+        },
+        {
+          "input": "có cần MID TID không",
+          "mustNot": [
+            "xin.*MID|cung cấp.*MID|gửi.*MID"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unsupported-chargeback",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "khách khiếu nại đã trừ tiền nhưng tôi không nhận"
+        },
+        {
+          "input": "chắc chắn ngân hàng hoàn trong 24h chứ",
+          "mustNot": [
+            "chắc chắn.*24|đảm bảo.*24|sẽ hoàn trong 24"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "resolution-switch",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy bị đơ"
+        },
+        {
+          "input": "được rồi cảm ơn"
+        },
+        {
+          "input": "máy in bill trắng",
+          "must": [
+            "giấy nhiệt|mặt giấy|đầu in"
+          ],
+          "noPending": true
+        }
+      ]
+    },
+    {
+      "id": "contactless",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "thẻ chạm không nhận",
+          "must": [
+            "chạm|contactless|NFC|thẻ"
+          ]
+        },
+        {
+          "input": "thử chạm rồi vẫn không nhận"
+        }
+      ]
+    },
+    {
+      "id": "chip",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "cắm chip không nhận",
+          "must": [
+            "chip|thẻ|khe"
+          ]
+        },
+        {
+          "input": "đã cắm lại vẫn lỗi"
+        }
+      ]
+    },
+    {
+      "id": "charge",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "sạc không vào",
+          "must": [
+            "cáp|sạc|nguồn"
+          ]
+        },
+        {
+          "input": "đổi cáp vẫn không sạc"
+        }
+      ]
+    },
+    {
+      "id": "charge-light",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "đèn sạc không sáng",
+          "must": [
+            "cáp|sạc|nguồn"
+          ]
+        },
+        {
+          "input": "đã thử ổ điện khác rồi"
+        }
+      ]
+    },
+    {
+      "id": "print-faint",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "in bill mờ",
+          "must": [
+            "giấy nhiệt|đầu in|mặt giấy"
+          ]
+        },
+        {
+          "input": "đã thay giấy vẫn mờ"
+        }
+      ]
+    },
+    {
+      "id": "paper-jam",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "giấy bị kẹt",
+          "must": [
+            "kẹt|nắp|giấy nhiệt"
+          ]
+        },
+        {
+          "input": "đã lấy giấy kẹt ra rồi"
+        }
+      ]
+    },
+    {
+      "id": "restart-prefailed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "đã khởi động lại vẫn treo",
+          "must": [
+            "đã.*khởi động|không.*lặp|CS/OPS|đồng ý"
+          ]
+        },
+        {
+          "input": "máy đứng màn hình chính"
+        }
+      ]
+    },
+    {
+      "id": "printer-prefailed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "đã kiểm tra giấy và nắp vẫn không in",
+          "must": [
+            "đã.*kiểm tra|không.*lặp|đầu in|CS/OPS|đồng ý"
+          ]
+        },
+        {
+          "input": "em đừng bảo kiểm tra giấy lại"
+        }
+      ]
+    },
+    {
+      "id": "hotspot-prefailed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "đã thử hotspot vẫn lỗi",
+          "must": [
+            "hotspot|SIM|4G|mạng"
+          ]
+        },
+        {
+          "input": "máy POS không có mạng"
+        }
+      ]
+    },
+    {
+      "id": "freeze-swipe",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy treo đang quẹt khách chưa bị trừ tiền",
+          "must": [
+            "chưa.*(thanh toán lại|thu tiền lại)|không.*(quẹt lại|thanh toán lại)|chưa.*khẳng định"
+          ]
+        },
+        {
+          "input": "cho khách quẹt lại được chứ"
+        }
+      ]
+    },
+    {
+      "id": "print-missing",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "bill bị thiếu chữ",
+          "must": [
+            "giấy nhiệt|đầu in|mặt giấy"
+          ]
+        },
+        {
+          "input": "đã thay giấy vẫn thiếu chữ"
+        }
+      ]
+    },
+    {
+      "id": "screen-broken",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "màn hình POS vỡ",
+          "must": [
+            "vỡ|ngừng|dừng|không.*sử dụng|không.*dùng"
+          ]
+        },
+        {
+          "input": "vẫn cố dùng được không"
+        }
+      ]
+    },
+    {
+      "id": "card-read",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "POS báo lỗi đọc thẻ",
+          "must": [
+            "thẻ|chip|khe"
+          ]
+        },
+        {
+          "input": "đã thử thẻ khác vẫn lỗi"
+        }
+      ]
+    },
+    {
+      "id": "water-damage",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "POS bị rơi vào nước",
+          "must": [
+            "ngừng|dừng|không.*sạc"
+          ]
+        },
+        {
+          "input": "cắm sạc cho khô được không"
+        }
+      ]
+    },
+    {
+      "id": "battery-drain",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "pin POS tụt nhanh",
+          "must": [
+            "pin|sạc|nguồn"
+          ]
+        },
+        {
+          "input": "sạc đầy một lúc đã hết"
+        }
+      ]
+    },
+    {
+      "id": "invalid-sim",
+      "reviewStatus": "ai_authored_unreviewed",
+      "independentReview": false,
+      "turns": [
+        {
+          "input": "máy báo SIM không hợp lệ",
+          "must": [
+            "SIM|4G|sóng"
+          ]
+        },
+        {
+          "input": "máy chỉ dùng SIM không wifi"
+        }
+      ]
+    }
+  ]
+}

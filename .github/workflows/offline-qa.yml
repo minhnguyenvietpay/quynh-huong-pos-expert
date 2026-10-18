@@ -35,6 +35,10 @@ jobs:
         run: |
           mkdir -p qa-reports
           node scripts/quality-report.cjs --output qa-reports/quality.json
+      - name: V11 synthetic conversation regression (offline, flag enabled)
+        env:
+          QH_V11_ENABLED: 'true'
+        run: node scripts/v11-evaluate.cjs --fail-on-regression > qa-reports/v11.json
       - name: Security policy checks (suppress paths in job logs)
         run: node scripts/security-check.cjs > qa-reports/security.json
       - name: Ensure tracked files unchanged by QA
