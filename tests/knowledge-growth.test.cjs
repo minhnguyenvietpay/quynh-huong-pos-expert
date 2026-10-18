@@ -6,7 +6,7 @@ const now = '2026-10-18T00:00:00Z';
 const record = overrides => ({ id: 'fixture', domain: 'printer', question: 'Printer paper blank', answer: 'Inspect approved paper orientation', sources: [{ type: 'official_document', reference: 'https://example.org/manual' }], evidence: [{ reference: 'https://example.org/manual/paper', reviewer: 'test-reviewer', reviewedAt: now }], confidence: 0.9, verificationStatus: 'verified', verifiedAt: now, ...overrides });
 test('verification requires authoritative source and reviewed evidence, never confidence alone', () => {
   assert.deepEqual(validate(record()), []);
-  for (const reference of ['http://example.org', 'https://user:password@example.org', 'https://example.org?token=private']) assert.ok(validate(record({ sources: [{ type: 'official_document', reference }] })).includes('unsafe_source_reference')); 
+  for (const reference of ['http://example.org', 'https://user:password@example.org', 'https://example.org?token=private']) assert.ok(validate(record({ sources: [{ type: 'official_document', reference }] })).includes('unsafe_source_reference'));
   assert.ok(validate(record({ evidence: [] })).includes('verified_without_reviewed_evidence'));
   assert.ok(validate(record({ sources: [{ type: 'legacy_label', reference: 'manual' }] })).includes('verified_without_authoritative_source'));
   assert.equal(analyze([record({ evidence: [] })], { now }).verified, 0);
