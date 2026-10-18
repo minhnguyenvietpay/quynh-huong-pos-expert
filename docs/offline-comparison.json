@@ -1,0 +1,24 @@
+{
+  "baselineCommit": "aedde19a0ea677e7d22132e2db83da934b655e87",
+  "scenarioSha256": "c6b78251dd85fd0a8129626c9e3e99c8c1e9d5e226141af41806963d9074c78b",
+  "before": {
+    "passed": 31,
+    "total": 40
+  },
+  "after": {
+    "passed": 40,
+    "total": 40
+  },
+  "improved": [
+    "cancel-consent",
+    "restart-consent",
+    "cancel-handover",
+    "payment-consent",
+    "abbreviated-printer",
+    "negative-resolution",
+    "ticket-sensitive",
+    "ticket-card",
+    "unapproved-bank-code"
+  ],
+  "regressions": []
+}
