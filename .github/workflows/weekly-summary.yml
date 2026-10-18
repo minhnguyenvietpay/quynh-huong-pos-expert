@@ -1,0 +1,34 @@
+name: Weekly aggregate summary
+on:
+  schedule:
+    - cron: '41 3 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: weekly-aggregate-summary
+  cancel-in-progress: false
+jobs:
+  summary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Collect private local reports
+        run: |
+          mkdir -p qa-reports
+          node scripts/quality-report.cjs --output qa-reports/quality.json
+          node scripts/knowledge-report.cjs
+          node scripts/security-check.cjs > qa-reports/security.json
+      - name: Publish counts only to job summary
+        run: |
+          node scripts/weekly-summary.cjs > qa-reports/summary-output.json
+          cat qa-reports/summary-output.json >> "$GITHUB_STEP_SUMMARY"
+      - run: git diff --exit-code

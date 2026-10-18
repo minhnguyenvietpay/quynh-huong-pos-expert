@@ -1,0 +1,56 @@
+{
+  "pos_device": [
+    "Thiết bị POS",
+    "Vận hành và thiết bị"
+  ],
+  "printer": [
+    "Máy in và chứng từ"
+  ],
+  "card_payment": [
+    "Thanh toán thẻ",
+    "code"
+  ],
+  "qr_payment": [
+    "Thanh toán QR"
+  ],
+  "merchant_portal": [
+    "Merchant Portal"
+  ],
+  "refund_reversal": [
+    "Void, refund và reversal"
+  ],
+  "settlement_payout": [
+    "Settlement và payout"
+  ],
+  "onboarding_kyc": [
+    "Onboarding và eKYC/KYB"
+  ],
+  "network_integration": [
+    "Kết nối và tích hợp"
+  ],
+  "fees_contracts": [
+    "Phí và hợp đồng"
+  ],
+  "security_risk": [
+    "Bảo mật và rủi ro"
+  ],
+  "ops_escalation": [
+    "Ticket và CS",
+    "Vận hành POS Care"
+  ],
+  "merchant_operations": [
+    "Chuỗi cửa hàng và phân quyền"
+  ],
+  "reconciliation": [
+    "Đối soát và báo cáo"
+  ],
+  "contextual_troubleshooting": [
+    "POS contextual troubleshooting"
+  ],
+  "unclassified": [],
+  "authorization_capture": [],
+  "disputes": [],
+  "battery": [],
+  "payment_status": [],
+  "paper": []
+}

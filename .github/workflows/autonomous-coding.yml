@@ -1,0 +1,68 @@
+name: Opt-in API coding candidate
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: autonomous-coding
+  cancel-in-progress: false
+env:
+  QH_OPT_IN_CODING_WORKFLOW: 'true'
+jobs:
+  candidate:
+    if: vars.QH_ENABLE_AI_RUNNER == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Validate explicit opt-in prerequisites
+        env:
+          QH_AGENT_MODEL: ${{ vars.QH_AGENT_MODEL }}
+          QH_AGENT_API_KEY: ${{ secrets.QH_AGENT_API_KEY }}
+          QH_AGENT_CONTAINER_IMAGE: ${{ vars.QH_AGENT_CONTAINER_IMAGE }}
+        run: |
+          test -n "$QH_AGENT_MODEL"
+          test -n "$QH_AGENT_API_KEY"
+          node -e 'if(!/^[a-zA-Z0-9][a-zA-Z0-9._/:-]*@sha256:[a-f0-9]{64}$/.test(process.env.QH_AGENT_CONTAINER_IMAGE||""))process.exit(1)'
+          docker info > /dev/null
+      - run: npm ci
+      - name: Check repository security before API execution
+        run: node scripts/security-check.cjs > /tmp/qh-security.json
+      - name: Pull reviewed immutable agent image (public registry only)
+        env:
+          QH_AGENT_CONTAINER_IMAGE: ${{ vars.QH_AGENT_CONTAINER_IMAGE }}
+        run: docker pull "$QH_AGENT_CONTAINER_IMAGE"
+      - name: Generate private baseline and explicit runtime configuration
+        env:
+          QH_AGENT_MODEL: ${{ vars.QH_AGENT_MODEL }}
+          QH_AGENT_CONTAINER_IMAGE: ${{ vars.QH_AGENT_CONTAINER_IMAGE }}
+        run: |
+          mkdir -p qa-reports
+          node -e 'const fs=require("node:fs"),cp=require("node:child_process");const p=cp.spawnSync(process.execPath,["scripts/evaluate.cjs"],{encoding:"utf8"});if(![0,1].includes(p.status))process.exit(2);const r=JSON.parse(p.stdout);if(!Array.isArray(r.rows))process.exit(2);const q=cp.spawnSync(process.execPath,["scripts/quality-report.cjs"],{encoding:"utf8"});if(![0,1].includes(q.status))process.exit(2);const golden=JSON.parse(q.stdout);if(!Array.isArray(golden.rows))process.exit(2);r.rows.push(...golden.rows);r.failures=r.rows.filter(x=>x.passed===false);fs.writeFileSync("qa-reports/quality.json",JSON.stringify(r),{mode:0o600});const c=JSON.parse(fs.readFileSync("config/automation.example.json","utf8"));Object.assign(c,{enabled:true,publishPullRequest:true,model:process.env.QH_AGENT_MODEL,containerImage:process.env.QH_AGENT_CONTAINER_IMAGE});fs.writeFileSync("qa-reports/automation.json",JSON.stringify(c),{mode:0o600});'
+      - name: Restore sanitized issue history only
+        uses: actions/cache/restore@v4
+        with:
+          path: qa-reports/improvement/history.jsonl
+          key: ${{ runner.os }}-qh-improvement-history-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ runner.os }}-qh-improvement-history-v1-
+      - name: Run guarded API coding and create review PR only if gates pass
+        env:
+          QH_ENABLE_AI_RUNNER: 'true'
+          QH_AGENT_API_KEY: ${{ secrets.QH_AGENT_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/improve.cjs run --config qa-reports/automation.json --report qa-reports/quality.json
+      - name: Preserve sanitized history even after rejected candidates
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: qa-reports/improvement/history.jsonl
+          key: ${{ runner.os }}-qh-improvement-history-v1-${{ github.run_id }}-${{ github.run_attempt }}

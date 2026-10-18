@@ -1,0 +1,435 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "golden-v1.1.0",
+  "provenance": "AI-authored synthetic fixtures; not independently verified ground truth",
+  "cases": [
+    {
+      "id": "printer-start",
+      "category": "printer",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "máy không in bill"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "giấy nhiệt",
+          "nắp"
+        ],
+        "state": {
+          "session": true
+        },
+        "intent": null
+      }
+    },
+    {
+      "id": "printer-context",
+      "category": "printer",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "máy không in bill",
+        "vẫn chưa được",
+        "giấy ra trắng"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "chiều lắp giấy"
+        ],
+        "state": {
+          "session": true
+        },
+        "intent": null
+      }
+    },
+    {
+      "id": "printer-resolved",
+      "category": "printer",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "máy không in bill",
+        "in được rồi"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "xử lý|khắc phục|máy đã in"
+        ],
+        "state": {
+          "session": false,
+          "escalation": false,
+          "pending": false
+        },
+        "intent": null
+      }
+    },
+    {
+      "id": "printer-negative",
+      "category": "printer",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "máy không in bill",
+        "vẫn chưa in được rồi"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "giấy|chưa"
+        ],
+        "state": {
+          "session": true
+        },
+        "intent": null
+      }
+    },
+    {
+      "id": "power",
+      "category": "pos",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "máy không lên nguồn"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "sạc"
+        ],
+        "state": {
+          "session": true
+        },
+        "intent": "frozen"
+      }
+    },
+    {
+      "id": "power-ok-context",
+      "category": "pos",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "máy không lên nguồn",
+        "ok"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "đèn|biểu tượng|nguồn"
+        ],
+        "state": {
+          "session": true
+        },
+        "intent": null
+      }
+    },
+    {
+      "id": "network",
+      "category": "pos",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "máy mất mạng"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "Wi-Fi",
+          "4G"
+        ],
+        "state": {
+          "session": true
+        },
+        "intent": null
+      }
+    },
+    {
+      "id": "freeze-payment",
+      "category": "payment",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "máy POS bị treo khi đang thanh toán"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "chưa.*thanh toán lại"
+        ],
+        "state": {
+          "session": true
+        },
+        "intent": null
+      }
+    },
+    {
+      "id": "debit-failed",
+      "category": "payment",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "khách bị trừ tiền nhưng POS báo thất bại"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "kiểm tra.*trạng thái|kiểm tra.*lịch sử"
+        ],
+        "state": {},
+        "intent": "payment"
+      }
+    },
+    {
+      "id": "portal",
+      "category": "payment",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "không thấy giao dịch trên portal"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "bộ lọc",
+          "không đồng nghĩa"
+        ],
+        "state": {},
+        "intent": null
+      }
+    },
+    {
+      "id": "settlement",
+      "category": "payment",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "tiền chưa về tài khoản"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "chưa thể xác nhận lịch chuyển tiền"
+        ],
+        "state": {},
+        "intent": null
+      }
+    },
+    {
+      "id": "refund",
+      "category": "payment",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "khách muốn hoàn tiền giao dịch"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "chưa thể xác nhận tiền đã hoàn"
+        ],
+        "state": {},
+        "intent": "refund"
+      }
+    },
+    {
+      "id": "qr",
+      "category": "payment",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "không quét được mã QR"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "hiển thị mã",
+          "quét mã"
+        ],
+        "state": {},
+        "intent": "qr"
+      }
+    },
+    {
+      "id": "consent-offer",
+      "category": "ops",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "lỗi 999"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "có muốn",
+          "CS/OPS"
+        ],
+        "state": {
+          "pending": false,
+          "escalation": true
+        },
+        "intent": null
+      }
+    },
+    {
+      "id": "consent-declined",
+      "category": "ops",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "lỗi 999",
+        "không"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "chưa lập yêu cầu"
+        ],
+        "state": {
+          "pending": false,
+          "escalation": false
+        },
+        "intent": null
+      }
+    },
+    {
+      "id": "consent-granted",
+      "category": "ops",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "lỗi 999",
+        "đồng ý"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "tên cửa hàng"
+        ],
+        "state": {
+          "pending": false,
+          "escalation": true
+        },
+        "intent": null
+      }
+    },
+    {
+      "id": "handover",
+      "category": "ops",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "lỗi 999",
+        "đồng ý",
+        "Cửa hàng Giả Lập",
+        "12 Đường Giả Lập"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "đã chuẩn bị"
+        ],
+        "state": {
+          "pending": true,
+          "pendingName": "Cửa hàng Giả Lập",
+          "pendingAddress": "12 Đường Giả Lập"
+        },
+        "intent": null
+      }
+    },
+    {
+      "id": "cancel",
+      "category": "ops",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "lỗi 999",
+        "đồng ý",
+        "/huy"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "kết thúc phiên"
+        ],
+        "state": {
+          "pending": false,
+          "escalation": false,
+          "session": false
+        },
+        "intent": null
+      }
+    },
+    {
+      "id": "introduction",
+      "category": "merchant",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "em giới thiệu đi"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "em là Quỳnh Hương"
+        ],
+        "state": {},
+        "intent": null
+      }
+    },
+    {
+      "id": "compliment",
+      "category": "merchant",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "em giỏi quá"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "cảm ơn"
+        ],
+        "state": {},
+        "intent": null
+      }
+    },
+    {
+      "id": "synthetic-sensitive",
+      "category": "security",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "OTP 123456"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "không chia sẻ"
+        ],
+        "state": {},
+        "intent": null
+      }
+    },
+    {
+      "id": "combined-freeze-debit",
+      "category": "payment",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "máy treo khách bị trừ tiền giờ xử lý sao"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "chưa đủ|chưa.*xác (nhận|minh)",
+          "chưa.*thanh toán lại|chưa.*thu tiền lại",
+          "POS|Portal",
+          "^(?![\\s\\S]*(?:khởi động lại|rút nguồn|tắt nguồn))[\\s\\S]*$"
+        ],
+        "state": {
+          "pending": false
+        },
+        "intent": null
+      }
+    },
+    {
+      "id": "transfer-missing-transaction",
+      "category": "payment",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "khách ck rồi mà chưa thấy giao dịch"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "chưa đủ|chưa.*xác (nhận|minh)",
+          "chưa.*thanh toán lại|chưa.*thu tiền lại",
+          "Portal"
+        ],
+        "state": {
+          "pending": false
+        },
+        "intent": null
+      }
+    },
+    {
+      "id": "suffix-resolution-escalation",
+      "category": "ops",
+      "reviewStatus": "ai_authored_unreviewed",
+      "turns": [
+        "máy đơ rồi em",
+        "vẫn chưa được",
+        "vẫn chưa được",
+        "bình thường rồi em"
+      ],
+      "expected": {
+        "finalPatterns": [
+          "đã được xử lý"
+        ],
+        "state": {
+          "session": false,
+          "escalation": false,
+          "pending": false
+        },
+        "intent": null
+      }
+    }
+  ]
+}

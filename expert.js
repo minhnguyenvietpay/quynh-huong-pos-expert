@@ -15,5 +15,11 @@ function reply(raw){const q=norm(raw);if(q.length<7)return null;
  if(has(q,['khong thay giao dich','khong hien thi giao dich','thieu giao dich'])&&has(q,['portal','app','web']))return 'Dạ anh/chị, mình kiểm tra bộ lọc ngày, nguồn thanh toán, chi nhánh và trạng thái giao dịch trên Merchant Portal trước nhé. Nếu vẫn thiếu so với POS, em có thể xin phép chuyển CS/OPS đối chiếu. Em chưa thể xác nhận kết quả thanh toán chỉ từ một màn hình.'+caution;
  return null;
 }
-function logGap(question,reason){if(process.env.QH_GAP_LOG!=='1')return;try{const p=path.join(__dirname,'knowledge-gaps.jsonl');fs.appendFileSync(p,JSON.stringify({at:new Date().toISOString(),reason,question:String(question).slice(0,250)})+'\n');}catch(_){}}
+function logGap(question,reason){if(process.env.QH_GAP_LOG!=='1')return;try{
+ const p=path.join(__dirname,'qa-reports','knowledge-gaps.jsonl');fs.mkdirSync(path.dirname(p),{recursive:true});
+ const code=['unanswered','ambiguous','unverified'].includes(reason)?reason:'unknown';
+ // No customer text, names, IDs, or hashes of customer text are persisted.
+ fs.appendFileSync(p,JSON.stringify({at:new Date().toISOString(),reason:code})+'\n',{mode:0o600});
+ }catch(_){}}
+
 module.exports={reply,logGap,norm};

@@ -1,0 +1,33 @@
+{
+  "baselineCommit": "921f6e4",
+  "datasetVersion": "golden-v1.1.0",
+  "syntheticOnly": true,
+  "independentlyReviewed": 0,
+  "before": {
+    "total": 24,
+    "passed": 21,
+    "failed": 3
+  },
+  "after": {
+    "total": 24,
+    "passed": 24,
+    "failed": 0
+  },
+  "improved": [
+    "combined-freeze-debit",
+    "transfer-missing-transaction",
+    "suffix-resolution-escalation"
+  ],
+  "regressions": [],
+  "independentQualityGate": {
+    "status": "blocked",
+    "reason": "No independently reviewed ground truth; synthetic heuristic success does not establish real-world answer quality",
+    "reviewedFixtures": 0
+  },
+  "retrievalRelevance": {
+    "basis": "unavailable_no_retrieval_trace",
+    "checks": 0,
+    "passed": 0,
+    "rate": null
+  }
+}
