@@ -1,0 +1,21 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const vm=require('node:vm');
+const intent=require('./intent.js');
+const intro=['@Quỳnh Hương em giới thiệu tí đi','@Quỳnh Hương em giới thiệu đi','em là ai @Quỳnh Hương','Giới thiệu xíu đi e @Quỳnh Hương'];
+for(const x of intro){assert.equal(intent.isIntroduction(x),true,x);assert.equal(intent.isCompliment(x),false,x);}
+for(const x of ['@Quỳnh Hương em giỏi quá','Quỳnh Hương good job']) assert.equal(intent.isCompliment(x),true,x);
+const fakeFlows={flows:[]};
+const fakeSearch={searchKnowledge:()=>({status:'not_found'})};
+const mod={exports:{}};
+const source=fs.readFileSync('./dialogue.js','utf8');
+vm.runInNewContext(source,{require:(p)=>p==='./intent'?intent:p==='./flows'?fakeFlows:fakeSearch,module:mod,console,Date,Map,JSON,String,Number,Math});
+const d=mod.exports;
+const first=d.processMessage('g1','u1','em giới thiệu tí đi');
+assert.match(first,/em là Quỳnh Hương/);
+assert.doesNotMatch(first,/Em cảm ơn/);
+const second=d.processMessage('g1','u1','Lỗi 03 máy POS là gì');
+assert.doesNotMatch(second,/Em là Quỳnh Hương|Em là POS Care/);
+const compliment=d.processMessage('g1','u1','em giỏi quá');
+assert.match(compliment,/cảm ơn/i);
+console.log('PASS 9/9 regression checks');

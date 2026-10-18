@@ -1,0 +1,26 @@
+{
+  "base": 456,
+  "generated_contextual_drafts": 4544,
+  "total": 5000,
+  "note": "Generated scenario permutations are NOT independently verified SOPs and are NOT enabled as official answers. They are distinct context records, not 4544 independently researched procedures.",
+  "categories": {
+    "incident": 17,
+    "code": 121,
+    "Thiết bị POS": 23,
+    "Máy in và chứng từ": 20,
+    "Thanh toán thẻ": 20,
+    "Thanh toán QR": 20,
+    "Merchant Portal": 20,
+    "Void, refund và reversal": 20,
+    "Settlement và payout": 20,
+    "Onboarding và eKYC/KYB": 20,
+    "Vận hành và thiết bị": 20,
+    "Kết nối và tích hợp": 20,
+    "Phí và hợp đồng": 20,
+    "Bảo mật và rủi ro": 20,
+    "Ticket và CS": 20,
+    "Chuỗi cửa hàng và phân quyền": 20,
+    "Đối soát và báo cáo": 20,
+    "Vận hành POS Care": 15
+  }
+}

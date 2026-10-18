@@ -1,0 +1,11 @@
+const fs=require('node:fs');
+const path=require('node:path');
+const source=path.resolve(process.env.POS_CARE_METRICS_FILE||'pos-care-metrics.jsonl');
+let rows=[];
+try{rows=fs.readFileSync(source,'utf8').split(/\r?\n/).filter(Boolean).map(line=>{try{return JSON.parse(line);}catch{return null;}}).filter(Boolean);}catch(e){if(e.code!=='ENOENT')throw e;}
+const count=key=>rows.reduce((a,r)=>(a[r[key]||'unknown']=(a[r[key]||'unknown']||0)+1,a),{});
+const summary={generatedAt:new Date().toISOString(),totalEvents:rows.length,byEvent:count('event'),byIntent:rows.filter(x=>x.event==='answered').reduce((a,r)=>(a[r.intent||'unknown']=(a[r.intent||'unknown']||0)+1,a),{}),ignoredReasons:rows.filter(x=>x.event==='ignored').reduce((a,r)=>(a[r.reason||'unknown']=(a[r.reason||'unknown']||0)+1,a),{})};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const table=o=>Object.entries(o).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<tr><td>${esc(k)}</td><td>${v}</td></tr>`).join('')||'<tr><td colspan="2">Chưa có dữ liệu</td></tr>';
+const html=`<!doctype html><html lang="vi"><meta charset="utf-8"><title>Quỳnh Hương | Operations Dashboard</title><style>body{font-family:system-ui,Arial;background:#f5f7fb;color:#15233a;max-width:1000px;margin:35px auto;padding:0 18px}h1{margin-bottom:5px}.muted{color:#68758a}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}section{background:white;border:1px solid #e4e8f0;border-radius:14px;padding:18px}table{border-collapse:collapse;width:100%}td{padding:9px;border-bottom:1px solid #eef0f4}td:last-child{text-align:right;font-weight:600}</style><h1>Quỳnh Hương · Operations</h1><p class="muted">Báo cáo offline · ${esc(summary.generatedAt)} · ${rows.length} sự kiện</p><main><section><h2>Hoạt động</h2><table>${table(summary.byEvent)}</table></section><section><h2>Ý định đã xử lý</h2><table>${table(summary.byIntent)}</table></section><section><h2>Lý do bỏ qua</h2><table>${table(summary.ignoredReasons)}</table></section></main><p class="muted">Không hiển thị nội dung tin nhắn, số thẻ hoặc thông tin cá nhân. Làm mới báo cáo bằng node report.js.</p></html>`;
+const out=path.resolve('pos-care-dashboard.html');fs.writeFileSync(out,html);console.log('Created:',out);console.log(JSON.stringify(summary,null,2));

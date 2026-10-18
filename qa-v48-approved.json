@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "rules": [
+    {
+      "from": "treoo",
+      "to": "treo"
+    },
+    {
+      "from": "lagg",
+      "to": "lag"
+    },
+    {
+      "from": "qrr",
+      "to": "qr"
+    },
+    {
+      "from": "chuaaa",
+      "to": "chua"
+    },
+    {
+      "from": "nguonn",
+      "to": "nguon"
+    }
+  ]
+}

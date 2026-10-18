@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "rules": [
+    {
+      "from": "khg",
+      "to": "khong"
+    },
+    {
+      "from": "khongg",
+      "to": "khong"
+    },
+    {
+      "from": "k0",
+      "to": "khong"
+    },
+    {
+      "from": "hem",
+      "to": "khong"
+    },
+    {
+      "from": "duoccc",
+      "to": "duoc"
+    },
+    {
+      "from": "roii",
+      "to": "roi"
+    },
+    {
+      "from": "okee",
+      "to": "ok"
+    },
+    {
+      "from": "okey",
+      "to": "ok"
+    },
+    {
+      "from": "inbill",
+      "to": "in bill"
+    }
+  ]
+}

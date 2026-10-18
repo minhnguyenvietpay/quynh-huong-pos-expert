@@ -1,0 +1,1 @@
+{"name":"vietpay-pos-care-v85","version":"8.5.0","private":true,"type":"commonjs","scripts":{"start":"node listener.mjs","test":"node test-v85.js","dashboard":"node dashboard-v85.js"},"dependencies":{"zca-js":"*"}}
