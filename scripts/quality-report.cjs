@@ -1,0 +1,4 @@
+'use strict';
+const path=require('node:path'),fs=require('node:fs');const {evaluate}=require('../lib/evaluation/index.cjs');
+const args=process.argv.slice(2);function value(flag){const i=args.indexOf(flag);if(i<0)return undefined;if(!args[i+1]||args[i+1].startsWith('--'))throw Error('Missing value for '+flag);return path.resolve(args[i+1]);}
+try{const baselineFile=value('--baseline');const report=evaluate({root:value('--root'),datasetPath:value('--dataset'),baseline:baselineFile?JSON.parse(fs.readFileSync(baselineFile,'utf8')):null});const output=JSON.stringify(report,null,2)+'\n';const file=value('--output');if(file)fs.writeFileSync(file,output);else process.stdout.write(output);process.exitCode=report.failed?1:args.includes('--require-independent-review')?2:0;}catch(error){console.error(error.message);process.exitCode=1;}

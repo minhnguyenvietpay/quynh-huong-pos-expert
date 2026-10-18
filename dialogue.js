@@ -90,7 +90,7 @@ function processMessage(chatId,userId,input,options={}){
  if(isSensitive(q)||/(?:\d[ -]?){13,19}/.test(raw))return '⚠️ Không chia sẻ OTP, PIN, CVV, mật khẩu hay mã xác thực trong nhóm. Nếu cần hỗ trợ, liên hệ CS/OPS qua kênh chính thức.';
  if(/^\/ticket\b/i.test(raw))return createTicket(raw.slice(7));
  // Resolution/closure must preempt pending handover and all diagnostic modules.
- if(!/^\//.test(raw) && /^(binh thuong roi|may binh thuong roi|chay binh thuong roi|on roi|ok roi em|ok roi|het loi roi|in duoc roi|duoc roi|da xu ly xong|khong can ho tro nua)$/.test(q)){
+ if(!/^\//.test(raw) && /^(binh thuong roi|may binh thuong roi|chay binh thuong roi|on roi|ok roi em|ok roi|het loi roi|in duoc roi|duoc roi|da xu ly xong|khong can ho tro nua)( em| anh)?$/.test(q)){
    escalation.delete(k);pendingHandover.delete(k);sessions.delete(k);v12.clear(chatId,userId);
    return 'Dạ tốt rồi anh! Em ghi nhận sự cố đã được xử lý. Nếu cần hỗ trợ thêm, anh cứ nhắn em nhé.';
  }
@@ -98,6 +98,8 @@ function processMessage(chatId,userId,input,options={}){
  // Expand only engine input; retain original merchant names/addresses above.
  const current=sessions.get(k);
  const engineInput=language.normalize(raw,{issue:current?.issue||current?.kind||null,stage:current?'question':null}).text;
+ // Payment uncertainty precedes device troubleshooting, including an active printer session.
+ if(!/^\//.test(raw)&&conversation.isPaymentUncertain(engineInput)){const paymentReply=conversation.reply(chatId,userId,engineInput);if(paymentReply)return paymentReply;}
  if(!/^\/(ticket|help|trogiup|huy|done|reset|lai|restart)/i.test(raw)){const r12=v12.reply(chatId,userId,engineInput);if(r12&&typeof r12==='object'&&r12.handover)return offerEscalation(k,r12.issue,true);if(r12)return r12;}
  if(!/^\/(ticket|help|trogiup|huy|done|reset|lai|restart)/i.test(raw)){const c=conversation.reply(chatId,userId,engineInput);if(c&&typeof c==='object'&&c.handover)return offerEscalation(k,c.issue,c.consented===true);if(c)return c;}
  if(!/^\/(ticket|help|trogiup|huy|done|reset|lai|restart)/i.test(raw)){const d=posDiagnostics.reply(chatId,userId,engineInput);if(d&&typeof d==='object'&&d.handover)return offerEscalation(k,d.issue);if(d)return d;}
@@ -144,6 +146,6 @@ if(isCompliment(raw)){markWelcomed(k);return vary(k,'compliment',['Em cảm ơn 
  if(r.status==='ambiguous')return 'Em thấy nhiều tình huống gần giống nhau. Anh/chị cho biết lỗi xảy ra trên POS, QR hay Portal và thông báo đang hiển thị ạ?';
  quality.log('unanswered',{category:'unknown'});expert.logGap(raw,'unanswered');return offerEscalation(k,raw);
 }
-function getPendingHandover(chat,user){return pendingHandover.get(key(chat,user))||null;}
+function getPendingHandover(chat,user){const k=key(chat,user),pending=pendingHandover.get(k);if(pending&&now()-pending.time>ESC_TTL){pendingHandover.delete(k);escalation.delete(k);return null;}return pending||null;}
 function markHandoverDone(chat,user){pendingHandover.delete(key(chat,user));}
 module.exports={getPendingHandover,markHandoverDone,processMessage,hasSession,sessionInfo,norm,closing,greetingOnly,createTicket,hasEscalation:(chat,user)=>{const e=escalation.get(key(chat,user));return !!e&&now()-e.time<ESC_TTL;}};

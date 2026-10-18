@@ -1,0 +1,9 @@
+{
+  "enabled": false,
+  "runner": "codex",
+  "model": "CONFIGURE_SUPPORTED_MODEL",
+  "codexBinary": "codex",
+  "publishPullRequest": false,
+  "maxAttemptsPerIssueAndBase": 1,
+  "containerImage": "CONFIGURE_TRUSTED_IMAGE@sha256:REPLACE_WITH_64_HEX_DIGEST"
+}

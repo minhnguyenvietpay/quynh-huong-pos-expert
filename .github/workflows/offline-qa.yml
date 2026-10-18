@@ -3,12 +3,18 @@ on:
   push:
     branches: [main]
   pull_request:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: offline-qa-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
 jobs:
   offline-qa:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     strategy:
       matrix:
         node: ['22', '24']
@@ -25,7 +31,11 @@ jobs:
       - run: npm run qa:language
       - run: node qa-v3.js --self-test
       - run: npm run qa:legacy
-      - name: Verify read-only dashboard QA
-        run: node qa-v42-runner.js run
+      - name: Synthetic response contracts (private local report)
+        run: |
+          mkdir -p qa-reports
+          node scripts/quality-report.cjs --output qa-reports/quality.json
+      - name: Security policy checks (suppress paths in job logs)
+        run: node scripts/security-check.cjs > qa-reports/security.json
       - name: Ensure tracked files unchanged by QA
         run: git diff --exit-code
