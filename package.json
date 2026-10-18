@@ -1,1 +1,17 @@
-{"name":"vietpay-pos-care-v85","version":"8.5.0","private":true,"type":"commonjs","scripts":{"start":"node listener.mjs","test":"node test-v85.js","dashboard":"node dashboard-v85.js"},"dependencies":{"zca-js":"*"}}
+{
+  "name": "vietpay-pos-care-v85",
+  "version": "8.5.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "start": "node listener.mjs",
+    "test": "node --test tests/*.test.cjs",
+    "dashboard": "node dashboard-v85.js",
+    "qa:responses": "node scripts/evaluate.cjs",
+    "qa:language": "node qa-v43.js",
+    "qa:legacy": "node qa-lab.js"
+  },
+  "dependencies": {
+    "zca-js": "*"
+  }
+}

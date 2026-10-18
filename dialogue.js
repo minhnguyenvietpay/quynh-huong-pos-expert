@@ -7,6 +7,8 @@ const expert=require('./expert');
 const conversation=require('./conversation');
 const posDiagnostics=require('./pos-diagnostics');
 const v12=require('./v12-brain');
+const language=require('./qh-v43-language');
+const {usableKnowledge}=require('./knowledge-policy');
 const sessions={get:store.getSession,set:store.setSession,delete:store.deleteSession,has:k=>!!store.getSession(k)};
 // Conversation state is kept per group + sender. It resets when the bot restarts.
 const welcomed={get:k=>store.isWelcomed(k)?Date.now():null,set:(k,t)=>store.welcome(k),get size(){return 0;},delete:()=>{}};
@@ -80,31 +82,37 @@ function offerEscalation(k,issue,consented=false){
 function processMessage(chatId,userId,input,options={}){
  prune();const raw=String(input||'').trim().slice(0,1200),q=norm(raw),k=key(chatId,userId);
  if(!raw)return 'Anh/chị mô tả lỗi POS/QR/Portal để em hỗ trợ nhé.';
+ // Session controls must precede consent/name/address handling.
+ if(/^(\/(huy|done|reset|lai|restart)|huy|ket thuc|bat dau lai)$/.test(raw.toLowerCase()) || /^(huy|ket thuc|bat dau lai)$/.test(q)){
+  escalation.delete(k);pendingHandover.delete(k);sessions.delete(k);v12.clear(chatId,userId);
+  return /lai|restart/.test(q)?'Đã bắt đầu lại. Anh/chị mô tả sự cố mới nhé.':'Đã kết thúc phiên hỗ trợ. Khi cần, anh/chị mô tả sự cố mới nhé.';
+ }
+ if(isSensitive(q)||/(?:\d[ -]?){13,19}/.test(raw))return '⚠️ Không chia sẻ OTP, PIN, CVV, mật khẩu hay mã xác thực trong nhóm. Nếu cần hỗ trợ, liên hệ CS/OPS qua kênh chính thức.';
  if(/^\/ticket\b/i.test(raw))return createTicket(raw.slice(7));
- if(isSensitive(q))return '⚠️ Không chia sẻ OTP, PIN, CVV, mật khẩu hay mã xác thực trong nhóm. Nếu cần hỗ trợ, liên hệ CS/OPS qua kênh chính thức.';
  // Resolution/closure must preempt pending handover and all diagnostic modules.
  if(!/^\//.test(raw) && /^(binh thuong roi|may binh thuong roi|chay binh thuong roi|on roi|ok roi em|ok roi|het loi roi|in duoc roi|duoc roi|da xu ly xong|khong can ho tro nua)$/.test(q)){
    escalation.delete(k);pendingHandover.delete(k);sessions.delete(k);v12.clear(chatId,userId);
    return 'Dạ tốt rồi anh! Em ghi nhận sự cố đã được xử lý. Nếu cần hỗ trợ thêm, anh cứ nhắn em nhé.';
  }
  if(escalation.has(k)){const result=escalationReply(k,raw,q);if(result!==undefined)return result;}
- if(!/^\/(ticket|help|trogiup|huy|done|reset|lai|restart)/i.test(raw)){const r12=v12.reply(chatId,userId,raw);if(r12&&typeof r12==='object'&&r12.handover)return offerEscalation(k,r12.issue,true);if(r12)return r12;}
- if(!/^\/(ticket|help|trogiup|huy|done|reset|lai|restart)/i.test(raw)){const c=conversation.reply(chatId,userId,raw);if(c&&typeof c==='object'&&c.handover)return offerEscalation(k,c.issue);if(c)return c;}
- if(!/^\/(ticket|help|trogiup|huy|done|reset|lai|restart)/i.test(raw)){const d=posDiagnostics.reply(chatId,userId,raw);if(d&&typeof d==='object'&&d.handover)return offerEscalation(k,d.issue);if(d)return d;}
+ // Expand only engine input; retain original merchant names/addresses above.
+ const current=sessions.get(k);
+ const engineInput=language.normalize(raw,{issue:current?.issue||current?.kind||null,stage:current?'question':null}).text;
+ if(!/^\/(ticket|help|trogiup|huy|done|reset|lai|restart)/i.test(raw)){const r12=v12.reply(chatId,userId,engineInput);if(r12&&typeof r12==='object'&&r12.handover)return offerEscalation(k,r12.issue,true);if(r12)return r12;}
+ if(!/^\/(ticket|help|trogiup|huy|done|reset|lai|restart)/i.test(raw)){const c=conversation.reply(chatId,userId,engineInput);if(c&&typeof c==='object'&&c.handover)return offerEscalation(k,c.issue,c.consented===true);if(c)return c;}
+ if(!/^\/(ticket|help|trogiup|huy|done|reset|lai|restart)/i.test(raw)){const d=posDiagnostics.reply(chatId,userId,engineInput);if(d&&typeof d==='object'&&d.handover)return offerEscalation(k,d.issue);if(d)return d;}
  const done=closing(q);if(done){sessions.delete(k);markWelcomed(k);return done;}
  if(isIntroduction(raw)){markWelcomed(k);return 'Dạ, em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em có thể hướng dẫn xử lý sự cố POS, QR, mã lỗi, Merchant Portal và đối soát. Các vấn đề cần tra soát giao dịch sẽ được CS/OPS xác minh. Anh/chị cần hỗ trợ gì cứ nhắn em nhé!';}
 if(isCompliment(raw)){markWelcomed(k);return vary(k,'compliment',['Em cảm ơn anh/chị ạ! Rất vui vì đã giúp được mình 😊','Cảm ơn anh/chị nhiều nhé! Có gì cần hỗ trợ cứ gọi em ạ.','Nghe anh/chị nói vậy em vui lắm! Em luôn sẵn sàng hỗ trợ.']);}
  const errorCode=extractErrorCode(raw);
  if(errorCode){
   const r=searchKnowledge(raw);
-  if(r.status==='matched' && r.item && r.exactCode && r.item.review_status!=='draft' && r.item.bot_usage!=='fallback_draft_only'){
+  if(r.status==='matched' && r.item && r.exactCode && usableKnowledge(r.item)){
    markWelcomed(k);return safeAnswer(`📌 ${r.item.title}\n\n${r.item.answer}\n\n⚠️ Ý nghĩa mã lỗi cần được CS/OPS xác nhận theo cấu hình ngân hàng/đơn vị xử lý giao dịch. Nếu đã thử mà vẫn không xử lý được, anh/chị báo lại để em hướng dẫn chuyển CS/OPS.`);
   }
   markWelcomed(k);return offerEscalation(k,`Mã lỗi ${errorCode}: ${raw}`);
  }
  if(greetingOnly(q)){if(!wasWelcomed(k))return greeting(k,options.displayName||'')+'Anh/chị cần em hỗ trợ vấn đề gì ạ?';return vary(k,'hello',['Em đây ạ! Anh/chị cần hỗ trợ gì thêm không?','Dạ, em nghe đây ạ.','Em đây, anh/chị cứ nói nhé!']);}
- if(['/huy','/done','/reset','huy','ket thuc'].includes(raw.toLowerCase())||['huy','ket thuc'].includes(q)){sessions.delete(k);return 'Đã kết thúc phiên hỗ trợ. Khi cần, anh/chị mô tả sự cố mới nhé.';}
- if(['/lai','/restart'].includes(raw.toLowerCase())||q==='bat dau lai'){sessions.delete(k);return 'Đã bắt đầu lại. Anh/chị mô tả sự cố mới nhé.';}
  if(['/help','/trogiup'].includes(raw.toLowerCase()))return 'Anh/chị mô tả vấn đề POS, QR, giao dịch hoặc Portal. Em sẽ hỏi thêm theo từng bước. /huy để kết thúc, /lai để bắt đầu lại.';
  if(unresolved(q)){sessions.delete(k);return offerEscalation(k,raw);}
  const expertReply=expert.reply(raw);
@@ -130,7 +138,7 @@ if(isCompliment(raw)){markWelcomed(k);return vary(k,'compliment',['Em cảm ơn 
  if(flow){sessions.set(k,{flowId:flow.id,step:0,answers:{},time:now()});markWelcomed(k);return `Em cùng anh/chị kiểm tra ${flow.label.toLowerCase()} nhé.\n\n${prompt(flow,flow.steps[0])}`;}
  const r=searchKnowledge(raw);
  if(r.status==='matched'&&r.item){
-  if(r.item.bot_usage==='fallback_draft_only'||String(r.item.review_status||'').includes('draft')){quality.log('knowledge_draft_blocked',{category:r.item.category||'unknown'});return offerEscalation(k,raw);}
+  if(!usableKnowledge(r.item)){quality.log('knowledge_draft_blocked',{category:r.item.category||'unknown'});return offerEscalation(k,raw);}
   markWelcomed(k);return safeAnswer(`📌 ${r.item.title}\n\n${r.item.answer}\n\n⚠️ Nội dung tham khảo, chưa thay thế xác minh của CS/OPS.`);
  }
  if(r.status==='ambiguous')return 'Em thấy nhiều tình huống gần giống nhau. Anh/chị cho biết lỗi xảy ra trên POS, QR hay Portal và thông báo đang hiển thị ạ?';

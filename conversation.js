@@ -37,13 +37,13 @@ function reply(chat,user,raw){const q=normalize(raw),k=key(chat,user),s=get(k);
    if(s.stage==='restart'&&affirmative(q)){save(k,{kind:'freeze',stage:'escalate',attempts:(s.attempts||0)+1});return 'Dạ anh, nếu đã khởi động lại mà máy vẫn đơ, em đề xuất chuyển CS/OPS kiểm tra. Anh đồng ý không ạ?';}
    if(s.stage==='restart'&&negative(q))return 'Dạ anh, anh chỉ khởi động lại khi chắc chắn không có giao dịch đang xử lý nhé. Sau đó cho em biết máy đã hoạt động lại chưa ạ?';
    if(s.stage==='escalate'||s.stage==='risk'){
-    if(affirmative(q)||/^(ok|oke|dong y|duoc|chuyen giup|gui giup)$/.test(q)){clear(k);return {handover:true,issue:'Máy POS bị treo, chưa khắc phục được'+(s.stage==='risk'?' trong khi thanh toán':'')};}
+    if(affirmative(q)||/^(ok|oke|dong y|duoc|chuyen giup|gui giup)$/.test(q)){clear(k);return {handover:true,consented:true,issue:'Máy POS bị treo, chưa khắc phục được'+(s.stage==='risk'?' trong khi thanh toán':'')};}
     if(negative(q))return 'Dạ anh, em chưa chuyển hỗ trợ. Khi cần anh nhắn “chuyển hỗ trợ” nhé.';
    }
   }
   if(s.kind==='payment'){
    if(failure(q)||contains(q,['khong thay','khong co','khong hien'])){save(k,{kind:'payment',stage:'escalate',attempts:(s.attempts||0)+1});return 'Dạ anh, nếu vẫn chưa xác minh được giao dịch, mình chưa thu tiền lại nhé. Em có thể chuyển CS/OPS tra soát, anh đồng ý không ạ?';}
-   if(s.stage==='escalate'&&(affirmative(q)||/^(ok|oke|dong y|duoc)$/.test(q))){clear(k);return {handover:true,issue:'Giao dịch chưa xác minh được trạng thái'};}
+   if(s.stage==='escalate'&&(affirmative(q)||/^(ok|oke|dong y|duoc)$/.test(q))){clear(k);return {handover:true,consented:true,issue:'Giao dịch chưa xác minh được trạng thái'};}
   }
   // Let independent, sufficiently specific new requests use regular routing.
   if(q.length>35&&!stuck(q)&&!failure(q)&&!payment(q)&&!paymentRisk(q)){clear(k);return null;}

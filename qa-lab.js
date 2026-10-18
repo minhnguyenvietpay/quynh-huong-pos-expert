@@ -8,7 +8,7 @@ process.env.POS_CARE_STATE_FILE=path.join(temp,'state.json');
 let dialogue;
 try{dialogue=require(path.join(root,'dialogue.js'));}catch(e){console.error('Cannot load dialogue.js:',e.message);process.exit(2)}
 const normalize=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/gi,'d').toLowerCase();
-const resolution=/(da xu ly|xu ly xong|tot qua|binh thuong|het loi|in duoc|cam on|duoc roi|on roi)/;
+const resolution=/(da (duoc )?xu ly|xu ly xong|tot qua|binh thuong|het loi|in duoc|cam on|duoc roi|on roi)/;
 const escalation=/(chuyen cs|chuyen ops|chuyen ho tro|dong y|co muon.*chuyen|yeu cau.*chuyen|ho tro.*nhan vien)/;
 const cases=[
  ['printer_resolved',['máy không in bill','in được rồi em'],'resolved'],
@@ -63,3 +63,4 @@ const md=['# Quỳnh Hương QA Lab','',`Run: ${summary.generatedAt}`,`**${summa
 fs.writeFileSync(path.join(reportDir,'qa-report.md'),md.join('\n')+'\n');
 console.log(`QA LAB: ${summary.passed}/${summary.cases} passed, ${summary.failed} failed`);console.log('Reports:',reportDir);if(summary.failed)console.log('Failures:',rows.filter(x=>!x.passed).map(x=>x.id).join(', '));
 fs.rmSync(temp,{recursive:true,force:true});
+process.exitCode=summary.failed?1:0;
