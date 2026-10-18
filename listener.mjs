@@ -2,7 +2,7 @@ import { Zalo, ThreadType } from 'zca-js';
 import { createRequire } from 'node:module';
 import fs from 'node:fs';
 const require = createRequire(import.meta.url);
-const { processMessage, hasSession, hasEscalation, closing, greetingOnly, getPendingHandover, markHandoverDone } = require('./dialogue.js');
+const { processMessage, hasSession, hasEscalation, closing, greetingOnly, getPendingHandover, markHandoverDone, shouldRespondV11 } = require('./dialogue.js');
 const { normalize, detect, isIntroduction, isCompliment, isAddressed, stripAddress } = require('./intent.js');
 const state=require('./state.js');
 const tickets=require('./incident.js');
@@ -143,11 +143,18 @@ api.listener.on('message', async m => {
     const norm = normalize(question);
     const direct = explicit || directlyAddressed(raw);
     const posFallback = clearPosRequest(question);
+    const useV11 = process.env.QH_V11_ENABLED === 'true';
+    // Opt-in offline eligibility only; existing transport and handover controls remain authoritative.
+    let v11Eligible = false;
+    if (useV11 && typeof shouldRespondV11 === 'function') {
+      try { v11Eligible = shouldRespondV11(originalQuestion, { ongoing, explicit: direct }) === true; }
+      catch { /* Keep the established routing if the optional analyzer fails. */ }
+    }
     if (parsed.changed) console.log('[QH LANGUAGE]', {intent:parsed.intent, changed:true});
     const social = (ongoing || direct) && Boolean(
       greetingOnly(norm) || closing(norm) || isIntroduction(raw) || isCompliment(raw)
     );
-    if (!detection.respond && !social && !posFallback && !direct && !/^\/ticket\b/i.test(question)) {
+    if (!detection.respond && !social && !posFallback && !v11Eligible && !direct && !/^\/ticket\b/i.test(question)) {
       console.log('[IGNORED]', detection.reason);
       appendMetric({ event: 'ignored', groupId, reason: detection.reason });
       return;
@@ -162,7 +169,7 @@ api.listener.on('message', async m => {
     if (rateLimited(groupId)) { console.log('[RATE LIMITED]', groupId); return; }
     inflight.add(key);
     try {
-      const reply = processMessage(groupId, userId, question);
+      const reply = processMessage(groupId, userId, useV11 ? originalQuestion : question);
       if (typeof reply !== 'string' || !reply.trim()) return;
       await sendTyping(groupId);
       const delay = REPLY_DELAY_MIN_MS + Math.floor(Math.random() * (REPLY_DELAY_MAX_MS - REPLY_DELAY_MIN_MS + 1));

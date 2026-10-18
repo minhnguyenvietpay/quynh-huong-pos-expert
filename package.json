@@ -15,7 +15,8 @@
     "security:check": "node scripts/security-check.cjs",
     "monitor:dashboard": "node scripts/online-qa-server.cjs",
     "improve:plan": "node scripts/improve.cjs plan",
-    "agents:roles": "node -e \"for(const r of require('./agents/roles.json'))console.log(r.id+': '+r.sandbox)\""
+    "agents:roles": "node -e \"for(const r of require('./agents/roles.json'))console.log(r.id+': '+r.sandbox)\"",
+    "qa:v11": "node scripts/v11-evaluate.cjs --fail-on-regression"
   },
   "dependencies": {
     "zca-js": "*"

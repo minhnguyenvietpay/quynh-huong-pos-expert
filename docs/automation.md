@@ -1,3 +1,5 @@
+> V11 thay thế phần API coding bên dưới: không dùng paid inference, không yêu cầu API key. Xem `v11-zero-cost.md`; runner chỉ còn local plan và workflow coding cũ đã bị vô hiệu hóa. Các phần provider/image dưới đây là lịch sử, không phải hướng dẫn vận hành hiện tại.
+
 # Tự động hóa QA và cải tiến có kiểm soát
 
 Các lịch GitHub Actions chỉ hoạt động sau khi workflow được merge vào nhánh mặc định và Actions được bật. Chưa chạy CI trên GitHub không đồng nghĩa CI đã đạt. GitHub có thể trì hoãn lịch chạy; đây không phải bộ định thời bảo đảm SLA.

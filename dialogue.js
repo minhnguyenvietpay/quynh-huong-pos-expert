@@ -9,6 +9,13 @@ const posDiagnostics=require('./pos-diagnostics');
 const v12=require('./v12-brain');
 const language=require('./qh-v43-language');
 const {usableKnowledge}=require('./knowledge-policy');
+let v11Module=null;
+try{v11Module=require('./lib/v11/engine.cjs');}catch{ /* Optional engine unavailable: preserve legacy startup. */ }
+const v11={};
+for(const method of ['getContext','clear','hasSession','shouldRespond','shouldInterrupt'])v11[method]=(...args)=>{try{return v11Module?.[method](...args);}catch{return method==='getContext'?null:false;}};
+v11.reply=(...args)=>v11Module?.reply(...args);
+const v11Enabled=()=>process.env.QH_V11_ENABLED==='true'&&Boolean(v11Module);
+function shouldRespondV11(input,context={}){if(!v11Enabled())return false;try{return v11.shouldRespond(input,context);}catch{return false;}}
 const sessions={get:store.getSession,set:store.setSession,delete:store.deleteSession,has:k=>!!store.getSession(k)};
 // Conversation state is kept per group + sender. It resets when the bot restarts.
 const welcomed={get:k=>store.isWelcomed(k)?Date.now():null,set:(k,t)=>store.welcome(k),get size(){return 0;},delete:()=>{}};
@@ -29,8 +36,8 @@ function greetingOnly(q){return /^(xin chao|chao|hello|hi|hey|alo|chao bot|chao 
 const TTL=30*60*1000, MAX_SESSIONS=2000;
 const key=(chat,user)=>JSON.stringify([String(chat),String(user)]);
 function prune(){ /* state.js prunes expired sessions */ }
-function hasSession(chat,user){prune();return sessions.has(key(chat,user));}
-function sessionInfo(chat,user){prune();const s=sessions.get(key(chat,user));return s?{flowId:s.flowId,step:s.step,ageSeconds:Math.floor((now()-s.time)/1000)}:null;}
+function hasSession(chat,user){prune();return (v11Enabled()&&v11.hasSession(chat,user))||sessions.has(key(chat,user));}
+function sessionInfo(chat,user){if(v11Enabled()){const context=v11.getContext(chat,user);if(context)return {flowId:'qh_v11',topic:context.topic,step:context.currentQuestion};}prune();const s=sessions.get(key(chat,user));return s?{flowId:s.flowId,step:s.step,ageSeconds:Math.floor((now()-s.time)/1000)}:null;}
 function prompt(flow,step){return `${step.ask}\n${step.options.map((o,i)=>`${i+1}. ${o[0]}`).join('\n')}\n\nAnh/chị trả lời số hoặc mô tả ngắn. /huy để kết thúc, /lai để bắt đầu lại.`;}
 function nextStep(flow,answers,from){for(let i=from;i<flow.steps.length;i++)if(!flow.steps[i].when||flow.steps[i].when(answers))return i;return -1;}
 function choice(step,q){if(/^[1-9]$/.test(q)){const n=+q-1;return n<step.options.length?n:-1;}const matches=[];step.options.forEach((o,i)=>{if(o.slice(1).some(v=>{const t=norm(v);return t===q||(q.length>=6&&t.length>=6&&(q.includes(t)||t.includes(q)));}))matches.push(i);});return matches.length===1?matches[0]:-1;}
@@ -84,16 +91,43 @@ function processMessage(chatId,userId,input,options={}){
  if(!raw)return 'Anh/chị mô tả lỗi POS/QR/Portal để em hỗ trợ nhé.';
  // Session controls must precede consent/name/address handling.
  if(/^(\/(huy|done|reset|lai|restart)|huy|ket thuc|bat dau lai)$/.test(raw.toLowerCase()) || /^(huy|ket thuc|bat dau lai)$/.test(q)){
-  escalation.delete(k);pendingHandover.delete(k);sessions.delete(k);v12.clear(chatId,userId);
+  escalation.delete(k);pendingHandover.delete(k);sessions.delete(k);v12.clear(chatId,userId);v11.clear(chatId,userId);
   return /lai|restart/.test(q)?'Đã bắt đầu lại. Anh/chị mô tả sự cố mới nhé.':'Đã kết thúc phiên hỗ trợ. Khi cần, anh/chị mô tả sự cố mới nhé.';
  }
- if(isSensitive(q)||/(?:\d[ -]?){13,19}/.test(raw))return '⚠️ Không chia sẻ OTP, PIN, CVV, mật khẩu hay mã xác thực trong nhóm. Nếu cần hỗ trợ, liên hệ CS/OPS qua kênh chính thức.';
+ const batteryContext=v11Enabled()&&/\bpin\b/.test(q)&&/sac|nong|phong|chai|het|tut|may|pos/.test(q)&&!/otp|cvv|mat khau|password|ma pin|so pin|pin code|pin the|pin ngan hang|pin\s*\d/.test(q);
+ if((isSensitive(q)&&!batteryContext)||/(?:\d[ -]?){13,19}/.test(raw))return '⚠️ Không chia sẻ OTP, PIN, CVV, mật khẩu hay mã xác thực trong nhóm. Nếu cần hỗ trợ, liên hệ CS/OPS qua kênh chính thức.';
  if(/^\/ticket\b/i.test(raw))return createTicket(raw.slice(7));
  // Resolution/closure must preempt pending handover and all diagnostic modules.
  if(!/^\//.test(raw) && /^(binh thuong roi|may binh thuong roi|chay binh thuong roi|on roi|ok roi em|ok roi|het loi roi|in duoc roi|duoc roi|da xu ly xong|khong can ho tro nua)( em| anh)?$/.test(q)){
    escalation.delete(k);pendingHandover.delete(k);sessions.delete(k);v12.clear(chatId,userId);
+   if(v11Enabled()&&v11.hasSession(chatId,userId)){try{const closed=v11.reply(chatId,userId,raw);if(typeof closed==='string'&&closed.trim())return closed;}catch{v11.clear(chatId,userId);}}
+   v11.clear(chatId,userId);
    return 'Dạ tốt rồi anh! Em ghi nhận sự cố đã được xử lý. Nếu cần hỗ trợ thêm, anh cứ nhắn em nhé.';
  }
+ // V11 is selected here in the existing listener -> dialogue path; never at login/send.
+ if(v11Enabled()){
+  // A new explicit incident must not be collected as the merchant's name/address.
+  if(escalation.has(k)&&v11.shouldInterrupt(chatId,userId,raw)){
+   escalation.delete(k);pendingHandover.delete(k);
+  }
+  if(escalation.has(k)){
+   const e=escalation.get(k);
+   if(/^(khong|chua|thoi|dung).*?(dong y|chuyen|ops)/.test(q)||q==='ok'||q==='oke'){
+    if(q==='ok'||q==='oke')return 'Em chưa coi “ok” là đồng ý chuyển OPS. Anh/chị xác nhận rõ “đồng ý chuyển OPS” nếu muốn chuyển hỗ trợ nhé.';
+    pendingHandover.delete(k);escalation.delete(k);return 'Em chưa chuyển yêu cầu và không thu thập thông tin cửa hàng. Khi cần, anh/chị có thể xác nhận rõ “đồng ý chuyển OPS”.';
+   }
+   const explicitConsent=/^(dong y(?: chuyen (?:cs|ops|cs ops))?|co|vang|chuyen giup|nho em chuyen)$/.test(q);
+   const result=escalationReply(k,raw,e?.step==='consent'&&explicitConsent?'dong y':q);if(result!==undefined)return result;
+  }
+  try{
+   const result=v11.reply(chatId,userId,raw);
+   if(result&&typeof result==='object'&&result.handover&&result.consented===true)return offerEscalation(k,result.issue,true);
+   if(typeof result==='string'&&result.trim())return result;
+  }catch{
+   // Clear partial V11 state; fallback remains the existing conservative response engine.
+   v11.clear(chatId,userId);
+  }
+ }else{v11.clear(chatId,userId);}
  if(escalation.has(k)){const result=escalationReply(k,raw,q);if(result!==undefined)return result;}
  // Expand only engine input; retain original merchant names/addresses above.
  const current=sessions.get(k);
@@ -148,4 +182,4 @@ if(isCompliment(raw)){markWelcomed(k);return vary(k,'compliment',['Em cảm ơn 
 }
 function getPendingHandover(chat,user){const k=key(chat,user),pending=pendingHandover.get(k);if(pending&&now()-pending.time>ESC_TTL){pendingHandover.delete(k);escalation.delete(k);return null;}return pending||null;}
 function markHandoverDone(chat,user){pendingHandover.delete(key(chat,user));}
-module.exports={getPendingHandover,markHandoverDone,processMessage,hasSession,sessionInfo,norm,closing,greetingOnly,createTicket,hasEscalation:(chat,user)=>{const e=escalation.get(key(chat,user));return !!e&&now()-e.time<ESC_TTL;}};
+module.exports={shouldRespondV11,v11Context:(chat,user)=>v11Enabled()?v11.getContext(chat,user):null,getPendingHandover,markHandoverDone,processMessage,hasSession,sessionInfo,norm,closing,greetingOnly,createTicket,hasEscalation:(chat,user)=>{const e=escalation.get(key(chat,user));return !!e&&now()-e.time<ESC_TTL;}};

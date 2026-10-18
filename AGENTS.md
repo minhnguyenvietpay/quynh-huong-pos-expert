@@ -4,7 +4,7 @@ Use the existing isolated checkout on a feature branch; do not create a Git work
 
 ## Required executable stages
 
-`agents/roles.json` defines eight distinct stages. When Codex subagents are available, assign concrete, disjoint implementation/review work to these roles; otherwise run the eight sequential reviews with `scripts/improve.cjs` only after explicitly configuring its AI provider. A role name alone is not a completed review. Record which roles actually executed and distinguish API/CI execution from local fixtures.
+`agents/roles.json` defines eight distinct stages. When Codex subagents are available, assign concrete, disjoint implementation/review work to these roles; otherwise perform explicit sequential local review stages. V11 prohibits paid inference; Codex is a development tool, never a runtime service. A role name alone is not a completed review. Record which roles actually executed and distinguish API/CI execution from local fixtures.
 
 1. Tech Lead: scope, baseline, architecture and measurable acceptance criteria.
 2. Knowledge Expert: authoritative sources, evidence, duplicates and review queue.
@@ -23,4 +23,4 @@ Never fabricate transaction/settlement/refund status, bank policies/fees/timelin
 
 Run `npm test`, `npm run qa:language`, `npm run qa:legacy`, `node qa-v3.js --self-test`, `npm run qa:quality`, `npm run knowledge:report` and `npm run security:check` for this feature set. Preserve old regression cases. Distinguish synthetic assertions, heuristic scores and independently reviewed ground truth; no independent review means that gate is blocked. Report failed/skipped/unrun checks honestly.
 
-Default AI automation is disabled. Configure a supported model, isolated runner and dedicated API credential explicitly before enabling it. Never pass production Zalo credentials to CI. Scheduled QA is not proof autonomous AI coding ran. Generated patches must pass path, safety, review and before/after gates and go through a PR; no automatic merge/deploy.
+V11 runtime and automation must not call paid inference services or require an AI API key. `scripts/improve.cjs run` is blocked by the zero-cost policy; local `plan` remains available. Never pass production Zalo credentials to CI. Scheduled QA is not proof autonomous AI coding ran. Generated patches must pass path, safety, review and before/after gates and go through a PR; no automatic merge/deploy.
