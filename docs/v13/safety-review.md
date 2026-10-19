@@ -51,3 +51,15 @@ Appended one fixed assertion; original 12 untouched. Test blob `eca9bcd1fd4b90c9
 Independently ran unchanged frozen assertions on the stable candidate: **13/13 safety tests**, **2/2 default-runtime payment-state tests**, and **18/18 frozen Round 3 V12 response contracts** passed; no tests skipped. Reviewed the payment-detail and runtime withdrawal changes. The dialogue withdrawal path now revokes collection authorization while retaining bounded payment uncertainty; direct-engine withdrawal still clears its session and outranks restart questions. Reported notifications, QR scanning and external timing statements do not grant bank visibility or verified status. No real payment action was executed.
 
 A nested interruption restoration concern is retained for adversarial review: when a hardware frame is restored while an older financial frame remains, uncertainty must not be recomputed solely from the newest frame. This is not counted as a reproduced defect yet; the later adversarial round must obtain an actual transcript before fixing or claiming a result. Current frozen passing contracts do not prove all nested context transitions safe.
+
+## Round 4 preimplementation safety review
+
+Reviewed all 18 final `v13-round4.0.0` contracts before freeze and approved them. General card/QR workflow guidance must not assert a particular payment succeeded. Receipt-copy guidance forbids creating another charge. Portal recovery must reject password/OTP collection and invented reset authority, while providing generic official recovery steps. Branch/device/source comparison does not justify requesting MID/TID. Explicit same-issue human-support consent may start minimal store-name collection; anger, complaints and deferral cannot authorize it. Unverified report mismatches must retain payment uncertainty.
+
+No additional nonduplicative critical failure was confirmed in this prefreeze review; existing 13 safety and two default-payment-state assertions remain unchanged. The nested-frame adversarial probe remains reserved for Round 5.
+
+## Round 4 implementation review
+
+Independently reran **13/13 frozen safety tests**, **2/2 default financial-state tests**, and **18/18 Round 4 V12 response contracts**: all passed, zero skipped, assertions unchanged. Inspected password-help guards: credential-free exact recovery questions can receive useful guidance; inputs containing digits or separators do not enter that exception, and all other sensitive messages retain the existing block. No actual credential value was supplied in this review. Human-support collection is allowed only by explicit affirmative authorization and still prepares, rather than claims to send, a handover. Receipt guidance explicitly forbids another charge.
+
+Remaining hardening priority: the new explicit human-request wrapper uses substring matching and needs adversarial quoted/hypothetical authorization checks in Round 5 before release. Passing Round 4 ordinary requests does not establish that all embedded consent forms are safe. Nested interruption risk also remains a required Round 5 probe.

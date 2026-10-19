@@ -1,0 +1,1282 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "v13-round4.0.0",
+  "engine": "v12",
+  "syntheticOnly": true,
+  "mode": "v12",
+  "contractReview": "separate_development_agents_only",
+  "reviewStatus": "ai_authored_unreviewed",
+  "independentQualityGate": "blocked_no_independent_review",
+  "total": 18,
+  "passed": 18,
+  "failed": 0,
+  "rootCauses": {
+    "new-cashier-card-use": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "new-cashier-qr-use": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "portal-login-no-password": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "portal-page-loading": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "report-wrong-date-range": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "multiple-branches-missing": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "device-filter-selection": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "source-compare-qr-card": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "reconciliation-neutral": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "receipt-copy-no-charge": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "receipt-missing-history": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "angry-human-explicit": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "angry-no-consent": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "capabilities-to-portal": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "report-filter-changed-still-missing": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "store-name-not-device-id": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "password-reset-not-done": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "cash-vs-settlement": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    }
+  },
+  "failures": [],
+  "rows": [
+    {
+      "id": "r4-new-cashier-card-use",
+      "fixtureId": "r4-new-cashier-card-use",
+      "category": "merchant-operations",
+      "rootCause": "new-cashier-card-use",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Chị mới nhận ca, chưa biết cho khách thanh toán thẻ trên POS",
+          "actual": "Trước thanh toán thẻ chip, đối chiếu đơn hàng và số tiền, thực hiện theo hướng dẫn đúng dòng POS và quyền thu ngân. Khách tự nhập PIN trên thiết bị, không đọc/gửi PIN. Sau thao tác, kiểm tra đúng số tiền, thời điểm và trạng thái giao dịch trong lịch sử POS/Portal; chưa thu lại nếu kết quả chưa rõ.",
+          "context": {
+            "topic": "card",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "card-use"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Khách dùng thẻ chip, cần làm gì trước và cần kiểm tra gì khi xong?",
+          "actual": "Trước thanh toán thẻ chip, đối chiếu đơn hàng và số tiền, thực hiện theo hướng dẫn đúng dòng POS và quyền thu ngân. Khách tự nhập PIN trên thiết bị, không đọc/gửi PIN. Sau thao tác, kiểm tra đúng số tiền, thời điểm và trạng thái giao dịch trong lịch sử POS/Portal; chưa thu lại nếu kết quả chưa rõ.",
+          "context": {
+            "topic": "card",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "card-use"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r4-new-cashier-qr-use",
+      "fixtureId": "r4-new-cashier-qr-use",
+      "category": "merchant-operations",
+      "rootCause": "new-cashier-qr-use",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Hướng dẫn chị nhận thanh toán QR trên máy POS với",
+          "actual": "Đối chiếu đơn hàng và số tiền trước khi hiển thị QR theo chức năng được cấp. Khách quét xong chưa xác nhận đã trả tiền: kiểm tra đúng số tiền, thời điểm và trạng thái giao dịch POS/Portal theo quy trình cửa hàng; không dựa riêng ảnh thông báo hoặc yêu cầu trả lại khi chưa rõ kết quả.",
+          "context": {
+            "topic": "qr",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "qr-use"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Khách quét xong rồi thì chị đối chiếu những gì trước khi kết thúc?",
+          "actual": "Đối chiếu đơn hàng và số tiền trước khi hiển thị QR theo chức năng được cấp. Khách quét xong chưa xác nhận đã trả tiền: kiểm tra đúng số tiền, thời điểm và trạng thái giao dịch POS/Portal theo quy trình cửa hàng; không dựa riêng ảnh thông báo hoặc yêu cầu trả lại khi chưa rõ kết quả.",
+          "context": {
+            "topic": "qr",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "qr-use"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r4-portal-login-no-password",
+      "fixtureId": "r4-portal-login-no-password",
+      "category": "merchant-operations",
+      "rootCause": "portal-login-no-password",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Tôi không đăng nhập được Portal",
+          "actual": "Mình ưu tiên truy cập trang trước khi lọc báo cáo: kiểm tra đúng địa chỉ Portal được cung cấp, kết nối và thông báo trình duyệt. Nếu được phép, thử tải lại hoặc trình duyệt/mạng được phép khác; trang chưa tải không chứng minh thiếu giao dịch. Không gửi mật khẩu, OTP hay phiên đăng nhập.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "portal-access"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Báo sai mật khẩu, có cần gửi mật khẩu cho em kiểm tra không?",
+          "actual": "Không gửi mật khẩu hay OTP. Em không có quyền đổi hoặc đặt lại mật khẩu; dùng chức năng khôi phục trên Portal chính thức hoặc liên hệ quản trị viên qua kênh chính thức đã xác minh.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "portal-access"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r4-portal-page-loading",
+      "fixtureId": "r4-portal-page-loading",
+      "category": "merchant-operations",
+      "rootCause": "portal-page-loading",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Portal cứ quay vòng không vào trang được",
+          "actual": "Mình ưu tiên truy cập trang trước khi lọc báo cáo: kiểm tra đúng địa chỉ Portal được cung cấp, kết nối và thông báo trình duyệt. Nếu được phép, thử tải lại hoặc trình duyệt/mạng được phép khác; trang chưa tải không chứng minh thiếu giao dịch. Không gửi mật khẩu, OTP hay phiên đăng nhập.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "portal-access"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Điện thoại vẫn vào các trang khác bình thường, tôi chưa đăng nhập được để lọc giao dịch",
+          "actual": "Mình ưu tiên truy cập trang trước khi lọc báo cáo: kiểm tra đúng địa chỉ Portal được cung cấp, kết nối và thông báo trình duyệt. Nếu được phép, thử tải lại hoặc trình duyệt/mạng được phép khác; trang chưa tải không chứng minh thiếu giao dịch. Không gửi mật khẩu, OTP hay phiên đăng nhập.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "portal-access"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r4-report-wrong-date-range",
+      "fixtureId": "r4-report-wrong-date-range",
+      "category": "merchant-operations",
+      "rootCause": "report-wrong-date-range",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Báo cáo Portal thiếu mấy giao dịch ca tối hôm qua",
+          "actual": "Để xem báo cáo Portal ở mức tổng quát, truy cập kênh chính thức bằng quyền được cấp, chọn cùng khoảng ngày/thời gian, cửa hàng/chi nhánh và nguồn thanh toán. Đối chiếu số lượng, số tiền và trạng thái với lịch sử POS; chỉ dùng bộ lọc có trên hệ thống, không suy ra tiền đã về từ tổng báo cáo.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "portal-report"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Tôi đang chọn ngày hôm nay, ca bắt đầu tối hôm qua và kết thúc sáng nay",
+          "actual": "Ca đi qua hai ngày: chọn khoảng ngày/thời gian bao phủ từ lúc bắt đầu hôm qua đến kết thúc sáng nay theo các bộ lọc hệ thống có hỗ trợ. Đối chiếu thời điểm từng giao dịch; em không tự đặt giờ chốt hay quy tắc quyết toán.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "portal-report"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r4-multiple-branches-missing",
+      "fixtureId": "r4-multiple-branches-missing",
+      "category": "merchant-operations",
+      "rootCause": "multiple-branches-missing",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Portal không thấy giao dịch của chi nhánh B, chi nhánh A vẫn có",
+          "actual": "Để xem báo cáo Portal ở mức tổng quát, truy cập kênh chính thức bằng quyền được cấp, chọn cùng khoảng ngày/thời gian, cửa hàng/chi nhánh và nguồn thanh toán. Đối chiếu số lượng, số tiền và trạng thái với lịch sử POS; chỉ dùng bộ lọc có trên hệ thống, không suy ra tiền đã về từ tổng báo cáo.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "portal-report"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Đang lọc chi nhánh A, giao dịch thiếu thực hiện ở chi nhánh B",
+          "actual": "Đang lọc khác nơi phát sinh thì chọn đúng chi nhánh thực hiện giao dịch trong phạm vi quyền được cấp, rồi đối chiếu cùng khoảng ngày và nguồn thanh toán. Chưa kết luận mất tiền từ báo cáo khác phạm vi.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "portal-report"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r4-device-filter-selection",
+      "fixtureId": "r4-device-filter-selection",
+      "category": "merchant-operations",
+      "rootCause": "device-filter-selection",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Cùng cửa hàng có hai máy POS, Portal chỉ thấy giao dịch một máy",
+          "actual": "Kiểm tra phạm vi báo cáo có đang giới hạn một máy/thiết bị không; nếu hệ thống có hỗ trợ bộ lọc đó và quyền được cấp, đối chiếu các máy cùng cửa hàng, ngày và nguồn thanh toán. Không cần mã MID/TID trong nhóm; em không biết chính xác giao diện đang dùng.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "portal-report"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Có thể tôi đang lọc riêng máy thứ nhất, cần kiểm tra gì?",
+          "actual": "Kiểm tra phạm vi báo cáo có đang giới hạn một máy/thiết bị không; nếu hệ thống có hỗ trợ bộ lọc đó và quyền được cấp, đối chiếu các máy cùng cửa hàng, ngày và nguồn thanh toán. Không cần mã MID/TID trong nhóm; em không biết chính xác giao diện đang dùng.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "portal-report"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r4-source-compare-qr-card",
+      "fixtureId": "r4-source-compare-qr-card",
+      "category": "merchant-operations",
+      "rootCause": "source-compare-qr-card",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Tổng trên Portal ít hơn tổng bán hàng tại quầy",
+          "actual": "Để xem báo cáo Portal ở mức tổng quát, truy cập kênh chính thức bằng quyền được cấp, chọn cùng khoảng ngày/thời gian, cửa hàng/chi nhánh và nguồn thanh toán. Đối chiếu số lượng, số tiền và trạng thái với lịch sử POS; chỉ dùng bộ lọc có trên hệ thống, không suy ra tiền đã về từ tổng báo cáo.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "portal-report"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Báo cáo tôi mở chỉ lọc thẻ, cửa hàng có cả khách trả QR và tiền mặt",
+          "actual": "Đối chiếu cùng khoảng ngày/thời gian, cửa hàng/chi nhánh và nguồn/loại thanh toán: số lượng, số tiền và trạng thái từng giao dịch. Tách tiền mặt, thẻ và QR trong sổ bán hàng; phạm vi báo cáo và tiền chi trả có thể khác tổng sổ, em không tự suy ra phí, thời hạn hoặc mất tiền.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [
+              "clarify-context"
+            ],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "reconcile"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "clarify-context",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r4-reconciliation-neutral",
+      "fixtureId": "r4-reconciliation-neutral",
+      "category": "merchant-operations",
+      "rootCause": "reconciliation-neutral",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Cuối ca muốn đối chiếu POS với Portal thì nên so những gì?",
+          "actual": "Đối chiếu cùng khoảng ngày/thời gian, cửa hàng/chi nhánh và nguồn/loại thanh toán: số lượng, số tiền và trạng thái từng giao dịch. Tách tiền mặt, thẻ và QR trong sổ bán hàng; phạm vi báo cáo và tiền chi trả có thể khác tổng sổ, em không tự suy ra phí, thời hạn hoặc mất tiền.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "reconcile"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Có cần cùng ngày, cùng cửa hàng và cùng loại thanh toán không?",
+          "actual": "Đối chiếu cùng khoảng ngày/thời gian, cửa hàng/chi nhánh và nguồn/loại thanh toán: số lượng, số tiền và trạng thái từng giao dịch. Tách tiền mặt, thẻ và QR trong sổ bán hàng; phạm vi báo cáo và tiền chi trả có thể khác tổng sổ, em không tự suy ra phí, thời hạn hoặc mất tiền.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "reconcile"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r4-receipt-copy-no-charge",
+      "fixtureId": "r4-receipt-copy-no-charge",
+      "category": "merchant-operations",
+      "rootCause": "receipt-copy-no-charge",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách muốn xin lại bill giao dịch vừa thanh toán",
+          "actual": "Không quẹt thẻ lại hoặc thu tiền mới để in bản sao. Tìm đúng giao dịch trong lịch sử, đối chiếu thời điểm và số tiền rồi dùng chức năng in lại theo dòng máy/quyền được cấp nếu có; em chưa xác nhận kết quả tiền từ tin nhắn.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "receipt-copy"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Tôi thấy giao dịch trong lịch sử rồi, có cần quẹt thẻ lại để in không?",
+          "actual": "Không quẹt thẻ lại hoặc thu tiền mới để in bản sao. Tìm đúng giao dịch trong lịch sử, đối chiếu thời điểm và số tiền rồi dùng chức năng in lại theo dòng máy/quyền được cấp nếu có; em chưa xác nhận kết quả tiền từ tin nhắn.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "receipt-copy"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r4-receipt-missing-history",
+      "fixtureId": "r4-receipt-missing-history",
+      "category": "merchant-operations",
+      "rootCause": "receipt-missing-history",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách xin bản sao bill hôm qua mà tôi không tìm thấy",
+          "actual": "Chưa tìm thấy giao dịch thì chưa có cơ sở in lại bản sao. Đối chiếu đúng khoảng ngày, cửa hàng và nguồn giao dịch trên POS/Portal; nếu vẫn không thấy thì cần xác minh qua kênh hỗ trợ, không tạo giao dịch mới để lấy bill.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "receipt-copy"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Đã chọn đúng khoảng ngày và cửa hàng nhưng vẫn chưa thấy trong lịch sử",
+          "actual": "Chưa tìm thấy giao dịch thì chưa có cơ sở in lại bản sao. Đối chiếu đúng khoảng ngày, cửa hàng và nguồn giao dịch trên POS/Portal; nếu vẫn không thấy thì cần xác minh qua kênh hỗ trợ, không tạo giao dịch mới để lấy bill.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "receipt-copy"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r4-angry-human-explicit",
+      "fixtureId": "r4-angry-human-explicit",
+      "category": "merchant-operations",
+      "rootCause": "angry-human-explicit",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Máy cứ lỗi hoài, tôi rất bực",
+          "actual": "Máy đang lỗi nguồn, in bill, kết nối hay giao dịch thanh toán ạ? Anh/chị mô tả thông báo trên màn hình, không gửi dữ liệu thẻ hoặc mã bảo mật nhé.",
+          "context": {
+            "topic": null,
+            "currentQuestion": "clarify",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Tôi muốn nhờ người phụ trách OPS hỗ trợ, tôi đồng ý chuyển yêu cầu",
+          "actual": "Dạ anh, em sẽ chuẩn bị yêu cầu chuyển CS/OPS. Anh cho em xin tên cửa hàng nhé.",
+          "context": {
+            "topic": null,
+            "currentQuestion": "clarify",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": true
+        }
+      ]
+    },
+    {
+      "id": "r4-angry-no-consent",
+      "fixtureId": "r4-angry-no-consent",
+      "category": "merchant-operations",
+      "rootCause": "angry-no-consent",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Portal chậm hoài, bực quá",
+          "actual": "Mình ưu tiên truy cập trang trước khi lọc báo cáo: kiểm tra đúng địa chỉ Portal được cung cấp, kết nối và thông báo trình duyệt. Nếu được phép, thử tải lại hoặc trình duyệt/mạng được phép khác; trang chưa tải không chứng minh thiếu giao dịch. Không gửi mật khẩu, OTP hay phiên đăng nhập.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "portal-access"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Tôi chỉ đang phàn nàn thôi, chưa đồng ý chuyển ai cả; có cách tự kiểm tra không?",
+          "actual": "Mình ưu tiên truy cập trang trước khi lọc báo cáo: kiểm tra đúng địa chỉ Portal được cung cấp, kết nối và thông báo trình duyệt. Nếu được phép, thử tải lại hoặc trình duyệt/mạng được phép khác; trang chưa tải không chứng minh thiếu giao dịch. Không gửi mật khẩu, OTP hay phiên đăng nhập.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "portal-access"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r4-capabilities-to-portal",
+      "fixtureId": "r4-capabilities-to-portal",
+      "category": "merchant-operations",
+      "rootCause": "capabilities-to-portal",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Ngoài xử lý lỗi máy, em hỗ trợ cửa hàng việc gì nữa?",
+          "actual": "Máy đang lỗi nguồn, in bill, kết nối hay giao dịch thanh toán ạ? Anh/chị mô tả thông báo trên màn hình, không gửi dữ liệu thẻ hoặc mã bảo mật nhé.",
+          "context": {
+            "topic": null,
+            "currentQuestion": "clarify",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Vậy hướng dẫn chị xem báo cáo trên Portal ở mức tổng quát nhé",
+          "actual": "Để xem báo cáo Portal ở mức tổng quát, truy cập kênh chính thức bằng quyền được cấp, chọn cùng khoảng ngày/thời gian, cửa hàng/chi nhánh và nguồn thanh toán. Đối chiếu số lượng, số tiền và trạng thái với lịch sử POS; chỉ dùng bộ lọc có trên hệ thống, không suy ra tiền đã về từ tổng báo cáo.",
+          "context": {
+            "topic": null,
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [
+              "clarify"
+            ],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "portal-report"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "clarify",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r4-report-filter-changed-still-missing",
+      "fixtureId": "r4-report-filter-changed-still-missing",
+      "category": "merchant-operations",
+      "rootCause": "report-filter-changed-still-missing",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Portal không thấy giao dịch ở chi nhánh B",
+          "actual": "Để xem báo cáo Portal ở mức tổng quát, truy cập kênh chính thức bằng quyền được cấp, chọn cùng khoảng ngày/thời gian, cửa hàng/chi nhánh và nguồn thanh toán. Đối chiếu số lượng, số tiền và trạng thái với lịch sử POS; chỉ dùng bộ lọc có trên hệ thống, không suy ra tiền đã về từ tổng báo cáo.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "portal-report"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Tôi đã đổi sang chi nhánh B và đúng ngày, vẫn không có",
+          "actual": "Đã thu hẹp phạm vi nhưng vẫn thiếu: đối chiếu POS/Portal theo thời điểm, số tiền, nguồn và trạng thái từng giao dịch. Bill là thông tin cần đối chiếu, chưa xác minh kết quả ngân hàng; không thu tiền lại chỉ vì chưa thấy báo cáo.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "portal-filters",
+            "previousQuestions": [
+              "clarify-context"
+            ],
+            "answers": [],
+            "attempted": [
+              "filters-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "portal-report"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "clarify-context",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "POS có bill nhưng tôi chưa xác minh được bên ngân hàng",
+          "actual": "Đã thu hẹp phạm vi nhưng vẫn thiếu: đối chiếu POS/Portal theo thời điểm, số tiền, nguồn và trạng thái từng giao dịch. Bill là thông tin cần đối chiếu, chưa xác minh kết quả ngân hàng; không thu tiền lại chỉ vì chưa thấy báo cáo.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "portal-filters",
+            "previousQuestions": [
+              "clarify-context",
+              "portal-filters"
+            ],
+            "answers": [],
+            "attempted": [
+              "filters-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "portal-report"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "portal-filters",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r4-store-name-not-device-id",
+      "fixtureId": "r4-store-name-not-device-id",
+      "category": "merchant-operations",
+      "rootCause": "store-name-not-device-id",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Portal thiếu giao dịch, đã kiểm tra đúng ngày và chi nhánh vẫn thiếu",
+          "actual": "Đã thu hẹp phạm vi nhưng vẫn thiếu: đối chiếu POS/Portal theo thời điểm, số tiền, nguồn và trạng thái từng giao dịch. Bill là thông tin cần đối chiếu, chưa xác minh kết quả ngân hàng; không thu tiền lại chỉ vì chưa thấy báo cáo.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "portal-filters",
+            "previousQuestions": [
+              "clarify-context"
+            ],
+            "answers": [],
+            "attempted": [
+              "filters-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "portal-report"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "clarify-context",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Tôi đồng ý chuyển OPS, có cần đọc mã MID TID không?",
+          "actual": "MID/TID và số thẻ không cần chia sẻ trong nhóm; CS/OPS tự tra cứu qua kênh được phép. Chỉ tên cửa hàng/chi nhánh tối thiểu khi anh/chị đã đồng ý chuyển hỗ trợ.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "portal-filters",
+            "previousQuestions": [
+              "clarify-context"
+            ],
+            "answers": [],
+            "attempted": [
+              "filters-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "portal-report"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "clarify-context",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r4-password-reset-not-done",
+      "fixtureId": "r4-password-reset-not-done",
+      "category": "merchant-operations",
+      "rootCause": "password-reset-not-done",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Quên mật khẩu Portal rồi, em đổi lại giúp chị được không?",
+          "actual": "Không gửi mật khẩu hay OTP. Em không có quyền đổi hoặc đặt lại mật khẩu; dùng chức năng khôi phục trên Portal chính thức hoặc liên hệ quản trị viên qua kênh chính thức đã xác minh.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Nếu em không có quyền thì chỉ chị cách tìm hỗ trợ chính thức",
+          "actual": "Em không có quyền đổi hoặc đặt lại mật khẩu. Anh/chị liên hệ quản trị viên hoặc CS qua kênh chính thức cửa hàng đã xác minh, hoặc dùng chức năng khôi phục trên Portal; không gửi mật khẩu hay OTP.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r4-cash-vs-settlement",
+      "fixtureId": "r4-cash-vs-settlement",
+      "category": "merchant-operations",
+      "rootCause": "cash-vs-settlement",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Sổ bán hàng có tiền mặt, thẻ và QR, sao tiền vào ngân hàng không bằng tổng sổ?",
+          "actual": "Đối chiếu cùng khoảng ngày/thời gian, cửa hàng/chi nhánh và nguồn/loại thanh toán: số lượng, số tiền và trạng thái từng giao dịch. Tách tiền mặt, thẻ và QR trong sổ bán hàng; phạm vi báo cáo và tiền chi trả có thể khác tổng sổ, em không tự suy ra phí, thời hạn hoặc mất tiền.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "reconcile"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Tôi muốn biết cách đối chiếu, chưa nói là mất tiền",
+          "actual": "Đối chiếu cùng khoảng ngày/thời gian, cửa hàng/chi nhánh và nguồn/loại thanh toán: số lượng, số tiền và trạng thái từng giao dịch. Tách tiền mặt, thẻ và QR trong sổ bán hàng; phạm vi báo cáo và tiền chi trả có thể khác tổng sổ, em không tự suy ra phí, thời hạn hoặc mất tiền.",
+          "context": {
+            "topic": "portal",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "operation": "reconcile"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    }
+  ]
+}

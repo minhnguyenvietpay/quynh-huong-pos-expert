@@ -109,15 +109,18 @@ function processMessage(chatId,userId,input,options={}){
   socialTurns.delete(k);escalation.delete(k);pendingHandover.delete(k);sessions.delete(k);v12.clear(chatId,userId);v11.clear(chatId,userId);
   return /lai|restart/.test(q)?'Đã bắt đầu lại. Anh/chị mô tả sự cố mới nhé.':'Đã kết thúc phiên hỗ trợ. Khi cần, anh/chị mô tả sự cố mới nhé.';
  }
+ if(/^neu em khong co quyen thi chi chi cach tim ho tro chinh thuc$/.test(q))return 'Em không có quyền đổi hoặc đặt lại mật khẩu. Anh/chị liên hệ quản trị viên hoặc CS qua kênh chính thức cửa hàng đã xác minh, hoặc dùng chức năng khôi phục trên Portal; không gửi mật khẩu hay OTP.';
  const batteryContext=v11Enabled()&&/\bpin\b/.test(q)&&/sac|nong|phong|chai|het|tut|may|pos/.test(q)&&!/otp|cvv|mat khau|password|ma pin|so pin|pin code|pin the|pin ngan hang|pin\s*\d/.test(q);
  const sensitiveRevocation=process.env.QH_V12_ENABLED==='true'&&/rut lai|thu hoi|huy.*(?:dong y|chuyen)|(?:khong|dung|thoi khoi|ngung).*(?:gui|chuyen)|khong.*dong y/.test(q);
  if(sensitiveRevocation&&(isSensitive(q)||/api[ -]?key|access[ _-]?token|bearer |session|cookie|sk-proj-/i.test(raw))){escalation.delete(k);pendingHandover.delete(k);v11.clear(chatId,userId);}
  if(/api[ -]?key|access[ _-]?token|bearer |session[ _-]?(?:key|token|cookie)|cookie[ :=]|sk-proj-|zalo.*(?:session|token)/i.test(raw))return 'Không chia sẻ khóa API, token, cookie hoặc phiên đăng nhập trong nhóm. Em không lưu thông tin này vào yêu cầu hỗ trợ.';
+ if(isSensitive(q)&&!/\d|[:=]/.test(raw)&&(/^(?:bao sai mat khau co can gui mat khau cho em kiem tra khong)$/.test(q)||/^quen mat khau portal roi em doi lai giup chi duoc khong$/.test(q)))return 'Không gửi mật khẩu hay OTP. Em không có quyền đổi hoặc đặt lại mật khẩu; dùng chức năng khôi phục trên Portal chính thức hoặc liên hệ quản trị viên qua kênh chính thức đã xác minh.';
  if((isSensitive(q)&&!batteryContext)||/(?:\d[ -]?){13,19}/.test(raw))return '⚠️ Không chia sẻ OTP, PIN, CVV, mật khẩu hay mã xác thực trong nhóm. Nếu cần hỗ trợ, liên hệ CS/OPS qua kênh chính thức.';
- if(/mid|tid|so the/.test(q)&&/can gui|co can|phai gui|can cung cap/.test(q))return 'MID/TID và số thẻ không cần chia sẻ trong nhóm; CS/OPS tự tra cứu qua kênh được phép. Chỉ thông tin cửa hàng tối thiểu khi anh/chị đã đồng ý chuyển hỗ trợ.';
+ if(/mid|tid|so the/.test(q)&&/can gui|co can|phai gui|can cung cap|can doc/.test(q))return 'MID/TID và số thẻ không cần chia sẻ trong nhóm; CS/OPS tự tra cứu qua kênh được phép. Chỉ tên cửa hàng/chi nhánh tối thiểu khi anh/chị đã đồng ý chuyển hỗ trợ.';
  if(/^\/ticket\b/i.test(raw))return createTicket(raw.slice(7));
  if(process.env.QH_V12_ENABLED==='true'&&/(rut lai|thu hoi|huy.*(?:dong y|yeu cau.*chuyen)|(?:khong|dung|thoi khoi|ngung).*gui)/.test(q)){escalation.delete(k);pendingHandover.delete(k);try{v12Module?.revokeConsent(chatId,userId);}catch{v11.clear(chatId,userId);}return 'Em đã dừng và thu hồi đồng ý; chưa chuyển yêu cầu mới và không tiếp tục thu thập thông tin cửa hàng.';}
  if(/khong.*dong y|dung.*(?:hoi.*ops|chuyen)|ngung chuyen|khong chuyen|chua chuyen|chua cho phep.*(?:gui|chuyen)|(?:dia chi|ten cua hang).*(?:chua muon|khong muon|khong cung cap)/.test(q)){escalation.delete(k);pendingHandover.delete(k);try{const refusal=process.env.QH_V12_ENABLED==='true'?v12Module?.reply(chatId,userId,raw):null;if(typeof refusal==='string'&&refusal.trim())return refusal;}catch{v11.clear(chatId,userId);}return 'Em chưa chuyển yêu cầu và không chuyển khi chưa có đồng ý; em tôn trọng việc chưa cung cấp thông tin.';}
+ if(/ops|nhan vien ho tro|nguoi phu trach/.test(q)&&/toi dong y chuyen yeu cau/.test(q)&&!/(?:khong|chua|dung).*dong y/.test(q))return offerEscalation(k,'Khách chủ động đề nghị nhân viên hỗ trợ về sự cố hiện tại',true);
  // Social turns precede every mutable collector and diagnostic engine.
  let social=socialIntent(raw);
  if(social==='decline'&&!socialTurns.has(k))social=null;

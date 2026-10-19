@@ -45,6 +45,16 @@ No bank policy, timing, fee, verified merchant status or operational authority w
 
 Inspected the corrected concrete-comparison requirement and approved final Round 3 contracts before freeze. Frozen SHA-256: `dadc700ad3410d05d31b8c9db000278d8a1861e3be7088d8c3e1e471e5167b03`.
 
+## Round 4 prefreeze merchant-operations review
+
+Reviewed all 18 Simulator scenarios and 18 resulting QA contracts before freeze; approved domain expectations. General card/QR acceptance must compare the order/amount and actual reported transaction result, without assuming scanning alone proves payment. Portal access/password problems are distinct from missing records, and the bot cannot reset an account or request a password. Receipt-copy guidance uses an existing located transaction and must not initiate a new charge; a missing history entry cannot become a fabricated reprint.
+
+Date-range, branch, source and device-scope facts support useful report comparisons. Raised limits to QA: filter controls are conditional on actual availability/authorization; no exact Portal interface is verified; do not assume every report contains QR or cash; a shift crossing midnight is not evidence of a bank settlement cutoff. Compare like periods and sources before interpreting differences, with no invented fees or timing.
+
+An explicit contextual request for human help plus agreement permits preparation and minimal store-information collection for that request. Frustration or a complaint alone does not. Neither permits claiming notification, receipt by OPS, or a completed banking operation. Contracts distinguish these cases without requiring live dispatch.
+
+Approved frozen Round 4 SHA-256: `3fa70aa3e46d7cc4c5bf896e2ad1ed71d78d1b0b83a6cfc2343c24d2df0cb26d`.
+
 ## Remaining evidence limitations
 
 Synthetic fixtures can verify executable safety and response contracts. They cannot demonstrate bank policy correctness, device compatibility, actual merchant satisfaction, or independent business approval. OPS/domain owners must review future authoritative sources before corpus promotion or production rollout.

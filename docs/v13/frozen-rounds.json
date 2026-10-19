@@ -38,6 +38,16 @@
         "beforePassed": 0,
         "total": 2
       }
+    },
+    {
+      "round": 4,
+      "dataset": "tests/fixtures/v13-round4.json",
+      "sha256": "3fa70aa3e46d7cc4c5bf896e2ad1ed71d78d1b0b83a6cfc2343c24d2df0cb26d",
+      "modes": [
+        "v12"
+      ],
+      "fixtures": 18,
+      "baselineCommit": "2e1db67"
     }
   ]
 }
