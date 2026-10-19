@@ -25,6 +25,16 @@ QA added `stateByMode.v12` checks for `context.pendingVerification: true` and `c
 4. **Hardware refusal:** retain refusal while continuing relevant safe hardware guidance. A declined printer escalation should not become an unrelated payment-history script.
 5. **Diagnostic specificity without invented runbooks:** distinguish paper motion/blank/faint, SIM signal versus service, Wi-Fi shared versus POS-only failure, chip/contactless/swipe, and screen/charging indicator. Avoid model-specific settings or destructive operations.
 
+## Round 2 prefreeze review
+
+Reviewed all 16 Simulator scenarios in `docs/v13/round2-scenarios.json` and independently reviewed the resulting 16 QA contracts in `tests/fixtures/v13-round2.json` before freeze. Approved domain expectations: no paper means install a compatible roll, not diagnose printed blank output; switching SIM/Wi-Fi updates the active transport; restored phone connectivity with residual POS failure localizes the remaining fault; an unrelated paper action does not prove a network/power diagnostic failed.
+
+Raised two material criteria before freeze: a completed step without a reported result must not automatically become a failed step or an OPS offer, and declining OPS must not require an invented additional repair procedure. QA addressed both: the intermediate paper-action checkpoint checks an empty failed-step list and no premature OPS offer; refusal cases accept relevant conservative guidance or an honest DIY safety boundary. Hardware hazards must interrupt routine paper instructions; absent a payment incident, a printer refusal should not turn into a transaction-history script.
+
+No operational knowledge was approved. Permitted guidance remains compatible consumables/charger, paper orientation and cover per the actual device guide, no force/disassembly/internal cleaning, and authorized network comparisons. Restored connectivity is not evidence of a transaction result.
+
+Approved frozen Round 2 SHA-256: `6f6e3595f0c8f73ba76cf0ff57c8b97c5c277a3dca56ab4306adfb965f669b86`.
+
 ## Remaining evidence limitations
 
 Synthetic fixtures can verify executable safety and response contracts. They cannot demonstrate bank policy correctness, device compatibility, actual merchant satisfaction, or independent business approval. OPS/domain owners must review future authoritative sources before corpus promotion or production rollout.

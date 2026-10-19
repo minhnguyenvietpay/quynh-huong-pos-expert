@@ -45,3 +45,22 @@ test('V13 social refusal takes priority over greeting',()=>{
  assert.equal(rows[2].pending,null);assert.notEqual(rows[2].context?.consent,true);
  assert.doesNotMatch(rows[2].response,/(?:xin|cung cấp).{0,20}(?:tên cửa hàng|địa chỉ)/iu);
 });
+
+// Round 2 additions frozen before implementation; prior nine assertions unchanged.
+test('V13 compound hot-swollen battery is an immediate stop condition',()=>{
+ const row=run(['pin máy POS nóng phồng'])[0];
+ assert.match(row.response,/(?:ngừng|dừng|không).{0,25}(?:sạc|sử dụng|dùng)/iu);
+ assert.equal(row.context?.currentQuestion,'battery-safe');
+ assert.equal(row.pending,null);
+});
+test('V13 refusing OPS does not erase water-damage stop guidance',()=>{
+ const rows=run(['máy POS ngấm nước','không đồng ý chuyển OPS','cắm sạc được không']);
+ assert.match(rows[2].response,/(?:không|ngừng|dừng).{0,25}(?:sạc|sử dụng|dùng|bật)/iu);
+ assert.doesNotMatch(rows[2].response,/lịch sử giao dịch|đúng ngày|số tiền/iu);
+ assert.notEqual(rows[2].context?.consent,true);assert.equal(rows[2].pending,null);
+});
+test('V13 unresolved debit explicitly blocks restart advice',()=>{
+ const rows=run(['khách bị trừ tiền nhưng POS không có bill','máy bị treo','khởi động lại được không']);
+ assert.match(rows[2].response,/(?:chưa|không|đừng).{0,35}(?:khởi động|restart|tắt máy)/iu);
+ assert.equal(rows[2].context?.pendingVerification,true);assert.equal(rows[2].pending,null);
+});

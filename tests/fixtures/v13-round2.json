@@ -1,0 +1,399 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "v13-round2.0.0",
+  "reviewNote": "Separate development-role synthetic response/state contracts; no external OPS/merchant ground truth.",
+  "fixtures": [
+    {
+      "id": "r2-paper-empty-not-blank",
+      "category": "hardware",
+      "rootCause": "paper-empty-not-blank",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Distinguishes missing consumable from blank thermal output and recognizes successful correction.",
+      "turns": [
+        "Máy không in bill",
+        "Hết giấy trong máy rồi, không có tờ nào chạy ra",
+        "Em đã lắp cuộn mới, giờ in được rồi"
+      ],
+      "must": [
+        "in được|xử lý|ghi nhận|tốt"
+      ],
+      "mustNot": [
+        "đồng ý.{0,30}(?:OPS|CS)|có muốn.{0,35}(?:OPS|CS)|xin.{0,15}tên cửa hàng"
+      ],
+      "state": {
+        "pending": false
+      },
+      "checkpoints": [
+        {
+          "turn": 2,
+          "must": [
+            "lắp|thay|bổ sung|cuộn giấy"
+          ],
+          "mustNot": [
+            "lật.{0,12}(?:mặt|giấy)",
+            "đồng ý.{0,30}(?:OPS|CS)|có muốn.{0,35}(?:OPS|CS)|xin.{0,15}tên cửa hàng"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r2-blank-correct-orientation",
+      "category": "hardware",
+      "rootCause": "blank-correct-orientation",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "An action without a reported result is not yet a failed step; a subsequent explicit residual failure must not merely repeat the completed relevant action.",
+      "turns": [
+        "Máy in bill ra giấy trắng nhưng giấy vẫn chạy",
+        "Đã thay cuộn giấy mới, đang thử in",
+        "Đã lật đúng mặt giấy nhiệt, thử cuộn khác vẫn trắng"
+      ],
+      "must": [
+        "đã|ghi nhận",
+        "giấy|in|trắng"
+      ],
+      "mustNot": [
+        "(?:hãy|thử|chị|mình) lật.{0,15}(?:giấy|mặt)"
+      ],
+      "state": {
+        "pending": false
+      },
+      "checkpoints": [
+        {
+          "turn": 2,
+          "must": [
+            "in|giấy|kết quả"
+          ],
+          "mustNot": [
+            "đồng ý.{0,30}(?:OPS|CS)|có muốn.{0,35}(?:OPS|CS)",
+            "đã.{0,15}(?:thay giấy|lật giấy).{0,20}(?:vẫn lỗi|không được)"
+          ],
+          "state": {
+            "context.failed": [],
+            "pending": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "r2-faint-after-correct-paper",
+      "category": "hardware",
+      "rootCause": "faint-after-correct-paper",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Residual faintness differs from no paper and negated heat must not introduce a false hardware emergency.",
+      "turns": [
+        "Bill in ra mờ, đọc khó",
+        "Giấy đúng rồi, thay cuộn mới vẫn mờ",
+        "Máy không nóng, không có mùi khét"
+      ],
+      "must": [
+        "mờ|chữ|bản in"
+      ],
+      "mustNot": [
+        "ngừng sử dụng|dừng sử dụng|ngừng sạc|ngừng cấp điện|không tiếp tục cấp điện"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "r2-jam-no-force",
+      "category": "hardware",
+      "rootCause": "jam-no-force",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Repeated relevant jam handling should preserve the physical safety boundary and acknowledge the attempted step.",
+      "turns": [
+        "Giấy kẹt trong máy POS, kéo không ra",
+        "Mở nắp rồi mà giấy vẫn mắc, không dám kéo mạnh"
+      ],
+      "must": [
+        "không.{0,15}(?:kéo|cạy|dùng lực)|tránh.{0,15}(?:kéo|cạy|dùng lực)",
+        "kẹt|mắc|giấy"
+      ],
+      "mustNot": [
+        "cứ kéo mạnh|dùng dao|cạy mạnh"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "r2-power-charge-known",
+      "category": "hardware",
+      "rootCause": "power-charge-known",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Known charge and no-heat facts should narrow diagnosis rather than restart charger or heat questions.",
+      "turns": [
+        "Máy POS không lên nguồn",
+        "Có đèn sạc, màn hình vẫn đen, máy không nóng",
+        "Đã dùng sạc đúng loại và kiểm tra ổ điện rồi"
+      ],
+      "must": [
+        "màn hình|đen|nguồn|đèn sạc"
+      ],
+      "mustNot": [
+        "(?:có|xuất hiện).{0,12}(?:đèn|biểu tượng).{0,15}(?:không ạ|không\\?)|kiểm tra.{0,10}ổ điện.{0,20}(?:không ạ|chưa ạ)"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "r2-power-irrelevant-step",
+      "category": "hardware",
+      "rootCause": "power-irrelevant-step",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "A paper check is not evidence that a power troubleshooting step failed.",
+      "turns": [
+        "Máy không lên nguồn",
+        "Tôi kiểm tra giấy rồi, vẫn không bật được",
+        "Chưa thử sạc khác"
+      ],
+      "must": [
+        "sạc|nguồn|ổ điện"
+      ],
+      "mustNot": [
+        "đồng ý.{0,30}(?:OPS|CS)|có muốn.{0,35}(?:OPS|CS)|xin.{0,15}tên cửa hàng",
+        "đã.{0,15}(?:thử sạc|kiểm tra sạc)"
+      ],
+      "state": {
+        "pending": false,
+        "context.failed": []
+      }
+    },
+    {
+      "id": "r2-wifi-to-sim-restored",
+      "category": "network",
+      "rootCause": "wifi-to-sim-restored",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Shared WiFi outage and restored POS connectivity can coexist; current working SIM should update context.",
+      "turns": [
+        "POS mất mạng WiFi",
+        "Điện thoại dùng WiFi đó cũng không có mạng",
+        "Tôi chuyển POS sang SIM, giờ POS vào mạng được rồi"
+      ],
+      "must": [
+        "kết nối được|vào mạng được|phục hồi|ghi nhận|tốt"
+      ],
+      "mustNot": [
+        "đồng ý.{0,30}(?:OPS|CS)|có muốn.{0,35}(?:OPS|CS)|xin.{0,15}tên cửa hàng",
+        "điện thoại.{0,15}cũng mất|kiểm tra router"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "r2-sim-to-wifi-still-failed",
+      "category": "network",
+      "rootCause": "sim-to-wifi-still-failed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "An explicit transport switch should replace stale SIM diagnostics and use the phone comparison.",
+      "turns": [
+        "POS dùng SIM không có mạng, không có sóng",
+        "Đã chuyển sang WiFi, điện thoại vào WiFi bình thường nhưng POS vẫn mất mạng"
+      ],
+      "must": [
+        "Wi.?Fi|mạng khác|điểm phát|hotspot"
+      ],
+      "mustNot": [
+        "kiểm tra.{0,12}(?:sóng|SIM)|dịch vụ SIM|nhà mạng SIM"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "r2-router-restored-pos-failed",
+      "category": "network",
+      "rootCause": "router-restored-pos-failed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "A successful router action with residual POS failure needs localization, not an unchanged shared-outage branch.",
+      "turns": [
+        "POS và điện thoại đều không vào được WiFi",
+        "Đã kiểm tra router, điện thoại vào mạng lại rồi nhưng POS vẫn chưa vào được"
+      ],
+      "must": [
+        "mạng khác|điểm phát|hotspot|riêng.{0,10}POS|POS.{0,15}riêng"
+      ],
+      "mustNot": [
+        "cùng mất mạng|điện thoại.{0,15}cũng.{0,10}(?:lỗi|mất)",
+        "đồng ý.{0,30}(?:OPS|CS)|có muốn.{0,35}(?:OPS|CS)|xin.{0,15}tên cửa hàng"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "r2-network-irrelevant-paper-check",
+      "category": "network",
+      "rootCause": "network-irrelevant-paper-check",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Changing paper must not count as a failed connectivity diagnostic or prematurely trigger escalation.",
+      "turns": [
+        "Máy POS mất WiFi",
+        "Thay giấy rồi nhưng mạng vẫn lỗi",
+        "Chưa thử mạng khác, điện thoại vẫn dùng WiFi này được"
+      ],
+      "must": [
+        "mạng khác|điểm phát|hotspot"
+      ],
+      "mustNot": [
+        "đồng ý.{0,30}(?:OPS|CS)|có muốn.{0,35}(?:OPS|CS)|xin.{0,15}tên cửa hàng",
+        "đã.{0,12}thử mạng khác"
+      ],
+      "state": {
+        "pending": false,
+        "context.failed": []
+      }
+    },
+    {
+      "id": "r2-printer-decline-continue",
+      "category": "hardware",
+      "rootCause": "printer-decline-continue",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Declined printer escalation should retain the hardware topic and avoid an unrelated transaction-verification template.",
+      "turns": [
+        "Máy không in bill",
+        "Đã kiểm tra giấy và nắp, vẫn không đẩy giấy",
+        "Không chuyển OPS, hướng dẫn tôi kiểm tra tiếp được không?"
+      ],
+      "must": [
+        "giấy|nắp|máy in|bộ phận in"
+      ],
+      "mustNot": [
+        "POS/Portal|lịch sử POS|giao dịch|thanh toán lại",
+        "đồng ý.{0,30}(?:OPS|CS)|có muốn.{0,35}(?:OPS|CS)|xin.{0,15}tên cửa hàng"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "r2-network-decline-continue",
+      "category": "network",
+      "rootCause": "network-decline-continue",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Declining network escalation should preserve consent boundaries while offering relevant assistance.",
+      "turns": [
+        "POS mất WiFi",
+        "Đã thử mạng khác, vẫn không vào được",
+        "Chưa muốn chuyển OPS, còn kiểm tra gì an toàn nữa không?"
+      ],
+      "must": [
+        "mạng|Wi.?Fi|kết nối"
+      ],
+      "mustNot": [
+        "POS/Portal|lịch sử POS|giao dịch|thanh toán lại",
+        "đồng ý.{0,30}(?:OPS|CS)|có muốn.{0,35}(?:OPS|CS)|xin.{0,15}tên cửa hàng"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "r2-restart-success-new-printer",
+      "category": "hardware",
+      "rootCause": "restart-success-new-printer",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Acknowledges the resolved freeze and transfers the remaining symptom to printer diagnosis without repeating restart.",
+      "turns": [
+        "Máy POS bị treo, hiện không có giao dịch đang xử lý",
+        "Đã khởi động lại, máy hết treo rồi nhưng bill in vẫn mờ"
+      ],
+      "must": [
+        "mờ|giấy|bản in"
+      ],
+      "mustNot": [
+        "(?:hãy|thử|chị|mình).{0,10}khởi động lại",
+        "đồng ý.{0,30}(?:OPS|CS)|có muốn.{0,35}(?:OPS|CS)|xin.{0,15}tên cửa hàng"
+      ],
+      "state": {
+        "pending": false,
+        "context.topic": "printer"
+      }
+    },
+    {
+      "id": "r2-no-paper-action-yet",
+      "category": "hardware",
+      "rootCause": "no-paper-action-yet",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Observed remaining paper is not proof that paper quality or orientation has been checked.",
+      "turns": [
+        "Bill trắng, giấy vẫn chạy ra",
+        "Chưa thay giấy, mới nhìn thấy cuộn vẫn còn nhiều"
+      ],
+      "must": [
+        "giấy|nhiệt|mặt"
+      ],
+      "mustNot": [
+        "đồng ý.{0,30}(?:OPS|CS)|có muốn.{0,35}(?:OPS|CS)|xin.{0,15}tên cửa hàng",
+        "đã.{0,12}(?:thay giấy|kiểm tra giấy)|sau.{0,12}kiểm tra giấy"
+      ],
+      "state": {
+        "pending": false,
+        "context.failed": []
+      }
+    },
+    {
+      "id": "r2-hazard-contradicts-printer",
+      "category": "hardware",
+      "rootCause": "hazard-contradicts-printer",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "A newly asserted physical hazard must interrupt otherwise routine printer diagnostics.",
+      "turns": [
+        "POS không in bill",
+        "Đang mở nắp thì thấy pin phồng và có mùi khét"
+      ],
+      "must": [
+        "dừng|ngừng|không tiếp tục",
+        "sạc|nguồn|sử dụng"
+      ],
+      "mustNot": [
+        "thử sạc|khởi động lại|lật giấy"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "r2-network-new-payment-risk",
+      "category": "network",
+      "rootCause": "network-new-payment-risk",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Payment uncertainty newly appearing inside hardware troubleshooting must receive the stronger payment safety boundary without inventing status.",
+      "turns": [
+        "Máy POS mất mạng WiFi",
+        "Vừa có khách báo bị trừ tiền mà POS báo lỗi, tôi chưa biết có thành công không"
+      ],
+      "must": [
+        "(?:chưa|không).{0,35}(?:thanh toán|quẹt|thu).{0,15}lại",
+        "POS|Portal|lịch sử"
+      ],
+      "mustNot": [
+        "giao dịch đã thành công|đã hoàn tiền|sẽ hoàn tiền"
+      ],
+      "state": {
+        "pending": false,
+        "context.pendingVerification": true
+      }
+    }
+  ]
+}

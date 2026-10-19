@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "round": 2,
+  "provenance": "Synthetic merchant conversations, no production logs or personal data. Independent QA contracts are stored separately; these inputs are not independently verified merchant ground truth.",
+  "scenarios": [
+    {
+      "id": "r2-paper-empty-not-blank",
+      "persona": "Cashier with an empty paper compartment",
+      "inputs": [
+        "Máy không in bill",
+        "Hết giấy trong máy rồi, không có tờ nào chạy ra",
+        "Em đã lắp cuộn mới, giờ in được rồi"
+      ],
+      "rationale": "Distinguishes missing consumable from blank thermal output and recognizes successful correction."
+    },
+    {
+      "id": "r2-blank-correct-orientation",
+      "persona": "Cashier who already verified thermal paper orientation",
+      "inputs": [
+        "Máy in bill ra giấy trắng nhưng giấy vẫn chạy",
+        "Đã thay cuộn giấy mới, đang thử in",
+        "Đã lật đúng mặt giấy nhiệt, thử cuộn khác vẫn trắng"
+      ],
+      "rationale": "An action without a reported result is not yet a failed step; a subsequent explicit residual failure must not merely repeat the completed relevant action."
+    },
+    {
+      "id": "r2-faint-after-correct-paper",
+      "persona": "Merchant whose receipt remains faint after replacing paper",
+      "inputs": [
+        "Bill in ra mờ, đọc khó",
+        "Giấy đúng rồi, thay cuộn mới vẫn mờ",
+        "Máy không nóng, không có mùi khét"
+      ],
+      "rationale": "Residual faintness differs from no paper and negated heat must not introduce a false hardware emergency."
+    },
+    {
+      "id": "r2-jam-no-force",
+      "persona": "Cashier with paper stuck inside printer",
+      "inputs": [
+        "Giấy kẹt trong máy POS, kéo không ra",
+        "Mở nắp rồi mà giấy vẫn mắc, không dám kéo mạnh"
+      ],
+      "rationale": "Repeated relevant jam handling should preserve the physical safety boundary and acknowledge the attempted step."
+    },
+    {
+      "id": "r2-power-charge-known",
+      "persona": "Merchant with a dark screen but confirmed charge indication",
+      "inputs": [
+        "Máy POS không lên nguồn",
+        "Có đèn sạc, màn hình vẫn đen, máy không nóng",
+        "Đã dùng sạc đúng loại và kiểm tra ổ điện rồi"
+      ],
+      "rationale": "Known charge and no-heat facts should narrow diagnosis rather than restart charger or heat questions."
+    },
+    {
+      "id": "r2-power-irrelevant-step",
+      "persona": "Merchant reporting an unrelated previous check",
+      "inputs": [
+        "Máy không lên nguồn",
+        "Tôi kiểm tra giấy rồi, vẫn không bật được",
+        "Chưa thử sạc khác"
+      ],
+      "rationale": "A paper check is not evidence that a power troubleshooting step failed."
+    },
+    {
+      "id": "r2-wifi-to-sim-restored",
+      "persona": "Cashier switching connectivity while diagnosing WiFi",
+      "inputs": [
+        "POS mất mạng WiFi",
+        "Điện thoại dùng WiFi đó cũng không có mạng",
+        "Tôi chuyển POS sang SIM, giờ POS vào mạng được rồi"
+      ],
+      "rationale": "Shared WiFi outage and restored POS connectivity can coexist; current working SIM should update context."
+    },
+    {
+      "id": "r2-sim-to-wifi-still-failed",
+      "persona": "Merchant changing from mobile service to a working WiFi",
+      "inputs": [
+        "POS dùng SIM không có mạng, không có sóng",
+        "Đã chuyển sang WiFi, điện thoại vào WiFi bình thường nhưng POS vẫn mất mạng"
+      ],
+      "rationale": "An explicit transport switch should replace stale SIM diagnostics and use the phone comparison."
+    },
+    {
+      "id": "r2-router-restored-pos-failed",
+      "persona": "Merchant who restores the shop network but not the POS",
+      "inputs": [
+        "POS và điện thoại đều không vào được WiFi",
+        "Đã kiểm tra router, điện thoại vào mạng lại rồi nhưng POS vẫn chưa vào được"
+      ],
+      "rationale": "A successful router action with residual POS failure needs localization, not an unchanged shared-outage branch."
+    },
+    {
+      "id": "r2-network-irrelevant-paper-check",
+      "persona": "Cashier mixing unrelated maintenance with a network incident",
+      "inputs": [
+        "Máy POS mất WiFi",
+        "Thay giấy rồi nhưng mạng vẫn lỗi",
+        "Chưa thử mạng khác, điện thoại vẫn dùng WiFi này được"
+      ],
+      "rationale": "Changing paper must not count as a failed connectivity diagnostic or prematurely trigger escalation."
+    },
+    {
+      "id": "r2-printer-decline-continue",
+      "persona": "Merchant declining escalation while requesting more local printer help",
+      "inputs": [
+        "Máy không in bill",
+        "Đã kiểm tra giấy và nắp, vẫn không đẩy giấy",
+        "Không chuyển OPS, hướng dẫn tôi kiểm tra tiếp được không?"
+      ],
+      "rationale": "Declined printer escalation should retain the hardware topic and avoid an unrelated transaction-verification template."
+    },
+    {
+      "id": "r2-network-decline-continue",
+      "persona": "Merchant who wants only local network help",
+      "inputs": [
+        "POS mất WiFi",
+        "Đã thử mạng khác, vẫn không vào được",
+        "Chưa muốn chuyển OPS, còn kiểm tra gì an toàn nữa không?"
+      ],
+      "rationale": "Declining network escalation should preserve consent boundaries while offering relevant assistance."
+    },
+    {
+      "id": "r2-restart-success-new-printer",
+      "persona": "Cashier whose frozen screen recovers but another issue remains",
+      "inputs": [
+        "Máy POS bị treo, hiện không có giao dịch đang xử lý",
+        "Đã khởi động lại, máy hết treo rồi nhưng bill in vẫn mờ"
+      ],
+      "rationale": "Acknowledges the resolved freeze and transfers the remaining symptom to printer diagnosis without repeating restart."
+    },
+    {
+      "id": "r2-no-paper-action-yet",
+      "persona": "Cashier clearly distinguishing an untried step",
+      "inputs": [
+        "Bill trắng, giấy vẫn chạy ra",
+        "Chưa thay giấy, mới nhìn thấy cuộn vẫn còn nhiều"
+      ],
+      "rationale": "Observed remaining paper is not proof that paper quality or orientation has been checked."
+    },
+    {
+      "id": "r2-hazard-contradicts-printer",
+      "persona": "Cashier noticing a safety hazard during troubleshooting",
+      "inputs": [
+        "POS không in bill",
+        "Đang mở nắp thì thấy pin phồng và có mùi khét"
+      ],
+      "rationale": "A newly asserted physical hazard must interrupt otherwise routine printer diagnostics."
+    },
+    {
+      "id": "r2-network-new-payment-risk",
+      "persona": "Merchant noticing a payment issue while connectivity is unresolved",
+      "inputs": [
+        "Máy POS mất mạng WiFi",
+        "Vừa có khách báo bị trừ tiền mà POS báo lỗi, tôi chưa biết có thành công không"
+      ],
+      "rationale": "Payment uncertainty newly appearing inside hardware troubleshooting must receive the stronger payment safety boundary without inventing status."
+    }
+  ]
+}

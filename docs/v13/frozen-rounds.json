@@ -6,9 +6,22 @@
       "round": 1,
       "dataset": "tests/fixtures/v13-round1.json",
       "sha256": "1948e180be9f623b72d6ab7b325d9377d368a92ab4852e50ebc35ba5e554c6ef",
-      "modes": ["default", "v12"],
+      "modes": [
+        "default",
+        "v12"
+      ],
       "fixtures": 18,
       "baselineCommit": "eefe224"
+    },
+    {
+      "round": 2,
+      "dataset": "tests/fixtures/v13-round2.json",
+      "sha256": "6f6e3595f0c8f73ba76cf0ff57c8b97c5c277a3dca56ab4306adfb965f669b86",
+      "modes": [
+        "v12"
+      ],
+      "fixtures": 16,
+      "baselineCommit": "9af7a17"
     }
   ]
 }
