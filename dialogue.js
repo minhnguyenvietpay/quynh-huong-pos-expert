@@ -1,6 +1,6 @@
 const {flows}=require('./flows');
 const {searchKnowledge}=require('./search');
-const {classify,normalize:norm,extractErrorCode,isIntroduction,isCompliment}=require('./intent');
+const {classify,normalize:norm,extractErrorCode,isIntroduction,isCompliment,socialIntent}=require('./intent');
 const store=require('./state');
 const quality=require('./quality');
 const expert=require('./expert');
@@ -12,7 +12,8 @@ const {usableKnowledge}=require('./knowledge-policy');
 let v11Module=null,v12Module=null;
 try{v11Module=require('./lib/v11/engine.cjs');}catch{}
 try{v12Module=require('./lib/v12/engine.cjs');}catch{}
-const activeModules=()=>process.env.QH_V12_ENABLED==='true'?[v12Module,v11Module].filter(Boolean):process.env.QH_V11_ENABLED==='true'?[v11Module].filter(Boolean):[];
+const expertEnabled=()=>process.env.QH_V13_ENABLED==='true'||process.env.QH_V12_ENABLED==='true';
+const activeModules=()=>expertEnabled()?[v12Module,v11Module].filter(Boolean):process.env.QH_V11_ENABLED==='true'?[v11Module].filter(Boolean):[];
 // The existing interface now selects V12, then the unchanged V11 fallback.
 const v11={};
 for(const method of ['getContext','hasSession','shouldRespond','shouldInterrupt'])v11[method]=(...args)=>{
@@ -23,7 +24,9 @@ v11.clear=(...args)=>{for(const engine of [v12Module,v11Module])try{engine?.clea
 v11.reply=(...args)=>{for(const engine of activeModules()){try{const result=engine.reply(...args);if(result!==null&&result!==undefined)return result;}catch{try{engine.clear(...args);}catch{}}}return null;};
 const v11Enabled=()=>activeModules().length>0;
 function shouldRespondV11(input,context={}){return process.env.QH_V11_ENABLED==='true'&&v11.shouldRespond(input,context);}
-function shouldRespondV12(input,context={}){if(process.env.QH_V12_ENABLED!=='true'||!v12Module)return false;try{return v12Module.shouldRespond(input,context);}catch{return false;}}
+function shouldRespondV13(input,context={}){return process.env.QH_V13_ENABLED==='true'&&shouldRespondV12(input,context);}
+function shouldRespondV12(input,context={}){if(!expertEnabled()||!v12Module)return false;try{return v12Module.shouldRespond(input,context);}catch{return false;}}
+function safetyAdvice(input,chat,user){try{const kind=v12Module?.safetyKind(input);if(kind){escalation.delete(key(chat,user));pendingHandover.delete(key(chat,user));if(expertEnabled())v12Module?.noteSafetyStop(chat,user,kind);}return v12Module?.safetyAdvice(input)||'';}catch{return '';}}
 const sessions={get:store.getSession,set:store.setSession,delete:store.deleteSession,has:k=>!!store.getSession(k)};
 // Conversation state is kept per group + sender. It resets when the bot restarts.
 const welcomed={get:k=>store.isWelcomed(k)?Date.now():null,set:(k,t)=>store.welcome(k),get size(){return 0;},delete:()=>{}};
@@ -38,6 +41,7 @@ function greeting(k,displayName=''){
 }
 // Rotate short social replies to reduce repetition, without random responses.
 const replyCounts=new Map();
+const socialTurns=new Map();
 function vary(k,kind,variants){const id=k+':'+kind;const n=replyCounts.get(id)||0;replyCounts.set(id,n+1);if(replyCounts.size>4000)replyCounts.delete(replyCounts.keys().next().value);return variants[n%variants.length];}
 function closing(q){if(/^(cam on|cam on em|thanks|thank you|thank|thank u|tks|thankyou|cam on nhe|cam on nha|cam on bot|cam on pos care)$/.test(q))return 'Cảm ơn anh/chị nhé! Khi cần hỗ trợ thêm, cứ nhắn em ạ.';if(/^(ok|oke|okay|ok roi|oke roi|duoc roi|on roi|xong roi|da xong|da duoc|het loi roi|khong can nua|da xu ly xong|xu ly duoc roi|ok em|ok nhe|ok nha|cam on da xu ly xong)$/.test(q))return 'Tốt quá ạ! Nếu phát sinh vấn đề khác, anh/chị cứ gọi Quỳnh Hương nhé.';return null;}
 function greetingOnly(q){return /^(xin chao|chao|hello|hi|hey|alo|chao bot|chao pos care|pos care oi|bot oi|co ai ho tro khong)$/.test(q);}
@@ -48,7 +52,7 @@ function prune(){const time=now();if(time>=lastTransientPrune&&time-lastTransien
 function boundedTransientSet(map,k,value){map.delete(k);map.set(k,value);while(map.size>MAX_SESSIONS)map.delete(map.keys().next().value);}
 function hasSession(chat,user){prune();return (v11Enabled()&&v11.hasSession(chat,user))||sessions.has(key(chat,user));}
 function moduleContextV12(chat,user){try{return v12Module?.getContext(chat,user)||null;}catch{return null;}}
-function sessionInfo(chat,user){if(v11Enabled()){const context=v11.getContext(chat,user);if(context)return {flowId:process.env.QH_V12_ENABLED==='true'&&moduleContextV12(chat,user)?'qh_v12':'qh_v11',topic:context.topic,step:context.currentQuestion};}prune();const s=sessions.get(key(chat,user));return s?{flowId:s.flowId,step:s.step,ageSeconds:Math.floor((now()-s.time)/1000)}:null;}
+function sessionInfo(chat,user){if(v11Enabled()){const context=v11.getContext(chat,user);if(context)return {flowId:expertEnabled()&&moduleContextV12(chat,user)?(process.env.QH_V13_ENABLED==='true'?'qh_v13':'qh_v12'):'qh_v11',topic:context.topic,step:context.currentQuestion};}prune();const s=sessions.get(key(chat,user));return s?{flowId:s.flowId,step:s.step,ageSeconds:Math.floor((now()-s.time)/1000)}:null;}
 function prompt(flow,step){return `${step.ask}\n${step.options.map((o,i)=>`${i+1}. ${o[0]}`).join('\n')}\n\nAnh/chị trả lời số hoặc mô tả ngắn. /huy để kết thúc, /lai để bắt đầu lại.`;}
 function nextStep(flow,answers,from){for(let i=from;i<flow.steps.length;i++)if(!flow.steps[i].when||flow.steps[i].when(answers))return i;return -1;}
 function choice(step,q){if(/^[1-9]$/.test(q)){const n=+q-1;return n<step.options.length?n:-1;}const matches=[];step.options.forEach((o,i)=>{if(o.slice(1).some(v=>{const t=norm(v);return t===q||(q.length>=6&&t.length>=6&&(q.includes(t)||t.includes(q)));}))matches.push(i);});return matches.length===1?matches[0]:-1;}
@@ -60,7 +64,7 @@ const isSensitive=q=>/\b(otp|cvv|pin|mat khau|password|ma xac thuc)\b/.test(q);
 const escalation=new Map();
 const pendingHandover=new Map();
 const ESC_TTL=30*60*1000;
-const yes=q=>/^(co|dong y|ok|oke|duoc|yes|chuyen di|gui di|can ho tro|nho em chuyen|chuyen giup|gui giup)$/.test(q);
+const yes=q=>/^(co|dong y|dong y chuyen ops|dong y chuyen cs|dong y chuyen cs ops|ok|oke|duoc|yes|chuyen di|gui di|can ho tro|nho em chuyen|chuyen giup|gui giup)$/.test(q);
 const no=q=>/^(khong|khong can|thoi|no|huy|bo qua|chua can)$/.test(q);
 const unresolved=q=>/\b(van|vẫn) (khong|ko|chua) (duoc|xu ly duoc|het|hoat dong)|\b(da|đã) (thu|lam) (het|roi|r) (ma|nhung) (van|vẫn)|\b(khong giai quyet duoc|khong xu ly duoc|can chuyen|chuyen cs|chuyen ops|bao cong ty|nho cong ty ho tro)\b/.test(q);
 const looksAddress=q=>/\b(duong|phuong|quan|thanh pho|tp|so|ngo|hem|xa|huyen|tinh|street|district)\b/.test(q)||/\d+\s+[\p{L}]/u.test(q);
@@ -99,25 +103,69 @@ function offerEscalation(k,issue,consented=false){
 }
 function processMessage(chatId,userId,input,options={}){
  prune();
- if(typeof input!=='string'||input.length>1200){if(process.env.QH_V12_ENABLED==='true'){const rejectedKey=key(chatId,userId);escalation.delete(rejectedKey);pendingHandover.delete(rejectedKey);v11.clear(chatId,userId);}return 'Tin nhắn quá dài hoặc không đúng dạng văn bản. Không chia sẻ thông tin nhạy cảm; anh/chị gửi lại mô tả ngắn; em chưa ghi nhận đồng ý hay chuyển yêu cầu từ tin này.';}
+ for(const [socialKey,time] of socialTurns)if(now()-time>TTL)socialTurns.delete(socialKey);
+ if(typeof input!=='string'||input.length>1200){let retained=null;if(expertEnabled()){const rejectedKey=key(chatId,userId);escalation.delete(rejectedKey);pendingHandover.delete(rejectedKey);try{retained=v12Module?.revokeConsent(chatId,userId);}catch{v11.clear(chatId,userId);}}return 'Tin nhắn quá dài hoặc không đúng dạng văn bản. Không chia sẻ thông tin nhạy cảm; anh/chị gửi lại mô tả ngắn; em chưa ghi nhận đồng ý hay chuyển yêu cầu từ tin này.'+(retained?.pendingVerification?' Giao dịch trước còn cần xác minh, chưa thanh toán lại.':'');}
  const raw=input.trim(),q=norm(raw),k=key(chatId,userId);
  if(!raw)return 'Anh/chị mô tả lỗi POS/QR/Portal để em hỗ trợ nhé.';
  // Session controls must precede consent/name/address handling.
  if(/^(\/(huy|done|reset|lai|restart)|huy|ket thuc|bat dau lai)$/.test(raw.toLowerCase()) || /^(huy|ket thuc|bat dau lai)$/.test(q)){
-  escalation.delete(k);pendingHandover.delete(k);sessions.delete(k);v12.clear(chatId,userId);v11.clear(chatId,userId);
+  socialTurns.delete(k);escalation.delete(k);pendingHandover.delete(k);sessions.delete(k);v12.clear(chatId,userId);v11.clear(chatId,userId);
   return /lai|restart/.test(q)?'Đã bắt đầu lại. Anh/chị mô tả sự cố mới nhé.':'Đã kết thúc phiên hỗ trợ. Khi cần, anh/chị mô tả sự cố mới nhé.';
  }
+ if(/^neu em khong co quyen thi chi chi cach tim ho tro chinh thuc$/.test(q))return 'Em không có quyền đổi hoặc đặt lại mật khẩu. Anh/chị liên hệ quản trị viên hoặc CS qua kênh chính thức cửa hàng đã xác minh, hoặc dùng chức năng khôi phục trên Portal; không gửi mật khẩu hay OTP.';
  const batteryContext=v11Enabled()&&/\bpin\b/.test(q)&&/sac|nong|phong|chai|het|tut|may|pos/.test(q)&&!/otp|cvv|mat khau|password|ma pin|so pin|pin code|pin the|pin ngan hang|pin\s*\d/.test(q);
- const sensitiveRevocation=process.env.QH_V12_ENABLED==='true'&&/rut lai|thu hoi|huy.*(?:dong y|chuyen)|(?:khong|dung|thoi khoi|ngung).*(?:gui|chuyen)|khong.*dong y/.test(q);
+ const sensitiveRevocation=expertEnabled()&&/rut lai|thu hoi|huy.*(?:dong y|chuyen)|(?:khong|dung|thoi khoi|ngung).*(?:gui|chuyen)|khong.*dong y/.test(q);
  if(sensitiveRevocation&&(isSensitive(q)||/api[ -]?key|access[ _-]?token|bearer |session|cookie|sk-proj-/i.test(raw))){escalation.delete(k);pendingHandover.delete(k);v11.clear(chatId,userId);}
- if(/api[ -]?key|access[ _-]?token|bearer |session[ _-]?(?:key|token|cookie)|cookie[ :=]|sk-proj-|zalo.*(?:session|token)/i.test(raw))return 'Không chia sẻ khóa API, token, cookie hoặc phiên đăng nhập trong nhóm. Em không lưu thông tin này vào yêu cầu hỗ trợ.';
- if((isSensitive(q)&&!batteryContext)||/(?:\d[ -]?){13,19}/.test(raw))return '⚠️ Không chia sẻ OTP, PIN, CVV, mật khẩu hay mã xác thực trong nhóm. Nếu cần hỗ trợ, liên hệ CS/OPS qua kênh chính thức.';
+ if(/api[ -]?key|access[ _-]?token|bearer |session[ _-]?(?:key|token|cookie)|cookie[ :=]|sk-proj-|zalo.*(?:session|token)/i.test(raw))return 'Không chia sẻ khóa API, token, cookie hoặc phiên đăng nhập trong nhóm. Em không lưu thông tin này vào yêu cầu hỗ trợ.'+safetyAdvice(raw,chatId,userId);
+ if(isSensitive(q)&&!/\d|[:=]/.test(raw)&&(/^(?:bao sai mat khau co can gui mat khau cho em kiem tra khong)$/.test(q)||/^quen mat khau portal roi em doi lai giup chi duoc khong$/.test(q)))return 'Không gửi mật khẩu hay OTP. Em không có quyền đổi hoặc đặt lại mật khẩu; dùng chức năng khôi phục trên Portal chính thức hoặc liên hệ quản trị viên qua kênh chính thức đã xác minh.';
+ if((isSensitive(q)&&!batteryContext)||/(?:\d[ -]?){13,19}/.test(raw))return '⚠️ Không chia sẻ OTP, PIN, CVV, mật khẩu hay mã xác thực trong nhóm. Nếu cần hỗ trợ, liên hệ CS/OPS qua kênh chính thức.'+safetyAdvice(raw,chatId,userId);
+ if(/mid|tid|so the/.test(q)&&/can gui|co can|phai gui|can cung cap|can doc/.test(q))return 'MID/TID và số thẻ không cần chia sẻ trong nhóm; CS/OPS tự tra cứu qua kênh được phép. Chỉ tên cửa hàng/chi nhánh tối thiểu khi anh/chị đã đồng ý chuyển hỗ trợ.';
  if(/^\/ticket\b/i.test(raw))return createTicket(raw.slice(7));
- if(process.env.QH_V12_ENABLED==='true'&&/(rut lai|thu hoi|huy.*(?:dong y|yeu cau.*chuyen)|(?:khong|dung|thoi khoi|ngung).*gui)/.test(q)){escalation.delete(k);pendingHandover.delete(k);v11.clear(chatId,userId);return 'Em đã dừng và thu hồi đồng ý; chưa chuyển yêu cầu mới và không tiếp tục thu thập thông tin cửa hàng.';}
- if(process.env.QH_V12_ENABLED==='true'&&/khong.*dong y|dung.*(?:hoi.*ops|chuyen)|ngung chuyen|khong chuyen|chua chuyen|chua cho phep.*(?:gui|chuyen)|(?:dia chi|ten cua hang).*(?:chua muon|khong muon|khong cung cap)/.test(q)){escalation.delete(k);pendingHandover.delete(k);try{const refusal=v12Module?.reply(chatId,userId,raw);if(typeof refusal==='string'&&refusal.trim())return refusal;}catch{v11.clear(chatId,userId);}return 'Em chưa chuyển yêu cầu và tôn trọng việc chưa cung cấp thông tin.';}
+ if(expertEnabled()&&/(rut lai|thu hoi|huy.*(?:dong y|yeu cau.*chuyen)|(?:khong|dung|thoi khoi|ngung).*gui)/.test(q)){escalation.delete(k);pendingHandover.delete(k);try{v12Module?.revokeConsent(chatId,userId);}catch{v11.clear(chatId,userId);}return 'Em đã dừng và thu hồi đồng ý; chưa chuyển yêu cầu mới và không tiếp tục thu thập thông tin cửa hàng.';}
+ if(/khong.*dong y|dung.*(?:hoi.*ops|chuyen)|ngung chuyen|khong chuyen|chua chuyen|chua cho phep.*(?:gui|chuyen)|(?:dia chi|ten cua hang).*(?:chua muon|khong muon|khong cung cap)/.test(q)){escalation.delete(k);pendingHandover.delete(k);try{const refusal=expertEnabled()?v12Module?.reply(chatId,userId,raw):null;if(typeof refusal==='string'&&refusal.trim())return refusal;}catch{v11.clear(chatId,userId);}return 'Em chưa chuyển yêu cầu và không chuyển khi chưa có đồng ý; em tôn trọng việc chưa cung cấp thông tin.';}
+ if((/["“”]/.test(raw)||/\b(?:neu|gia su|vi du|ke lai)\b/.test(q))&&/dong y|chuyen.*ops|chua cung cap.*ten cua hang/.test(q)){
+  pendingHandover.delete(k);escalation.delete(k);try{v12Module?.interruptSocial(chatId,userId);}catch{}
+  return 'Em chưa coi câu trích dẫn hoặc giả định là đồng ý hay thông tin cửa hàng thực tế; chưa ghi tên cửa hàng từ ví dụ.'+safetyAdvice(raw,chatId,userId);
+ }
+ if(/ops|nhan vien ho tro|nguoi phu trach/.test(q)&&/toi dong y chuyen yeu cau/.test(q)&&!/(?:khong|chua|dung).*dong y/.test(q))return offerEscalation(k,'Khách chủ động đề nghị nhân viên hỗ trợ về sự cố hiện tại',true);
+ // Social turns precede every mutable collector and diagnostic engine.
+ let social=socialIntent(raw);
+ if(social==='decline'&&!socialTurns.has(k))social=null;
+ if(social){
+  socialTurns.delete(k);socialTurns.set(k,now());while(socialTurns.size>MAX_SESSIONS)socialTurns.delete(socialTurns.keys().next().value);
+  const old=sessions.get(k);let expertContext=moduleContextV12(chatId,userId);
+  if(!expertContext&&process.env.QH_V11_ENABLED==='true')try{expertContext=v11Module?.getContext(chatId,userId);}catch{}
+  const paymentPending=expertContext?.pendingVerification||old?.kind==='payment'||old?.stage==='payment'||old?.stage==='payment_check'||old?.stage==='risk';
+  const collecting=escalation.get(k);
+  if(social==='decline'||!collecting||!['name','address'].includes(collecting.step))escalation.delete(k);
+  else {collecting.paused=true;collecting.time=now();}
+  pendingHandover.delete(k);
+  try{v12Module?.interruptSocial(chatId,userId);}catch{}
+  // Legacy memory stays intact; a later incident answer resumes the same check.
+  markWelcomed(k);
+  const warning=paymentPending?' Giao dịch trước vẫn chưa xác minh trên POS/Portal; mình chưa thu tiền hay thanh toán lại nhé.':'';
+  if(social==='greeting')return 'Dạ, em chào anh/chị! Em là Quỳnh Hương. Anh/chị cần hỗ trợ gì ạ?'+warning;
+  if(social==='introduction'||social==='capability')return 'Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ kiểm tra máy in, mạng, QR, thẻ và Merchant Portal; kết quả giao dịch cần đối chiếu trên POS/Portal, em không tự xác nhận trạng thái tiền. Anh/chị cần hỗ trợ phần nào ạ?'+warning;
+  if(social==='thanks'||social==='compliment')return 'Dạ, em cảm ơn anh/chị. Khi cần hỗ trợ thêm, anh/chị cứ nhắn em nhé.'+warning;
+  return 'Dạ, khi nào cần hỗ trợ anh/chị cứ nhắn em nhé. Em không chuyển yêu cầu hay thu thập thông tin cửa hàng từ câu trả lời này.'+warning;
+ }
+ if(socialTurns.has(k)&&/^(co|vang|yes|ok|oke|dong y)$/.test(q))return 'Anh/chị muốn tiếp tục kiểm tra sự cố hay hỗ trợ phần nào ạ? Em chưa coi câu trả lời này là đồng ý chuyển yêu cầu.';
+ const paused=escalation.get(k);
+ if(paused?.paused){
+  const field=paused.step==='name'?/^cua hang\b/.test(q):looksAddress(q);
+  if(field||/^dong y chuyen (?:ops|cs|cs ops)$/.test(q)){paused.paused=false;socialTurns.delete(k);if(!field)return paused.step==='name'?'Anh/chị cho em tên cửa hàng để tiếp tục yêu cầu đã đồng ý nhé.':'Anh/chị cho em địa chỉ hoặc tên chi nhánh để tiếp tục yêu cầu đã đồng ý nhé.';}
+  else {
+   try{if(v12Module?.shouldInterrupt(chatId,userId,raw)){escalation.delete(k);pendingHandover.delete(k);}}catch{}
+   if(escalation.get(k)?.paused)return 'Em đang tạm dừng phần thông tin hỗ trợ. Anh/chị có thể mô tả sự cố hoặc xác nhận rõ muốn tiếp tục; em chưa chuyển yêu cầu.';
+  }
+ }
+ socialTurns.delete(k);
+ // Explicit incidents interrupt consented field collection in every runtime mode.
+ let collectionInterrupted=false;
+ if(escalation.has(k)){try{if(v12Module?.shouldInterrupt(chatId,userId,raw)){collectionInterrupted=true;escalation.delete(k);pendingHandover.delete(k);}}catch{}}
  // Resolution/closure must preempt pending handover and all diagnostic modules.
  if(!/^\//.test(raw) && /^(binh thuong roi|may binh thuong roi|chay binh thuong roi|on roi|ok roi em|ok roi|het loi roi|in duoc roi|duoc roi|da xu ly xong|khong can ho tro nua)( em| anh)?$/.test(q)){
-   escalation.delete(k);pendingHandover.delete(k);sessions.delete(k);v12.clear(chatId,userId);
+   socialTurns.delete(k);escalation.delete(k);pendingHandover.delete(k);sessions.delete(k);v12.clear(chatId,userId);
    if(v11Enabled()&&v11.hasSession(chatId,userId)){try{const closed=v11.reply(chatId,userId,raw);if(typeof closed==='string'&&closed.trim())return closed;}catch{v11.clear(chatId,userId);}}
    v11.clear(chatId,userId);
    return 'Dạ tốt rồi anh! Em ghi nhận sự cố đã được xử lý. Nếu cần hỗ trợ thêm, anh cứ nhắn em nhé.';
@@ -146,10 +194,13 @@ function processMessage(chatId,userId,input,options={}){
    v11.clear(chatId,userId);
   }
  }else{v11.clear(chatId,userId);}
- if(escalation.has(k)){const result=escalationReply(k,raw,q);if(result!==undefined)return result;}
+ if(escalation.has(k)&&!escalation.get(k).paused){const result=escalationReply(k,raw,q);if(result!==undefined)return result;}
+ // A concrete blank-print symptom needs paper diagnostics, not an unknown-issue handover.
+ if(!v11Enabled()&&(collectionInterrupted||sessions.get(k)?.kind==='payment')&&/giay trang|ra trang|trang khong (?:co )?chu/.test(q)&&/in|bill|hoa don|giay/.test(q))return 'Giấy vẫn chạy nhưng ra trắng: kiểm tra đúng giấy nhiệt, chiều lắp giấy, mặt in và nắp máy theo hướng dẫn dòng máy. Không tự tháo đầu in. Nếu vừa thanh toán, kiểm tra POS/Portal; chưa thu tiền lại chỉ vì thiếu hóa đơn.';
  // Expand only engine input; retain original merchant names/addresses above.
  const current=sessions.get(k);
  const engineInput=language.normalize(raw,{issue:current?.issue||current?.kind||null,stage:current?'question':null}).text;
+ if(!v11Enabled()&&current?.kind==='payment'&&/^dong y chuyen (?:ops|cs|cs ops)$/.test(q))return offerEscalation(k,'Giao dịch trước chưa xác minh; khách chủ động đồng ý chuyển hỗ trợ',true);
  // Payment uncertainty precedes device troubleshooting, including an active printer session.
  if(!/^\//.test(raw)&&conversation.isPaymentUncertain(engineInput)){const paymentReply=conversation.reply(chatId,userId,engineInput);if(paymentReply)return paymentReply;}
  if(!/^\/(ticket|help|trogiup|huy|done|reset|lai|restart)/i.test(raw)){const r12=v12.reply(chatId,userId,engineInput);if(r12&&typeof r12==='object'&&r12.handover)return offerEscalation(k,r12.issue,true);if(r12)return r12;}
@@ -200,4 +251,4 @@ if(isCompliment(raw)){markWelcomed(k);return vary(k,'compliment',['Em cảm ơn 
 }
 function getPendingHandover(chat,user){const k=key(chat,user),pending=pendingHandover.get(k);if(pending&&now()-pending.time>ESC_TTL){pendingHandover.delete(k);escalation.delete(k);return null;}return pending||null;}
 function markHandoverDone(chat,user){pendingHandover.delete(key(chat,user));}
-module.exports={shouldRespondV12,v12Context:(chat,user)=>{if(process.env.QH_V12_ENABLED!=='true')return null;try{return v12Module?.getContext(chat,user)||null;}catch{return null;}},shouldRespondV11,v11Context:(chat,user)=>v11Enabled()?v11.getContext(chat,user):null,getPendingHandover,markHandoverDone,processMessage,hasSession,sessionInfo,norm,closing,greetingOnly,createTicket,hasEscalation:(chat,user)=>{const e=escalation.get(key(chat,user));return !!e&&now()-e.time<ESC_TTL;}};
+module.exports={hasSocialSession:(chat,user)=>{const time=socialTurns.get(key(chat,user));return typeof time==='number'&&now()-time<TTL;},shouldRespondV13,v13Context:(chat,user)=>{if(process.env.QH_V13_ENABLED!=='true')return null;return moduleContextV12(chat,user);},shouldRespondV12,v12Context:(chat,user)=>{if(!expertEnabled())return null;try{return v12Module?.getContext(chat,user)||null;}catch{return null;}},shouldRespondV11,v11Context:(chat,user)=>v11Enabled()?v11.getContext(chat,user):null,getPendingHandover,markHandoverDone,processMessage,hasSession,sessionInfo,norm,closing,greetingOnly,createTicket,hasEscalation:(chat,user)=>{const e=escalation.get(key(chat,user));return !!e&&!e.paused&&now()-e.time<ESC_TTL;}};

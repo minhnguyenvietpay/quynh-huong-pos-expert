@@ -1,0 +1,23 @@
+{
+  "syntheticOnly": true,
+  "externalReview": false,
+  "review": "QA actual-response spot review after frozen contracts passed found stale printer resume.",
+  "test": "tests/v13-response-review.test.cjs",
+  "sha256": "5591c2746858c1aee86c5049d906ec0b035ce908e91e3fe2b0ad45b78373fca6",
+  "testAuthoredAfterFix": true,
+  "baselineReplay": {
+    "runtimeCommit": "257e03e",
+    "passed": 0,
+    "total": 1,
+    "actualTopic": "printer",
+    "expectedTopic": "debit"
+  },
+  "afterReplay": {
+    "passed": 1,
+    "total": 1,
+    "actualTopic": "debit",
+    "pendingVerification": true
+  },
+  "frozenRoundAssertionsChanged": false,
+  "limitation": "This focused regression was written after the scoped fix, then replayed against the immutable pre-round runtime. It is not a holdout or independent ground truth."
+}

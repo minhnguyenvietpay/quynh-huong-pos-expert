@@ -1,0 +1,866 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "v13-round1.0.0",
+  "engine": "default",
+  "syntheticOnly": true,
+  "mode": "default",
+  "contractReview": "separate_development_agents_only",
+  "reviewStatus": "ai_authored_unreviewed",
+  "independentQualityGate": "blocked_no_independent_review",
+  "total": 18,
+  "passed": 18,
+  "failed": 0,
+  "rootCauses": {
+    "introduction-decline": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "capabilities-open": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "identity-short": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "thanks-reopen-printer": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "printer-thanks-unresolved": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "consent-greeting": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "consent-introduction": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "name-introduction": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "name-capabilities": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "name-new-printer": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "address-greeting": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "address-capabilities": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "address-new-network": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "prepared-introduction": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "prepared-new-printer": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "consent-withdraw-social": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "name-literal-store-control": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "greeting-payment-mixed": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    }
+  },
+  "failures": [],
+  "rows": [
+    {
+      "id": "r1-introduction-decline",
+      "fixtureId": "r1-introduction-decline",
+      "category": "conversation",
+      "rootCause": "introduction-decline",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "@Quỳnh Hương hi em",
+          "actual": "Dạ, em chào anh/chị! Em là Quỳnh Hương. Anh/chị cần hỗ trợ gì ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "@Quỳnh Hương em giới thiệu đi",
+          "actual": "Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ kiểm tra máy in, mạng, QR, thẻ và Merchant Portal; kết quả giao dịch cần đối chiếu trên POS/Portal, em không tự xác nhận trạng thái tiền. Anh/chị cần hỗ trợ phần nào ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Không",
+          "actual": "Dạ, khi nào cần hỗ trợ anh/chị cứ nhắn em nhé. Em không chuyển yêu cầu hay thu thập thông tin cửa hàng từ câu trả lời này.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-capabilities-open",
+      "fixtureId": "r1-capabilities-open",
+      "category": "conversation",
+      "rootCause": "capabilities-open",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Chào Quỳnh Hương",
+          "actual": "Dạ, em chào anh/chị! Em là Quỳnh Hương. Anh/chị cần hỗ trợ gì ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Em hỗ trợ được những việc gì?",
+          "actual": "Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ kiểm tra máy in, mạng, QR, thẻ và Merchant Portal; kết quả giao dịch cần đối chiếu trên POS/Portal, em không tự xác nhận trạng thái tiền. Anh/chị cần hỗ trợ phần nào ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Chị chưa có sự cố, hỏi để biết thôi",
+          "actual": "Dạ, khi nào cần hỗ trợ anh/chị cứ nhắn em nhé. Em không chuyển yêu cầu hay thu thập thông tin cửa hàng từ câu trả lời này.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-identity-short",
+      "fixtureId": "r1-identity-short",
+      "category": "conversation",
+      "rootCause": "identity-short",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "alo em",
+          "actual": "Dạ, em chào anh/chị! Em là Quỳnh Hương. Anh/chị cần hỗ trợ gì ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "em là ai vậy",
+          "actual": "Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ kiểm tra máy in, mạng, QR, thẻ và Merchant Portal; kết quả giao dịch cần đối chiếu trên POS/Portal, em không tự xác nhận trạng thái tiền. Anh/chị cần hỗ trợ phần nào ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "ok cảm ơn em",
+          "actual": "Dạ, em cảm ơn anh/chị. Khi cần hỗ trợ thêm, anh/chị cứ nhắn em nhé.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-thanks-reopen-printer",
+      "fixtureId": "r1-thanks-reopen-printer",
+      "category": "printer",
+      "rootCause": "thanks-reopen-printer",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Chào em",
+          "actual": "Dạ, em chào anh/chị! Em là Quỳnh Hương. Anh/chị cần hỗ trợ gì ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "cảm ơn nha",
+          "actual": "Dạ, em cảm ơn anh/chị. Khi cần hỗ trợ thêm, anh/chị cứ nhắn em nhé.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "À máy POS không in bill, giấy không chạy ra",
+          "actual": "Dạ anh, em hỗ trợ lỗi máy không in hóa đơn nhé. Anh kiểm tra cuộn giấy nhiệt lắp đúng chiều và nắp máy đã đóng kín chưa ạ? Nếu vừa thanh toán, mình kiểm tra trạng thái giao dịch trước; không thu tiền lại chỉ vì chưa in được hóa đơn nhé anh. Anh thử rồi báo em kết quả nhé.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-printer-thanks-unresolved",
+      "fixtureId": "r1-printer-thanks-unresolved",
+      "category": "printer",
+      "rootCause": "printer-thanks-unresolved",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Máy POS không in bill",
+          "actual": "Dạ anh, em hỗ trợ lỗi máy không in hóa đơn nhé. Anh kiểm tra cuộn giấy nhiệt lắp đúng chiều và nắp máy đã đóng kín chưa ạ? Nếu vừa thanh toán, mình kiểm tra trạng thái giao dịch trước; không thu tiền lại chỉ vì chưa in được hóa đơn nhé anh. Anh thử rồi báo em kết quả nhé.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Cảm ơn, nhưng giấy vẫn không chạy ra",
+          "actual": "Dạ anh, em ghi nhận đã kiểm tra giấy và nắp máy nhưng vẫn chưa in được. Em không yêu cầu anh thử lặp lại. Giấy có chạy ra nhưng trắng không có chữ, hay không đẩy giấy ra ạ?",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-consent-greeting",
+      "fixtureId": "r1-consent-greeting",
+      "category": "conversation",
+      "rootCause": "consent-greeting",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Dạ anh/chị, thông tin khách đã chuyển khoản hoặc nhận thông báo trừ tiền chưa đủ để xác nhận kết quả giao dịch. Mình chưa yêu cầu khách thanh toán lại hoặc khởi động máy khi giao dịch còn đang xử lý nhé. Anh/chị kiểm tra lịch sử trên POS và Merchant Portal nếu truy cập được, đúng thời điểm và số tiền. Giao dịch có hiển thị ở đâu không ạ?",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Chào em, chị quay lại rồi",
+          "actual": "Dạ, em chào anh/chị! Em là Quỳnh Hương. Anh/chị cần hỗ trợ gì ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-consent-introduction",
+      "fixtureId": "r1-consent-introduction",
+      "category": "conversation",
+      "rootCause": "consent-introduction",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Dạ anh/chị, thông tin khách đã chuyển khoản hoặc nhận thông báo trừ tiền chưa đủ để xác nhận kết quả giao dịch. Mình chưa yêu cầu khách thanh toán lại hoặc khởi động máy khi giao dịch còn đang xử lý nhé. Anh/chị kiểm tra lịch sử trên POS và Merchant Portal nếu truy cập được, đúng thời điểm và số tiền. Giao dịch có hiển thị ở đâu không ạ?",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Khoan, em giới thiệu về em đi",
+          "actual": "Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ kiểm tra máy in, mạng, QR, thẻ và Merchant Portal; kết quả giao dịch cần đối chiếu trên POS/Portal, em không tự xác nhận trạng thái tiền. Anh/chị cần hỗ trợ phần nào ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Không",
+          "actual": "Dạ, khi nào cần hỗ trợ anh/chị cứ nhắn em nhé. Em không chuyển yêu cầu hay thu thập thông tin cửa hàng từ câu trả lời này.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-name-introduction",
+      "fixtureId": "r1-name-introduction",
+      "category": "conversation",
+      "rootCause": "name-introduction",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Dạ anh/chị, thông tin khách đã chuyển khoản hoặc nhận thông báo trừ tiền chưa đủ để xác nhận kết quả giao dịch. Mình chưa yêu cầu khách thanh toán lại hoặc khởi động máy khi giao dịch còn đang xử lý nhé. Anh/chị kiểm tra lịch sử trên POS và Merchant Portal nếu truy cập được, đúng thời điểm và số tiền. Giao dịch có hiển thị ở đâu không ạ?",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Anh/chị cho em xin tên cửa hàng để ghi vào yêu cầu hỗ trợ nhé.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "em giới thiệu đi",
+          "actual": "Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ kiểm tra máy in, mạng, QR, thẻ và Merchant Portal; kết quả giao dịch cần đối chiếu trên POS/Portal, em không tự xác nhận trạng thái tiền. Anh/chị cần hỗ trợ phần nào ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-name-capabilities",
+      "fixtureId": "r1-name-capabilities",
+      "category": "conversation",
+      "rootCause": "name-capabilities",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Dạ anh/chị, thông tin khách đã chuyển khoản hoặc nhận thông báo trừ tiền chưa đủ để xác nhận kết quả giao dịch. Mình chưa yêu cầu khách thanh toán lại hoặc khởi động máy khi giao dịch còn đang xử lý nhé. Anh/chị kiểm tra lịch sử trên POS và Merchant Portal nếu truy cập được, đúng thời điểm và số tiền. Giao dịch có hiển thị ở đâu không ạ?",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Anh/chị cho em xin tên cửa hàng để ghi vào yêu cầu hỗ trợ nhé.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Em có thể hỗ trợ những gì?",
+          "actual": "Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ kiểm tra máy in, mạng, QR, thẻ và Merchant Portal; kết quả giao dịch cần đối chiếu trên POS/Portal, em không tự xác nhận trạng thái tiền. Anh/chị cần hỗ trợ phần nào ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-name-new-printer",
+      "fixtureId": "r1-name-new-printer",
+      "category": "printer",
+      "rootCause": "name-new-printer",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Dạ anh/chị, thông tin khách đã chuyển khoản hoặc nhận thông báo trừ tiền chưa đủ để xác nhận kết quả giao dịch. Mình chưa yêu cầu khách thanh toán lại hoặc khởi động máy khi giao dịch còn đang xử lý nhé. Anh/chị kiểm tra lịch sử trên POS và Merchant Portal nếu truy cập được, đúng thời điểm và số tiền. Giao dịch có hiển thị ở đâu không ạ?",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Anh/chị cho em xin tên cửa hàng để ghi vào yêu cầu hỗ trợ nhé.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Máy không in bill, giấy bị kẹt",
+          "actual": "Dạ anh, em hỗ trợ lỗi máy không in hóa đơn nhé. Anh kiểm tra cuộn giấy nhiệt lắp đúng chiều và nắp máy đã đóng kín chưa ạ? Nếu vừa thanh toán, mình kiểm tra trạng thái giao dịch trước; không thu tiền lại chỉ vì chưa in được hóa đơn nhé anh. Anh thử rồi báo em kết quả nhé.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-address-greeting",
+      "fixtureId": "r1-address-greeting",
+      "category": "conversation",
+      "rootCause": "address-greeting",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Dạ anh/chị, thông tin khách đã chuyển khoản hoặc nhận thông báo trừ tiền chưa đủ để xác nhận kết quả giao dịch. Mình chưa yêu cầu khách thanh toán lại hoặc khởi động máy khi giao dịch còn đang xử lý nhé. Anh/chị kiểm tra lịch sử trên POS và Merchant Portal nếu truy cập được, đúng thời điểm và số tiền. Giao dịch có hiển thị ở đâu không ạ?",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Anh/chị cho em xin tên cửa hàng để ghi vào yêu cầu hỗ trợ nhé.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Cửa hàng Giả Lập Hoa Giấy",
+          "actual": "Cửa hàng ở địa chỉ nào ạ? Anh/chị cho em địa chỉ hoặc tên chi nhánh để CS/OPS xác định đúng nơi.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "hi em",
+          "actual": "Dạ, em chào anh/chị! Em là Quỳnh Hương. Anh/chị cần hỗ trợ gì ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-address-capabilities",
+      "fixtureId": "r1-address-capabilities",
+      "category": "conversation",
+      "rootCause": "address-capabilities",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Dạ anh/chị, thông tin khách đã chuyển khoản hoặc nhận thông báo trừ tiền chưa đủ để xác nhận kết quả giao dịch. Mình chưa yêu cầu khách thanh toán lại hoặc khởi động máy khi giao dịch còn đang xử lý nhé. Anh/chị kiểm tra lịch sử trên POS và Merchant Portal nếu truy cập được, đúng thời điểm và số tiền. Giao dịch có hiển thị ở đâu không ạ?",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Anh/chị cho em xin tên cửa hàng để ghi vào yêu cầu hỗ trợ nhé.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Cửa hàng Giả Lập Hoa Giấy",
+          "actual": "Cửa hàng ở địa chỉ nào ạ? Anh/chị cho em địa chỉ hoặc tên chi nhánh để CS/OPS xác định đúng nơi.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Em hỗ trợ được lỗi nào?",
+          "actual": "Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ kiểm tra máy in, mạng, QR, thẻ và Merchant Portal; kết quả giao dịch cần đối chiếu trên POS/Portal, em không tự xác nhận trạng thái tiền. Anh/chị cần hỗ trợ phần nào ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-address-new-network",
+      "fixtureId": "r1-address-new-network",
+      "category": "network",
+      "rootCause": "address-new-network",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Dạ anh/chị, thông tin khách đã chuyển khoản hoặc nhận thông báo trừ tiền chưa đủ để xác nhận kết quả giao dịch. Mình chưa yêu cầu khách thanh toán lại hoặc khởi động máy khi giao dịch còn đang xử lý nhé. Anh/chị kiểm tra lịch sử trên POS và Merchant Portal nếu truy cập được, đúng thời điểm và số tiền. Giao dịch có hiển thị ở đâu không ạ?",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Anh/chị cho em xin tên cửa hàng để ghi vào yêu cầu hỗ trợ nhé.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Cửa hàng Giả Lập Hoa Giấy",
+          "actual": "Cửa hàng ở địa chỉ nào ạ? Anh/chị cho em địa chỉ hoặc tên chi nhánh để CS/OPS xác định đúng nơi.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Giờ máy mất mạng WiFi, điện thoại cũng không vào mạng được",
+          "actual": "Dạ anh, mình kiểm tra kết nối trước nhé. Máy đang dùng Wi-Fi hay SIM/4G ạ? Nếu có giao dịch đang xử lý, anh chưa thanh toán lại cho đến khi kiểm tra được kết quả.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-prepared-introduction",
+      "fixtureId": "r1-prepared-introduction",
+      "category": "conversation",
+      "rootCause": "prepared-introduction",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Dạ anh/chị, thông tin khách đã chuyển khoản hoặc nhận thông báo trừ tiền chưa đủ để xác nhận kết quả giao dịch. Mình chưa yêu cầu khách thanh toán lại hoặc khởi động máy khi giao dịch còn đang xử lý nhé. Anh/chị kiểm tra lịch sử trên POS và Merchant Portal nếu truy cập được, đúng thời điểm và số tiền. Giao dịch có hiển thị ở đâu không ạ?",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Anh/chị cho em xin tên cửa hàng để ghi vào yêu cầu hỗ trợ nhé.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Cửa hàng Giả Lập Hoa Giấy",
+          "actual": "Cửa hàng ở địa chỉ nào ạ? Anh/chị cho em địa chỉ hoặc tên chi nhánh để CS/OPS xác định đúng nơi.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "12 đường Mô Phỏng, khu Giả Lập",
+          "actual": "Em đã chuẩn bị yêu cầu hỗ trợ:\n\n🏪 Cửa hàng: Cửa hàng Giả Lập Hoa Giấy\n📍 Địa chỉ/chi nhánh: 12 đường Mô Phỏng, khu Giả Lập\n🔧 Sự cố: chưa rõ\n\nEm sẽ thông báo cho nhân viên hỗ trợ trong nhóm nếu xác định được đúng tài khoản Zalo của họ. Nếu không thể tag, em sẽ thông báo rõ để anh/chị liên hệ CS/OPS. Gõ “xong” để kết thúc.",
+          "context": null,
+          "session": false,
+          "pending": true,
+          "escalation": true
+        },
+        {
+          "input": "Em giới thiệu đi",
+          "actual": "Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ kiểm tra máy in, mạng, QR, thẻ và Merchant Portal; kết quả giao dịch cần đối chiếu trên POS/Portal, em không tự xác nhận trạng thái tiền. Anh/chị cần hỗ trợ phần nào ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-prepared-new-printer",
+      "fixtureId": "r1-prepared-new-printer",
+      "category": "printer",
+      "rootCause": "prepared-new-printer",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Dạ anh/chị, thông tin khách đã chuyển khoản hoặc nhận thông báo trừ tiền chưa đủ để xác nhận kết quả giao dịch. Mình chưa yêu cầu khách thanh toán lại hoặc khởi động máy khi giao dịch còn đang xử lý nhé. Anh/chị kiểm tra lịch sử trên POS và Merchant Portal nếu truy cập được, đúng thời điểm và số tiền. Giao dịch có hiển thị ở đâu không ạ?",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Anh/chị cho em xin tên cửa hàng để ghi vào yêu cầu hỗ trợ nhé.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Cửa hàng Giả Lập Hoa Giấy",
+          "actual": "Cửa hàng ở địa chỉ nào ạ? Anh/chị cho em địa chỉ hoặc tên chi nhánh để CS/OPS xác định đúng nơi.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "12 đường Mô Phỏng, khu Giả Lập",
+          "actual": "Em đã chuẩn bị yêu cầu hỗ trợ:\n\n🏪 Cửa hàng: Cửa hàng Giả Lập Hoa Giấy\n📍 Địa chỉ/chi nhánh: 12 đường Mô Phỏng, khu Giả Lập\n🔧 Sự cố: chưa rõ\n\nEm sẽ thông báo cho nhân viên hỗ trợ trong nhóm nếu xác định được đúng tài khoản Zalo của họ. Nếu không thể tag, em sẽ thông báo rõ để anh/chị liên hệ CS/OPS. Gõ “xong” để kết thúc.",
+          "context": null,
+          "session": false,
+          "pending": true,
+          "escalation": true
+        },
+        {
+          "input": "Máy in bill ra giấy trắng, giấy vẫn chạy",
+          "actual": "Giấy vẫn chạy nhưng ra trắng: kiểm tra đúng giấy nhiệt, chiều lắp giấy, mặt in và nắp máy theo hướng dẫn dòng máy. Không tự tháo đầu in. Nếu vừa thanh toán, kiểm tra POS/Portal; chưa thu tiền lại chỉ vì thiếu hóa đơn.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-consent-withdraw-social",
+      "fixtureId": "r1-consent-withdraw-social",
+      "category": "conversation",
+      "rootCause": "consent-withdraw-social",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Dạ anh/chị, thông tin khách đã chuyển khoản hoặc nhận thông báo trừ tiền chưa đủ để xác nhận kết quả giao dịch. Mình chưa yêu cầu khách thanh toán lại hoặc khởi động máy khi giao dịch còn đang xử lý nhé. Anh/chị kiểm tra lịch sử trên POS và Merchant Portal nếu truy cập được, đúng thời điểm và số tiền. Giao dịch có hiển thị ở đâu không ạ?",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Anh/chị cho em xin tên cửa hàng để ghi vào yêu cầu hỗ trợ nhé.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Không chuyển nữa, em giới thiệu đi",
+          "actual": "Em không chuyển yêu cầu và tôn trọng việc chưa cung cấp thông tin.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-name-literal-store-control",
+      "fixtureId": "r1-name-literal-store-control",
+      "category": "conversation",
+      "rootCause": "name-literal-store-control",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Dạ anh/chị, thông tin khách đã chuyển khoản hoặc nhận thông báo trừ tiền chưa đủ để xác nhận kết quả giao dịch. Mình chưa yêu cầu khách thanh toán lại hoặc khởi động máy khi giao dịch còn đang xử lý nhé. Anh/chị kiểm tra lịch sử trên POS và Merchant Portal nếu truy cập được, đúng thời điểm và số tiền. Giao dịch có hiển thị ở đâu không ạ?",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Anh/chị cho em xin tên cửa hàng để ghi vào yêu cầu hỗ trợ nhé.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Cửa hàng Giả Lập Xin Chào",
+          "actual": "Cửa hàng ở địa chỉ nào ạ? Anh/chị cho em địa chỉ hoặc tên chi nhánh để CS/OPS xác định đúng nơi.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "12 đường Mô Phỏng, khu Giả Lập",
+          "actual": "Em đã chuẩn bị yêu cầu hỗ trợ:\n\n🏪 Cửa hàng: Cửa hàng Giả Lập Xin Chào\n📍 Địa chỉ/chi nhánh: 12 đường Mô Phỏng, khu Giả Lập\n🔧 Sự cố: chưa rõ\n\nEm sẽ thông báo cho nhân viên hỗ trợ trong nhóm nếu xác định được đúng tài khoản Zalo của họ. Nếu không thể tag, em sẽ thông báo rõ để anh/chị liên hệ CS/OPS. Gõ “xong” để kết thúc.",
+          "context": null,
+          "session": false,
+          "pending": true,
+          "escalation": true
+        }
+      ]
+    },
+    {
+      "id": "r1-greeting-payment-mixed",
+      "fixtureId": "r1-greeting-payment-mixed",
+      "category": "conversation",
+      "rootCause": "greeting-payment-mixed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Hi em, khách báo bị trừ tiền mà POS báo lỗi, có quẹt lại không?",
+          "actual": "Dạ anh/chị, thông tin khách đã chuyển khoản hoặc nhận thông báo trừ tiền chưa đủ để xác nhận kết quả giao dịch. Mình chưa yêu cầu khách thanh toán lại hoặc khởi động máy khi giao dịch còn đang xử lý nhé. Anh/chị kiểm tra lịch sử trên POS và Merchant Portal nếu truy cập được, đúng thời điểm và số tiền. Giao dịch có hiển thị ở đâu không ạ?",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    }
+  ]
+}

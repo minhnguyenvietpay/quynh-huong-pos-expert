@@ -5,7 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "start": "node listener.mjs",
-    "test": "node --test tests/*.test.cjs",
+    "test": "node scripts/run-tests.cjs",
     "dashboard": "node dashboard-v85.js",
     "qa:responses": "node scripts/evaluate.cjs",
     "qa:language": "node qa-v43.js",
@@ -17,7 +17,8 @@
     "improve:plan": "node scripts/improve.cjs plan",
     "agents:roles": "node -e \"for(const r of require('./agents/roles.json'))console.log(r.id+': '+r.sandbox)\"",
     "qa:v11": "node scripts/v11-evaluate.cjs --fail-on-regression",
-    "qa:v12": "node --test tests/v12*.test.cjs tests/program-regression.test.cjs"
+    "qa:v12": "node scripts/run-tests.cjs v12",
+    "qa:v13": "node scripts/run-tests.cjs v13"
   },
   "dependencies": {
     "zca-js": "*"

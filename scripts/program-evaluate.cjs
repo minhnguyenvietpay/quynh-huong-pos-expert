@@ -19,7 +19,7 @@ function worker(root,dataset){
 }
 function evaluate({root=path.resolve(__dirname,'..'),datasetPath=path.resolve(__dirname,'../tests/fixtures/v12-stage1.json'),engine='v12'}={}){
  if(!['v11','v12'].includes(engine))throw Error('Engine must be v11 or v12');const dataset=validate(JSON.parse(fs.readFileSync(datasetPath,'utf8')));
- const child=cp.spawnSync(process.execPath,[__filename,'--worker',path.resolve(root),path.resolve(datasetPath)],{encoding:'utf8',timeout:60000,maxBuffer:16*1024*1024,env:{...process.env,QH_V11_ENABLED:engine==='v11'?'true':'false',QH_V12_ENABLED:engine==='v12'?'true':'false'}});
+ const child=cp.spawnSync(process.execPath,[__filename,'--worker',path.resolve(root),path.resolve(datasetPath)],{encoding:'utf8',timeout:60000,maxBuffer:16*1024*1024,env:{...process.env,QH_V13_ENABLED:'false',QH_V11_ENABLED:engine==='v11'?'true':'false',QH_V12_ENABLED:engine==='v12'?'true':'false'}});
  if(child.error||child.status!==0)throw Error('Program evaluation worker failed; runtime output suppressed');const runs=JSON.parse(child.stdout);
  const rows=dataset.fixtures.map(f=>{const run=runs.find(r=>r.id===f.id),last=run.turns.at(-1),issues=[];
   f.must.forEach((p,i)=>{if(!new RegExp(p,'iu').test(last.actual))issues.push('required_response_'+i);});

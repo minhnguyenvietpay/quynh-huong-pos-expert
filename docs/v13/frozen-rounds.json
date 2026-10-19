@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "provenance": "Synthetic independent development-role expectations; no external merchant or OPS ground-truth validation.",
+  "rounds": [
+    {
+      "round": 1,
+      "dataset": "tests/fixtures/v13-round1.json",
+      "sha256": "1948e180be9f623b72d6ab7b325d9377d368a92ab4852e50ebc35ba5e554c6ef",
+      "modes": [
+        "default",
+        "v12"
+      ],
+      "fixtures": 18,
+      "baselineCommit": "eefe224"
+    },
+    {
+      "round": 2,
+      "dataset": "tests/fixtures/v13-round2.json",
+      "sha256": "6f6e3595f0c8f73ba76cf0ff57c8b97c5c277a3dca56ab4306adfb965f669b86",
+      "modes": [
+        "v12"
+      ],
+      "fixtures": 16,
+      "baselineCommit": "9af7a17"
+    },
+    {
+      "round": 3,
+      "dataset": "tests/fixtures/v13-round3.json",
+      "sha256": "dadc700ad3410d05d31b8c9db000278d8a1861e3be7088d8c3e1e471e5167b03",
+      "modes": [
+        "v12"
+      ],
+      "fixtures": 18,
+      "baselineCommit": "40516c6",
+      "complementaryDefaultTests": {
+        "file": "tests/v13-legacy-payment.test.cjs",
+        "sha256": "0ea53793024cace7d8459343d1d8beeb949dec8f40eccfa13b3d7357ae2f7286",
+        "beforePassed": 0,
+        "total": 2
+      }
+    },
+    {
+      "round": 4,
+      "dataset": "tests/fixtures/v13-round4.json",
+      "sha256": "3fa70aa3e46d7cc4c5bf896e2ad1ed71d78d1b0b83a6cfc2343c24d2df0cb26d",
+      "modes": [
+        "v12"
+      ],
+      "fixtures": 18,
+      "baselineCommit": "2e1db67"
+    },
+    {
+      "round": 5,
+      "dataset": "tests/fixtures/v13-round5.json",
+      "sha256": "a8d174dc4036866c62c29f5e8f83242b609805bea10b477aac41109ff29ba1db",
+      "modes": [
+        "v12"
+      ],
+      "fixtures": 21,
+      "baselineCommit": "257e03e"
+    }
+  ],
+  "aliasModes": [
+    "v13"
+  ],
+  "aliasNote": "QH_V13_ENABLED exact true must use the same frozen expert contracts and produce the same response/state as QH_V12_ENABLED. Baseline modes remain unchanged."
+}

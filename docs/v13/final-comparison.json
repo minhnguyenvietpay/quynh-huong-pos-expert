@@ -1,0 +1,3424 @@
+{
+  "schemaVersion": 1,
+  "evaluator": "v13",
+  "syntheticOnly": true,
+  "reviewStatus": "ai_authored_unreviewed",
+  "independentQualityGate": "blocked_no_independent_review",
+  "scope": "Offline synthetic response contracts only; results do not establish production accuracy or deployment approval",
+  "comparisonBasis": "Same evaluator and exact frozen dataset bytes for every target revision; adjacent supplied versions compared in argument order",
+  "datasets": [
+    {
+      "path": "/workspace/quynh-huong-pos-expert/tests/fixtures/v13-round1.json",
+      "datasetVersion": "v13-round1.0.0",
+      "sha256": "1948e180be9f623b72d6ab7b325d9377d368a92ab4852e50ebc35ba5e554c6ef"
+    },
+    {
+      "path": "/workspace/quynh-huong-pos-expert/tests/fixtures/v13-round2.json",
+      "datasetVersion": "v13-round2.0.0",
+      "sha256": "6f6e3595f0c8f73ba76cf0ff57c8b97c5c277a3dca56ab4306adfb965f669b86"
+    },
+    {
+      "path": "/workspace/quynh-huong-pos-expert/tests/fixtures/v13-round3.json",
+      "datasetVersion": "v13-round3.0.0",
+      "sha256": "dadc700ad3410d05d31b8c9db000278d8a1861e3be7088d8c3e1e471e5167b03"
+    },
+    {
+      "path": "/workspace/quynh-huong-pos-expert/tests/fixtures/v13-round4.json",
+      "datasetVersion": "v13-round4.0.0",
+      "sha256": "3fa70aa3e46d7cc4c5bf896e2ad1ed71d78d1b0b83a6cfc2343c24d2df0cb26d"
+    },
+    {
+      "path": "/workspace/quynh-huong-pos-expert/tests/fixtures/v13-round5.json",
+      "datasetVersion": "v13-round5.0.0",
+      "sha256": "a8d174dc4036866c62c29f5e8f83242b609805bea10b477aac41109ff29ba1db"
+    }
+  ],
+  "versions": [
+    {
+      "label": "V12.2-main",
+      "ref": "eefe224",
+      "commit": "eefe2242975e82e06a306cc0ad69e0b49fa3aec5",
+      "engine": "v12",
+      "datasets": [
+        {
+          "datasetVersion": "v13-round1.0.0",
+          "sha256": "1948e180be9f623b72d6ab7b325d9377d368a92ab4852e50ebc35ba5e554c6ef",
+          "total": 18,
+          "passed": 8,
+          "failed": 10,
+          "rootCauses": {
+            "introduction-decline": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "capabilities-open": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "identity-short": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "thanks-reopen-printer": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "printer-thanks-unresolved": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "consent-greeting": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "consent-introduction": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "name-introduction": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "name-capabilities": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "name-new-printer": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "address-greeting": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "address-capabilities": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "address-new-network": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "prepared-introduction": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "prepared-new-printer": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "consent-withdraw-social": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "name-literal-store-control": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "greeting-payment-mixed": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            }
+          },
+          "failures": [
+            {
+              "id": "r1-introduction-decline",
+              "fixtureId": "r1-introduction-decline",
+              "category": "conversation",
+              "rootCause": "introduction-decline",
+              "issues": [
+                "turn_1_required_0",
+                "turn_1_forbidden_0",
+                "turn_2_required_0",
+                "turn_2_forbidden_0"
+              ]
+            },
+            {
+              "id": "r1-capabilities-open",
+              "fixtureId": "r1-capabilities-open",
+              "category": "conversation",
+              "rootCause": "capabilities-open",
+              "issues": [
+                "required_response_0",
+                "forbidden_response_0",
+                "state_escalation",
+                "turn_2_required_0",
+                "turn_2_required_1",
+                "turn_2_forbidden_0"
+              ]
+            },
+            {
+              "id": "r1-identity-short",
+              "fixtureId": "r1-identity-short",
+              "category": "conversation",
+              "rootCause": "identity-short",
+              "issues": [
+                "required_response_0",
+                "forbidden_response_0",
+                "state_escalation",
+                "turn_2_required_0",
+                "turn_2_forbidden_0"
+              ]
+            },
+            {
+              "id": "r1-consent-greeting",
+              "fixtureId": "r1-consent-greeting",
+              "category": "conversation",
+              "rootCause": "consent-greeting",
+              "issues": [
+                "forbidden_response_0"
+              ]
+            },
+            {
+              "id": "r1-consent-introduction",
+              "fixtureId": "r1-consent-introduction",
+              "category": "conversation",
+              "rootCause": "consent-introduction",
+              "issues": [
+                "turn_3_required_0",
+                "turn_3_forbidden_0"
+              ]
+            },
+            {
+              "id": "r1-name-introduction",
+              "fixtureId": "r1-name-introduction",
+              "category": "conversation",
+              "rootCause": "name-introduction",
+              "issues": [
+                "required_response_0",
+                "forbidden_response_0",
+                "state_escalation",
+                "state_context.consent"
+              ]
+            },
+            {
+              "id": "r1-name-capabilities",
+              "fixtureId": "r1-name-capabilities",
+              "category": "conversation",
+              "rootCause": "name-capabilities",
+              "issues": [
+                "required_response_0",
+                "required_response_1",
+                "forbidden_response_0",
+                "state_escalation",
+                "state_context.consent"
+              ]
+            },
+            {
+              "id": "r1-address-greeting",
+              "fixtureId": "r1-address-greeting",
+              "category": "conversation",
+              "rootCause": "address-greeting",
+              "issues": [
+                "required_response_0",
+                "state_pending",
+                "state_escalation",
+                "state_context.consent"
+              ]
+            },
+            {
+              "id": "r1-address-capabilities",
+              "fixtureId": "r1-address-capabilities",
+              "category": "conversation",
+              "rootCause": "address-capabilities",
+              "issues": [
+                "state_pending",
+                "state_escalation",
+                "state_context.consent"
+              ]
+            },
+            {
+              "id": "r1-prepared-introduction",
+              "fixtureId": "r1-prepared-introduction",
+              "category": "conversation",
+              "rootCause": "prepared-introduction",
+              "issues": [
+                "required_response_0",
+                "state_pending",
+                "state_escalation",
+                "state_context.consent"
+              ]
+            }
+          ],
+          "comparison": null,
+          "rows": [
+            {
+              "id": "r1-introduction-decline",
+              "fixtureId": "r1-introduction-decline",
+              "category": "conversation",
+              "rootCause": "introduction-decline",
+              "passed": false,
+              "issues": [
+                "turn_1_required_0",
+                "turn_1_forbidden_0",
+                "turn_2_required_0",
+                "turn_2_forbidden_0"
+              ]
+            },
+            {
+              "id": "r1-capabilities-open",
+              "fixtureId": "r1-capabilities-open",
+              "category": "conversation",
+              "rootCause": "capabilities-open",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "forbidden_response_0",
+                "state_escalation",
+                "turn_2_required_0",
+                "turn_2_required_1",
+                "turn_2_forbidden_0"
+              ]
+            },
+            {
+              "id": "r1-identity-short",
+              "fixtureId": "r1-identity-short",
+              "category": "conversation",
+              "rootCause": "identity-short",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "forbidden_response_0",
+                "state_escalation",
+                "turn_2_required_0",
+                "turn_2_forbidden_0"
+              ]
+            },
+            {
+              "id": "r1-thanks-reopen-printer",
+              "fixtureId": "r1-thanks-reopen-printer",
+              "category": "printer",
+              "rootCause": "thanks-reopen-printer",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-printer-thanks-unresolved",
+              "fixtureId": "r1-printer-thanks-unresolved",
+              "category": "printer",
+              "rootCause": "printer-thanks-unresolved",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-consent-greeting",
+              "fixtureId": "r1-consent-greeting",
+              "category": "conversation",
+              "rootCause": "consent-greeting",
+              "passed": false,
+              "issues": [
+                "forbidden_response_0"
+              ]
+            },
+            {
+              "id": "r1-consent-introduction",
+              "fixtureId": "r1-consent-introduction",
+              "category": "conversation",
+              "rootCause": "consent-introduction",
+              "passed": false,
+              "issues": [
+                "turn_3_required_0",
+                "turn_3_forbidden_0"
+              ]
+            },
+            {
+              "id": "r1-name-introduction",
+              "fixtureId": "r1-name-introduction",
+              "category": "conversation",
+              "rootCause": "name-introduction",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "forbidden_response_0",
+                "state_escalation",
+                "state_context.consent"
+              ]
+            },
+            {
+              "id": "r1-name-capabilities",
+              "fixtureId": "r1-name-capabilities",
+              "category": "conversation",
+              "rootCause": "name-capabilities",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_1",
+                "forbidden_response_0",
+                "state_escalation",
+                "state_context.consent"
+              ]
+            },
+            {
+              "id": "r1-name-new-printer",
+              "fixtureId": "r1-name-new-printer",
+              "category": "printer",
+              "rootCause": "name-new-printer",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-address-greeting",
+              "fixtureId": "r1-address-greeting",
+              "category": "conversation",
+              "rootCause": "address-greeting",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "state_pending",
+                "state_escalation",
+                "state_context.consent"
+              ]
+            },
+            {
+              "id": "r1-address-capabilities",
+              "fixtureId": "r1-address-capabilities",
+              "category": "conversation",
+              "rootCause": "address-capabilities",
+              "passed": false,
+              "issues": [
+                "state_pending",
+                "state_escalation",
+                "state_context.consent"
+              ]
+            },
+            {
+              "id": "r1-address-new-network",
+              "fixtureId": "r1-address-new-network",
+              "category": "network",
+              "rootCause": "address-new-network",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-prepared-introduction",
+              "fixtureId": "r1-prepared-introduction",
+              "category": "conversation",
+              "rootCause": "prepared-introduction",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "state_pending",
+                "state_escalation",
+                "state_context.consent"
+              ]
+            },
+            {
+              "id": "r1-prepared-new-printer",
+              "fixtureId": "r1-prepared-new-printer",
+              "category": "printer",
+              "rootCause": "prepared-new-printer",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-consent-withdraw-social",
+              "fixtureId": "r1-consent-withdraw-social",
+              "category": "conversation",
+              "rootCause": "consent-withdraw-social",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-name-literal-store-control",
+              "fixtureId": "r1-name-literal-store-control",
+              "category": "conversation",
+              "rootCause": "name-literal-store-control",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-greeting-payment-mixed",
+              "fixtureId": "r1-greeting-payment-mixed",
+              "category": "conversation",
+              "rootCause": "greeting-payment-mixed",
+              "passed": true,
+              "issues": []
+            }
+          ]
+        },
+        {
+          "datasetVersion": "v13-round2.0.0",
+          "sha256": "6f6e3595f0c8f73ba76cf0ff57c8b97c5c277a3dca56ab4306adfb965f669b86",
+          "total": 16,
+          "passed": 10,
+          "failed": 6,
+          "rootCauses": {
+            "paper-empty-not-blank": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "blank-correct-orientation": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "faint-after-correct-paper": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "jam-no-force": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "power-charge-known": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "power-irrelevant-step": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "wifi-to-sim-restored": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "sim-to-wifi-still-failed": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "router-restored-pos-failed": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "network-irrelevant-paper-check": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "printer-decline-continue": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "network-decline-continue": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "restart-success-new-printer": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "no-paper-action-yet": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "hazard-contradicts-printer": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "network-new-payment-risk": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            }
+          },
+          "failures": [
+            {
+              "id": "r2-faint-after-correct-paper",
+              "fixtureId": "r2-faint-after-correct-paper",
+              "category": "hardware",
+              "rootCause": "faint-after-correct-paper",
+              "issues": [
+                "required_response_0"
+              ]
+            },
+            {
+              "id": "r2-power-irrelevant-step",
+              "fixtureId": "r2-power-irrelevant-step",
+              "category": "hardware",
+              "rootCause": "power-irrelevant-step",
+              "issues": [
+                "required_response_0",
+                "forbidden_response_0"
+              ]
+            },
+            {
+              "id": "r2-router-restored-pos-failed",
+              "fixtureId": "r2-router-restored-pos-failed",
+              "category": "network",
+              "rootCause": "router-restored-pos-failed",
+              "issues": [
+                "required_response_0"
+              ]
+            },
+            {
+              "id": "r2-printer-decline-continue",
+              "fixtureId": "r2-printer-decline-continue",
+              "category": "hardware",
+              "rootCause": "printer-decline-continue",
+              "issues": [
+                "required_response_0",
+                "forbidden_response_0"
+              ]
+            },
+            {
+              "id": "r2-network-decline-continue",
+              "fixtureId": "r2-network-decline-continue",
+              "category": "network",
+              "rootCause": "network-decline-continue",
+              "issues": [
+                "required_response_0",
+                "forbidden_response_1"
+              ]
+            },
+            {
+              "id": "r2-restart-success-new-printer",
+              "fixtureId": "r2-restart-success-new-printer",
+              "category": "hardware",
+              "rootCause": "restart-success-new-printer",
+              "issues": [
+                "required_response_0",
+                "state_context.topic"
+              ]
+            }
+          ],
+          "comparison": null,
+          "rows": [
+            {
+              "id": "r2-paper-empty-not-blank",
+              "fixtureId": "r2-paper-empty-not-blank",
+              "category": "hardware",
+              "rootCause": "paper-empty-not-blank",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-blank-correct-orientation",
+              "fixtureId": "r2-blank-correct-orientation",
+              "category": "hardware",
+              "rootCause": "blank-correct-orientation",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-faint-after-correct-paper",
+              "fixtureId": "r2-faint-after-correct-paper",
+              "category": "hardware",
+              "rootCause": "faint-after-correct-paper",
+              "passed": false,
+              "issues": [
+                "required_response_0"
+              ]
+            },
+            {
+              "id": "r2-jam-no-force",
+              "fixtureId": "r2-jam-no-force",
+              "category": "hardware",
+              "rootCause": "jam-no-force",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-power-charge-known",
+              "fixtureId": "r2-power-charge-known",
+              "category": "hardware",
+              "rootCause": "power-charge-known",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-power-irrelevant-step",
+              "fixtureId": "r2-power-irrelevant-step",
+              "category": "hardware",
+              "rootCause": "power-irrelevant-step",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "forbidden_response_0"
+              ]
+            },
+            {
+              "id": "r2-wifi-to-sim-restored",
+              "fixtureId": "r2-wifi-to-sim-restored",
+              "category": "network",
+              "rootCause": "wifi-to-sim-restored",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-sim-to-wifi-still-failed",
+              "fixtureId": "r2-sim-to-wifi-still-failed",
+              "category": "network",
+              "rootCause": "sim-to-wifi-still-failed",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-router-restored-pos-failed",
+              "fixtureId": "r2-router-restored-pos-failed",
+              "category": "network",
+              "rootCause": "router-restored-pos-failed",
+              "passed": false,
+              "issues": [
+                "required_response_0"
+              ]
+            },
+            {
+              "id": "r2-network-irrelevant-paper-check",
+              "fixtureId": "r2-network-irrelevant-paper-check",
+              "category": "network",
+              "rootCause": "network-irrelevant-paper-check",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-printer-decline-continue",
+              "fixtureId": "r2-printer-decline-continue",
+              "category": "hardware",
+              "rootCause": "printer-decline-continue",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "forbidden_response_0"
+              ]
+            },
+            {
+              "id": "r2-network-decline-continue",
+              "fixtureId": "r2-network-decline-continue",
+              "category": "network",
+              "rootCause": "network-decline-continue",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "forbidden_response_1"
+              ]
+            },
+            {
+              "id": "r2-restart-success-new-printer",
+              "fixtureId": "r2-restart-success-new-printer",
+              "category": "hardware",
+              "rootCause": "restart-success-new-printer",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "state_context.topic"
+              ]
+            },
+            {
+              "id": "r2-no-paper-action-yet",
+              "fixtureId": "r2-no-paper-action-yet",
+              "category": "hardware",
+              "rootCause": "no-paper-action-yet",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-hazard-contradicts-printer",
+              "fixtureId": "r2-hazard-contradicts-printer",
+              "category": "hardware",
+              "rootCause": "hazard-contradicts-printer",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-network-new-payment-risk",
+              "fixtureId": "r2-network-new-payment-risk",
+              "category": "network",
+              "rootCause": "network-new-payment-risk",
+              "passed": true,
+              "issues": []
+            }
+          ]
+        },
+        {
+          "datasetVersion": "v13-round3.0.0",
+          "sha256": "dadc700ad3410d05d31b8c9db000278d8a1861e3be7088d8c3e1e471e5167b03",
+          "total": 18,
+          "passed": 7,
+          "failed": 11,
+          "rootCauses": {
+            "qr-scan-unconfirmed": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "card-declined-no-debit": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "declined-but-debited": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "duplicate-reported-charges": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "report-not-bank-verification": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "refund-void-literacy": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "reversal-not-refund-promise": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "settlement-time-unknown": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "pos-portal-contradiction": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "history-attempt-no-outcome": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "unknown-followup-context": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "settlement-unknown-followup": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "consent-polite-not-yes": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "consent-withdraw-after-name": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "payment-switch-printer": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "hardware-switch-payment": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "merchant-requests-midtid": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "paid-ai-transaction-authority": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            }
+          },
+          "failures": [
+            {
+              "id": "r3-card-declined-no-debit",
+              "fixtureId": "r3-card-declined-no-debit",
+              "category": "payment",
+              "rootCause": "card-declined-no-debit",
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r3-report-not-bank-verification",
+              "fixtureId": "r3-report-not-bank-verification",
+              "category": "payment",
+              "rootCause": "report-not-bank-verification",
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r3-reversal-not-refund-promise",
+              "fixtureId": "r3-reversal-not-refund-promise",
+              "category": "payment",
+              "rootCause": "reversal-not-refund-promise",
+              "issues": [
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r3-pos-portal-contradiction",
+              "fixtureId": "r3-pos-portal-contradiction",
+              "category": "payment",
+              "rootCause": "pos-portal-contradiction",
+              "issues": [
+                "state_context.pendingVerification"
+              ]
+            },
+            {
+              "id": "r3-history-attempt-no-outcome",
+              "fixtureId": "r3-history-attempt-no-outcome",
+              "category": "payment",
+              "rootCause": "history-attempt-no-outcome",
+              "issues": [
+                "forbidden_response_1"
+              ]
+            },
+            {
+              "id": "r3-unknown-followup-context",
+              "fixtureId": "r3-unknown-followup-context",
+              "category": "payment",
+              "rootCause": "unknown-followup-context",
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r3-settlement-unknown-followup",
+              "fixtureId": "r3-settlement-unknown-followup",
+              "category": "payment",
+              "rootCause": "settlement-unknown-followup",
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r3-consent-withdraw-after-name",
+              "fixtureId": "r3-consent-withdraw-after-name",
+              "category": "payment",
+              "rootCause": "consent-withdraw-after-name",
+              "issues": [
+                "state_context.pendingVerification",
+                "state_context.consent"
+              ]
+            },
+            {
+              "id": "r3-payment-switch-printer",
+              "fixtureId": "r3-payment-switch-printer",
+              "category": "payment",
+              "rootCause": "payment-switch-printer",
+              "issues": [
+                "state_context.pendingVerification"
+              ]
+            },
+            {
+              "id": "r3-merchant-requests-midtid",
+              "fixtureId": "r3-merchant-requests-midtid",
+              "category": "payment",
+              "rootCause": "merchant-requests-midtid",
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r3-paid-ai-transaction-authority",
+              "fixtureId": "r3-paid-ai-transaction-authority",
+              "category": "payment",
+              "rootCause": "paid-ai-transaction-authority",
+              "issues": [
+                "required_response_0"
+              ]
+            }
+          ],
+          "comparison": null,
+          "rows": [
+            {
+              "id": "r3-qr-scan-unconfirmed",
+              "fixtureId": "r3-qr-scan-unconfirmed",
+              "category": "payment",
+              "rootCause": "qr-scan-unconfirmed",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-card-declined-no-debit",
+              "fixtureId": "r3-card-declined-no-debit",
+              "category": "payment",
+              "rootCause": "card-declined-no-debit",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r3-declined-but-debited",
+              "fixtureId": "r3-declined-but-debited",
+              "category": "payment",
+              "rootCause": "declined-but-debited",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-duplicate-reported-charges",
+              "fixtureId": "r3-duplicate-reported-charges",
+              "category": "payment",
+              "rootCause": "duplicate-reported-charges",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-report-not-bank-verification",
+              "fixtureId": "r3-report-not-bank-verification",
+              "category": "payment",
+              "rootCause": "report-not-bank-verification",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r3-refund-void-literacy",
+              "fixtureId": "r3-refund-void-literacy",
+              "category": "payment",
+              "rootCause": "refund-void-literacy",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-reversal-not-refund-promise",
+              "fixtureId": "r3-reversal-not-refund-promise",
+              "category": "payment",
+              "rootCause": "reversal-not-refund-promise",
+              "passed": false,
+              "issues": [
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r3-settlement-time-unknown",
+              "fixtureId": "r3-settlement-time-unknown",
+              "category": "payment",
+              "rootCause": "settlement-time-unknown",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-pos-portal-contradiction",
+              "fixtureId": "r3-pos-portal-contradiction",
+              "category": "payment",
+              "rootCause": "pos-portal-contradiction",
+              "passed": false,
+              "issues": [
+                "state_context.pendingVerification"
+              ]
+            },
+            {
+              "id": "r3-history-attempt-no-outcome",
+              "fixtureId": "r3-history-attempt-no-outcome",
+              "category": "payment",
+              "rootCause": "history-attempt-no-outcome",
+              "passed": false,
+              "issues": [
+                "forbidden_response_1"
+              ]
+            },
+            {
+              "id": "r3-unknown-followup-context",
+              "fixtureId": "r3-unknown-followup-context",
+              "category": "payment",
+              "rootCause": "unknown-followup-context",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r3-settlement-unknown-followup",
+              "fixtureId": "r3-settlement-unknown-followup",
+              "category": "payment",
+              "rootCause": "settlement-unknown-followup",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r3-consent-polite-not-yes",
+              "fixtureId": "r3-consent-polite-not-yes",
+              "category": "payment",
+              "rootCause": "consent-polite-not-yes",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-consent-withdraw-after-name",
+              "fixtureId": "r3-consent-withdraw-after-name",
+              "category": "payment",
+              "rootCause": "consent-withdraw-after-name",
+              "passed": false,
+              "issues": [
+                "state_context.pendingVerification",
+                "state_context.consent"
+              ]
+            },
+            {
+              "id": "r3-payment-switch-printer",
+              "fixtureId": "r3-payment-switch-printer",
+              "category": "payment",
+              "rootCause": "payment-switch-printer",
+              "passed": false,
+              "issues": [
+                "state_context.pendingVerification"
+              ]
+            },
+            {
+              "id": "r3-hardware-switch-payment",
+              "fixtureId": "r3-hardware-switch-payment",
+              "category": "payment",
+              "rootCause": "hardware-switch-payment",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-merchant-requests-midtid",
+              "fixtureId": "r3-merchant-requests-midtid",
+              "category": "payment",
+              "rootCause": "merchant-requests-midtid",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r3-paid-ai-transaction-authority",
+              "fixtureId": "r3-paid-ai-transaction-authority",
+              "category": "payment",
+              "rootCause": "paid-ai-transaction-authority",
+              "passed": false,
+              "issues": [
+                "required_response_0"
+              ]
+            }
+          ]
+        },
+        {
+          "datasetVersion": "v13-round4.0.0",
+          "sha256": "3fa70aa3e46d7cc4c5bf896e2ad1ed71d78d1b0b83a6cfc2343c24d2df0cb26d",
+          "total": 18,
+          "passed": 2,
+          "failed": 16,
+          "rootCauses": {
+            "new-cashier-card-use": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "new-cashier-qr-use": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "portal-login-no-password": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "portal-page-loading": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "report-wrong-date-range": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "multiple-branches-missing": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "device-filter-selection": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "source-compare-qr-card": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "reconciliation-neutral": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "receipt-copy-no-charge": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "receipt-missing-history": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "angry-human-explicit": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "angry-no-consent": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "capabilities-to-portal": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "report-filter-changed-still-missing": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "store-name-not-device-id": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "password-reset-not-done": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "cash-vs-settlement": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            }
+          },
+          "failures": [
+            {
+              "id": "r4-new-cashier-card-use",
+              "fixtureId": "r4-new-cashier-card-use",
+              "category": "merchant-operations",
+              "rootCause": "new-cashier-card-use",
+              "issues": [
+                "required_response_0"
+              ]
+            },
+            {
+              "id": "r4-portal-page-loading",
+              "fixtureId": "r4-portal-page-loading",
+              "category": "merchant-operations",
+              "rootCause": "portal-page-loading",
+              "issues": [
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r4-report-wrong-date-range",
+              "fixtureId": "r4-report-wrong-date-range",
+              "category": "merchant-operations",
+              "rootCause": "report-wrong-date-range",
+              "issues": [
+                "required_response_0"
+              ]
+            },
+            {
+              "id": "r4-multiple-branches-missing",
+              "fixtureId": "r4-multiple-branches-missing",
+              "category": "merchant-operations",
+              "rootCause": "multiple-branches-missing",
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r4-device-filter-selection",
+              "fixtureId": "r4-device-filter-selection",
+              "category": "merchant-operations",
+              "rootCause": "device-filter-selection",
+              "issues": [
+                "required_response_0"
+              ]
+            },
+            {
+              "id": "r4-source-compare-qr-card",
+              "fixtureId": "r4-source-compare-qr-card",
+              "category": "merchant-operations",
+              "rootCause": "source-compare-qr-card",
+              "issues": [
+                "required_response_0",
+                "required_response_2"
+              ]
+            },
+            {
+              "id": "r4-reconciliation-neutral",
+              "fixtureId": "r4-reconciliation-neutral",
+              "category": "merchant-operations",
+              "rootCause": "reconciliation-neutral",
+              "issues": [
+                "required_response_3"
+              ]
+            },
+            {
+              "id": "r4-receipt-copy-no-charge",
+              "fixtureId": "r4-receipt-copy-no-charge",
+              "category": "merchant-operations",
+              "rootCause": "receipt-copy-no-charge",
+              "issues": [
+                "required_response_0",
+                "required_response_2"
+              ]
+            },
+            {
+              "id": "r4-receipt-missing-history",
+              "fixtureId": "r4-receipt-missing-history",
+              "category": "merchant-operations",
+              "rootCause": "receipt-missing-history",
+              "issues": [
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r4-angry-human-explicit",
+              "fixtureId": "r4-angry-human-explicit",
+              "category": "merchant-operations",
+              "rootCause": "angry-human-explicit",
+              "issues": [
+                "required_response_0",
+                "required_response_1",
+                "state_escalation"
+              ]
+            },
+            {
+              "id": "r4-angry-no-consent",
+              "fixtureId": "r4-angry-no-consent",
+              "category": "merchant-operations",
+              "rootCause": "angry-no-consent",
+              "issues": [
+                "required_response_0"
+              ]
+            },
+            {
+              "id": "r4-capabilities-to-portal",
+              "fixtureId": "r4-capabilities-to-portal",
+              "category": "merchant-operations",
+              "rootCause": "capabilities-to-portal",
+              "issues": [
+                "required_response_0"
+              ]
+            },
+            {
+              "id": "r4-report-filter-changed-still-missing",
+              "fixtureId": "r4-report-filter-changed-still-missing",
+              "category": "merchant-operations",
+              "rootCause": "report-filter-changed-still-missing",
+              "issues": [
+                "required_response_0",
+                "required_response_1",
+                "state_context.pendingVerification"
+              ]
+            },
+            {
+              "id": "r4-store-name-not-device-id",
+              "fixtureId": "r4-store-name-not-device-id",
+              "category": "merchant-operations",
+              "rootCause": "store-name-not-device-id",
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r4-password-reset-not-done",
+              "fixtureId": "r4-password-reset-not-done",
+              "category": "merchant-operations",
+              "rootCause": "password-reset-not-done",
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r4-cash-vs-settlement",
+              "fixtureId": "r4-cash-vs-settlement",
+              "category": "merchant-operations",
+              "rootCause": "cash-vs-settlement",
+              "issues": [
+                "required_response_0",
+                "required_response_2"
+              ]
+            }
+          ],
+          "comparison": null,
+          "rows": [
+            {
+              "id": "r4-new-cashier-card-use",
+              "fixtureId": "r4-new-cashier-card-use",
+              "category": "merchant-operations",
+              "rootCause": "new-cashier-card-use",
+              "passed": false,
+              "issues": [
+                "required_response_0"
+              ]
+            },
+            {
+              "id": "r4-new-cashier-qr-use",
+              "fixtureId": "r4-new-cashier-qr-use",
+              "category": "merchant-operations",
+              "rootCause": "new-cashier-qr-use",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r4-portal-login-no-password",
+              "fixtureId": "r4-portal-login-no-password",
+              "category": "merchant-operations",
+              "rootCause": "portal-login-no-password",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r4-portal-page-loading",
+              "fixtureId": "r4-portal-page-loading",
+              "category": "merchant-operations",
+              "rootCause": "portal-page-loading",
+              "passed": false,
+              "issues": [
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r4-report-wrong-date-range",
+              "fixtureId": "r4-report-wrong-date-range",
+              "category": "merchant-operations",
+              "rootCause": "report-wrong-date-range",
+              "passed": false,
+              "issues": [
+                "required_response_0"
+              ]
+            },
+            {
+              "id": "r4-multiple-branches-missing",
+              "fixtureId": "r4-multiple-branches-missing",
+              "category": "merchant-operations",
+              "rootCause": "multiple-branches-missing",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r4-device-filter-selection",
+              "fixtureId": "r4-device-filter-selection",
+              "category": "merchant-operations",
+              "rootCause": "device-filter-selection",
+              "passed": false,
+              "issues": [
+                "required_response_0"
+              ]
+            },
+            {
+              "id": "r4-source-compare-qr-card",
+              "fixtureId": "r4-source-compare-qr-card",
+              "category": "merchant-operations",
+              "rootCause": "source-compare-qr-card",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_2"
+              ]
+            },
+            {
+              "id": "r4-reconciliation-neutral",
+              "fixtureId": "r4-reconciliation-neutral",
+              "category": "merchant-operations",
+              "rootCause": "reconciliation-neutral",
+              "passed": false,
+              "issues": [
+                "required_response_3"
+              ]
+            },
+            {
+              "id": "r4-receipt-copy-no-charge",
+              "fixtureId": "r4-receipt-copy-no-charge",
+              "category": "merchant-operations",
+              "rootCause": "receipt-copy-no-charge",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_2"
+              ]
+            },
+            {
+              "id": "r4-receipt-missing-history",
+              "fixtureId": "r4-receipt-missing-history",
+              "category": "merchant-operations",
+              "rootCause": "receipt-missing-history",
+              "passed": false,
+              "issues": [
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r4-angry-human-explicit",
+              "fixtureId": "r4-angry-human-explicit",
+              "category": "merchant-operations",
+              "rootCause": "angry-human-explicit",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_1",
+                "state_escalation"
+              ]
+            },
+            {
+              "id": "r4-angry-no-consent",
+              "fixtureId": "r4-angry-no-consent",
+              "category": "merchant-operations",
+              "rootCause": "angry-no-consent",
+              "passed": false,
+              "issues": [
+                "required_response_0"
+              ]
+            },
+            {
+              "id": "r4-capabilities-to-portal",
+              "fixtureId": "r4-capabilities-to-portal",
+              "category": "merchant-operations",
+              "rootCause": "capabilities-to-portal",
+              "passed": false,
+              "issues": [
+                "required_response_0"
+              ]
+            },
+            {
+              "id": "r4-report-filter-changed-still-missing",
+              "fixtureId": "r4-report-filter-changed-still-missing",
+              "category": "merchant-operations",
+              "rootCause": "report-filter-changed-still-missing",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_1",
+                "state_context.pendingVerification"
+              ]
+            },
+            {
+              "id": "r4-store-name-not-device-id",
+              "fixtureId": "r4-store-name-not-device-id",
+              "category": "merchant-operations",
+              "rootCause": "store-name-not-device-id",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r4-password-reset-not-done",
+              "fixtureId": "r4-password-reset-not-done",
+              "category": "merchant-operations",
+              "rootCause": "password-reset-not-done",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r4-cash-vs-settlement",
+              "fixtureId": "r4-cash-vs-settlement",
+              "category": "merchant-operations",
+              "rootCause": "cash-vs-settlement",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_2"
+              ]
+            }
+          ]
+        },
+        {
+          "datasetVersion": "v13-round5.0.0",
+          "sha256": "a8d174dc4036866c62c29f5e8f83242b609805bea10b477aac41109ff29ba1db",
+          "total": 21,
+          "passed": 6,
+          "failed": 15,
+          "rootCauses": {
+            "nested-payment-printer-network": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "nested-payment-hardware-fully-resolved": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "quoted-human-request": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "hypothetical-consent": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "negated-human-request": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "conflicting-consent-withdraw-last": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "withdraw-reconsent-ambiguous": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "social-payment-same-turn": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "thanks-not-payment-resolution": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "printer-repeated-failures": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "network-repeated-failures": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "slang-short-negative": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "slang-payment-unknown": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "source-correction": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "report-switch-not-settlement": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "large-message-after-financial-risk": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "hazard-secret-offer": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "negated-hazard-real-jam": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "store-name-quoted-consent": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "decline-new-risk-then-consent": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            },
+            "hypothetical-ops-real-hazard": {
+              "total": 1,
+              "passed": 0,
+              "failed": 1
+            }
+          },
+          "failures": [
+            {
+              "id": "r5-nested-payment-printer-network",
+              "fixtureId": "r5-nested-payment-printer-network",
+              "category": "adversarial",
+              "rootCause": "nested-payment-printer-network",
+              "issues": [
+                "state_context.pendingVerification"
+              ]
+            },
+            {
+              "id": "r5-nested-payment-hardware-fully-resolved",
+              "fixtureId": "r5-nested-payment-hardware-fully-resolved",
+              "category": "adversarial",
+              "rootCause": "nested-payment-hardware-fully-resolved",
+              "issues": [
+                "required_response_0",
+                "state_context.pendingVerification"
+              ]
+            },
+            {
+              "id": "r5-conflicting-consent-withdraw-last",
+              "fixtureId": "r5-conflicting-consent-withdraw-last",
+              "category": "adversarial",
+              "rootCause": "conflicting-consent-withdraw-last",
+              "issues": [
+                "state_context.pendingVerification",
+                "state_context.consent"
+              ]
+            },
+            {
+              "id": "r5-withdraw-reconsent-ambiguous",
+              "fixtureId": "r5-withdraw-reconsent-ambiguous",
+              "category": "adversarial",
+              "rootCause": "withdraw-reconsent-ambiguous",
+              "issues": [
+                "state_context.pendingVerification",
+                "state_context.consent"
+              ]
+            },
+            {
+              "id": "r5-printer-repeated-failures",
+              "fixtureId": "r5-printer-repeated-failures",
+              "category": "adversarial",
+              "rootCause": "printer-repeated-failures",
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r5-network-repeated-failures",
+              "fixtureId": "r5-network-repeated-failures",
+              "category": "adversarial",
+              "rootCause": "network-repeated-failures",
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r5-slang-short-negative",
+              "fixtureId": "r5-slang-short-negative",
+              "category": "adversarial",
+              "rootCause": "slang-short-negative",
+              "issues": [
+                "required_response_0",
+                "turn_2_required_0"
+              ]
+            },
+            {
+              "id": "r5-slang-payment-unknown",
+              "fixtureId": "r5-slang-payment-unknown",
+              "category": "adversarial",
+              "rootCause": "slang-payment-unknown",
+              "issues": [
+                "required_response_0",
+                "forbidden_response_1"
+              ]
+            },
+            {
+              "id": "r5-report-switch-not-settlement",
+              "fixtureId": "r5-report-switch-not-settlement",
+              "category": "adversarial",
+              "rootCause": "report-switch-not-settlement",
+              "issues": [
+                "required_response_0",
+                "required_response_1",
+                "required_response_2"
+              ]
+            },
+            {
+              "id": "r5-large-message-after-financial-risk",
+              "fixtureId": "r5-large-message-after-financial-risk",
+              "category": "adversarial",
+              "rootCause": "large-message-after-financial-risk",
+              "issues": [
+                "required_response_0",
+                "required_response_1",
+                "state_context.pendingVerification",
+                "turn_3_state_context.pendingVerification"
+              ]
+            },
+            {
+              "id": "r5-hazard-secret-offer",
+              "fixtureId": "r5-hazard-secret-offer",
+              "category": "adversarial",
+              "rootCause": "hazard-secret-offer",
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r5-negated-hazard-real-jam",
+              "fixtureId": "r5-negated-hazard-real-jam",
+              "category": "adversarial",
+              "rootCause": "negated-hazard-real-jam",
+              "issues": [
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r5-store-name-quoted-consent",
+              "fixtureId": "r5-store-name-quoted-consent",
+              "category": "adversarial",
+              "rootCause": "store-name-quoted-consent",
+              "issues": [
+                "required_response_0",
+                "forbidden_response_1"
+              ]
+            },
+            {
+              "id": "r5-decline-new-risk-then-consent",
+              "fixtureId": "r5-decline-new-risk-then-consent",
+              "category": "adversarial",
+              "rootCause": "decline-new-risk-then-consent",
+              "issues": [
+                "required_response_0",
+                "state_escalation"
+              ]
+            },
+            {
+              "id": "r5-hypothetical-ops-real-hazard",
+              "fixtureId": "r5-hypothetical-ops-real-hazard",
+              "category": "adversarial",
+              "rootCause": "hypothetical-ops-real-hazard",
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            }
+          ],
+          "comparison": null,
+          "rows": [
+            {
+              "id": "r5-nested-payment-printer-network",
+              "fixtureId": "r5-nested-payment-printer-network",
+              "category": "adversarial",
+              "rootCause": "nested-payment-printer-network",
+              "passed": false,
+              "issues": [
+                "state_context.pendingVerification"
+              ]
+            },
+            {
+              "id": "r5-nested-payment-hardware-fully-resolved",
+              "fixtureId": "r5-nested-payment-hardware-fully-resolved",
+              "category": "adversarial",
+              "rootCause": "nested-payment-hardware-fully-resolved",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "state_context.pendingVerification"
+              ]
+            },
+            {
+              "id": "r5-quoted-human-request",
+              "fixtureId": "r5-quoted-human-request",
+              "category": "adversarial",
+              "rootCause": "quoted-human-request",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-hypothetical-consent",
+              "fixtureId": "r5-hypothetical-consent",
+              "category": "adversarial",
+              "rootCause": "hypothetical-consent",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-negated-human-request",
+              "fixtureId": "r5-negated-human-request",
+              "category": "adversarial",
+              "rootCause": "negated-human-request",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-conflicting-consent-withdraw-last",
+              "fixtureId": "r5-conflicting-consent-withdraw-last",
+              "category": "adversarial",
+              "rootCause": "conflicting-consent-withdraw-last",
+              "passed": false,
+              "issues": [
+                "state_context.pendingVerification",
+                "state_context.consent"
+              ]
+            },
+            {
+              "id": "r5-withdraw-reconsent-ambiguous",
+              "fixtureId": "r5-withdraw-reconsent-ambiguous",
+              "category": "adversarial",
+              "rootCause": "withdraw-reconsent-ambiguous",
+              "passed": false,
+              "issues": [
+                "state_context.pendingVerification",
+                "state_context.consent"
+              ]
+            },
+            {
+              "id": "r5-social-payment-same-turn",
+              "fixtureId": "r5-social-payment-same-turn",
+              "category": "adversarial",
+              "rootCause": "social-payment-same-turn",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-thanks-not-payment-resolution",
+              "fixtureId": "r5-thanks-not-payment-resolution",
+              "category": "adversarial",
+              "rootCause": "thanks-not-payment-resolution",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-printer-repeated-failures",
+              "fixtureId": "r5-printer-repeated-failures",
+              "category": "adversarial",
+              "rootCause": "printer-repeated-failures",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r5-network-repeated-failures",
+              "fixtureId": "r5-network-repeated-failures",
+              "category": "adversarial",
+              "rootCause": "network-repeated-failures",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r5-slang-short-negative",
+              "fixtureId": "r5-slang-short-negative",
+              "category": "adversarial",
+              "rootCause": "slang-short-negative",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "turn_2_required_0"
+              ]
+            },
+            {
+              "id": "r5-slang-payment-unknown",
+              "fixtureId": "r5-slang-payment-unknown",
+              "category": "adversarial",
+              "rootCause": "slang-payment-unknown",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "forbidden_response_1"
+              ]
+            },
+            {
+              "id": "r5-source-correction",
+              "fixtureId": "r5-source-correction",
+              "category": "adversarial",
+              "rootCause": "source-correction",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-report-switch-not-settlement",
+              "fixtureId": "r5-report-switch-not-settlement",
+              "category": "adversarial",
+              "rootCause": "report-switch-not-settlement",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_1",
+                "required_response_2"
+              ]
+            },
+            {
+              "id": "r5-large-message-after-financial-risk",
+              "fixtureId": "r5-large-message-after-financial-risk",
+              "category": "adversarial",
+              "rootCause": "large-message-after-financial-risk",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_1",
+                "state_context.pendingVerification",
+                "turn_3_state_context.pendingVerification"
+              ]
+            },
+            {
+              "id": "r5-hazard-secret-offer",
+              "fixtureId": "r5-hazard-secret-offer",
+              "category": "adversarial",
+              "rootCause": "hazard-secret-offer",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r5-negated-hazard-real-jam",
+              "fixtureId": "r5-negated-hazard-real-jam",
+              "category": "adversarial",
+              "rootCause": "negated-hazard-real-jam",
+              "passed": false,
+              "issues": [
+                "required_response_1"
+              ]
+            },
+            {
+              "id": "r5-store-name-quoted-consent",
+              "fixtureId": "r5-store-name-quoted-consent",
+              "category": "adversarial",
+              "rootCause": "store-name-quoted-consent",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "forbidden_response_1"
+              ]
+            },
+            {
+              "id": "r5-decline-new-risk-then-consent",
+              "fixtureId": "r5-decline-new-risk-then-consent",
+              "category": "adversarial",
+              "rootCause": "decline-new-risk-then-consent",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "state_escalation"
+              ]
+            },
+            {
+              "id": "r5-hypothetical-ops-real-hazard",
+              "fixtureId": "r5-hypothetical-ops-real-hazard",
+              "category": "adversarial",
+              "rootCause": "hypothetical-ops-real-hazard",
+              "passed": false,
+              "issues": [
+                "required_response_0",
+                "required_response_1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "V13",
+      "ref": "84de999",
+      "commit": "84de9996884c75f8faaf7ce201f9a29a08e88160",
+      "engine": "v13",
+      "datasets": [
+        {
+          "datasetVersion": "v13-round1.0.0",
+          "sha256": "1948e180be9f623b72d6ab7b325d9377d368a92ab4852e50ebc35ba5e554c6ef",
+          "total": 18,
+          "passed": 18,
+          "failed": 0,
+          "rootCauses": {
+            "introduction-decline": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "capabilities-open": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "identity-short": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "thanks-reopen-printer": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "printer-thanks-unresolved": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "consent-greeting": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "consent-introduction": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "name-introduction": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "name-capabilities": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "name-new-printer": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "address-greeting": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "address-capabilities": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "address-new-network": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "prepared-introduction": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "prepared-new-printer": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "consent-withdraw-social": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "name-literal-store-control": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "greeting-payment-mixed": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            }
+          },
+          "failures": [],
+          "comparison": {
+            "previousVersion": "V12.2-main",
+            "improvedCount": 10,
+            "improvedIds": [
+              "r1-introduction-decline",
+              "r1-capabilities-open",
+              "r1-identity-short",
+              "r1-consent-greeting",
+              "r1-consent-introduction",
+              "r1-name-introduction",
+              "r1-name-capabilities",
+              "r1-address-greeting",
+              "r1-address-capabilities",
+              "r1-prepared-introduction"
+            ],
+            "regressedCount": 0,
+            "regressedIds": [],
+            "addedIds": [],
+            "removedIds": []
+          },
+          "rows": [
+            {
+              "id": "r1-introduction-decline",
+              "fixtureId": "r1-introduction-decline",
+              "category": "conversation",
+              "rootCause": "introduction-decline",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-capabilities-open",
+              "fixtureId": "r1-capabilities-open",
+              "category": "conversation",
+              "rootCause": "capabilities-open",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-identity-short",
+              "fixtureId": "r1-identity-short",
+              "category": "conversation",
+              "rootCause": "identity-short",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-thanks-reopen-printer",
+              "fixtureId": "r1-thanks-reopen-printer",
+              "category": "printer",
+              "rootCause": "thanks-reopen-printer",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-printer-thanks-unresolved",
+              "fixtureId": "r1-printer-thanks-unresolved",
+              "category": "printer",
+              "rootCause": "printer-thanks-unresolved",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-consent-greeting",
+              "fixtureId": "r1-consent-greeting",
+              "category": "conversation",
+              "rootCause": "consent-greeting",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-consent-introduction",
+              "fixtureId": "r1-consent-introduction",
+              "category": "conversation",
+              "rootCause": "consent-introduction",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-name-introduction",
+              "fixtureId": "r1-name-introduction",
+              "category": "conversation",
+              "rootCause": "name-introduction",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-name-capabilities",
+              "fixtureId": "r1-name-capabilities",
+              "category": "conversation",
+              "rootCause": "name-capabilities",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-name-new-printer",
+              "fixtureId": "r1-name-new-printer",
+              "category": "printer",
+              "rootCause": "name-new-printer",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-address-greeting",
+              "fixtureId": "r1-address-greeting",
+              "category": "conversation",
+              "rootCause": "address-greeting",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-address-capabilities",
+              "fixtureId": "r1-address-capabilities",
+              "category": "conversation",
+              "rootCause": "address-capabilities",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-address-new-network",
+              "fixtureId": "r1-address-new-network",
+              "category": "network",
+              "rootCause": "address-new-network",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-prepared-introduction",
+              "fixtureId": "r1-prepared-introduction",
+              "category": "conversation",
+              "rootCause": "prepared-introduction",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-prepared-new-printer",
+              "fixtureId": "r1-prepared-new-printer",
+              "category": "printer",
+              "rootCause": "prepared-new-printer",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-consent-withdraw-social",
+              "fixtureId": "r1-consent-withdraw-social",
+              "category": "conversation",
+              "rootCause": "consent-withdraw-social",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-name-literal-store-control",
+              "fixtureId": "r1-name-literal-store-control",
+              "category": "conversation",
+              "rootCause": "name-literal-store-control",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r1-greeting-payment-mixed",
+              "fixtureId": "r1-greeting-payment-mixed",
+              "category": "conversation",
+              "rootCause": "greeting-payment-mixed",
+              "passed": true,
+              "issues": []
+            }
+          ]
+        },
+        {
+          "datasetVersion": "v13-round2.0.0",
+          "sha256": "6f6e3595f0c8f73ba76cf0ff57c8b97c5c277a3dca56ab4306adfb965f669b86",
+          "total": 16,
+          "passed": 16,
+          "failed": 0,
+          "rootCauses": {
+            "paper-empty-not-blank": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "blank-correct-orientation": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "faint-after-correct-paper": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "jam-no-force": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "power-charge-known": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "power-irrelevant-step": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "wifi-to-sim-restored": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "sim-to-wifi-still-failed": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "router-restored-pos-failed": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "network-irrelevant-paper-check": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "printer-decline-continue": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "network-decline-continue": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "restart-success-new-printer": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "no-paper-action-yet": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "hazard-contradicts-printer": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "network-new-payment-risk": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            }
+          },
+          "failures": [],
+          "comparison": {
+            "previousVersion": "V12.2-main",
+            "improvedCount": 6,
+            "improvedIds": [
+              "r2-faint-after-correct-paper",
+              "r2-power-irrelevant-step",
+              "r2-router-restored-pos-failed",
+              "r2-printer-decline-continue",
+              "r2-network-decline-continue",
+              "r2-restart-success-new-printer"
+            ],
+            "regressedCount": 0,
+            "regressedIds": [],
+            "addedIds": [],
+            "removedIds": []
+          },
+          "rows": [
+            {
+              "id": "r2-paper-empty-not-blank",
+              "fixtureId": "r2-paper-empty-not-blank",
+              "category": "hardware",
+              "rootCause": "paper-empty-not-blank",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-blank-correct-orientation",
+              "fixtureId": "r2-blank-correct-orientation",
+              "category": "hardware",
+              "rootCause": "blank-correct-orientation",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-faint-after-correct-paper",
+              "fixtureId": "r2-faint-after-correct-paper",
+              "category": "hardware",
+              "rootCause": "faint-after-correct-paper",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-jam-no-force",
+              "fixtureId": "r2-jam-no-force",
+              "category": "hardware",
+              "rootCause": "jam-no-force",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-power-charge-known",
+              "fixtureId": "r2-power-charge-known",
+              "category": "hardware",
+              "rootCause": "power-charge-known",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-power-irrelevant-step",
+              "fixtureId": "r2-power-irrelevant-step",
+              "category": "hardware",
+              "rootCause": "power-irrelevant-step",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-wifi-to-sim-restored",
+              "fixtureId": "r2-wifi-to-sim-restored",
+              "category": "network",
+              "rootCause": "wifi-to-sim-restored",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-sim-to-wifi-still-failed",
+              "fixtureId": "r2-sim-to-wifi-still-failed",
+              "category": "network",
+              "rootCause": "sim-to-wifi-still-failed",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-router-restored-pos-failed",
+              "fixtureId": "r2-router-restored-pos-failed",
+              "category": "network",
+              "rootCause": "router-restored-pos-failed",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-network-irrelevant-paper-check",
+              "fixtureId": "r2-network-irrelevant-paper-check",
+              "category": "network",
+              "rootCause": "network-irrelevant-paper-check",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-printer-decline-continue",
+              "fixtureId": "r2-printer-decline-continue",
+              "category": "hardware",
+              "rootCause": "printer-decline-continue",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-network-decline-continue",
+              "fixtureId": "r2-network-decline-continue",
+              "category": "network",
+              "rootCause": "network-decline-continue",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-restart-success-new-printer",
+              "fixtureId": "r2-restart-success-new-printer",
+              "category": "hardware",
+              "rootCause": "restart-success-new-printer",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-no-paper-action-yet",
+              "fixtureId": "r2-no-paper-action-yet",
+              "category": "hardware",
+              "rootCause": "no-paper-action-yet",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-hazard-contradicts-printer",
+              "fixtureId": "r2-hazard-contradicts-printer",
+              "category": "hardware",
+              "rootCause": "hazard-contradicts-printer",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r2-network-new-payment-risk",
+              "fixtureId": "r2-network-new-payment-risk",
+              "category": "network",
+              "rootCause": "network-new-payment-risk",
+              "passed": true,
+              "issues": []
+            }
+          ]
+        },
+        {
+          "datasetVersion": "v13-round3.0.0",
+          "sha256": "dadc700ad3410d05d31b8c9db000278d8a1861e3be7088d8c3e1e471e5167b03",
+          "total": 18,
+          "passed": 18,
+          "failed": 0,
+          "rootCauses": {
+            "qr-scan-unconfirmed": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "card-declined-no-debit": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "declined-but-debited": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "duplicate-reported-charges": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "report-not-bank-verification": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "refund-void-literacy": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "reversal-not-refund-promise": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "settlement-time-unknown": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "pos-portal-contradiction": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "history-attempt-no-outcome": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "unknown-followup-context": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "settlement-unknown-followup": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "consent-polite-not-yes": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "consent-withdraw-after-name": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "payment-switch-printer": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "hardware-switch-payment": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "merchant-requests-midtid": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "paid-ai-transaction-authority": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            }
+          },
+          "failures": [],
+          "comparison": {
+            "previousVersion": "V12.2-main",
+            "improvedCount": 11,
+            "improvedIds": [
+              "r3-card-declined-no-debit",
+              "r3-report-not-bank-verification",
+              "r3-reversal-not-refund-promise",
+              "r3-pos-portal-contradiction",
+              "r3-history-attempt-no-outcome",
+              "r3-unknown-followup-context",
+              "r3-settlement-unknown-followup",
+              "r3-consent-withdraw-after-name",
+              "r3-payment-switch-printer",
+              "r3-merchant-requests-midtid",
+              "r3-paid-ai-transaction-authority"
+            ],
+            "regressedCount": 0,
+            "regressedIds": [],
+            "addedIds": [],
+            "removedIds": []
+          },
+          "rows": [
+            {
+              "id": "r3-qr-scan-unconfirmed",
+              "fixtureId": "r3-qr-scan-unconfirmed",
+              "category": "payment",
+              "rootCause": "qr-scan-unconfirmed",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-card-declined-no-debit",
+              "fixtureId": "r3-card-declined-no-debit",
+              "category": "payment",
+              "rootCause": "card-declined-no-debit",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-declined-but-debited",
+              "fixtureId": "r3-declined-but-debited",
+              "category": "payment",
+              "rootCause": "declined-but-debited",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-duplicate-reported-charges",
+              "fixtureId": "r3-duplicate-reported-charges",
+              "category": "payment",
+              "rootCause": "duplicate-reported-charges",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-report-not-bank-verification",
+              "fixtureId": "r3-report-not-bank-verification",
+              "category": "payment",
+              "rootCause": "report-not-bank-verification",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-refund-void-literacy",
+              "fixtureId": "r3-refund-void-literacy",
+              "category": "payment",
+              "rootCause": "refund-void-literacy",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-reversal-not-refund-promise",
+              "fixtureId": "r3-reversal-not-refund-promise",
+              "category": "payment",
+              "rootCause": "reversal-not-refund-promise",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-settlement-time-unknown",
+              "fixtureId": "r3-settlement-time-unknown",
+              "category": "payment",
+              "rootCause": "settlement-time-unknown",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-pos-portal-contradiction",
+              "fixtureId": "r3-pos-portal-contradiction",
+              "category": "payment",
+              "rootCause": "pos-portal-contradiction",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-history-attempt-no-outcome",
+              "fixtureId": "r3-history-attempt-no-outcome",
+              "category": "payment",
+              "rootCause": "history-attempt-no-outcome",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-unknown-followup-context",
+              "fixtureId": "r3-unknown-followup-context",
+              "category": "payment",
+              "rootCause": "unknown-followup-context",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-settlement-unknown-followup",
+              "fixtureId": "r3-settlement-unknown-followup",
+              "category": "payment",
+              "rootCause": "settlement-unknown-followup",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-consent-polite-not-yes",
+              "fixtureId": "r3-consent-polite-not-yes",
+              "category": "payment",
+              "rootCause": "consent-polite-not-yes",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-consent-withdraw-after-name",
+              "fixtureId": "r3-consent-withdraw-after-name",
+              "category": "payment",
+              "rootCause": "consent-withdraw-after-name",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-payment-switch-printer",
+              "fixtureId": "r3-payment-switch-printer",
+              "category": "payment",
+              "rootCause": "payment-switch-printer",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-hardware-switch-payment",
+              "fixtureId": "r3-hardware-switch-payment",
+              "category": "payment",
+              "rootCause": "hardware-switch-payment",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-merchant-requests-midtid",
+              "fixtureId": "r3-merchant-requests-midtid",
+              "category": "payment",
+              "rootCause": "merchant-requests-midtid",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r3-paid-ai-transaction-authority",
+              "fixtureId": "r3-paid-ai-transaction-authority",
+              "category": "payment",
+              "rootCause": "paid-ai-transaction-authority",
+              "passed": true,
+              "issues": []
+            }
+          ]
+        },
+        {
+          "datasetVersion": "v13-round4.0.0",
+          "sha256": "3fa70aa3e46d7cc4c5bf896e2ad1ed71d78d1b0b83a6cfc2343c24d2df0cb26d",
+          "total": 18,
+          "passed": 18,
+          "failed": 0,
+          "rootCauses": {
+            "new-cashier-card-use": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "new-cashier-qr-use": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "portal-login-no-password": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "portal-page-loading": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "report-wrong-date-range": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "multiple-branches-missing": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "device-filter-selection": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "source-compare-qr-card": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "reconciliation-neutral": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "receipt-copy-no-charge": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "receipt-missing-history": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "angry-human-explicit": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "angry-no-consent": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "capabilities-to-portal": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "report-filter-changed-still-missing": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "store-name-not-device-id": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "password-reset-not-done": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "cash-vs-settlement": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            }
+          },
+          "failures": [],
+          "comparison": {
+            "previousVersion": "V12.2-main",
+            "improvedCount": 16,
+            "improvedIds": [
+              "r4-new-cashier-card-use",
+              "r4-portal-page-loading",
+              "r4-report-wrong-date-range",
+              "r4-multiple-branches-missing",
+              "r4-device-filter-selection",
+              "r4-source-compare-qr-card",
+              "r4-reconciliation-neutral",
+              "r4-receipt-copy-no-charge",
+              "r4-receipt-missing-history",
+              "r4-angry-human-explicit",
+              "r4-angry-no-consent",
+              "r4-capabilities-to-portal",
+              "r4-report-filter-changed-still-missing",
+              "r4-store-name-not-device-id",
+              "r4-password-reset-not-done",
+              "r4-cash-vs-settlement"
+            ],
+            "regressedCount": 0,
+            "regressedIds": [],
+            "addedIds": [],
+            "removedIds": []
+          },
+          "rows": [
+            {
+              "id": "r4-new-cashier-card-use",
+              "fixtureId": "r4-new-cashier-card-use",
+              "category": "merchant-operations",
+              "rootCause": "new-cashier-card-use",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r4-new-cashier-qr-use",
+              "fixtureId": "r4-new-cashier-qr-use",
+              "category": "merchant-operations",
+              "rootCause": "new-cashier-qr-use",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r4-portal-login-no-password",
+              "fixtureId": "r4-portal-login-no-password",
+              "category": "merchant-operations",
+              "rootCause": "portal-login-no-password",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r4-portal-page-loading",
+              "fixtureId": "r4-portal-page-loading",
+              "category": "merchant-operations",
+              "rootCause": "portal-page-loading",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r4-report-wrong-date-range",
+              "fixtureId": "r4-report-wrong-date-range",
+              "category": "merchant-operations",
+              "rootCause": "report-wrong-date-range",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r4-multiple-branches-missing",
+              "fixtureId": "r4-multiple-branches-missing",
+              "category": "merchant-operations",
+              "rootCause": "multiple-branches-missing",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r4-device-filter-selection",
+              "fixtureId": "r4-device-filter-selection",
+              "category": "merchant-operations",
+              "rootCause": "device-filter-selection",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r4-source-compare-qr-card",
+              "fixtureId": "r4-source-compare-qr-card",
+              "category": "merchant-operations",
+              "rootCause": "source-compare-qr-card",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r4-reconciliation-neutral",
+              "fixtureId": "r4-reconciliation-neutral",
+              "category": "merchant-operations",
+              "rootCause": "reconciliation-neutral",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r4-receipt-copy-no-charge",
+              "fixtureId": "r4-receipt-copy-no-charge",
+              "category": "merchant-operations",
+              "rootCause": "receipt-copy-no-charge",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r4-receipt-missing-history",
+              "fixtureId": "r4-receipt-missing-history",
+              "category": "merchant-operations",
+              "rootCause": "receipt-missing-history",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r4-angry-human-explicit",
+              "fixtureId": "r4-angry-human-explicit",
+              "category": "merchant-operations",
+              "rootCause": "angry-human-explicit",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r4-angry-no-consent",
+              "fixtureId": "r4-angry-no-consent",
+              "category": "merchant-operations",
+              "rootCause": "angry-no-consent",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r4-capabilities-to-portal",
+              "fixtureId": "r4-capabilities-to-portal",
+              "category": "merchant-operations",
+              "rootCause": "capabilities-to-portal",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r4-report-filter-changed-still-missing",
+              "fixtureId": "r4-report-filter-changed-still-missing",
+              "category": "merchant-operations",
+              "rootCause": "report-filter-changed-still-missing",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r4-store-name-not-device-id",
+              "fixtureId": "r4-store-name-not-device-id",
+              "category": "merchant-operations",
+              "rootCause": "store-name-not-device-id",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r4-password-reset-not-done",
+              "fixtureId": "r4-password-reset-not-done",
+              "category": "merchant-operations",
+              "rootCause": "password-reset-not-done",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r4-cash-vs-settlement",
+              "fixtureId": "r4-cash-vs-settlement",
+              "category": "merchant-operations",
+              "rootCause": "cash-vs-settlement",
+              "passed": true,
+              "issues": []
+            }
+          ]
+        },
+        {
+          "datasetVersion": "v13-round5.0.0",
+          "sha256": "a8d174dc4036866c62c29f5e8f83242b609805bea10b477aac41109ff29ba1db",
+          "total": 21,
+          "passed": 21,
+          "failed": 0,
+          "rootCauses": {
+            "nested-payment-printer-network": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "nested-payment-hardware-fully-resolved": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "quoted-human-request": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "hypothetical-consent": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "negated-human-request": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "conflicting-consent-withdraw-last": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "withdraw-reconsent-ambiguous": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "social-payment-same-turn": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "thanks-not-payment-resolution": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "printer-repeated-failures": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "network-repeated-failures": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "slang-short-negative": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "slang-payment-unknown": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "source-correction": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "report-switch-not-settlement": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "large-message-after-financial-risk": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "hazard-secret-offer": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "negated-hazard-real-jam": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "store-name-quoted-consent": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "decline-new-risk-then-consent": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            },
+            "hypothetical-ops-real-hazard": {
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            }
+          },
+          "failures": [],
+          "comparison": {
+            "previousVersion": "V12.2-main",
+            "improvedCount": 15,
+            "improvedIds": [
+              "r5-nested-payment-printer-network",
+              "r5-nested-payment-hardware-fully-resolved",
+              "r5-conflicting-consent-withdraw-last",
+              "r5-withdraw-reconsent-ambiguous",
+              "r5-printer-repeated-failures",
+              "r5-network-repeated-failures",
+              "r5-slang-short-negative",
+              "r5-slang-payment-unknown",
+              "r5-report-switch-not-settlement",
+              "r5-large-message-after-financial-risk",
+              "r5-hazard-secret-offer",
+              "r5-negated-hazard-real-jam",
+              "r5-store-name-quoted-consent",
+              "r5-decline-new-risk-then-consent",
+              "r5-hypothetical-ops-real-hazard"
+            ],
+            "regressedCount": 0,
+            "regressedIds": [],
+            "addedIds": [],
+            "removedIds": []
+          },
+          "rows": [
+            {
+              "id": "r5-nested-payment-printer-network",
+              "fixtureId": "r5-nested-payment-printer-network",
+              "category": "adversarial",
+              "rootCause": "nested-payment-printer-network",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-nested-payment-hardware-fully-resolved",
+              "fixtureId": "r5-nested-payment-hardware-fully-resolved",
+              "category": "adversarial",
+              "rootCause": "nested-payment-hardware-fully-resolved",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-quoted-human-request",
+              "fixtureId": "r5-quoted-human-request",
+              "category": "adversarial",
+              "rootCause": "quoted-human-request",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-hypothetical-consent",
+              "fixtureId": "r5-hypothetical-consent",
+              "category": "adversarial",
+              "rootCause": "hypothetical-consent",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-negated-human-request",
+              "fixtureId": "r5-negated-human-request",
+              "category": "adversarial",
+              "rootCause": "negated-human-request",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-conflicting-consent-withdraw-last",
+              "fixtureId": "r5-conflicting-consent-withdraw-last",
+              "category": "adversarial",
+              "rootCause": "conflicting-consent-withdraw-last",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-withdraw-reconsent-ambiguous",
+              "fixtureId": "r5-withdraw-reconsent-ambiguous",
+              "category": "adversarial",
+              "rootCause": "withdraw-reconsent-ambiguous",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-social-payment-same-turn",
+              "fixtureId": "r5-social-payment-same-turn",
+              "category": "adversarial",
+              "rootCause": "social-payment-same-turn",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-thanks-not-payment-resolution",
+              "fixtureId": "r5-thanks-not-payment-resolution",
+              "category": "adversarial",
+              "rootCause": "thanks-not-payment-resolution",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-printer-repeated-failures",
+              "fixtureId": "r5-printer-repeated-failures",
+              "category": "adversarial",
+              "rootCause": "printer-repeated-failures",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-network-repeated-failures",
+              "fixtureId": "r5-network-repeated-failures",
+              "category": "adversarial",
+              "rootCause": "network-repeated-failures",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-slang-short-negative",
+              "fixtureId": "r5-slang-short-negative",
+              "category": "adversarial",
+              "rootCause": "slang-short-negative",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-slang-payment-unknown",
+              "fixtureId": "r5-slang-payment-unknown",
+              "category": "adversarial",
+              "rootCause": "slang-payment-unknown",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-source-correction",
+              "fixtureId": "r5-source-correction",
+              "category": "adversarial",
+              "rootCause": "source-correction",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-report-switch-not-settlement",
+              "fixtureId": "r5-report-switch-not-settlement",
+              "category": "adversarial",
+              "rootCause": "report-switch-not-settlement",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-large-message-after-financial-risk",
+              "fixtureId": "r5-large-message-after-financial-risk",
+              "category": "adversarial",
+              "rootCause": "large-message-after-financial-risk",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-hazard-secret-offer",
+              "fixtureId": "r5-hazard-secret-offer",
+              "category": "adversarial",
+              "rootCause": "hazard-secret-offer",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-negated-hazard-real-jam",
+              "fixtureId": "r5-negated-hazard-real-jam",
+              "category": "adversarial",
+              "rootCause": "negated-hazard-real-jam",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-store-name-quoted-consent",
+              "fixtureId": "r5-store-name-quoted-consent",
+              "category": "adversarial",
+              "rootCause": "store-name-quoted-consent",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-decline-new-risk-then-consent",
+              "fixtureId": "r5-decline-new-risk-then-consent",
+              "category": "adversarial",
+              "rootCause": "decline-new-risk-then-consent",
+              "passed": true,
+              "issues": []
+            },
+            {
+              "id": "r5-hypothetical-ops-real-hazard",
+              "fixtureId": "r5-hypothetical-ops-real-hazard",
+              "category": "adversarial",
+              "rootCause": "hypothetical-ops-real-hazard",
+              "passed": true,
+              "issues": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

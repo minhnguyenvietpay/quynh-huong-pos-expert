@@ -1,0 +1,1491 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "v13-round2.0.0",
+  "engine": "v12",
+  "syntheticOnly": true,
+  "mode": "v12",
+  "contractReview": "separate_development_agents_only",
+  "reviewStatus": "ai_authored_unreviewed",
+  "independentQualityGate": "blocked_no_independent_review",
+  "total": 16,
+  "passed": 16,
+  "failed": 0,
+  "rootCauses": {
+    "paper-empty-not-blank": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "blank-correct-orientation": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "faint-after-correct-paper": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "jam-no-force": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "power-charge-known": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "power-irrelevant-step": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "wifi-to-sim-restored": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "sim-to-wifi-still-failed": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "router-restored-pos-failed": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "network-irrelevant-paper-check": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "printer-decline-continue": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "network-decline-continue": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "restart-success-new-printer": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "no-paper-action-yet": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "hazard-contradicts-printer": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "network-new-payment-risk": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    }
+  },
+  "failures": [],
+  "rows": [
+    {
+      "id": "r2-paper-empty-not-blank",
+      "fixtureId": "r2-paper-empty-not-blank",
+      "category": "hardware",
+      "rootCause": "paper-empty-not-blank",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Máy không in bill",
+          "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "paper-checked",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Hết giấy trong máy rồi, không có tờ nào chạy ra",
+          "actual": "Giấy không chạy hoặc bị kẹt: khi không có giao dịch đang xử lý, kiểm tra cuộn giấy và nắp theo hướng dẫn dòng máy. Không kéo mạnh hoặc tự tháo bộ phận in. Anh/chị đã kiểm tra giấy/nắp chưa?",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "receipt-paper",
+            "previousQuestions": [
+              "paper-checked"
+            ],
+            "answers": [],
+            "attempted": [
+              "paper-orientation",
+              "printer-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "paper": "not-feeding"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "paper-checked",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Em đã lắp cuộn mới, giờ in được rồi",
+          "actual": "Tốt rồi, em ghi nhận sự cố đã được xử lý. Nếu có vấn đề mới, anh/chị cứ mô tả nhé.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r2-blank-correct-orientation",
+      "fixtureId": "r2-blank-correct-orientation",
+      "category": "hardware",
+      "rootCause": "blank-correct-orientation",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Máy in bill ra giấy trắng nhưng giấy vẫn chạy",
+          "actual": "Giấy chạy nhưng trắng/mờ thường cần kiểm tra loại giấy nhiệt và chiều mặt in theo hướng dẫn đúng dòng máy. Anh/chị đã kiểm tra hai điểm này chưa? Nếu vừa thanh toán, thiếu chữ trên bill không xác định được kết quả giao dịch.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "printer-type",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "paper": "blank"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Đã thay cuộn giấy mới, đang thử in",
+          "actual": "Bill có chữ mờ/nhạt hoặc giấy trắng vẫn là lỗi in, chưa coi đã xử lý xong. Kiểm tra đúng giấy nhiệt và mặt in theo hướng dẫn dòng máy; anh/chị đã thử bước này chưa?",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "printer-type",
+            "previousQuestions": [
+              "printer-type"
+            ],
+            "answers": [],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "paper": "blank"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "printer-type",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Đã lật đúng mặt giấy nhiệt, thử cuộn khác vẫn trắng",
+          "actual": "Bill có chữ mờ/nhạt hoặc giấy trắng vẫn là lỗi in, chưa coi đã xử lý xong. Kiểm tra đúng giấy nhiệt và mặt in theo hướng dẫn dòng máy; anh/chị đã thử bước này chưa?",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "printer-type",
+            "previousQuestions": [
+              "printer-type",
+              "printer-type"
+            ],
+            "answers": [],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "paper": "blank"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "printer-type",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r2-faint-after-correct-paper",
+      "fixtureId": "r2-faint-after-correct-paper",
+      "category": "hardware",
+      "rootCause": "faint-after-correct-paper",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Bill in ra mờ, đọc khó",
+          "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "paper-checked",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Giấy đúng rồi, thay cuộn mới vẫn mờ",
+          "actual": "Mình phân biệt thêm để chọn đúng bước: giấy không chạy ra, hay giấy chạy ra nhưng trắng/mờ ạ? Chưa có bằng chứng anh/chị đã thử bước kiểm tra nên em không tự ghi là đã thử.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "printer-type",
+            "previousQuestions": [
+              "paper-checked"
+            ],
+            "answers": [],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "paper-checked",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Máy không nóng, không có mùi khét",
+          "actual": "Mình phân biệt thêm để chọn đúng bước: giấy không chạy ra, hay giấy chạy ra nhưng trắng/mờ ạ? Chưa có bằng chứng anh/chị đã thử bước kiểm tra nên em không tự ghi là đã thử.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "printer-type",
+            "previousQuestions": [
+              "paper-checked",
+              "printer-type"
+            ],
+            "answers": [],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "printer-type",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r2-jam-no-force",
+      "fixtureId": "r2-jam-no-force",
+      "category": "hardware",
+      "rootCause": "jam-no-force",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Giấy kẹt trong máy POS, kéo không ra",
+          "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "paper-checked",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "paper": "stuck"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Mở nắp rồi mà giấy vẫn mắc, không dám kéo mạnh",
+          "actual": "Giấy không chạy hoặc bị kẹt: khi không có giao dịch đang xử lý, kiểm tra cuộn giấy và nắp theo hướng dẫn dòng máy. Không kéo mạnh hoặc tự tháo bộ phận in. Anh/chị đã kiểm tra giấy/nắp chưa?",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "receipt-paper",
+            "previousQuestions": [
+              "paper-checked"
+            ],
+            "answers": [],
+            "attempted": [
+              "paper-orientation",
+              "printer-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "paper": "stuck"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "paper-checked",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r2-power-charge-known",
+      "fixtureId": "r2-power-charge-known",
+      "category": "hardware",
+      "rootCause": "power-charge-known",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Máy POS không lên nguồn",
+          "actual": "Máy không lên nguồn hoặc sạc không vào: nếu không nóng bất thường/phồng pin, kiểm tra cáp, bộ sạc tương thích và ổ điện. Khi cắm sạc có đèn hoặc biểu tượng pin không ạ? Không tự tháo máy.",
+          "context": {
+            "topic": "power",
+            "currentQuestion": "power-charge",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "charger-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Có đèn sạc, màn hình vẫn đen, máy không nóng",
+          "actual": "Đã ghi nhận có đèn/biểu tượng sạc nhưng màn hình chưa lên. Đối chiếu thao tác bật máy theo hướng dẫn đúng dòng máy và theo dõi thông báo màn hình; nếu nóng/phồng pin thì dừng, không tự tháo máy.",
+          "context": {
+            "topic": "power",
+            "currentQuestion": "power-charge",
+            "previousQuestions": [
+              "power-charge"
+            ],
+            "answers": [],
+            "attempted": [
+              "charger-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "power-charge",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Đã dùng sạc đúng loại và kiểm tra ổ điện rồi",
+          "actual": "Nếu chưa kiểm tra nguồn, cáp hoặc bộ sạc tương thích thì kiểm tra theo hướng dẫn dòng máy; không thử sạc lạ hay tự tháo máy. Giữ lại tình trạng màn hình và đèn sạc đã báo.",
+          "context": {
+            "topic": "power",
+            "currentQuestion": "power-charge",
+            "previousQuestions": [
+              "power-charge",
+              "power-charge"
+            ],
+            "answers": [],
+            "attempted": [
+              "charger-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "power-charge",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r2-power-irrelevant-step",
+      "fixtureId": "r2-power-irrelevant-step",
+      "category": "hardware",
+      "rootCause": "power-irrelevant-step",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Máy không lên nguồn",
+          "actual": "Máy không lên nguồn hoặc sạc không vào: nếu không nóng bất thường/phồng pin, kiểm tra cáp, bộ sạc tương thích và ổ điện. Khi cắm sạc có đèn hoặc biểu tượng pin không ạ? Không tự tháo máy.",
+          "context": {
+            "topic": "power",
+            "currentQuestion": "power-charge",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "charger-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Tôi kiểm tra giấy rồi, vẫn không bật được",
+          "actual": "Nếu chưa kiểm tra nguồn, cáp hoặc bộ sạc tương thích thì kiểm tra theo hướng dẫn dòng máy; không thử sạc lạ hay tự tháo máy. Giữ lại tình trạng màn hình và đèn sạc đã báo.",
+          "context": {
+            "topic": "power",
+            "currentQuestion": "power-charge",
+            "previousQuestions": [
+              "power-charge"
+            ],
+            "answers": [
+              "failed"
+            ],
+            "attempted": [
+              "charger-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "power-charge",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Chưa thử sạc khác",
+          "actual": "Nếu chưa kiểm tra nguồn, cáp hoặc bộ sạc tương thích thì kiểm tra theo hướng dẫn dòng máy; không thử sạc lạ hay tự tháo máy. Giữ lại tình trạng màn hình và đèn sạc đã báo.",
+          "context": {
+            "topic": "power",
+            "currentQuestion": "power-charge",
+            "previousQuestions": [
+              "power-charge",
+              "power-charge"
+            ],
+            "answers": [
+              "failed"
+            ],
+            "attempted": [
+              "charger-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "power-charge",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r2-wifi-to-sim-restored",
+      "fixtureId": "r2-wifi-to-sim-restored",
+      "category": "network",
+      "rootCause": "wifi-to-sim-restored",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "POS mất mạng WiFi",
+          "actual": "Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "wifi-other",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "wifi-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "connection": "wifi"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Điện thoại dùng WiFi đó cũng không có mạng",
+          "actual": "Điện thoại cùng Wi-Fi cũng mất mạng thì ưu tiên kiểm tra đường truyền chung/bộ phát (router), không quy ngay lỗi POS. Kiểm tra đèn kết nối của bộ phát hoặc kênh mạng nội bộ được phép; chưa thanh toán lại khi giao dịch chưa rõ kết quả.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "network-localize",
+            "previousQuestions": [
+              "wifi-other"
+            ],
+            "answers": [
+              "wifi"
+            ],
+            "attempted": [
+              "wifi-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "connection": "wifi",
+              "phoneWifi": "failed"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "wifi-other",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Tôi chuyển POS sang SIM, giờ POS vào mạng được rồi",
+          "actual": "Tốt rồi, em ghi nhận sự cố đã được xử lý. Nếu có vấn đề mới, anh/chị cứ mô tả nhé.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r2-sim-to-wifi-still-failed",
+      "fixtureId": "r2-sim-to-wifi-still-failed",
+      "category": "network",
+      "rootCause": "sim-to-wifi-still-failed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "POS dùng SIM không có mạng, không có sóng",
+          "actual": "Máy dùng SIM/4G: kiểm tra biểu tượng sóng và trạng thái kết nối theo hướng dẫn thiết bị; không tự sửa cấu hình nhà mạng. Hiện có cột sóng/4G hay báo không có dịch vụ ạ? Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "sim-signal",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "sim-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "connection": "sim"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Đã chuyển sang WiFi, điện thoại vào WiFi bình thường nhưng POS vẫn mất mạng",
+          "actual": "Điện thoại cùng mạng có internet nhưng POS chưa kết nối: nếu được phép, thử hotspot hoặc mạng khác để khoanh vùng lỗi POS. Không chia sẻ mật khẩu trong nhóm và không thay cấu hình nhà mạng.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "network-localize",
+            "previousQuestions": [
+              "sim-signal"
+            ],
+            "answers": [
+              "wifi"
+            ],
+            "attempted": [
+              "sim-check",
+              "wifi-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "connection": "wifi",
+              "phoneWifi": "working"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "sim-signal",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r2-router-restored-pos-failed",
+      "fixtureId": "r2-router-restored-pos-failed",
+      "category": "network",
+      "rootCause": "router-restored-pos-failed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "POS và điện thoại đều không vào được WiFi",
+          "actual": "Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "wifi-other",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "wifi-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "connection": "wifi",
+              "phoneWifi": "failed"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Đã kiểm tra router, điện thoại vào mạng lại rồi nhưng POS vẫn chưa vào được",
+          "actual": "Điện thoại cùng mạng có internet nhưng POS chưa kết nối: nếu được phép, thử hotspot hoặc mạng khác để khoanh vùng lỗi POS. Không chia sẻ mật khẩu trong nhóm và không thay cấu hình nhà mạng.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "network-localize",
+            "previousQuestions": [
+              "wifi-other"
+            ],
+            "answers": [
+              "failed"
+            ],
+            "attempted": [
+              "wifi-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "connection": "wifi",
+              "phoneWifi": "working"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "wifi-other",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r2-network-irrelevant-paper-check",
+      "fixtureId": "r2-network-irrelevant-paper-check",
+      "category": "network",
+      "rootCause": "network-irrelevant-paper-check",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Máy POS mất WiFi",
+          "actual": "Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "wifi-other",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "wifi-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "connection": "wifi"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Thay giấy rồi nhưng mạng vẫn lỗi",
+          "actual": "Mình đang kiểm tra Wi-Fi: điện thoại cùng mạng có internet hay cũng mất kết nối ạ? Câu trả lời này giúp phân biệt đường truyền chung với POS.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "wifi-other",
+            "previousQuestions": [
+              "wifi-other"
+            ],
+            "answers": [
+              "failed"
+            ],
+            "attempted": [
+              "wifi-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "connection": "wifi"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "wifi-other",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Chưa thử mạng khác, điện thoại vẫn dùng WiFi này được",
+          "actual": "Điện thoại cùng mạng có internet nhưng POS chưa kết nối: nếu được phép, thử hotspot hoặc mạng khác để khoanh vùng lỗi POS. Không chia sẻ mật khẩu trong nhóm và không thay cấu hình nhà mạng.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "network-localize",
+            "previousQuestions": [
+              "wifi-other",
+              "wifi-other"
+            ],
+            "answers": [
+              "failed",
+              "wifi"
+            ],
+            "attempted": [
+              "wifi-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "connection": "wifi",
+              "phoneWifi": "working"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "wifi-other",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r2-printer-decline-continue",
+      "fixtureId": "r2-printer-decline-continue",
+      "category": "hardware",
+      "rootCause": "printer-decline-continue",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Máy không in bill",
+          "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "paper-checked",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Đã kiểm tra giấy và nắp, vẫn không đẩy giấy",
+          "actual": "Em ghi nhận bước kiểm tra giấy/nắp đã thực hiện nhưng bản in còn trắng/mờ hoặc kẹt; không kéo mạnh hay tự tháo bộ phận in, không làm lại bước đó. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "paper-checked"
+            ],
+            "answers": [
+              "failed"
+            ],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [
+              "paper-orientation"
+            ],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "paper": "not-feeding"
+            },
+            "tried": [
+              "paper-orientation"
+            ],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "paper-checked",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Không chuyển OPS, hướng dẫn tôi kiểm tra tiếp được không?",
+          "actual": "Em chưa chuyển OPS. Với giấy/bản in còn lỗi, giữ lại bước đã thử: chỉ kiểm tra cuộn giấy nhiệt tương thích và nắp theo hướng dẫn dòng máy nếu chưa làm; không kéo mạnh giấy kẹt, cạy hoặc tự tháo bộ phận in.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "escalation-declined",
+            "previousQuestions": [
+              "paper-checked",
+              "offer-consent"
+            ],
+            "answers": [
+              "failed"
+            ],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [
+              "paper-orientation"
+            ],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "paper": "not-feeding"
+            },
+            "tried": [
+              "paper-orientation"
+            ],
+            "declined": true,
+            "refusal": "declined",
+            "decision": "declined",
+            "lastQuestionContext": "offer-consent",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r2-network-decline-continue",
+      "fixtureId": "r2-network-decline-continue",
+      "category": "network",
+      "rootCause": "network-decline-continue",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "POS mất WiFi",
+          "actual": "Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "wifi-other",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "wifi-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "connection": "wifi"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Đã thử mạng khác, vẫn không vào được",
+          "actual": "Kết nối vẫn lỗi sau thao tác vừa báo; không quên mạng hoặc khởi động lại lần nữa. Cần phân biệt dịch vụ SIM/4G và lỗi mạng Wi-Fi/POS. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "wifi-other"
+            ],
+            "answers": [
+              "failed"
+            ],
+            "attempted": [
+              "wifi-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "connection": "wifi"
+            },
+            "tried": [
+              "wifi-check"
+            ],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "wifi-other",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Chưa muốn chuyển OPS, còn kiểm tra gì an toàn nữa không?",
+          "actual": "Mình đang kiểm tra Wi-Fi: điện thoại cùng mạng có internet hay cũng mất kết nối ạ? Câu trả lời này giúp phân biệt đường truyền chung với POS.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "wifi-other",
+            "previousQuestions": [
+              "wifi-other",
+              "offer-consent"
+            ],
+            "answers": [
+              "failed"
+            ],
+            "attempted": [
+              "wifi-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "connection": "wifi"
+            },
+            "tried": [
+              "wifi-check"
+            ],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "offer-consent",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r2-restart-success-new-printer",
+      "fixtureId": "r2-restart-success-new-printer",
+      "category": "hardware",
+      "rootCause": "restart-success-new-printer",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Máy POS bị treo, hiện không có giao dịch đang xử lý",
+          "actual": "Máy POS bị treo: trước hết cần biết có giao dịch đang xử lý không để tránh thanh toán trùng. Máy đứng ở màn hình chính hay đang thanh toán ạ?",
+          "context": {
+            "topic": "freeze",
+            "currentQuestion": "freeze-location",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Đã khởi động lại, máy hết treo rồi nhưng bill in vẫn mờ",
+          "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "paper-checked",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": [
+              {
+                "topic": "freeze",
+                "currentQuestion": "freeze-location",
+                "attempted": [],
+                "failed": [],
+                "risk": "unknown"
+              }
+            ]
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r2-no-paper-action-yet",
+      "fixtureId": "r2-no-paper-action-yet",
+      "category": "hardware",
+      "rootCause": "no-paper-action-yet",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Bill trắng, giấy vẫn chạy ra",
+          "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "paper-checked",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Chưa thay giấy, mới nhìn thấy cuộn vẫn còn nhiều",
+          "actual": "Bill có chữ mờ/nhạt hoặc giấy trắng vẫn là lỗi in, chưa coi đã xử lý xong. Kiểm tra đúng giấy nhiệt và mặt in theo hướng dẫn dòng máy; anh/chị đã thử bước này chưa?",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "printer-type",
+            "previousQuestions": [
+              "paper-checked"
+            ],
+            "answers": [],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "paper": "faint"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "paper-checked",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r2-hazard-contradicts-printer",
+      "fixtureId": "r2-hazard-contradicts-printer",
+      "category": "hardware",
+      "rootCause": "hazard-contradicts-printer",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "POS không in bill",
+          "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "paper-checked",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Đang mở nắp thì thấy pin phồng và có mùi khét",
+          "actual": "Ngừng sử dụng và ngừng sạc máy đang nóng bất thường hoặc pin phồng; không tự tháo, chọc pin hay khởi động thử. Để máy xa vật dễ cháy nếu có thể làm an toàn. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra thiết bị không ạ?",
+          "context": {
+            "topic": "battery",
+            "currentQuestion": "battery-safe",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r2-network-new-payment-risk",
+      "fixtureId": "r2-network-new-payment-risk",
+      "category": "network",
+      "rootCause": "network-new-payment-risk",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Máy POS mất mạng WiFi",
+          "actual": "Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "wifi-other",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "wifi-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "connection": "wifi"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Vừa có khách báo bị trừ tiền mà POS báo lỗi, tôi chưa biết có thành công không",
+          "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "payment-history",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": [
+              {
+                "topic": "network",
+                "currentQuestion": "wifi-other",
+                "attempted": [
+                  "wifi-check"
+                ],
+                "failed": [],
+                "risk": "unknown"
+              }
+            ]
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    }
+  ]
+}

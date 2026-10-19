@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "round": 1,
+  "provenance": "Synthetic merchant conversations authored by the Merchant Simulator; no production logs, customer identifiers or independently verified ground truth.",
+  "scope": "Actual dialogue handling of social turns, capabilities, reopen and stale escalation collection. QA Judge supplies independent contracts separately.",
+  "scenarios": [
+    {
+      "id": "r1-introduction-decline",
+      "persona": "Merchant first meeting the assistant in a group",
+      "inputs": ["@Quỳnh Hương hi em", "@Quỳnh Hương em giới thiệu đi", "Không"],
+      "rationale": "Synthetic reproduction of the user-reported sequence; distinguishes a social introduction from troubleshooting or OPS consent."
+    },
+    {
+      "id": "r1-capabilities-open",
+      "persona": "Merchant unsure what the bot can help with",
+      "inputs": ["Chào Quỳnh Hương", "Em hỗ trợ được những việc gì?", "Chị chưa có sự cố, hỏi để biết thôi"],
+      "rationale": "Broad capabilities questions and non-incident clarification should form a coherent conversation."
+    },
+    {
+      "id": "r1-identity-short",
+      "persona": "New cashier using brief informal Vietnamese",
+      "inputs": ["alo em", "em là ai vậy", "ok cảm ơn em"],
+      "rationale": "Tests informal greeting, identity and polite closure without explicit POS keywords."
+    },
+    {
+      "id": "r1-thanks-reopen-printer",
+      "persona": "Cashier who closes a social exchange then reports an incident",
+      "inputs": ["Chào em", "cảm ơn nha", "À máy POS không in bill, giấy không chạy ra"],
+      "rationale": "A new concrete incident after thanks must be distinguished from closure."
+    },
+    {
+      "id": "r1-printer-thanks-unresolved",
+      "persona": "Busy cashier being polite while a printer remains faulty",
+      "inputs": ["Máy POS không in bill", "Cảm ơn, nhưng giấy vẫn không chạy ra"],
+      "rationale": "Politeness and unresolved symptoms coexist in a single turn."
+    },
+    {
+      "id": "r1-consent-greeting",
+      "persona": "Cashier returning to a conversation after an OPS offer",
+      "inputs": ["Khách đã bị trừ tiền nhưng POS không có giao dịch", "chưa rõ", "Chào em, chị quay lại rồi"],
+      "rationale": "A greeting during an offered handover is not an affirmative consent token."
+    },
+    {
+      "id": "r1-consent-introduction",
+      "persona": "Merchant checking the assistant before deciding about escalation",
+      "inputs": ["Khách đã bị trừ tiền nhưng POS không có giao dịch", "chưa rõ", "Khoan, em giới thiệu về em đi", "Không"],
+      "rationale": "Identity request interrupts pending consent and a later bare negative must not be misread as customer information."
+    },
+    {
+      "id": "r1-name-introduction",
+      "persona": "Merchant who consented but changes focus before giving a store name",
+      "inputs": ["Khách đã bị trừ tiền nhưng POS không có giao dịch", "chưa rõ", "đồng ý chuyển OPS", "em giới thiệu đi"],
+      "rationale": "Introduction text at the store-name collection step exposes stale form capture."
+    },
+    {
+      "id": "r1-name-capabilities",
+      "persona": "Merchant asking about assistant capabilities during collection",
+      "inputs": ["Khách đã bị trừ tiền nhưng POS không có giao dịch", "chưa rõ", "đồng ý chuyển OPS", "Em có thể hỗ trợ những gì?"],
+      "rationale": "A capabilities question must not become the merchant store name."
+    },
+    {
+      "id": "r1-name-new-printer",
+      "persona": "Cashier noticing a different urgent POS problem",
+      "inputs": ["Khách đã bị trừ tiền nhưng POS không có giao dịch", "chưa rõ", "đồng ý chuyển OPS", "Máy không in bill, giấy bị kẹt"],
+      "rationale": "New actionable symptom during name collection tests interruption and separation from handover fields."
+    },
+    {
+      "id": "r1-address-greeting",
+      "persona": "Merchant returning before finishing an escalation form",
+      "inputs": ["Khách đã bị trừ tiền nhưng POS không có giao dịch", "chưa rõ", "đồng ý chuyển OPS", "Cửa hàng Giả Lập Hoa Giấy", "hi em"],
+      "rationale": "A greeting during location collection must not silently prepare a handover with a greeting as address."
+    },
+    {
+      "id": "r1-address-capabilities",
+      "persona": "Merchant asking a detour before providing location",
+      "inputs": ["Khách đã bị trừ tiền nhưng POS không có giao dịch", "chưa rõ", "đồng ý chuyển OPS", "Cửa hàng Giả Lập Hoa Giấy", "Em hỗ trợ được lỗi nào?"],
+      "rationale": "A social or capability turn inside address collection exercises stale workflow handling."
+    },
+    {
+      "id": "r1-address-new-network",
+      "persona": "Merchant switching from payment to connectivity troubleshooting",
+      "inputs": ["Khách đã bị trừ tiền nhưng POS không có giao dịch", "chưa rõ", "đồng ý chuyển OPS", "Cửa hàng Giả Lập Hoa Giấy", "Giờ máy mất mạng WiFi, điện thoại cũng không vào mạng được"],
+      "rationale": "A new network symptom should not be copied into a handover location."
+    },
+    {
+      "id": "r1-prepared-introduction",
+      "persona": "Merchant after preparing a consented offline handover",
+      "inputs": ["Khách đã bị trừ tiền nhưng POS không có giao dịch", "chưa rõ", "đồng ý chuyển OPS", "Cửa hàng Giả Lập Hoa Giấy", "12 đường Mô Phỏng, khu Giả Lập", "Em giới thiệu đi"],
+      "rationale": "Prepared handover state must not swallow later social conversation or imply real notification."
+    },
+    {
+      "id": "r1-prepared-new-printer",
+      "persona": "Merchant with a second issue after a prepared handover",
+      "inputs": ["Khách đã bị trừ tiền nhưng POS không có giao dịch", "chưa rõ", "đồng ý chuyển OPS", "Cửa hàng Giả Lập Hoa Giấy", "12 đường Mô Phỏng, khu Giả Lập", "Máy in bill ra giấy trắng, giấy vẫn chạy"],
+      "rationale": "New printer diagnosis after preparation tests runtime continuity without inventing any payment outcome."
+    },
+    {
+      "id": "r1-consent-withdraw-social",
+      "persona": "Merchant declining a handover then asking about the bot",
+      "inputs": ["Khách đã bị trừ tiền nhưng POS không có giao dịch", "chưa rõ", "đồng ý chuyển OPS", "Không chuyển nữa, em giới thiệu đi"],
+      "rationale": "Explicit withdrawal has safety priority even when paired with a social request."
+    },
+    {
+      "id": "r1-name-literal-store-control",
+      "persona": "Merchant whose synthetic store name resembles a greeting",
+      "inputs": ["Khách đã bị trừ tiền nhưng POS không có giao dịch", "chưa rõ", "đồng ý chuyển OPS", "Cửa hàng Giả Lập Xin Chào", "12 đường Mô Phỏng, khu Giả Lập"],
+      "rationale": "A counterexample to broad greeting matching: an explicitly labelled synthetic store name is valid consented collection data."
+    },
+    {
+      "id": "r1-greeting-payment-mixed",
+      "persona": "Cashier opening politely while reporting a risky payment incident",
+      "inputs": ["Hi em, khách báo bị trừ tiền mà POS báo lỗi, có quẹt lại không?"],
+      "rationale": "Greeting detection must not hide the payment-risk question in the same turn."
+    }
+  ]
+}

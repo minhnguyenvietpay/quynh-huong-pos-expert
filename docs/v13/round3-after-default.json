@@ -1,0 +1,65 @@
+{
+  "syntheticOnly": true,
+  "testsPassed": 2,
+  "total": 2,
+  "rows": [
+    {
+      "case": 1,
+      "turns": [
+        {
+          "input": "Khách bị trừ tiền nhưng POS báo lỗi",
+          "actual": "Dạ anh/chị, thông tin khách đã chuyển khoản hoặc nhận thông báo trừ tiền chưa đủ để xác nhận kết quả giao dịch. Mình chưa yêu cầu khách thanh toán lại hoặc khởi động máy khi giao dịch còn đang xử lý nhé. Anh/chị kiểm tra lịch sử trên POS và Merchant Portal nếu truy cập được, đúng thời điểm và số tiền. Giao dịch có hiển thị ở đâu không ạ?",
+          "state": {
+            "kind": "payment",
+            "stage": "check"
+          }
+        },
+        {
+          "input": "Chưa rõ",
+          "actual": "Mình giữ giao dịch ở bước kiểm tra: đối chiếu lịch sử POS/Portal đúng thời điểm và số tiền; chưa xác minh kết quả thì chưa thanh toán lại hoặc khởi động máy.",
+          "state": {
+            "kind": "payment",
+            "stage": "check"
+          }
+        },
+        {
+          "input": "Cảm ơn",
+          "actual": "Dạ, em cảm ơn anh/chị. Khi cần hỗ trợ thêm, anh/chị cứ nhắn em nhé. Giao dịch trước vẫn chưa xác minh trên POS/Portal; mình chưa thu tiền hay thanh toán lại nhé.",
+          "state": {
+            "kind": "payment",
+            "stage": "check"
+          }
+        }
+      ]
+    },
+    {
+      "case": 2,
+      "turns": [
+        {
+          "input": "Khách bị trừ tiền nhưng POS báo lỗi",
+          "actual": "Dạ anh/chị, thông tin khách đã chuyển khoản hoặc nhận thông báo trừ tiền chưa đủ để xác nhận kết quả giao dịch. Mình chưa yêu cầu khách thanh toán lại hoặc khởi động máy khi giao dịch còn đang xử lý nhé. Anh/chị kiểm tra lịch sử trên POS và Merchant Portal nếu truy cập được, đúng thời điểm và số tiền. Giao dịch có hiển thị ở đâu không ạ?",
+          "state": {
+            "kind": "payment",
+            "stage": "check"
+          }
+        },
+        {
+          "input": "Chưa rõ",
+          "actual": "Mình giữ giao dịch ở bước kiểm tra: đối chiếu lịch sử POS/Portal đúng thời điểm và số tiền; chưa xác minh kết quả thì chưa thanh toán lại hoặc khởi động máy.",
+          "state": {
+            "kind": "payment",
+            "stage": "check"
+          }
+        },
+        {
+          "input": "Giờ máy treo",
+          "actual": "Giao dịch trước vẫn chưa xác minh: chưa khởi động lại hoặc tắt máy, chưa thu tiền lại. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền trước khi xử lý máy treo.",
+          "state": {
+            "kind": "payment",
+            "stage": "check"
+          }
+        }
+      ]
+    }
+  ]
+}

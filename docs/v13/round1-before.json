@@ -1,0 +1,24 @@
+{
+  "round": 1,
+  "baselineCommit": "eefe224",
+  "dataset": "tests/fixtures/v13-round1.json",
+  "sha256": "1948e180be9f623b72d6ab7b325d9377d368a92ab4852e50ebc35ba5e554c6ef",
+  "frozenBeforeRuntimeChanges": true,
+  "syntheticOnly": true,
+  "externalReview": false,
+  "independentGroundTruthGate": "blocked",
+  "modes": {
+    "default": {
+      "passed": 2,
+      "failed": 16,
+      "total": 18,
+      "report": "round1-before-default.json"
+    },
+    "v12": {
+      "passed": 8,
+      "failed": 10,
+      "total": 18,
+      "report": "round1-before-v12.json"
+    }
+  }
+}
