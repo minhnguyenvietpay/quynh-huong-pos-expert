@@ -1,0 +1,2114 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "v13-round1.0.0",
+  "engine": "v12",
+  "syntheticOnly": true,
+  "mode": "v12",
+  "contractReview": "separate_development_agents_only",
+  "reviewStatus": "ai_authored_unreviewed",
+  "independentQualityGate": "blocked_no_independent_review",
+  "total": 18,
+  "passed": 18,
+  "failed": 0,
+  "rootCauses": {
+    "introduction-decline": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "capabilities-open": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "identity-short": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "thanks-reopen-printer": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "printer-thanks-unresolved": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "consent-greeting": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "consent-introduction": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "name-introduction": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "name-capabilities": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "name-new-printer": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "address-greeting": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "address-capabilities": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "address-new-network": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "prepared-introduction": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "prepared-new-printer": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "consent-withdraw-social": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "name-literal-store-control": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "greeting-payment-mixed": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    }
+  },
+  "failures": [],
+  "rows": [
+    {
+      "id": "r1-introduction-decline",
+      "fixtureId": "r1-introduction-decline",
+      "category": "conversation",
+      "rootCause": "introduction-decline",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "@Quỳnh Hương hi em",
+          "actual": "Dạ, em chào anh/chị! Em là Quỳnh Hương. Anh/chị cần hỗ trợ gì ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "@Quỳnh Hương em giới thiệu đi",
+          "actual": "Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ kiểm tra máy in, mạng, QR, thẻ và Merchant Portal; kết quả giao dịch cần đối chiếu trên POS/Portal, em không tự xác nhận trạng thái tiền. Anh/chị cần hỗ trợ phần nào ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Không",
+          "actual": "Dạ, khi nào cần hỗ trợ anh/chị cứ nhắn em nhé. Em không chuyển yêu cầu hay thu thập thông tin cửa hàng từ câu trả lời này.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-capabilities-open",
+      "fixtureId": "r1-capabilities-open",
+      "category": "conversation",
+      "rootCause": "capabilities-open",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Chào Quỳnh Hương",
+          "actual": "Dạ, em chào anh/chị! Em là Quỳnh Hương. Anh/chị cần hỗ trợ gì ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Em hỗ trợ được những việc gì?",
+          "actual": "Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ kiểm tra máy in, mạng, QR, thẻ và Merchant Portal; kết quả giao dịch cần đối chiếu trên POS/Portal, em không tự xác nhận trạng thái tiền. Anh/chị cần hỗ trợ phần nào ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Chị chưa có sự cố, hỏi để biết thôi",
+          "actual": "Dạ, khi nào cần hỗ trợ anh/chị cứ nhắn em nhé. Em không chuyển yêu cầu hay thu thập thông tin cửa hàng từ câu trả lời này.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-identity-short",
+      "fixtureId": "r1-identity-short",
+      "category": "conversation",
+      "rootCause": "identity-short",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "alo em",
+          "actual": "Dạ, em chào anh/chị! Em là Quỳnh Hương. Anh/chị cần hỗ trợ gì ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "em là ai vậy",
+          "actual": "Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ kiểm tra máy in, mạng, QR, thẻ và Merchant Portal; kết quả giao dịch cần đối chiếu trên POS/Portal, em không tự xác nhận trạng thái tiền. Anh/chị cần hỗ trợ phần nào ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "ok cảm ơn em",
+          "actual": "Dạ, em cảm ơn anh/chị. Khi cần hỗ trợ thêm, anh/chị cứ nhắn em nhé.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-thanks-reopen-printer",
+      "fixtureId": "r1-thanks-reopen-printer",
+      "category": "printer",
+      "rootCause": "thanks-reopen-printer",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Chào em",
+          "actual": "Dạ, em chào anh/chị! Em là Quỳnh Hương. Anh/chị cần hỗ trợ gì ạ?",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "cảm ơn nha",
+          "actual": "Dạ, em cảm ơn anh/chị. Khi cần hỗ trợ thêm, anh/chị cứ nhắn em nhé.",
+          "context": null,
+          "session": false,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "À máy POS không in bill, giấy không chạy ra",
+          "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "paper-checked",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "paper": "not-feeding"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-printer-thanks-unresolved",
+      "fixtureId": "r1-printer-thanks-unresolved",
+      "category": "printer",
+      "rootCause": "printer-thanks-unresolved",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Máy POS không in bill",
+          "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "paper-checked",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Cảm ơn, nhưng giấy vẫn không chạy ra",
+          "actual": "Giấy không chạy hoặc bị kẹt: khi không có giao dịch đang xử lý, kiểm tra cuộn giấy và nắp theo hướng dẫn dòng máy. Không kéo mạnh hoặc tự tháo bộ phận in. Anh/chị đã kiểm tra giấy/nắp chưa?",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "receipt-paper",
+            "previousQuestions": [
+              "paper-checked"
+            ],
+            "answers": [
+              "failed"
+            ],
+            "attempted": [
+              "paper-orientation",
+              "printer-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "paper": "not-feeding"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "paper-checked",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-consent-greeting",
+      "fixtureId": "r1-consent-greeting",
+      "category": "conversation",
+      "rootCause": "consent-greeting",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "payment-history",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Chưa thấy hoặc chưa xác định được giao dịch thì cần tra soát, không suy ra đã thành công/thất bại và chưa thu tiền lại. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Chào em, chị quay lại rồi",
+          "actual": "Dạ, em chào anh/chị! Em là Quỳnh Hương. Anh/chị cần hỗ trợ gì ạ? Giao dịch trước vẫn chưa xác minh trên POS/Portal; mình chưa thu tiền hay thanh toán lại nhé.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "clarify",
+            "lastQuestionContext": "offer-consent",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-consent-introduction",
+      "fixtureId": "r1-consent-introduction",
+      "category": "conversation",
+      "rootCause": "consent-introduction",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "payment-history",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Chưa thấy hoặc chưa xác định được giao dịch thì cần tra soát, không suy ra đã thành công/thất bại và chưa thu tiền lại. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Khoan, em giới thiệu về em đi",
+          "actual": "Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ kiểm tra máy in, mạng, QR, thẻ và Merchant Portal; kết quả giao dịch cần đối chiếu trên POS/Portal, em không tự xác nhận trạng thái tiền. Anh/chị cần hỗ trợ phần nào ạ? Giao dịch trước vẫn chưa xác minh trên POS/Portal; mình chưa thu tiền hay thanh toán lại nhé.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "clarify",
+            "lastQuestionContext": "offer-consent",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Không",
+          "actual": "Dạ, khi nào cần hỗ trợ anh/chị cứ nhắn em nhé. Em không chuyển yêu cầu hay thu thập thông tin cửa hàng từ câu trả lời này. Giao dịch trước vẫn chưa xác minh trên POS/Portal; mình chưa thu tiền hay thanh toán lại nhé.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "clarify",
+            "lastQuestionContext": "offer-consent",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-name-introduction",
+      "fixtureId": "r1-name-introduction",
+      "category": "conversation",
+      "rootCause": "name-introduction",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "payment-history",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Chưa thấy hoặc chưa xác định được giao dịch thì cần tra soát, không suy ra đã thành công/thất bại và chưa thu tiền lại. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Dạ anh, em sẽ chuẩn bị yêu cầu chuyển CS/OPS. Anh cho em xin tên cửa hàng nhé.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": true,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "em giới thiệu đi",
+          "actual": "Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ kiểm tra máy in, mạng, QR, thẻ và Merchant Portal; kết quả giao dịch cần đối chiếu trên POS/Portal, em không tự xác nhận trạng thái tiền. Anh/chị cần hỗ trợ phần nào ạ? Giao dịch trước vẫn chưa xác minh trên POS/Portal; mình chưa thu tiền hay thanh toán lại nhé.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "clarify",
+            "lastQuestionContext": "offer-consent",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-name-capabilities",
+      "fixtureId": "r1-name-capabilities",
+      "category": "conversation",
+      "rootCause": "name-capabilities",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "payment-history",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Chưa thấy hoặc chưa xác định được giao dịch thì cần tra soát, không suy ra đã thành công/thất bại và chưa thu tiền lại. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Dạ anh, em sẽ chuẩn bị yêu cầu chuyển CS/OPS. Anh cho em xin tên cửa hàng nhé.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": true,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Em có thể hỗ trợ những gì?",
+          "actual": "Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ kiểm tra máy in, mạng, QR, thẻ và Merchant Portal; kết quả giao dịch cần đối chiếu trên POS/Portal, em không tự xác nhận trạng thái tiền. Anh/chị cần hỗ trợ phần nào ạ? Giao dịch trước vẫn chưa xác minh trên POS/Portal; mình chưa thu tiền hay thanh toán lại nhé.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "clarify",
+            "lastQuestionContext": "offer-consent",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-name-new-printer",
+      "fixtureId": "r1-name-new-printer",
+      "category": "printer",
+      "rootCause": "name-new-printer",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "payment-history",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Chưa thấy hoặc chưa xác định được giao dịch thì cần tra soát, không suy ra đã thành công/thất bại và chưa thu tiền lại. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Dạ anh, em sẽ chuẩn bị yêu cầu chuyển CS/OPS. Anh cho em xin tên cửa hàng nhé.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": true,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Máy không in bill, giấy bị kẹt",
+          "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "paper-checked",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "paper": "stuck"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": [
+              {
+                "topic": "debit",
+                "currentQuestion": "offer-consent",
+                "attempted": [
+                  "history-check"
+                ],
+                "failed": [],
+                "risk": "high"
+              }
+            ]
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-address-greeting",
+      "fixtureId": "r1-address-greeting",
+      "category": "conversation",
+      "rootCause": "address-greeting",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "payment-history",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Chưa thấy hoặc chưa xác định được giao dịch thì cần tra soát, không suy ra đã thành công/thất bại và chưa thu tiền lại. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Dạ anh, em sẽ chuẩn bị yêu cầu chuyển CS/OPS. Anh cho em xin tên cửa hàng nhé.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": true,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Cửa hàng Giả Lập Hoa Giấy",
+          "actual": "Cửa hàng ở địa chỉ nào ạ? Anh/chị cho em địa chỉ hoặc tên chi nhánh để CS/OPS xác định đúng nơi.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": true,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "hi em",
+          "actual": "Dạ, em chào anh/chị! Em là Quỳnh Hương. Anh/chị cần hỗ trợ gì ạ? Giao dịch trước vẫn chưa xác minh trên POS/Portal; mình chưa thu tiền hay thanh toán lại nhé.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "clarify",
+            "lastQuestionContext": "offer-consent",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-address-capabilities",
+      "fixtureId": "r1-address-capabilities",
+      "category": "conversation",
+      "rootCause": "address-capabilities",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "payment-history",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Chưa thấy hoặc chưa xác định được giao dịch thì cần tra soát, không suy ra đã thành công/thất bại và chưa thu tiền lại. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Dạ anh, em sẽ chuẩn bị yêu cầu chuyển CS/OPS. Anh cho em xin tên cửa hàng nhé.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": true,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Cửa hàng Giả Lập Hoa Giấy",
+          "actual": "Cửa hàng ở địa chỉ nào ạ? Anh/chị cho em địa chỉ hoặc tên chi nhánh để CS/OPS xác định đúng nơi.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": true,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Em hỗ trợ được lỗi nào?",
+          "actual": "Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ kiểm tra máy in, mạng, QR, thẻ và Merchant Portal; kết quả giao dịch cần đối chiếu trên POS/Portal, em không tự xác nhận trạng thái tiền. Anh/chị cần hỗ trợ phần nào ạ? Giao dịch trước vẫn chưa xác minh trên POS/Portal; mình chưa thu tiền hay thanh toán lại nhé.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "clarify",
+            "lastQuestionContext": "offer-consent",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-address-new-network",
+      "fixtureId": "r1-address-new-network",
+      "category": "network",
+      "rootCause": "address-new-network",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "payment-history",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Chưa thấy hoặc chưa xác định được giao dịch thì cần tra soát, không suy ra đã thành công/thất bại và chưa thu tiền lại. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Dạ anh, em sẽ chuẩn bị yêu cầu chuyển CS/OPS. Anh cho em xin tên cửa hàng nhé.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": true,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Cửa hàng Giả Lập Hoa Giấy",
+          "actual": "Cửa hàng ở địa chỉ nào ạ? Anh/chị cho em địa chỉ hoặc tên chi nhánh để CS/OPS xác định đúng nơi.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": true,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Giờ máy mất mạng WiFi, điện thoại cũng không vào mạng được",
+          "actual": "Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "wifi-other",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "wifi-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "connection": "wifi",
+              "phoneWifi": "failed"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": [
+              {
+                "topic": "debit",
+                "currentQuestion": "offer-consent",
+                "attempted": [
+                  "history-check"
+                ],
+                "failed": [],
+                "risk": "high"
+              }
+            ]
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-prepared-introduction",
+      "fixtureId": "r1-prepared-introduction",
+      "category": "conversation",
+      "rootCause": "prepared-introduction",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "payment-history",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Chưa thấy hoặc chưa xác định được giao dịch thì cần tra soát, không suy ra đã thành công/thất bại và chưa thu tiền lại. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Dạ anh, em sẽ chuẩn bị yêu cầu chuyển CS/OPS. Anh cho em xin tên cửa hàng nhé.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": true,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Cửa hàng Giả Lập Hoa Giấy",
+          "actual": "Cửa hàng ở địa chỉ nào ạ? Anh/chị cho em địa chỉ hoặc tên chi nhánh để CS/OPS xác định đúng nơi.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": true,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "12 đường Mô Phỏng, khu Giả Lập",
+          "actual": "Em đã chuẩn bị yêu cầu hỗ trợ:\n\n🏪 Cửa hàng: Cửa hàng Giả Lập Hoa Giấy\n📍 Địa chỉ/chi nhánh: 12 đường Mô Phỏng, khu Giả Lập\n🔧 Sự cố: giao dịch chưa xác minh; đã thử hướng dẫn hoặc cần xác minh, khách đồng ý chuyển hỗ trợ\n\nEm sẽ thông báo cho nhân viên hỗ trợ trong nhóm nếu xác định được đúng tài khoản Zalo của họ. Nếu không thể tag, em sẽ thông báo rõ để anh/chị liên hệ CS/OPS. Gõ “xong” để kết thúc.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": true,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": true,
+          "escalation": true
+        },
+        {
+          "input": "Em giới thiệu đi",
+          "actual": "Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ kiểm tra máy in, mạng, QR, thẻ và Merchant Portal; kết quả giao dịch cần đối chiếu trên POS/Portal, em không tự xác nhận trạng thái tiền. Anh/chị cần hỗ trợ phần nào ạ? Giao dịch trước vẫn chưa xác minh trên POS/Portal; mình chưa thu tiền hay thanh toán lại nhé.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "clarify-context",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "clarify",
+            "lastQuestionContext": "offer-consent",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-prepared-new-printer",
+      "fixtureId": "r1-prepared-new-printer",
+      "category": "printer",
+      "rootCause": "prepared-new-printer",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "payment-history",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Chưa thấy hoặc chưa xác định được giao dịch thì cần tra soát, không suy ra đã thành công/thất bại và chưa thu tiền lại. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Dạ anh, em sẽ chuẩn bị yêu cầu chuyển CS/OPS. Anh cho em xin tên cửa hàng nhé.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": true,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Cửa hàng Giả Lập Hoa Giấy",
+          "actual": "Cửa hàng ở địa chỉ nào ạ? Anh/chị cho em địa chỉ hoặc tên chi nhánh để CS/OPS xác định đúng nơi.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": true,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "12 đường Mô Phỏng, khu Giả Lập",
+          "actual": "Em đã chuẩn bị yêu cầu hỗ trợ:\n\n🏪 Cửa hàng: Cửa hàng Giả Lập Hoa Giấy\n📍 Địa chỉ/chi nhánh: 12 đường Mô Phỏng, khu Giả Lập\n🔧 Sự cố: giao dịch chưa xác minh; đã thử hướng dẫn hoặc cần xác minh, khách đồng ý chuyển hỗ trợ\n\nEm sẽ thông báo cho nhân viên hỗ trợ trong nhóm nếu xác định được đúng tài khoản Zalo của họ. Nếu không thể tag, em sẽ thông báo rõ để anh/chị liên hệ CS/OPS. Gõ “xong” để kết thúc.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": true,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": true,
+          "escalation": true
+        },
+        {
+          "input": "Máy in bill ra giấy trắng, giấy vẫn chạy",
+          "actual": "Giấy chạy nhưng trắng/mờ thường cần kiểm tra loại giấy nhiệt và chiều mặt in theo hướng dẫn đúng dòng máy. Anh/chị đã kiểm tra hai điểm này chưa? Nếu vừa thanh toán, thiếu chữ trên bill không xác định được kết quả giao dịch.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "printer-type",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "paper": "blank"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": [
+              {
+                "topic": "debit",
+                "currentQuestion": "offer-consent",
+                "attempted": [
+                  "history-check"
+                ],
+                "failed": [],
+                "risk": "high"
+              }
+            ]
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-consent-withdraw-social",
+      "fixtureId": "r1-consent-withdraw-social",
+      "category": "conversation",
+      "rootCause": "consent-withdraw-social",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "payment-history",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Chưa thấy hoặc chưa xác định được giao dịch thì cần tra soát, không suy ra đã thành công/thất bại và chưa thu tiền lại. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Dạ anh, em sẽ chuẩn bị yêu cầu chuyển CS/OPS. Anh cho em xin tên cửa hàng nhé.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": true,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Không chuyển nữa, em giới thiệu đi",
+          "actual": "Em chưa chuyển OPS và không hỏi lại đồng ý. Anh/chị có thể tự kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền; chưa thanh toán lại khi kết quả chưa rõ.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "escalation-declined",
+            "previousQuestions": [
+              "payment-history",
+              "offer-consent"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": true,
+            "refusal": "declined",
+            "decision": "declined",
+            "lastQuestionContext": "offer-consent",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "r1-name-literal-store-control",
+      "fixtureId": "r1-name-literal-store-control",
+      "category": "conversation",
+      "rootCause": "name-literal-store-control",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+          "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "payment-history",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chưa rõ",
+          "actual": "Chưa thấy hoặc chưa xác định được giao dịch thì cần tra soát, không suy ra đã thành công/thất bại và chưa thu tiền lại. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "đồng ý chuyển OPS",
+          "actual": "Dạ anh, em sẽ chuẩn bị yêu cầu chuyển CS/OPS. Anh cho em xin tên cửa hàng nhé.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": true,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "Cửa hàng Giả Lập Xin Chào",
+          "actual": "Cửa hàng ở địa chỉ nào ạ? Anh/chị cho em địa chỉ hoặc tên chi nhánh để CS/OPS xác định đúng nơi.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": true,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": true
+        },
+        {
+          "input": "12 đường Mô Phỏng, khu Giả Lập",
+          "actual": "Em đã chuẩn bị yêu cầu hỗ trợ:\n\n🏪 Cửa hàng: Cửa hàng Giả Lập Xin Chào\n📍 Địa chỉ/chi nhánh: 12 đường Mô Phỏng, khu Giả Lập\n🔧 Sự cố: giao dịch chưa xác minh; đã thử hướng dẫn hoặc cần xác minh, khách đồng ý chuyển hỗ trợ\n\nEm sẽ thông báo cho nhân viên hỗ trợ trong nhóm nếu xác định được đúng tài khoản Zalo của họ. Nếu không thể tag, em sẽ thông báo rõ để anh/chị liên hệ CS/OPS. Gõ “xong” để kết thúc.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "payment-history"
+            ],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": true,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "payment-history",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": true,
+          "escalation": true
+        }
+      ]
+    },
+    {
+      "id": "r1-greeting-payment-mixed",
+      "fixtureId": "r1-greeting-payment-mixed",
+      "category": "conversation",
+      "rootCause": "greeting-payment-mixed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Hi em, khách báo bị trừ tiền mà POS báo lỗi, có quẹt lại không?",
+          "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "payment-history",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    }
+  ]
+}

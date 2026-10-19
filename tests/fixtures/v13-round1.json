@@ -1,0 +1,543 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "v13-round1.0.0",
+  "reviewNote": "Independent development-role contracts; synthetic AI-authored, not external merchant/OPS ground truth. Frozen before V13 runtime changes.",
+  "fixtures": [
+    {
+      "id": "r1-introduction-decline",
+      "category": "conversation",
+      "rootCause": "introduction-decline",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Synthetic reproduction of the user-reported sequence; distinguishes a social introduction from troubleshooting or OPS consent.",
+      "turns": [
+        "@Quỳnh Hương hi em",
+        "@Quỳnh Hương em giới thiệu đi",
+        "Không"
+      ],
+      "must": [
+        "không|khi nào|cần|sẵn sàng"
+      ],
+      "mustNot": [
+        "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": [
+        {
+          "turn": 1,
+          "must": [
+            "chào|Quỳnh Hương"
+          ],
+          "mustNot": [
+            "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+          ]
+        },
+        {
+          "turn": 2,
+          "must": [
+            "Quỳnh Hương|trợ lý|hỗ trợ.*POS"
+          ],
+          "mustNot": [
+            "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r1-capabilities-open",
+      "category": "conversation",
+      "rootCause": "capabilities-open",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Broad capabilities questions and non-incident clarification should form a coherent conversation.",
+      "turns": [
+        "Chào Quỳnh Hương",
+        "Em hỗ trợ được những việc gì?",
+        "Chị chưa có sự cố, hỏi để biết thôi"
+      ],
+      "must": [
+        "cần|hỗ trợ|ghi nhận|khi nào"
+      ],
+      "mustNot": [
+        "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": [
+        {
+          "turn": 2,
+          "must": [
+            "POS",
+            "hỗ trợ"
+          ],
+          "mustNot": [
+            "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r1-identity-short",
+      "category": "conversation",
+      "rootCause": "identity-short",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Tests informal greeting, identity and polite closure without explicit POS keywords.",
+      "turns": [
+        "alo em",
+        "em là ai vậy",
+        "ok cảm ơn em"
+      ],
+      "must": [
+        "cần|hỗ trợ|cảm ơn|dạ"
+      ],
+      "mustNot": [
+        "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": [
+        {
+          "turn": 2,
+          "must": [
+            "Quỳnh Hương|trợ lý|hỗ trợ.*POS"
+          ],
+          "mustNot": [
+            "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r1-thanks-reopen-printer",
+      "category": "printer",
+      "rootCause": "thanks-reopen-printer",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "A new concrete incident after thanks must be distinguished from closure.",
+      "turns": [
+        "Chào em",
+        "cảm ơn nha",
+        "À máy POS không in bill, giấy không chạy ra"
+      ],
+      "must": [
+        "giấy|nắp|máy in"
+      ],
+      "mustNot": [
+        "đã xử lý xong|rất vui.*hỗ trợ",
+        "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "r1-printer-thanks-unresolved",
+      "category": "printer",
+      "rootCause": "printer-thanks-unresolved",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Politeness and unresolved symptoms coexist in a single turn.",
+      "turns": [
+        "Máy POS không in bill",
+        "Cảm ơn, nhưng giấy vẫn không chạy ra"
+      ],
+      "must": [
+        "giấy|nắp|máy in"
+      ],
+      "mustNot": [
+        "đã xử lý xong|rất vui.*hỗ trợ",
+        "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "r1-consent-greeting",
+      "category": "conversation",
+      "rootCause": "consent-greeting",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "A greeting during an offered handover is not an affirmative consent token.",
+      "turns": [
+        "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+        "chưa rõ",
+        "Chào em, chị quay lại rồi"
+      ],
+      "must": [
+        "chào|quay lại|hỗ trợ"
+      ],
+      "mustNot": [
+        "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "stateByMode": {
+        "v12": {
+          "context.pendingVerification": true,
+          "context.consent": false
+        }
+      }
+    },
+    {
+      "id": "r1-consent-introduction",
+      "category": "conversation",
+      "rootCause": "consent-introduction",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Identity request interrupts pending consent and a later bare negative must not be misread as customer information.",
+      "turns": [
+        "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+        "chưa rõ",
+        "Khoan, em giới thiệu về em đi",
+        "Không"
+      ],
+      "must": [
+        "không|chưa|cần|hỗ trợ"
+      ],
+      "mustNot": [
+        "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": [
+        {
+          "turn": 3,
+          "must": [
+            "Quỳnh Hương|trợ lý|hỗ trợ.*POS"
+          ],
+          "mustNot": [
+            "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+          ]
+        }
+      ],
+      "stateByMode": {
+        "v12": {
+          "context.pendingVerification": true,
+          "context.consent": false
+        }
+      }
+    },
+    {
+      "id": "r1-name-introduction",
+      "category": "conversation",
+      "rootCause": "name-introduction",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Introduction text at the store-name collection step exposes stale form capture.",
+      "turns": [
+        "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+        "chưa rõ",
+        "đồng ý chuyển OPS",
+        "em giới thiệu đi"
+      ],
+      "must": [
+        "Quỳnh Hương|trợ lý|hỗ trợ.*POS"
+      ],
+      "mustNot": [
+        "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "stateByMode": {
+        "v12": {
+          "context.pendingVerification": true,
+          "context.consent": false
+        }
+      }
+    },
+    {
+      "id": "r1-name-capabilities",
+      "category": "conversation",
+      "rootCause": "name-capabilities",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "A capabilities question must not become the merchant store name.",
+      "turns": [
+        "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+        "chưa rõ",
+        "đồng ý chuyển OPS",
+        "Em có thể hỗ trợ những gì?"
+      ],
+      "must": [
+        "POS|giao dịch|máy in",
+        "hỗ trợ"
+      ],
+      "mustNot": [
+        "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "stateByMode": {
+        "v12": {
+          "context.pendingVerification": true,
+          "context.consent": false
+        }
+      }
+    },
+    {
+      "id": "r1-name-new-printer",
+      "category": "printer",
+      "rootCause": "name-new-printer",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "New actionable symptom during name collection tests interruption and separation from handover fields.",
+      "turns": [
+        "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+        "chưa rõ",
+        "đồng ý chuyển OPS",
+        "Máy không in bill, giấy bị kẹt"
+      ],
+      "must": [
+        "giấy|nắp|máy in"
+      ],
+      "mustNot": [
+        "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "r1-address-greeting",
+      "category": "conversation",
+      "rootCause": "address-greeting",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "A greeting during location collection must not silently prepare a handover with a greeting as address.",
+      "turns": [
+        "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+        "chưa rõ",
+        "đồng ý chuyển OPS",
+        "Cửa hàng Giả Lập Hoa Giấy",
+        "hi em"
+      ],
+      "must": [
+        "chào|Quỳnh Hương"
+      ],
+      "mustNot": [
+        "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "stateByMode": {
+        "v12": {
+          "context.pendingVerification": true,
+          "context.consent": false
+        }
+      }
+    },
+    {
+      "id": "r1-address-capabilities",
+      "category": "conversation",
+      "rootCause": "address-capabilities",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "A social or capability turn inside address collection exercises stale workflow handling.",
+      "turns": [
+        "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+        "chưa rõ",
+        "đồng ý chuyển OPS",
+        "Cửa hàng Giả Lập Hoa Giấy",
+        "Em hỗ trợ được lỗi nào?"
+      ],
+      "must": [
+        "POS|giao dịch|máy in",
+        "hỗ trợ"
+      ],
+      "mustNot": [
+        "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "stateByMode": {
+        "v12": {
+          "context.pendingVerification": true,
+          "context.consent": false
+        }
+      }
+    },
+    {
+      "id": "r1-address-new-network",
+      "category": "network",
+      "rootCause": "address-new-network",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "A new network symptom should not be copied into a handover location.",
+      "turns": [
+        "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+        "chưa rõ",
+        "đồng ý chuyển OPS",
+        "Cửa hàng Giả Lập Hoa Giấy",
+        "Giờ máy mất mạng WiFi, điện thoại cũng không vào mạng được"
+      ],
+      "must": [
+        "mạng|Wi.?Fi|router|bộ phát"
+      ],
+      "mustNot": [
+        "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "r1-prepared-introduction",
+      "category": "conversation",
+      "rootCause": "prepared-introduction",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Prepared handover state must not swallow later social conversation or imply real notification.",
+      "turns": [
+        "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+        "chưa rõ",
+        "đồng ý chuyển OPS",
+        "Cửa hàng Giả Lập Hoa Giấy",
+        "12 đường Mô Phỏng, khu Giả Lập",
+        "Em giới thiệu đi"
+      ],
+      "must": [
+        "Quỳnh Hương|trợ lý|hỗ trợ.*POS"
+      ],
+      "mustNot": [
+        "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "stateByMode": {
+        "v12": {
+          "context.pendingVerification": true,
+          "context.consent": false
+        }
+      }
+    },
+    {
+      "id": "r1-prepared-new-printer",
+      "category": "printer",
+      "rootCause": "prepared-new-printer",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "New printer diagnosis after preparation tests runtime continuity without inventing any payment outcome.",
+      "turns": [
+        "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+        "chưa rõ",
+        "đồng ý chuyển OPS",
+        "Cửa hàng Giả Lập Hoa Giấy",
+        "12 đường Mô Phỏng, khu Giả Lập",
+        "Máy in bill ra giấy trắng, giấy vẫn chạy"
+      ],
+      "must": [
+        "giấy|nhiệt|máy in"
+      ],
+      "mustNot": [
+        "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+      ],
+      "state": {}
+    },
+    {
+      "id": "r1-consent-withdraw-social",
+      "category": "conversation",
+      "rootCause": "consent-withdraw-social",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Explicit withdrawal has safety priority even when paired with a social request.",
+      "turns": [
+        "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+        "chưa rõ",
+        "đồng ý chuyển OPS",
+        "Không chuyển nữa, em giới thiệu đi"
+      ],
+      "must": [
+        "dừng|thu hồi|không chuyển|chưa chuyển|hủy"
+      ],
+      "mustNot": [
+        "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "r1-name-literal-store-control",
+      "category": "conversation",
+      "rootCause": "name-literal-store-control",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "A counterexample to broad greeting matching: an explicitly labelled synthetic store name is valid consented collection data.",
+      "turns": [
+        "Khách đã bị trừ tiền nhưng POS không có giao dịch",
+        "chưa rõ",
+        "đồng ý chuyển OPS",
+        "Cửa hàng Giả Lập Xin Chào",
+        "12 đường Mô Phỏng, khu Giả Lập"
+      ],
+      "must": [
+        "chuẩn bị|CS/OPS|yêu cầu"
+      ],
+      "mustNot": [
+        "đã gửi|đã chuyển|đã tiếp nhận"
+      ],
+      "state": {
+        "pending": true
+      },
+      "checkpoints": [
+        {
+          "turn": 4,
+          "must": [
+            "địa chỉ|vị trí"
+          ],
+          "state": {
+            "pending": false
+          },
+          "mustNot": []
+        }
+      ]
+    },
+    {
+      "id": "r1-greeting-payment-mixed",
+      "category": "conversation",
+      "rootCause": "greeting-payment-mixed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Greeting detection must not hide the payment-risk question in the same turn.",
+      "turns": [
+        "Hi em, khách báo bị trừ tiền mà POS báo lỗi, có quẹt lại không?"
+      ],
+      "must": [
+        "(?:không|chưa).{0,35}(?:quẹt|thu|thanh toán).{0,15}lại|tránh.{0,25}(?:lặp|hai lần)",
+        "POS|Portal|lịch sử"
+      ],
+      "mustNot": [
+        "giao dịch đã thành công|tiền sẽ.{0,15}hoàn|đã hoàn tiền",
+        "xin.{0,15}tên cửa hàng|cho.{0,15}tên cửa hàng|(?:cửa hàng.{0,8}địa chỉ|địa chỉ cửa hàng)|vị trí.{0,15}cửa hàng|chuẩn bị.{0,20}(?:CS|OPS)|đã chuyển.{0,15}(?:CS|OPS|yêu cầu)|đã gửi.{0,15}(?:ticket|yêu cầu|OPS)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    }
+  ]
+}

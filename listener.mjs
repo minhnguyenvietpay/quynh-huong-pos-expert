@@ -2,8 +2,8 @@ import { Zalo, ThreadType } from 'zca-js';
 import { createRequire } from 'node:module';
 import fs from 'node:fs';
 const require = createRequire(import.meta.url);
-const { processMessage, hasSession, hasEscalation, closing, greetingOnly, getPendingHandover, markHandoverDone, shouldRespondV11, shouldRespondV12 } = require('./dialogue.js');
-const { normalize, detect, isIntroduction, isCompliment, isAddressed, stripAddress } = require('./intent.js');
+const { processMessage, hasSession, hasSocialSession, hasEscalation, closing, greetingOnly, getPendingHandover, markHandoverDone, shouldRespondV11, shouldRespondV12 } = require('./dialogue.js');
+const { normalize, detect, isIntroduction, isCompliment, isAddressed, stripAddress, socialIntent } = require('./intent.js');
 const state=require('./state.js');
 const tickets=require('./incident.js');
 const quality=require('./quality.js');
@@ -134,7 +134,7 @@ api.listener.on('message', async m => {
     if (dedupe(messageId ? `${groupId}:${messageId}` : '')) return;
     const key = JSON.stringify([groupId, userId]);
     if (inflight.has(key)) { console.log('[BUSY]', groupId); return; }
-    const ongoing = hasSession(groupId, userId) || hasEscalation(groupId, userId);
+    const ongoing = hasSession(groupId, userId) || hasEscalation(groupId, userId) || (typeof hasSocialSession === 'function' && hasSocialSession(groupId, userId));
     const explicit = isAddressed(raw);
     const originalQuestion = stripAddress(raw).replace(/@\s*quỳnh\s*hương\b/gi, '').replace(/@\s*quynh\s*huong\b/gi, '').trim();
     const parsed = qhLanguage.normalize(originalQuestion, {issue:ongoing?'active':null,stage:ongoing?'question':null});
@@ -154,7 +154,7 @@ api.listener.on('message', async m => {
     }
     if (parsed.changed) console.log('[QH LANGUAGE]', {intent:parsed.intent, changed:true});
     const social = (ongoing || direct) && Boolean(
-      greetingOnly(norm) || closing(norm) || isIntroduction(raw) || isCompliment(raw)
+      (typeof socialIntent === 'function' && socialIntent(originalQuestion)) || greetingOnly(norm) || closing(norm) || isIntroduction(raw) || isCompliment(raw)
     );
     if (!detection.respond && !social && !posFallback && !v11Eligible && !direct && !/^\/ticket\b/i.test(question)) {
       console.log('[IGNORED]', detection.reason);
@@ -171,7 +171,7 @@ api.listener.on('message', async m => {
     if (rateLimited(groupId)) { console.log('[RATE LIMITED]', groupId); return; }
     inflight.add(key);
     try {
-      const reply = processMessage(groupId, userId, useV11 ? originalQuestion : question);
+      const reply = processMessage(groupId, userId, useV11 || (typeof socialIntent === 'function' && socialIntent(originalQuestion)) ? originalQuestion : question);
       if (typeof reply !== 'string' || !reply.trim()) return;
       await sendTyping(groupId);
       const delay = REPLY_DELAY_MIN_MS + Math.floor(Math.random() * (REPLY_DELAY_MAX_MS - REPLY_DELAY_MIN_MS + 1));

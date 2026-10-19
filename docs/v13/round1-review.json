@@ -1,0 +1,21 @@
+{
+  "round": 1,
+  "reviewers": {
+    "qa": "v13_qa, independent from simulator and runtime engineer",
+    "pos": "v13_pos_expert pre-freeze domain review",
+    "safety": "v13_safety scoped pause approval",
+    "director": "root"
+  },
+  "semantics": "Pure social turns pause previously consented collection for the same incident, clear publicly active escalation and prepared delivery, and remove active expert consent while preserving unresolved payment memory. A valid expected merchant field or renewed explicit OPS request may resume scoped prior consent; bare yes/ok must not. Withdrawal, reset, new incident and TTL invalidate the paused collector. No live messages, deployment or independent merchant validation occurred.",
+  "fixtureChangesAfterFreeze": 0,
+  "finalChecks": {
+    "default": "18/18",
+    "v12": "18/18",
+    "qaTests": "5/5"
+  },
+  "datasetSha256": "1948e180be9f623b72d6ab7b325d9377d368a92ab4852e50ebc35ba5e554c6ef",
+  "baselineReportHashes": {
+    "default": "41e29ed787d83a48b459dd63bdcf5afa282045e210937e0ba8d6ea1f36d77f63",
+    "v12": "be928edfcd10a8fa8bea17f05a154824dd6526ff8091ce2b5264fe113e3883cd"
+  }
+}

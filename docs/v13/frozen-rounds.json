@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "provenance": "Synthetic independent development-role expectations; no external merchant or OPS ground-truth validation.",
+  "rounds": [
+    {
+      "round": 1,
+      "dataset": "tests/fixtures/v13-round1.json",
+      "sha256": "1948e180be9f623b72d6ab7b325d9377d368a92ab4852e50ebc35ba5e554c6ef",
+      "modes": ["default", "v12"],
+      "fixtures": 18,
+      "baselineCommit": "eefe224"
+    }
+  ]
+}

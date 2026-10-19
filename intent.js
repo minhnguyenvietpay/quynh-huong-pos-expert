@@ -71,8 +71,21 @@ function isCompliment(input){
  if(/\b(khong|chua|chang|ko|k)\s+(gioi|tot|hay|on|duoc|xuat sac|dinh)\b/.test(n))return false;
  return /\b(gioi qua|gioi ghe|gioi the|hay qua|hay ghe|tuyet voi|xuat sac|dinh qua|dinh ghe|qua dinh|sieu qua|sieu ghe|cam on em nhieu|em gioi|em hay|em dinh|bot gioi|bot hay|lam tot lam|ho tro tot|rat huu ich|huu ich qua|de thuong qua|dang yeu qua|good job|well done|nice work|great job|amazing|excellent)\b/.test(n);
 }
+// Anchored social grammar: a substantive symptom in the same message must reach diagnostics.
+function socialIntent(input){
+ const n=normalize(stripAddress(input));
+ if(/^(?:xin chao|chao|hello|hi|hiem|hey|alo)(?: (?:em|bot|chi|anh))?(?: (?:a|nhe|nha|oi))?(?: (?:chi|anh) quay lai roi)?$/.test(n))return 'greeting';
+ if(/^(?:khoan )?(?:(?:em|ban|bot) )?(?:tu )?gioi thieu(?: (?:ve em|ban than))?(?: (?:di|nhe|a))?$/.test(n)||/^(?:em|ban|bot) la ai(?: vay)?$/.test(n))return 'introduction';
+ if(/^(?:(?:em|ban|bot) )?(?:co the )?ho tro(?: duoc)? (?:nhung (?:viec )?gi|nhung viec gi|loi nao|gi)(?: a| vay)?$/.test(n))return 'capability';
+ if(/^(?:ok |oke |da )?(?:cam on|thanks|thank you)(?: (?:em|bot))?(?: (?:nhieu|nhe|nha|a))?$/.test(n))return 'thanks';
+ if(/^(?:(?:chi|anh|toi) )?chua co su co(?: hoi de biet thoi)?$/.test(n))return 'no-incident';
+ if(/^(?:khong|khong can|chua can|thoi|no)$/.test(n))return 'decline';
+ if(isCompliment(input)&&!/(?:nhung|van|chua|loi|tru tien|giao dich)/.test(n))return 'compliment';
+ return null;
+}
 function detect(input,{ongoing=false,explicit=false}={}){
  const raw=stripAddress(input),n=normalize(raw),direct=explicit||isAddressed(input),c=classify(n);
+ if(socialIntent(input))return {respond:ongoing||direct||socialIntent(input)==='introduction',intent:socialIntent(input),score:0.99,reason:'social'};
  if(isIntroduction(input))return {respond:true,intent:'introduction',score:0.99,reason:'introduction'};
  if(isCompliment(input))return {respond:ongoing||direct,intent:'compliment',score:0.98,reason:'compliment'};
  if(extractErrorCode(raw))return {respond:true,intent:'error_code',score:0.99,reason:'error_code'};
@@ -81,4 +94,4 @@ function detect(input,{ongoing=false,explicit=false}={}){
  const hasDomain=SUPPORT_TERMS.some(t=>wordMatch(n,t))||(c.intent==='payment'&&(wordMatch(n,'tru tien')||wordMatch(n,'khach')))||(c.intent==='frozen'&&wordMatch(n,'may'));
  return {respond:Boolean(c.intent&&hasDomain&&!c.ambiguous),...c,reason:c.ambiguous?'ambiguous':(c.intent&&hasDomain?'domain_intent':'no_clear_request')};
 }
-module.exports={normalize,classify,detect,extractErrorCode,isIntroduction,isCompliment,isAddressed,stripAddress};
+module.exports={normalize,classify,detect,extractErrorCode,isIntroduction,isCompliment,isAddressed,stripAddress,socialIntent};
