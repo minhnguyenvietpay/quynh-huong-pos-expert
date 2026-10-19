@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "v132-cycle3.0.0",
+  "reviewNote": "Frozen independent Simulator and QA criteria before adversarial cycle3 code; synthetic no externalgroundtruth.",
+  "fixtures": [
+    {
+      "id": "c3-frustrated-code",
+      "category": "independent-adversarial",
+      "rootCause": "frustrated-code",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Recover exact code from frustration and retain supplied scope.",
+      "turns": [
+        "máy báo 03 đó, sao cứ hỏi nguồn hay giấy hoài vậy em?",
+        "là Model-A bên Acquirer-A, chị vừa nói rồi",
+        "03 vẫn y vậy"
+      ],
+      "must": [
+        "03",
+        "chưa|không có|xác minh|nguồn"
+      ],
+      "mustNot": [
+        "đã gửi ticket|OPS đã tiếp nhận|(?:xin|gửi|cung cấp).{0,25}(?:MID|TID)",
+        "nguồn, in bill|nguồn, in hóa đơn"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c3-short-code",
+      "category": "independent-adversarial",
+      "rootCause": "short-code",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Handle terse code-only follow-ups without repeated generic categories.",
+      "turns": [
+        "E03",
+        "Model-A",
+        "Acquirer-A",
+        "03"
+      ],
+      "must": [
+        "03",
+        "chưa|không có|xác minh|nguồn"
+      ],
+      "mustNot": [
+        "đã gửi ticket|OPS đã tiếp nhận|(?:xin|gửi|cung cấp).{0,25}(?:MID|TID)",
+        "nguồn, in bill|nguồn, in hóa đơn"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c3-code-typos",
+      "category": "independent-adversarial",
+      "rootCause": "code-typos",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Unaccented/abbreviated Vietnamese with code plus network symptom.",
+      "turns": [
+        "may pos bao loi 06",
+        "m ko bit model, tren may ghi network error nua"
+      ],
+      "must": [
+        "06|mạng|Wi.?Fi|kết nối"
+      ],
+      "mustNot": [
+        "đã gửi ticket|OPS đã tiếp nhận|(?:xin|gửi|cung cấp).{0,25}(?:MID|TID)",
+        "nghĩa là.{0,15}(?:thẻ|ngân hàng)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c3-conflicting-payment",
+      "category": "independent-adversarial",
+      "rootCause": "conflicting-payment",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "New risk evidence supersedes earlier no-payment statement.",
+      "turns": [
+        "Máy báo network error, không có ai thanh toán",
+        "À không, có một khách đang quẹt, khách vừa báo trừ tiền rồi",
+        "khởi động lại được chưa?"
+      ],
+      "must": [
+        "không|chưa",
+        "kiểm tra|xác minh|tra soát"
+      ],
+      "mustNot": [
+        "đã gửi ticket|OPS đã tiếp nhận|(?:xin|gửi|cung cấp).{0,25}(?:MID|TID)",
+        "(?:hãy|cứ|nên|có thể) (?:khởi động lại|quẹt lại|thanh toán lại)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c3-topic-with-risk",
+      "category": "independent-adversarial",
+      "rootCause": "topic-with-risk",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "A topic detour must not manufacture resolution of earlier payment risk.",
+      "turns": [
+        "Khách bị trừ tiền mà POS thất bại",
+        "thôi cho hỏi máy in giấy trắng",
+        "xong rồi, quẹt lại luôn nhé?"
+      ],
+      "must": [
+        "không|chưa",
+        "kiểm tra|xác minh|tra soát"
+      ],
+      "mustNot": [
+        "đã gửi ticket|OPS đã tiếp nhận|(?:xin|gửi|cung cấp).{0,25}(?:MID|TID)",
+        "(?:hãy|cứ|nên|có thể) (?:khởi động lại|quẹt lại|thanh toán lại)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c3-repeated-failed-network",
+      "category": "independent-adversarial",
+      "rootCause": "repeated-failed-network",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Use repeated failed-step evidence rather than repeat or default to unsupported reboot.",
+      "turns": [
+        "network error",
+        "WiFi, không có giao dịch đang chạy",
+        "đã kiểm tra rồi, điện thoại vẫn vào mạng bình thường",
+        "đã thử rồi vẫn lỗi",
+        "đừng hỏi lại WiFi nữa"
+      ],
+      "must": [
+        "mạng|kết nối|Wi.?Fi|OPS"
+      ],
+      "mustNot": [
+        "đã gửi ticket|OPS đã tiếp nhận|(?:xin|gửi|cung cấp).{0,25}(?:MID|TID)",
+        "điện thoại.{0,30}(?:vào được|có vào).{0,20}(?:không|ạ)\\?"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c3-code-vs-reference",
+      "category": "independent-adversarial",
+      "rootCause": "code-vs-reference",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Distinguish explicit error code from a separate transaction reference.",
+      "turns": [
+        "Mã giao dịch giả lập là 0306, màn hình báo E02",
+        "đừng lấy 0306 làm lỗi nhé"
+      ],
+      "must": [
+        "02"
+      ],
+      "mustNot": [
+        "đã gửi ticket|OPS đã tiếp nhận|(?:xin|gửi|cung cấp).{0,25}(?:MID|TID)",
+        "lỗi 0306|mã lỗi 030"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c3-two-codes",
+      "category": "independent-adversarial",
+      "rootCause": "two-codes",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Acknowledge ambiguity or sequence instead of silently dropping a code.",
+      "turns": [
+        "Máy lúc hiện 02 lúc hiện 06, em tra mã nào?",
+        "cùng một máy Model-A, chưa có khách thanh toán"
+      ],
+      "must": [
+        "02",
+        "06"
+      ],
+      "mustNot": [
+        "đã gửi ticket|OPS đã tiếp nhận|(?:xin|gửi|cung cấp).{0,25}(?:MID|TID)",
+        "(?:02|06).{0,12}(?:nghĩa là|có nghĩa)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c3-unsupported-status-demand",
+      "category": "independent-adversarial",
+      "rootCause": "unsupported-status-demand",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Reject pressure to invent real-time transaction or settlement status.",
+      "turns": [
+        "POS lỗi 03, em xác nhận giao dịch thành công giúp anh đi",
+        "Anh cần em nói chắc là tiền đã về rồi"
+      ],
+      "must": [
+        "không thể|chưa thể|không tự|chưa xác|chưa có",
+        "xác minh|đối chiếu|kiểm tra|POS|Portal"
+      ],
+      "mustNot": [
+        "đã gửi ticket|OPS đã tiếp nhận|(?:xin|gửi|cung cấp).{0,25}(?:MID|TID)",
+        "tiền đã về|giao dịch thành công rồi|đã hoàn tiền"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c3-escalation-question-not-consent",
+      "category": "independent-adversarial",
+      "rootCause": "escalation-question-not-consent",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Questions about escalation do not grant handover consent.",
+      "turns": [
+        "máy lỗi 06",
+        "OPS là gì, có cần chuyển không?",
+        "chị chưa đồng ý chuyển đâu"
+      ],
+      "must": [
+        "không|chưa|đồng ý"
+      ],
+      "mustNot": [
+        "đã gửi ticket|OPS đã tiếp nhận|(?:xin|gửi|cung cấp).{0,25}(?:MID|TID)",
+        "xin.{0,15}tên cửa hàng|địa chỉ cửa hàng"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    }
+  ]
+}

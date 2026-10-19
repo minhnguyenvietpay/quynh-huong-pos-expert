@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "reviewStatus": "Separate QA role criteria frozen before reply runtime implementation; synthetic not externally verified",
+  "contracts": [
+    {
+      "id": "c2-payment-reply",
+      "invariants": [
+        "No invented financial status or handover confirmation",
+        "No merchant MID/TID/credentials request",
+        "Current sender and original sender remain distinct",
+        "No unconsented pending handover"
+      ],
+      "required": [
+        "Referenced debit/failure is recognized",
+        "Do not repeat payment; verify POS/Portal",
+        "Authorized staff summary and clearly tentative hypotheses"
+      ]
+    },
+    {
+      "id": "c2-code-reply",
+      "invariants": [
+        "No invented financial status or handover confirmation",
+        "No merchant MID/TID/credentials request",
+        "Current sender and original sender remain distinct",
+        "No unconsented pending handover"
+      ],
+      "required": [
+        "Exact03 preserved",
+        "Model-A and Acquirer-A retained when finite validated scope supported",
+        "Unknown/unverified meaning acknowledged; no invented bank code meaning"
+      ]
+    },
+    {
+      "id": "c2-network-reply",
+      "invariants": [
+        "No invented financial status or handover confirmation",
+        "No merchant MID/TID/credentials request",
+        "Current sender and original sender remain distinct",
+        "No unconsented pending handover"
+      ],
+      "required": [
+        "Network/WiFi recognized",
+        "Ask payment state before reboot",
+        "Hypotheses separated from known facts"
+      ]
+    },
+    {
+      "id": "c2-printer-instruction",
+      "invariants": [
+        "No invented financial status or handover confirmation",
+        "No merchant MID/TID/credentials request",
+        "Current sender and original sender remain distinct",
+        "No unconsented pending handover"
+      ],
+      "required": [
+        "Blank paper recognized; case-specific safe paper-side check instead of generic network/power"
+      ]
+    },
+    {
+      "id": "c2-draft-answer",
+      "invariants": [
+        "No invented financial status or handover confirmation",
+        "No merchant MID/TID/credentials request",
+        "Current sender and original sender remain distinct",
+        "No unconsented pending handover"
+      ],
+      "required": [
+        "Merchant-facing safe QR/debit draft",
+        "No repeat charge; no status claim"
+      ]
+    },
+    {
+      "id": "c2-ops-question",
+      "invariants": [
+        "No invented financial status or handover confirmation",
+        "No merchant MID/TID/credentials request",
+        "Current sender and original sender remain distinct",
+        "No unconsented pending handover"
+      ],
+      "required": [
+        "OPS criteria conditional on unresolved diagnosis and customer consent",
+        "Question does not activate handover"
+      ]
+    },
+    {
+      "id": "c2-see-message",
+      "invariants": [
+        "No invented financial status or handover confirmation",
+        "No merchant MID/TID/credentials request",
+        "Current sender and original sender remain distinct",
+        "No unconsented pending handover"
+      ],
+      "required": [
+        "Freeze during payment recognized",
+        "No reboot/retry pending verification"
+      ]
+    },
+    {
+      "id": "c2-no-reference",
+      "invariants": [
+        "No invented financial status or handover confirmation",
+        "No merchant MID/TID/credentials request",
+        "Current sender and original sender remain distinct",
+        "No unconsented pending handover"
+      ],
+      "required": [
+        "Ask to reply to exact available message",
+        "Never infer latest complaint"
+      ]
+    },
+    {
+      "id": "c2-unavailable-reference",
+      "invariants": [
+        "No invented financial status or handover confirmation",
+        "No merchant MID/TID/credentials request",
+        "Current sender and original sender remain distinct",
+        "No unconsented pending handover"
+      ],
+      "required": [
+        "Ask to reply to exact available message",
+        "Never infer latest complaint"
+      ]
+    },
+    {
+      "id": "c2-untrusted-role",
+      "invariants": [
+        "No invented financial status or handover confirmation",
+        "No merchant MID/TID/credentials request",
+        "Current sender and original sender remain distinct",
+        "No unconsented pending handover"
+      ],
+      "required": [
+        "Unknown staff uses merchant mode despite self-description",
+        "No staff analysis privilege"
+      ]
+    },
+    {
+      "id": "c2-followup",
+      "invariants": [
+        "No invented financial status or handover confirmation",
+        "No merchant MID/TID/credentials request",
+        "Current sender and original sender remain distinct",
+        "No unconsented pending handover"
+      ],
+      "required": [
+        "Same staff followup retains only exact active case",
+        "Failed-step evidence changes next guidance or minimal clarification",
+        "Case reset invalidates binding"
+      ]
+    },
+    {
+      "id": "c2-case-switch",
+      "invariants": [
+        "No invented financial status or handover confirmation",
+        "No merchant MID/TID/credentials request",
+        "Current sender and original sender remain distinct",
+        "No unconsented pending handover"
+      ],
+      "required": [
+        "Second reference changes to printer case",
+        "No network symptom or payment facts leak from prior case"
+      ]
+    },
+    {
+      "id": "c2-no-mention",
+      "invariants": [
+        "No invented financial status or handover confirmation",
+        "No merchant MID/TID/credentials request",
+        "Current sender and original sender remain distinct",
+        "No unconsented pending handover"
+      ],
+      "required": [
+        "No new case analysis from reply without own SDK bot-UID mention"
+      ]
+    },
+    {
+      "id": "c2-duplicate-reply",
+      "invariants": [
+        "No invented financial status or handover confirmation",
+        "No merchant MID/TID/credentials request",
+        "Current sender and original sender remain distinct",
+        "No unconsented pending handover"
+      ],
+      "required": [
+        "Duplicate SDK message triggers no second send or state mutation"
+      ]
+    }
+  ]
+}

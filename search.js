@@ -1,5 +1,7 @@
 const fs=require('node:fs');
 const path=require('node:path');
+const {extractErrorCode}=require('./intent');
+const {reviewed}=require('./lib/v12/retrieval.cjs');
 const KB=path.join(__dirname,'knowledge.json');
 let cache={mtime:-1,records:[]};
 const norm=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/gi,'d').toLowerCase().replace(/[^a-z0-9]+/g,' ').replace(/\s+/g,' ').trim();
@@ -22,8 +24,8 @@ function feature(s){const n=' '+norm(s)+' ';const t=new Set(n.trim().split(' ').
 function load(){const st=fs.statSync(KB);if(st.mtimeMs===cache.mtime)return cache.records;const a=JSON.parse(fs.readFileSync(KB,'utf8'));if(!Array.isArray(a))throw Error('knowledge.json must be an array');cache={mtime:st.mtimeMs,records:a.map(item=>{const title=feature(item.title),keys=(item.keywords||[]).map(norm),all=new Set([...title,...feature(keys.join(' '))]);return {item,title,all,titleNorm:norm(item.title),keys}})};return cache.records}
 function searchKnowledge(question){const q=norm(question),qt=feature(question);if(!q)return {status:'unknown',confidence:0};const records=load();
  // A bare code is not sufficient: require a code/error indicator. Do not guess bank-specific meanings.
- const code=q.match(/(?:^| )(?:ma|loi|code|error)\s*(\d{2,3})(?: |$)/);
- if(code){const exact=records.find(r=>r.item.category==='code'&&new RegExp('(?:^| )code '+code[1]+'$').test(norm(r.item.id)));if(exact)return {status:'matched',confidence:100,exactCode:true,item:exact.item};return {status:'unknown',confidence:0,exactCode:false}}
+ const code=extractErrorCode(question);
+ if(code)return defaultCodeRetriever(code,{});
  // Prioritize exact incident semantics; do not conflate 'debited but failed' with a normal failure.
  const freeze=qt.has('~freeze') && (q.includes('may')||q.includes('pos')||q.includes('thiet bi'));
  if(freeze&&!qt.has('~debit')&&!qt.has('~failed')){const r=records.find(x=>x.item.id==='POS-001');if(r)return {status:'matched',confidence:95,item:r.item}}
@@ -56,3 +58,26 @@ function searchKnowledgeV87(question){
  return {status:'matched',confidence:92,item,variantMatch:true};
 }
 module.exports={searchKnowledge:searchKnowledgeV87,norm};
+
+// Exact codes share the intent extractor. Scope and evidence are independent gates.
+function createCodeRetriever(records){
+ const rows=Array.isArray(records)?records:[];
+ const retrieve=(query,scope={})=>{
+  const code=/^\d{2,3}$/.test(String(query))?String(query):extractErrorCode(query);
+  const result=(status,extra={})=>({status,confidence:0,exactCode:true,code,...extra});
+  if(!code)return result('missing');
+  const candidates=rows.filter(row=>String(row.code||String(row.id||'').match(/^code-(\d{2,3})$/i)?.[1]||'')===code);
+  if(!candidates.length)return result('missing');
+  const verified=candidates.filter(reviewed);
+  if(!verified.length)return result('unverified');
+  const deviceKey=value=>norm(value).replace(/^(?:pax|ingenico|sunmi) /,'');
+  const scoped=verified.filter(row=>row.scope==='universal'||(row.device&&row.acquirer&&scope.device&&scope.acquirer&&deviceKey(row.device)===deviceKey(scope.device)&&norm(row.acquirer)===norm(scope.acquirer)));
+  if(!scoped.length)return result(scope.device&&scope.acquirer?'scope_mismatch':'scope_required');
+  if(new Set(scoped.map(row=>norm(row.answer))).size>1)return result('conflict');
+  return result('matched',{confidence:100,item:scoped[0]});
+ };
+ retrieve.search=retrieve;return retrieve;
+}
+const defaultCodeRetriever=(code,scope)=>createCodeRetriever(load().map(row=>row.item))(code,scope);
+module.exports.createCodeRetriever=createCodeRetriever;
+module.exports.searchCodeKnowledge=defaultCodeRetriever;

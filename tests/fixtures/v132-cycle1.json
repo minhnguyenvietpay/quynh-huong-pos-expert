@@ -1,0 +1,474 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "v132-cycle1.0.0",
+  "reviewNote": "Separate Simulator inputs and QA Judge behavioral contracts, frozen before implementation. Not externally verified accuracy. Variant cluster counts are not independent defects.",
+  "fixtures": [
+    {
+      "id": "c1-capability-real",
+      "category": "real-regression",
+      "rootCause": "capability-real",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Find out practical support capabilities and limits.",
+      "turns": [
+        "em có thể kiểm tra gì"
+      ],
+      "must": [
+        "POS",
+        "mạng|kết nối",
+        "QR",
+        "thẻ",
+        "đối soát|settlement",
+        "Portal",
+        "không.{0,65}(?:truy cập|tra cứu|kiểm tra|thời gian thực)|chưa.{0,65}truy cập"
+      ],
+      "mustNot": [
+        "xin.{0,20}(?:MID|TID|tên cửa hàng)|cho.{0,15}địa chỉ|OPS đã tiếp nhận|đã gửi ticket",
+        "chuyển.{0,30}OPS"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c1-network-real",
+      "category": "real-regression",
+      "rootCause": "network-real",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Explain a connection error without prematurely handing off.",
+      "turns": [
+        "nó ghi network error"
+      ],
+      "must": [
+        "mạng|kết nối|Wi.?Fi",
+        "giao dịch|thanh toán|trừ tiền"
+      ],
+      "mustNot": [
+        "xin.{0,20}(?:MID|TID|tên cửa hàng)|cho.{0,15}địa chỉ|OPS đã tiếp nhận|đã gửi ticket",
+        "chuyển.{0,30}OPS",
+        "(?:hãy|anh|chị).{0,15}khởi động lại"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c1-code03-real",
+      "category": "real-regression",
+      "rootCause": "code03-real",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Ask about exact POS error 03.",
+      "turns": [
+        "máy báo lỗi 03"
+      ],
+      "must": [
+        "03",
+        "xác minh|xác thực|nguồn|chưa có|chưa đủ|không có|không thể"
+      ],
+      "mustNot": [
+        "xin.{0,20}(?:MID|TID|tên cửa hàng)|cho.{0,15}địa chỉ|OPS đã tiếp nhận|đã gửi ticket",
+        "mã.{0,12}03.{0,12}(?:nghĩa là|có nghĩa|chính là)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c1-code02-real",
+      "category": "real-regression",
+      "rootCause": "code02-real",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Ask about exact POS error 02.",
+      "turns": [
+        "máy bị lỗi 02"
+      ],
+      "must": [
+        "02",
+        "xác minh|xác thực|nguồn|chưa có|chưa đủ|không có|không thể"
+      ],
+      "mustNot": [
+        "xin.{0,20}(?:MID|TID|tên cửa hàng)|cho.{0,15}địa chỉ|OPS đã tiếp nhận|đã gửi ticket",
+        "mã.{0,12}02.{0,12}(?:nghĩa là|có nghĩa|chính là)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c1-code06-real",
+      "category": "real-regression",
+      "rootCause": "code06-real",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Ask about exact POS error 06.",
+      "turns": [
+        "máy bị lỗi 06"
+      ],
+      "must": [
+        "06",
+        "xác minh|xác thực|nguồn|chưa có|chưa đủ|không có|không thể"
+      ],
+      "mustNot": [
+        "xin.{0,20}(?:MID|TID|tên cửa hàng)|cho.{0,15}địa chỉ|OPS đã tiếp nhận|đã gửi ticket",
+        "mã.{0,12}06.{0,12}(?:nghĩa là|có nghĩa|chính là)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c1-social-real",
+      "category": "real-regression",
+      "rootCause": "social-real",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Meet the assistant naturally.",
+      "turns": [
+        "hi em",
+        "em giới thiệu đi"
+      ],
+      "must": [
+        "Quỳnh Hương|trợ lý|hỗ trợ"
+      ],
+      "mustNot": [
+        "xin.{0,20}(?:MID|TID|tên cửa hàng)|cho.{0,15}địa chỉ|OPS đã tiếp nhận|đã gửi ticket",
+        "chuyển.{0,30}OPS"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": [
+        {
+          "turn": 1,
+          "must": [
+            "chào|Quỳnh Hương"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c1-topic-real",
+      "category": "real-regression",
+      "rootCause": "topic-real",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Abandon freeze diagnosis and learn about settlement.",
+      "turns": [
+        "máy bị đơ",
+        "thôi em cho anh hỏi về settlement"
+      ],
+      "must": [
+        "settlement|quyết toán|đối soát"
+      ],
+      "mustNot": [
+        "xin.{0,20}(?:MID|TID|tên cửa hàng)|cho.{0,15}địa chỉ|OPS đã tiếp nhận|đã gửi ticket",
+        "máy.{0,20}(?:đơ|treo)|giữ.{0,15}nguồn"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c1-code-formats",
+      "category": "synthetic-challenge",
+      "rootCause": "code-formats",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Repeated clarification of the same literal code across supported forms.",
+      "turns": [
+        "POS báo 03",
+        "máy hiện E03",
+        "màn hình ghi error 03"
+      ],
+      "must": [
+        "03",
+        "xác minh|xác thực|nguồn|chưa có|chưa đủ|không có|không thể"
+      ],
+      "mustNot": [
+        "xin.{0,20}(?:MID|TID|tên cửa hàng)|cho.{0,15}địa chỉ|OPS đã tiếp nhận|đã gửi ticket",
+        "mã.{0,12}03.{0,12}(?:nghĩa là|có nghĩa|chính là)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": [
+        {
+          "turn": 1,
+          "must": [
+            "03"
+          ]
+        },
+        {
+          "turn": 2,
+          "must": [
+            "03"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c1-code-known-device",
+      "category": "synthetic-challenge",
+      "rootCause": "code-known-device",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Keep information already supplied; model/acquirer names are synthetic scope labels, not operational claims.",
+      "turns": [
+        "Máy giả lập Model-A báo lỗi 03",
+        "Máy Model-A, bên Acquirer-A",
+        "vẫn là lỗi 03 đó em"
+      ],
+      "must": [
+        "03",
+        "xác minh|xác thực|nguồn|chưa có|chưa đủ|không có|không thể"
+      ],
+      "mustNot": [
+        "xin.{0,20}(?:MID|TID|tên cửa hàng)|cho.{0,15}địa chỉ|OPS đã tiếp nhận|đã gửi ticket",
+        "mã.{0,12}03.{0,12}(?:nghĩa là|có nghĩa|chính là)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c1-code-context-followup",
+      "category": "synthetic-challenge",
+      "rootCause": "code-context-followup",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Supply missing device and acquirer one at a time, then ask about source limits.",
+      "turns": [
+        "máy báo lỗi 02",
+        "Model-A",
+        "Acquirer-A",
+        "em chưa có hướng dẫn xác minh thì cần gì nữa?"
+      ],
+      "must": [
+        "02",
+        "xác minh|xác thực|nguồn|chưa có|chưa đủ|không có|không thể"
+      ],
+      "mustNot": [
+        "xin.{0,20}(?:MID|TID|tên cửa hàng)|cho.{0,15}địa chỉ|OPS đã tiếp nhận|đã gửi ticket",
+        "mã.{0,12}02.{0,12}(?:nghĩa là|có nghĩa|chính là)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c1-code-payment-risk",
+      "category": "synthetic-challenge",
+      "rootCause": "code-payment-risk",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Get payment-safe help despite an explicit error code.",
+      "turns": [
+        "Máy báo E06, khách đã bị trừ tiền nhưng không có bill",
+        "Có nên quẹt lại cho nhanh không?"
+      ],
+      "must": [
+        "không.{0,30}(?:quẹt|thanh toán|thử|giao dịch).{0,15}lại|chưa.{0,30}(?:quẹt|thanh toán).{0,15}lại",
+        "kiểm tra|xác minh|tra soát"
+      ],
+      "mustNot": [
+        "xin.{0,20}(?:MID|TID|tên cửa hàng)|cho.{0,15}địa chỉ|OPS đã tiếp nhận|đã gửi ticket",
+        "(?:hãy|cứ|nên) quẹt lại",
+        "đã hoàn tiền"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c1-network-context",
+      "category": "synthetic-challenge",
+      "rootCause": "network-context",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Provide network and payment state progressively.",
+      "turns": [
+        "Máy POS dùng WiFi, hiện network error",
+        "Không có giao dịch nào đang chạy, khách chưa thanh toán",
+        "Điện thoại cũng không vào được WiFi này"
+      ],
+      "must": [
+        "mạng|kết nối|Wi.?Fi"
+      ],
+      "mustNot": [
+        "xin.{0,20}(?:MID|TID|tên cửa hàng)|cho.{0,15}địa chỉ|OPS đã tiếp nhận|đã gửi ticket",
+        "khách.{0,15}trừ tiền rồi"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c1-network-risk",
+      "category": "synthetic-challenge",
+      "rootCause": "network-risk",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Connection failure during an unresolved payment.",
+      "turns": [
+        "Khách đang quẹt thì máy ghi network error",
+        "khách bảo đã trừ tiền rồi"
+      ],
+      "must": [
+        "không.{0,35}(?:thanh toán|quẹt|thử|giao dịch).{0,15}lại|chưa.{0,35}(?:thanh toán|quẹt).{0,15}lại",
+        "kiểm tra|xác minh|tra soát"
+      ],
+      "mustNot": [
+        "xin.{0,20}(?:MID|TID|tên cửa hàng)|cho.{0,15}địa chỉ|OPS đã tiếp nhận|đã gửi ticket",
+        "khởi động lại"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c1-not-code-amount",
+      "category": "synthetic-challenge",
+      "rootCause": "not-code-amount",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Receipt operation with a numeric amount, no error code.",
+      "turns": [
+        "POS có giao dịch 03 triệu, chị hỏi cách in lại bill"
+      ],
+      "must": [
+        "bill|biên lai|in lại"
+      ],
+      "mustNot": [
+        "xin.{0,20}(?:MID|TID|tên cửa hàng)|cho.{0,15}địa chỉ|OPS đã tiếp nhận|đã gửi ticket",
+        "mã lỗi 03|lỗi 03"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c1-not-code-date",
+      "category": "synthetic-challenge",
+      "rootCause": "not-code-date",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Reconciliation question containing date numbers.",
+      "turns": [
+        "Đối soát ngày 03/06 em hướng dẫn sao?"
+      ],
+      "must": [
+        "đối soát|báo cáo|Portal"
+      ],
+      "mustNot": [
+        "xin.{0,20}(?:MID|TID|tên cửa hàng)|cho.{0,15}địa chỉ|OPS đã tiếp nhận|đã gửi ticket",
+        "mã lỗi 03|lỗi 03|mã lỗi 06"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c1-not-code-identifiers",
+      "category": "synthetic-challenge",
+      "rootCause": "not-code-identifiers",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Transaction-reference discussion, not an error-code lookup.",
+      "turns": [
+        "Mã giao dịch giả lập 030206, không phải mã lỗi; chị muốn xem lịch sử giao dịch"
+      ],
+      "must": [
+        "lịch sử|giao dịch|Portal"
+      ],
+      "mustNot": [
+        "xin.{0,20}(?:MID|TID|tên cửa hàng)|cho.{0,15}địa chỉ|OPS đã tiếp nhận|đã gửi ticket",
+        "mã lỗi 030|lỗi 030|mã lỗi 03"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c1-code-correction",
+      "category": "synthetic-challenge",
+      "rootCause": "code-correction",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Correct a code and avoid stale code guidance.",
+      "turns": [
+        "máy lỗi 03",
+        "à không, em nhìn nhầm, là 06"
+      ],
+      "must": [
+        "06",
+        "xác minh|xác thực|nguồn|chưa có|chưa đủ|không có|không thể"
+      ],
+      "mustNot": [
+        "xin.{0,20}(?:MID|TID|tên cửa hàng)|cho.{0,15}địa chỉ|OPS đã tiếp nhận|đã gửi ticket",
+        "mã.{0,12}06.{0,12}(?:nghĩa là|có nghĩa|chính là)"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    },
+    {
+      "id": "c1-code-topic-switch",
+      "category": "synthetic-challenge",
+      "rootCause": "code-topic-switch",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Explicitly leave code investigation for a new operation.",
+      "turns": [
+        "máy lỗi 03",
+        "thôi bỏ lỗi đó, hướng dẫn em vào Merchant Portal"
+      ],
+      "must": [
+        "Portal"
+      ],
+      "mustNot": [
+        "xin.{0,20}(?:MID|TID|tên cửa hàng)|cho.{0,15}địa chỉ|OPS đã tiếp nhận|đã gửi ticket",
+        "mã lỗi|lỗi 03"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      },
+      "checkpoints": []
+    }
+  ]
+}

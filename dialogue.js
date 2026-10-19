@@ -1,3 +1,4 @@
+const codeRouter=require('./lib/error-code.cjs');
 const {flows}=require('./flows');
 const {searchKnowledge}=require('./search');
 const {classify,normalize:norm,extractErrorCode,isIntroduction,isCompliment,socialIntent}=require('./intent');
@@ -50,7 +51,7 @@ const key=(chat,user)=>JSON.stringify([String(chat),String(user)]);
 let lastTransientPrune=0;
 function prune(){const time=now();if(time>=lastTransientPrune&&time-lastTransientPrune<60000)return;lastTransientPrune=time;for(const map of [escalation,pendingHandover])for(const [k,value] of map)if(time-value.time>TTL)map.delete(k);}
 function boundedTransientSet(map,k,value){map.delete(k);map.set(k,value);while(map.size>MAX_SESSIONS)map.delete(map.keys().next().value);}
-function hasSession(chat,user){prune();return (v11Enabled()&&v11.hasSession(chat,user))||sessions.has(key(chat,user));}
+function hasSession(chat,user){prune();return (expertEnabled()&&!!codeRouter.get(chat,user))||(v11Enabled()&&v11.hasSession(chat,user))||sessions.has(key(chat,user));}
 function moduleContextV12(chat,user){try{return v12Module?.getContext(chat,user)||null;}catch{return null;}}
 function sessionInfo(chat,user){if(v11Enabled()){const context=v11.getContext(chat,user);if(context)return {flowId:expertEnabled()&&moduleContextV12(chat,user)?(process.env.QH_V13_ENABLED==='true'?'qh_v13':'qh_v12'):'qh_v11',topic:context.topic,step:context.currentQuestion};}prune();const s=sessions.get(key(chat,user));return s?{flowId:s.flowId,step:s.step,ageSeconds:Math.floor((now()-s.time)/1000)}:null;}
 function prompt(flow,step){return `${step.ask}\n${step.options.map((o,i)=>`${i+1}. ${o[0]}`).join('\n')}\n\nAnh/chị trả lời số hoặc mô tả ngắn. /huy để kết thúc, /lai để bắt đầu lại.`;}
@@ -109,7 +110,7 @@ function processMessage(chatId,userId,input,options={}){
  if(!raw)return 'Anh/chị mô tả lỗi POS/QR/Portal để em hỗ trợ nhé.';
  // Session controls must precede consent/name/address handling.
  if(/^(\/(huy|done|reset|lai|restart)|huy|ket thuc|bat dau lai)$/.test(raw.toLowerCase()) || /^(huy|ket thuc|bat dau lai)$/.test(q)){
-  socialTurns.delete(k);escalation.delete(k);pendingHandover.delete(k);sessions.delete(k);v12.clear(chatId,userId);v11.clear(chatId,userId);
+  codeRouter.clear(chatId,userId);socialTurns.delete(k);escalation.delete(k);pendingHandover.delete(k);sessions.delete(k);v12.clear(chatId,userId);v11.clear(chatId,userId);
   return /lai|restart/.test(q)?'Đã bắt đầu lại. Anh/chị mô tả sự cố mới nhé.':'Đã kết thúc phiên hỗ trợ. Khi cần, anh/chị mô tả sự cố mới nhé.';
  }
  if(/^neu em khong co quyen thi chi chi cach tim ho tro chinh thuc$/.test(q))return 'Em không có quyền đổi hoặc đặt lại mật khẩu. Anh/chị liên hệ quản trị viên hoặc CS qua kênh chính thức cửa hàng đã xác minh, hoặc dùng chức năng khôi phục trên Portal; không gửi mật khẩu hay OTP.';
@@ -145,7 +146,7 @@ function processMessage(chatId,userId,input,options={}){
   markWelcomed(k);
   const warning=paymentPending?' Giao dịch trước vẫn chưa xác minh trên POS/Portal; mình chưa thu tiền hay thanh toán lại nhé.':'';
   if(social==='greeting')return 'Dạ, em chào anh/chị! Em là Quỳnh Hương. Anh/chị cần hỗ trợ gì ạ?'+warning;
-  if(social==='introduction'||social==='capability')return 'Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ kiểm tra máy in, mạng, QR, thẻ và Merchant Portal; kết quả giao dịch cần đối chiếu trên POS/Portal, em không tự xác nhận trạng thái tiền. Anh/chị cần hỗ trợ phần nào ạ?'+warning;
+  if(social==='introduction'||social==='capability')return 'Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ sử dụng POS, máy in, mạng, QR, thẻ, tra soát, đối soát/settlement và Merchant Portal; em không truy cập ngân hàng theo thời gian thực, kết quả giao dịch cần đối chiếu trên POS/Portal. Anh/chị cần hỗ trợ phần nào ạ?'+warning;
   if(social==='thanks'||social==='compliment')return 'Dạ, em cảm ơn anh/chị. Khi cần hỗ trợ thêm, anh/chị cứ nhắn em nhé.'+warning;
   return 'Dạ, khi nào cần hỗ trợ anh/chị cứ nhắn em nhé. Em không chuyển yêu cầu hay thu thập thông tin cửa hàng từ câu trả lời này.'+warning;
  }
@@ -165,11 +166,14 @@ function processMessage(chatId,userId,input,options={}){
  if(escalation.has(k)){try{if(v12Module?.shouldInterrupt(chatId,userId,raw)){collectionInterrupted=true;escalation.delete(k);pendingHandover.delete(k);}}catch{}}
  // Resolution/closure must preempt pending handover and all diagnostic modules.
  if(!/^\//.test(raw) && /^(binh thuong roi|may binh thuong roi|chay binh thuong roi|on roi|ok roi em|ok roi|het loi roi|in duoc roi|duoc roi|da xu ly xong|khong can ho tro nua)( em| anh)?$/.test(q)){
-   socialTurns.delete(k);escalation.delete(k);pendingHandover.delete(k);sessions.delete(k);v12.clear(chatId,userId);
+   codeRouter.clear(chatId,userId);socialTurns.delete(k);escalation.delete(k);pendingHandover.delete(k);sessions.delete(k);v12.clear(chatId,userId);
    if(v11Enabled()&&v11.hasSession(chatId,userId)){try{const closed=v11.reply(chatId,userId,raw);if(typeof closed==='string'&&closed.trim())return closed;}catch{v11.clear(chatId,userId);}}
    v11.clear(chatId,userId);
    return 'Dạ tốt rồi anh! Em ghi nhận sự cố đã được xử lý. Nếu cần hỗ trợ thêm, anh cứ nhắn em nhé.';
  }
+ // Codes precede generic diagnostics in every runtime mode; payment/hazard signals retain priority.
+ const codeReply=expertEnabled()?codeRouter.route(chatId,userId,raw,{retriever:options.codeRetriever,paymentPending:!!moduleContextV12(chatId,userId)?.pendingVerification||sessions.get(k)?.kind==='payment'}):null;
+ if(codeReply){escalation.delete(k);pendingHandover.delete(k);markWelcomed(k);return codeReply;}
  // V11 is selected here in the existing listener -> dialogue path; never at login/send.
  if(v11Enabled()){
   // A new explicit incident must not be collected as the merchant's name/address.
@@ -209,14 +213,17 @@ function processMessage(chatId,userId,input,options={}){
  const done=closing(q);if(done){sessions.delete(k);markWelcomed(k);return done;}
  if(isIntroduction(raw)){markWelcomed(k);return 'Dạ, em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em có thể hướng dẫn xử lý sự cố POS, QR, mã lỗi, Merchant Portal và đối soát. Các vấn đề cần tra soát giao dịch sẽ được CS/OPS xác minh. Anh/chị cần hỗ trợ gì cứ nhắn em nhé!';}
 if(isCompliment(raw)){markWelcomed(k);return vary(k,'compliment',['Em cảm ơn anh/chị ạ! Rất vui vì đã giúp được mình 😊','Cảm ơn anh/chị nhiều nhé! Có gì cần hỗ trợ cứ gọi em ạ.','Nghe anh/chị nói vậy em vui lắm! Em luôn sẵn sàng hỗ trợ.']);}
+
+ // Conservative legacy/V11 fallback keeps its existing consent-based unknown-code offer.
  const errorCode=extractErrorCode(raw);
  if(errorCode){
   const r=searchKnowledge(raw);
-  if(r.status==='matched' && r.item && r.exactCode && usableKnowledge(r.item)){
-   markWelcomed(k);return safeAnswer(`📌 ${r.item.title}\n\n${r.item.answer}\n\n⚠️ Ý nghĩa mã lỗi cần được CS/OPS xác nhận theo cấu hình ngân hàng/đơn vị xử lý giao dịch. Nếu đã thử mà vẫn không xử lý được, anh/chị báo lại để em hướng dẫn chuyển CS/OPS.`);
+  if(r.status==='matched'&&r.item&&r.exactCode&&usableKnowledge(r.item)){
+   markWelcomed(k);return safeAnswer(`Mã lỗi ${errorCode}: ${r.item.answer}`);
   }
   markWelcomed(k);return offerEscalation(k,`Mã lỗi ${errorCode}: ${raw}`);
  }
+
  if(greetingOnly(q)){if(!wasWelcomed(k))return greeting(k,options.displayName||'')+'Anh/chị cần em hỗ trợ vấn đề gì ạ?';return vary(k,'hello',['Em đây ạ! Anh/chị cần hỗ trợ gì thêm không?','Dạ, em nghe đây ạ.','Em đây, anh/chị cứ nói nhé!']);}
  if(['/help','/trogiup'].includes(raw.toLowerCase()))return 'Anh/chị mô tả vấn đề POS, QR, giao dịch hoặc Portal. Em sẽ hỏi thêm theo từng bước. /huy để kết thúc, /lai để bắt đầu lại.';
  if(unresolved(q)){sessions.delete(k);return offerEscalation(k,raw);}
@@ -251,4 +258,4 @@ if(isCompliment(raw)){markWelcomed(k);return vary(k,'compliment',['Em cảm ơn 
 }
 function getPendingHandover(chat,user){const k=key(chat,user),pending=pendingHandover.get(k);if(pending&&now()-pending.time>ESC_TTL){pendingHandover.delete(k);escalation.delete(k);return null;}return pending||null;}
 function markHandoverDone(chat,user){pendingHandover.delete(key(chat,user));}
-module.exports={hasSocialSession:(chat,user)=>{const time=socialTurns.get(key(chat,user));return typeof time==='number'&&now()-time<TTL;},shouldRespondV13,v13Context:(chat,user)=>{if(process.env.QH_V13_ENABLED!=='true')return null;return moduleContextV12(chat,user);},shouldRespondV12,v12Context:(chat,user)=>{if(!expertEnabled())return null;try{return v12Module?.getContext(chat,user)||null;}catch{return null;}},shouldRespondV11,v11Context:(chat,user)=>v11Enabled()?v11.getContext(chat,user):null,getPendingHandover,markHandoverDone,processMessage,hasSession,sessionInfo,norm,closing,greetingOnly,createTicket,hasEscalation:(chat,user)=>{const e=escalation.get(key(chat,user));return !!e&&!e.paused&&now()-e.time<ESC_TTL;}};
+module.exports={getErrorCodeContext:codeRouter.get,extractCodeScope:codeRouter.extractCodeScope,hasSocialSession:(chat,user)=>{const time=socialTurns.get(key(chat,user));return typeof time==='number'&&now()-time<TTL;},shouldRespondV13,v13Context:(chat,user)=>{if(process.env.QH_V13_ENABLED!=='true')return null;return moduleContextV12(chat,user);},shouldRespondV12,v12Context:(chat,user)=>{if(!expertEnabled())return null;try{return v12Module?.getContext(chat,user)||null;}catch{return null;}},shouldRespondV11,v11Context:(chat,user)=>v11Enabled()?v11.getContext(chat,user):null,getPendingHandover,markHandoverDone,processMessage,hasSession,sessionInfo,norm,closing,greetingOnly,createTicket,hasEscalation:(chat,user)=>{const e=escalation.get(key(chat,user));return !!e&&!e.paused&&now()-e.time<ESC_TTL;}};
