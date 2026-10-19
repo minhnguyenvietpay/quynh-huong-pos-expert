@@ -1,0 +1,57 @@
+{
+  "baselineCommit": "40516c6",
+  "syntheticOnly": true,
+  "testsPassed": 0,
+  "total": 2,
+  "rows": [
+    {
+      "case": 1,
+      "turns": [
+        {
+          "input": "Khách bị trừ tiền nhưng POS báo lỗi",
+          "actual": "Dạ anh/chị, thông tin khách đã chuyển khoản hoặc nhận thông báo trừ tiền chưa đủ để xác nhận kết quả giao dịch. Mình chưa yêu cầu khách thanh toán lại hoặc khởi động máy khi giao dịch còn đang xử lý nhé. Anh/chị kiểm tra lịch sử trên POS và Merchant Portal nếu truy cập được, đúng thời điểm và số tiền. Giao dịch có hiển thị ở đâu không ạ?",
+          "state": {
+            "kind": "payment",
+            "stage": "check"
+          }
+        },
+        {
+          "input": "Chưa rõ",
+          "actual": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+          "state": null
+        },
+        {
+          "input": "Cảm ơn",
+          "actual": "Dạ, em cảm ơn anh/chị. Khi cần hỗ trợ thêm, anh/chị cứ nhắn em nhé.",
+          "state": null
+        }
+      ]
+    },
+    {
+      "case": 2,
+      "turns": [
+        {
+          "input": "Khách bị trừ tiền nhưng POS báo lỗi",
+          "actual": "Dạ anh/chị, thông tin khách đã chuyển khoản hoặc nhận thông báo trừ tiền chưa đủ để xác nhận kết quả giao dịch. Mình chưa yêu cầu khách thanh toán lại hoặc khởi động máy khi giao dịch còn đang xử lý nhé. Anh/chị kiểm tra lịch sử trên POS và Merchant Portal nếu truy cập được, đúng thời điểm và số tiền. Giao dịch có hiển thị ở đâu không ạ?",
+          "state": {
+            "kind": "payment",
+            "stage": "check"
+          }
+        },
+        {
+          "input": "Chưa rõ",
+          "actual": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+          "state": null
+        },
+        {
+          "input": "Giờ máy treo",
+          "actual": "Dạ anh, em hiểu máy POS đang bị đơ và không bấm được. Nếu không có giao dịch đang xử lý, anh có thể khởi động lại theo hướng dẫn đúng dòng máy. Anh cho em biết máy đang đứng ở màn hình chính hay lúc thanh toán ạ?",
+          "state": {
+            "kind": "freeze",
+            "stage": "location"
+          }
+        }
+      ]
+    }
+  ]
+}

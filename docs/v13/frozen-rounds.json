@@ -22,6 +22,22 @@
       ],
       "fixtures": 16,
       "baselineCommit": "9af7a17"
+    },
+    {
+      "round": 3,
+      "dataset": "tests/fixtures/v13-round3.json",
+      "sha256": "dadc700ad3410d05d31b8c9db000278d8a1861e3be7088d8c3e1e471e5167b03",
+      "modes": [
+        "v12"
+      ],
+      "fixtures": 18,
+      "baselineCommit": "40516c6",
+      "complementaryDefaultTests": {
+        "file": "tests/v13-legacy-payment.test.cjs",
+        "sha256": "0ea53793024cace7d8459343d1d8beeb949dec8f40eccfa13b3d7357ae2f7286",
+        "beforePassed": 0,
+        "total": 2
+      }
     }
   ]
 }

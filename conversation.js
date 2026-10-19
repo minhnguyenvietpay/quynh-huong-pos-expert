@@ -22,7 +22,7 @@ function reply(chat,user,raw){const q=normalize(raw),k=key(chat,user),s=get(k);
  if(isPaymentUncertain(q)){save(k,{kind:'payment',stage:'check',attempts:0});return 'Dạ anh/chị, thông tin khách đã chuyển khoản hoặc nhận thông báo trừ tiền chưa đủ để xác nhận kết quả giao dịch. Mình chưa yêu cầu khách thanh toán lại hoặc khởi động máy khi giao dịch còn đang xử lý nhé. Anh/chị kiểm tra lịch sử trên POS và Merchant Portal nếu truy cập được, đúng thời điểm và số tiền. Giao dịch có hiển thị ở đâu không ạ?';}
  // Explicit new issue supersedes old incident; do not force a stale dialogue.
  if(s&&s.kind==='freeze'&&contains(q,['khong in bill','khong len nguon','khong thay giao dich tren portal'])){clear(k);return null;}
- if(s&&s.kind==='payment'&&stuck(q)&&!paymentRisk(q)){clear(k);return startFreeze(k,q);}
+ if(s&&s.kind==='payment'&&(stuck(q)||/khoi dong|restart|tat may/.test(q))){save(k,{...s,stage:'check'});return 'Giao dịch trước vẫn chưa xác minh: chưa khởi động lại hoặc tắt máy, chưa thu tiền lại. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền trước khi xử lý máy treo.';}
  if(s){
   if(s.kind==='freeze'){
    if(payment(q)){save(k,{kind:'freeze',stage:'payment',attempts:(s.attempts||0)+1});return 'Dạ anh, máy đang treo trong lúc thanh toán. Mình chưa thanh toán lại hoặc khởi động máy vội để tránh giao dịch trùng nhé. Anh xem giúp em khách có nhận thông báo trừ tiền từ ngân hàng chưa ạ?';}
@@ -45,6 +45,7 @@ function reply(chat,user,raw){const q=normalize(raw),k=key(chat,user),s=get(k);
    }
   }
   if(s.kind==='payment'){
+   if(/chua ro|khong chac|khong biet|dang tim|chua kiem tra xong/.test(q)){save(k,{...s,stage:'check'});return 'Mình giữ giao dịch ở bước kiểm tra: đối chiếu lịch sử POS/Portal đúng thời điểm và số tiền; chưa xác minh kết quả thì chưa thanh toán lại hoặc khởi động máy.';}
    if(s.stage==='escalate'&&negative(q)){save(k,{...s,stage:'declined'});return 'Dạ anh/chị, em chưa chuyển CS/OPS. Mình vẫn cần xác minh kết quả trước khi thu tiền lại nhé.';}
    if(s.stage==='declined'&&/^(co|ok|oke|dong y)$/.test(q))return 'Anh/chị muốn tiếp tục kiểm tra giao dịch hay đồng ý chuẩn bị yêu cầu chuyển CS/OPS ạ?';
    if(s.stage==='check'&&affirmative(q)){save(k,{...s,stage:'escalate'});return 'Anh/chị đối chiếu thời điểm, số tiền và trạng thái đang hiển thị của đúng giao dịch nhé. Em chưa có dữ liệu để xác nhận giao dịch thành công hay tiền đã về. Nếu trạng thái không rõ, anh/chị có đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS tra soát không ạ?';}

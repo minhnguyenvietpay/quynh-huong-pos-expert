@@ -64,3 +64,12 @@ test('V13 unresolved debit explicitly blocks restart advice',()=>{
  assert.match(rows[2].response,/(?:chưa|không|đừng).{0,35}(?:khởi động|restart|tắt máy)/iu);
  assert.equal(rows[2].context?.pendingVerification,true);assert.equal(rows[2].pending,null);
 });
+
+// Round 3 direct-engine API precedence: actual dialogue already guards withdrawal.
+test('V13 direct engine withdrawal outranks a simultaneous restart question',()=>{
+ const e=require('../lib/v12/engine.cjs').createEngine();
+ e.reply('synthetic-withdraw','synthetic-user','khách bị trừ tiền nhưng POS không có bill');
+ const response=e.reply('synthetic-withdraw','synthetic-user','rút lại đồng ý, chưa khởi động lại');
+ assert.match(response,/thu hồi|rút lại|dừng.{0,20}đồng ý/iu);
+ assert.equal(e.getContext('synthetic-withdraw','synthetic-user'),null);
+});

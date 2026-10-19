@@ -35,6 +35,16 @@ No operational knowledge was approved. Permitted guidance remains compatible con
 
 Approved frozen Round 2 SHA-256: `6f6e3595f0c8f73ba76cf0ff57c8b97c5c277a3dca56ab4306adfb965f669b86`.
 
+## Round 3 prefreeze payment review
+
+Reviewed all 18 new Simulator inputs and 18 QA draft contracts. Appropriate boundaries include QR scanning not proving paid status; reported debit taking priority over simplistic declined-and-retry advice; one receipt not authorizing refund of an alleged duplicate; merchant-observed notifications not giving the bot bank access; and settlement timing claims not becoming promises. Definitions of refund, void and reversal must not imply universal eligibility or funds already returned. Withdrawal revokes consent but does not resolve the transaction uncertainty.
+
+Requested one material contract improvement before freeze: POS-success/Portal-missing after relevant filter checks must require a useful comparison (time, amount, source, status or reconciliation), rather than passing on an OPS consent phrase alone. Also noted that lexical status prohibitions can falsely match a negated certainty phrase; synthetic regex pass rates are not a comprehensive payment-safety classifier. A history check still in progress must not be marked failed, and a separate printer issue must preserve prior financial risk without trapping the merchant in an OPS loop.
+
+No bank policy, timing, fee, verified merchant status or operational authority was approved by this review. Bot capability boundaries must be paired with practical authorized next checks, not a fabricated system lookup.
+
+Inspected the corrected concrete-comparison requirement and approved final Round 3 contracts before freeze. Frozen SHA-256: `dadc700ad3410d05d31b8c9db000278d8a1861e3be7088d8c3e1e471e5167b03`.
+
 ## Remaining evidence limitations
 
 Synthetic fixtures can verify executable safety and response contracts. They cannot demonstrate bank policy correctness, device compatibility, actual merchant satisfaction, or independent business approval. OPS/domain owners must review future authoritative sources before corpus promotion or production rollout.

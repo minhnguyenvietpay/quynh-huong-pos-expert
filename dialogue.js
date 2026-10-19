@@ -114,8 +114,9 @@ function processMessage(chatId,userId,input,options={}){
  if(sensitiveRevocation&&(isSensitive(q)||/api[ -]?key|access[ _-]?token|bearer |session|cookie|sk-proj-/i.test(raw))){escalation.delete(k);pendingHandover.delete(k);v11.clear(chatId,userId);}
  if(/api[ -]?key|access[ _-]?token|bearer |session[ _-]?(?:key|token|cookie)|cookie[ :=]|sk-proj-|zalo.*(?:session|token)/i.test(raw))return 'Không chia sẻ khóa API, token, cookie hoặc phiên đăng nhập trong nhóm. Em không lưu thông tin này vào yêu cầu hỗ trợ.';
  if((isSensitive(q)&&!batteryContext)||/(?:\d[ -]?){13,19}/.test(raw))return '⚠️ Không chia sẻ OTP, PIN, CVV, mật khẩu hay mã xác thực trong nhóm. Nếu cần hỗ trợ, liên hệ CS/OPS qua kênh chính thức.';
+ if(/mid|tid|so the/.test(q)&&/can gui|co can|phai gui|can cung cap/.test(q))return 'MID/TID và số thẻ không cần chia sẻ trong nhóm; CS/OPS tự tra cứu qua kênh được phép. Chỉ thông tin cửa hàng tối thiểu khi anh/chị đã đồng ý chuyển hỗ trợ.';
  if(/^\/ticket\b/i.test(raw))return createTicket(raw.slice(7));
- if(process.env.QH_V12_ENABLED==='true'&&/(rut lai|thu hoi|huy.*(?:dong y|yeu cau.*chuyen)|(?:khong|dung|thoi khoi|ngung).*gui)/.test(q)){escalation.delete(k);pendingHandover.delete(k);v11.clear(chatId,userId);return 'Em đã dừng và thu hồi đồng ý; chưa chuyển yêu cầu mới và không tiếp tục thu thập thông tin cửa hàng.';}
+ if(process.env.QH_V12_ENABLED==='true'&&/(rut lai|thu hoi|huy.*(?:dong y|yeu cau.*chuyen)|(?:khong|dung|thoi khoi|ngung).*gui)/.test(q)){escalation.delete(k);pendingHandover.delete(k);try{v12Module?.revokeConsent(chatId,userId);}catch{v11.clear(chatId,userId);}return 'Em đã dừng và thu hồi đồng ý; chưa chuyển yêu cầu mới và không tiếp tục thu thập thông tin cửa hàng.';}
  if(/khong.*dong y|dung.*(?:hoi.*ops|chuyen)|ngung chuyen|khong chuyen|chua chuyen|chua cho phep.*(?:gui|chuyen)|(?:dia chi|ten cua hang).*(?:chua muon|khong muon|khong cung cap)/.test(q)){escalation.delete(k);pendingHandover.delete(k);try{const refusal=process.env.QH_V12_ENABLED==='true'?v12Module?.reply(chatId,userId,raw):null;if(typeof refusal==='string'&&refusal.trim())return refusal;}catch{v11.clear(chatId,userId);}return 'Em chưa chuyển yêu cầu và không chuyển khi chưa có đồng ý; em tôn trọng việc chưa cung cấp thông tin.';}
  // Social turns precede every mutable collector and diagnostic engine.
  let social=socialIntent(raw);
@@ -189,6 +190,7 @@ function processMessage(chatId,userId,input,options={}){
  // Expand only engine input; retain original merchant names/addresses above.
  const current=sessions.get(k);
  const engineInput=language.normalize(raw,{issue:current?.issue||current?.kind||null,stage:current?'question':null}).text;
+ if(!v11Enabled()&&current?.kind==='payment'&&/^dong y chuyen (?:ops|cs|cs ops)$/.test(q))return offerEscalation(k,'Giao dịch trước chưa xác minh; khách chủ động đồng ý chuyển hỗ trợ',true);
  // Payment uncertainty precedes device troubleshooting, including an active printer session.
  if(!/^\//.test(raw)&&conversation.isPaymentUncertain(engineInput)){const paymentReply=conversation.reply(chatId,userId,engineInput);if(paymentReply)return paymentReply;}
  if(!/^\/(ticket|help|trogiup|huy|done|reset|lai|restart)/i.test(raw)){const r12=v12.reply(chatId,userId,engineInput);if(r12&&typeof r12==='object'&&r12.handover)return offerEscalation(k,r12.issue,true);if(r12)return r12;}
