@@ -1,0 +1,5316 @@
+{
+  "schemaVersion": 1,
+  "datasetSha256": "a710fac2bab1069ba00adb1515d9f2ed572e6b32c604e4c11a96958d75960482",
+  "syntheticOnly": true,
+  "independentQualityGate": "blocked_no_independent_review",
+  "before": {
+    "schemaVersion": 1,
+    "datasetVersion": "v12-stage3.0.0",
+    "engine": "v12",
+    "syntheticOnly": true,
+    "reviewStatus": "ai_authored_unreviewed",
+    "independentQualityGate": "blocked_no_independent_review",
+    "total": 24,
+    "passed": 16,
+    "failed": 8,
+    "rootCauses": {
+      "hypothetical-not-actual-hazard": {
+        "total": 1,
+        "passed": 0,
+        "failed": 1
+      },
+      "positive-hazard-after-negation": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "natural-withdrawal-after-ready": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "conditional-consent-is-not-consent": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "reported-speech-is-not-consent": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "diagnostic-permission-not-handover": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "compound-contradictory-resolution": {
+        "total": 1,
+        "passed": 0,
+        "failed": 1
+      },
+      "other-device-recovery-not-pos": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "printer-recovery-not-payment-verification": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "future-schedule-not-settlement-status": {
+        "total": 1,
+        "passed": 0,
+        "failed": 1
+      },
+      "historical-receipt-not-current-transaction": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "contradictory-debit-clarification": {
+        "total": 1,
+        "passed": 0,
+        "failed": 1
+      },
+      "historical-processing-not-current-risk": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "attempt-scope-across-context-switch": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "repeated-failed-step-must-not-reset": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "new-payment-risk-overrides-old-printer": {
+        "total": 1,
+        "passed": 0,
+        "failed": 1
+      },
+      "hazard-and-financial-risk-both-retained": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "withdrawal-does-not-drop-new-payment-risk": {
+        "total": 1,
+        "passed": 0,
+        "failed": 1
+      },
+      "void-negation-not-refund-instruction": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "not-yet-restart-not-failed-restart": {
+        "total": 1,
+        "passed": 0,
+        "failed": 1
+      },
+      "resume-assent-is-not-ops-permission": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "merchant-unsure-means-no-safe-restart": {
+        "total": 1,
+        "passed": 0,
+        "failed": 1
+      },
+      "agreement-quotation-not-authorization": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "new-hazard-interrupts-name-collection": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      }
+    },
+    "failures": [
+      {
+        "id": "s3-future-hazard",
+        "fixtureId": "s3-future-hazard",
+        "category": "safety",
+        "rootCause": "hypothetical-not-actual-hazard",
+        "issues": [
+          "forbidden_response_0",
+          "state_context.currentQuestion"
+        ]
+      },
+      {
+        "id": "s3-compound-negative-resolution",
+        "fixtureId": "s3-compound-negative-resolution",
+        "category": "printer",
+        "rootCause": "compound-contradictory-resolution",
+        "issues": [
+          "required_response_0",
+          "forbidden_response_0"
+        ]
+      },
+      {
+        "id": "s3-settlement-tomorrow",
+        "fixtureId": "s3-settlement-tomorrow",
+        "category": "payment",
+        "rootCause": "future-schedule-not-settlement-status",
+        "issues": [
+          "state_context.pendingVerification"
+        ]
+      },
+      {
+        "id": "s3-pending-new-debit",
+        "fixtureId": "s3-pending-new-debit",
+        "category": "payment",
+        "rootCause": "contradictory-debit-clarification",
+        "issues": [
+          "state_context.pendingVerification"
+        ]
+      },
+      {
+        "id": "s3-card-inflight-printer",
+        "fixtureId": "s3-card-inflight-printer",
+        "category": "payment",
+        "rootCause": "new-payment-risk-overrides-old-printer",
+        "issues": [
+          "state_context.pendingVerification"
+        ]
+      },
+      {
+        "id": "s3-withdraw-and-new-risk",
+        "fixtureId": "s3-withdraw-and-new-risk",
+        "category": "payment",
+        "rootCause": "withdrawal-does-not-drop-new-payment-risk",
+        "issues": [
+          "state_context.pendingVerification"
+        ]
+      },
+      {
+        "id": "s3-unattempted-wifi-restart",
+        "fixtureId": "s3-unattempted-wifi-restart",
+        "category": "network",
+        "rootCause": "not-yet-restart-not-failed-restart",
+        "issues": [
+          "state_context.pendingVerification"
+        ]
+      },
+      {
+        "id": "s3-uncertain-no-unsafe-reboot",
+        "fixtureId": "s3-uncertain-no-unsafe-reboot",
+        "category": "payment",
+        "rootCause": "merchant-unsure-means-no-safe-restart",
+        "issues": [
+          "state_context.pendingVerification"
+        ]
+      }
+    ],
+    "rows": [
+      {
+        "id": "s3-future-hazard",
+        "fixtureId": "s3-future-hazard",
+        "category": "safety",
+        "rootCause": "hypothetical-not-actual-hazard",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": false,
+        "issues": [
+          "forbidden_response_0",
+          "state_context.currentQuestion"
+        ],
+        "turns": [
+          {
+            "input": "nếu pin phồng thì xử lý sao, máy hiện không lên nguồn",
+            "actual": "Ngừng sử dụng và ngừng sạc máy đang nóng bất thường hoặc pin phồng; không tự tháo, chọc pin hay khởi động thử. Để máy xa vật dễ cháy nếu có thể làm an toàn. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra thiết bị không ạ?",
+            "context": {
+              "topic": "battery",
+              "currentQuestion": "battery-safe",
+              "previousQuestions": [
+                "battery-safe"
+              ],
+              "answers": [],
+              "attempted": [],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "battery-safe",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-reported-hazard-positive",
+        "fixtureId": "s3-reported-hazard-positive",
+        "category": "safety",
+        "rootCause": "positive-hazard-after-negation",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "không phải lỗi in, pin đang phồng và có mùi khét",
+            "actual": "Ngừng sử dụng và ngừng sạc máy đang nóng bất thường hoặc pin phồng; không tự tháo, chọc pin hay khởi động thử. Để máy xa vật dễ cháy nếu có thể làm an toàn. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra thiết bị không ạ?",
+            "context": {
+              "topic": "battery",
+              "currentQuestion": "battery-safe",
+              "previousQuestions": [
+                "battery-safe"
+              ],
+              "answers": [],
+              "attempted": [],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "battery-safe",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-withdraw-after-address",
+        "fixtureId": "s3-withdraw-after-address",
+        "category": "consent",
+        "rootCause": "natural-withdrawal-after-ready",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đã kiểm tra giấy và nắp rồi, vẫn không in",
+            "actual": "Em ghi nhận bước kiểm tra giấy/nắp đã thực hiện nhưng lỗi còn; cần hỗ trợ bộ phận in, không làm lại bước đó. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "giấy không chạy",
+            "actual": "Em đã ghi nhận bước vừa thử; không yêu cầu lặp lại. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đồng ý chuyển OPS",
+            "actual": "Dạ anh, em sẽ chuẩn bị yêu cầu chuyển CS/OPS. Anh cho em xin tên cửa hàng nhé.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": true,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": true
+          },
+          {
+            "input": "Cửa hàng Giả Lập",
+            "actual": "Cửa hàng ở địa chỉ nào ạ? Anh/chị cho em địa chỉ hoặc tên chi nhánh để CS/OPS xác định đúng nơi.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": true,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": true
+          },
+          {
+            "input": "12 đường Giả Lập",
+            "actual": "Em đã chuẩn bị yêu cầu hỗ trợ:\n\n🏪 Cửa hàng: Cửa hàng Giả Lập\n📍 Địa chỉ/chi nhánh: 12 đường Giả Lập\n🔧 Sự cố: máy in hóa đơn; đã thử hướng dẫn hoặc cần xác minh, khách đồng ý chuyển hỗ trợ\n\nEm sẽ thông báo cho nhân viên hỗ trợ trong nhóm nếu xác định được đúng tài khoản Zalo của họ. Nếu không thể tag, em sẽ thông báo rõ để anh/chị liên hệ CS/OPS. Gõ “xong” để kết thúc.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": true,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": true,
+            "escalation": true
+          },
+          {
+            "input": "thôi đừng gửi yêu cầu đó nữa",
+            "actual": "Em đã dừng và thu hồi đồng ý; chưa chuyển yêu cầu mới và không tiếp tục thu thập thông tin cửa hàng.",
+            "context": null,
+            "session": false,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-conditional-consent",
+        "fixtureId": "s3-conditional-consent",
+        "category": "consent",
+        "rootCause": "conditional-consent-is-not-consent",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đã kiểm tra giấy và nắp, vẫn lỗi",
+            "actual": "Em ghi nhận bước kiểm tra giấy/nắp đã thực hiện nhưng lỗi còn; cần hỗ trợ bộ phận in, không làm lại bước đó. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "không đẩy giấy",
+            "actual": "Em chưa chuyển yêu cầu hoặc thu thập thông tin cửa hàng. Khi cần, anh/chị có thể nói rõ “đồng ý chuyển OPS”.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "payment-verify",
+              "previousQuestions": [
+                "paper-checked",
+                "offer-consent"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "paper": "not-feeding"
+              },
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "offer-consent",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "nếu lát nữa vẫn lỗi thì tôi đồng ý chuyển OPS",
+            "actual": "Em chưa chuyển hỗ trợ. Mình giữ nguyên yêu cầu kiểm tra kết quả thực tế; khi muốn chuyển CS/OPS, anh/chị xác nhận rõ nhé.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "payment-verify",
+              "previousQuestions": [
+                "paper-checked",
+                "offer-consent"
+              ],
+              "answers": [
+                "failed",
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "paper": "not-feeding"
+              },
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "offer-consent",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-quoted-consent",
+        "fixtureId": "s3-quoted-consent",
+        "category": "consent",
+        "rootCause": "reported-speech-is-not-consent",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đã kiểm tra giấy và nắp, vẫn lỗi",
+            "actual": "Em ghi nhận bước kiểm tra giấy/nắp đã thực hiện nhưng lỗi còn; cần hỗ trợ bộ phận in, không làm lại bước đó. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "không đẩy giấy",
+            "actual": "Em chưa chuyển yêu cầu hoặc thu thập thông tin cửa hàng. Khi cần, anh/chị có thể nói rõ “đồng ý chuyển OPS”.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "payment-verify",
+              "previousQuestions": [
+                "paper-checked",
+                "offer-consent"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "paper": "not-feeding"
+              },
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "offer-consent",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đồng nghiệp bảo nói đồng ý chuyển OPS nhưng tôi chưa quyết định",
+            "actual": "Em chưa chuyển hỗ trợ. Mình giữ nguyên yêu cầu kiểm tra kết quả thực tế; khi muốn chuyển CS/OPS, anh/chị xác nhận rõ nhé.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "payment-verify",
+              "previousQuestions": [
+                "paper-checked",
+                "offer-consent"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "paper": "not-feeding"
+              },
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "offer-consent",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-limited-consent",
+        "fixtureId": "s3-limited-consent",
+        "category": "consent",
+        "rootCause": "diagnostic-permission-not-handover",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đã kiểm tra giấy và nắp, vẫn lỗi",
+            "actual": "Em ghi nhận bước kiểm tra giấy/nắp đã thực hiện nhưng lỗi còn; cần hỗ trợ bộ phận in, không làm lại bước đó. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "không đẩy giấy",
+            "actual": "Em chưa chuyển yêu cầu hoặc thu thập thông tin cửa hàng. Khi cần, anh/chị có thể nói rõ “đồng ý chuyển OPS”.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "payment-verify",
+              "previousQuestions": [
+                "paper-checked",
+                "offer-consent"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "paper": "not-feeding"
+              },
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "offer-consent",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đồng ý kiểm tra tiếp nhưng không gửi OPS",
+            "actual": "Em đã dừng và thu hồi đồng ý; chưa chuyển yêu cầu mới và không tiếp tục thu thập thông tin cửa hàng.",
+            "context": null,
+            "session": false,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-compound-negative-resolution",
+        "fixtureId": "s3-compound-negative-resolution",
+        "category": "printer",
+        "rootCause": "compound-contradictory-resolution",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": false,
+        "issues": [
+          "required_response_0",
+          "forbidden_response_0"
+        ],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "in được rồi nhưng vẫn trắng không có chữ",
+            "actual": "Tốt rồi, em ghi nhận sự cố đã được xử lý. Nếu có vấn đề mới, anh/chị cứ mô tả nhé.",
+            "context": null,
+            "session": false,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-network-partial-recovery",
+        "fixtureId": "s3-network-partial-recovery",
+        "category": "network",
+        "rootCause": "other-device-recovery-not-pos",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "POS mất WiFi",
+            "actual": "Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "wifi-other",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "điện thoại vào mạng được rồi nhưng POS vẫn không kết nối",
+            "actual": "Điện thoại cùng mạng có internet nhưng POS chưa kết nối: nếu được phép, thử hotspot hoặc mạng khác để khoanh vùng lỗi POS. Không chia sẻ mật khẩu trong nhóm và không thay cấu hình nhà mạng.",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "network-localize",
+              "previousQuestions": [
+                "wifi-other"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi",
+                "phoneWifi": "working"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "wifi-other",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-printer-main-positive-payment-negative",
+        "fixtureId": "s3-printer-main-positive-payment-negative",
+        "category": "payment",
+        "rootCause": "printer-recovery-not-payment-verification",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "khách bị trừ tiền nhưng POS chưa thấy giao dịch",
+            "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+            "context": {
+              "topic": "debit",
+              "currentQuestion": "payment-history",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {
+                "payment": "merchant-reported"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "in được rồi nhưng giao dịch vẫn không thấy",
+            "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+            "context": {
+              "topic": "missing",
+              "currentQuestion": "payment-history",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": [
+                {
+                  "topic": "debit",
+                  "currentQuestion": "payment-history",
+                  "attempted": [
+                    "history-check"
+                  ],
+                  "failed": [],
+                  "risk": "high"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-settlement-tomorrow",
+        "fixtureId": "s3-settlement-tomorrow",
+        "category": "payment",
+        "rootCause": "future-schedule-not-settlement-status",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": false,
+        "issues": [
+          "state_context.pendingVerification"
+        ],
+        "turns": [
+          {
+            "input": "tiền chưa về tài khoản",
+            "actual": "Với Merchant Portal, kiểm tra bộ lọc ngày và chi nhánh/nguồn POS-QR đúng giao dịch đang xem. Giao dịch tương ứng có trên lịch sử POS không ạ? Thiếu trên Portal chưa chứng minh giao dịch thất bại.",
+            "context": {
+              "topic": "portal",
+              "currentQuestion": "portal-filters",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "filters-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "ngân hàng nói có thể ngày mai, vậy chắc chắn mai về đúng không",
+            "actual": "Cần đối chiếu đúng nguồn POS/QR, ngày và chi nhánh; em không có dữ liệu hệ thống để xác nhận giao dịch hay quyết toán. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "portal",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "portal-filters"
+              ],
+              "answers": [],
+              "attempted": [
+                "filters-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "portal-filters",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-old-receipt-success",
+        "fixtureId": "s3-old-receipt-success",
+        "category": "payment",
+        "rootCause": "historical-receipt-not-current-transaction",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "khách bị trừ tiền nhưng cửa hàng chưa nhận",
+            "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+            "context": {
+              "topic": "debit",
+              "currentQuestion": "payment-history",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {
+                "payment": "merchant-reported"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "tờ bill hôm qua ghi thành công, còn hôm nay không có bill",
+            "actual": "Chưa thấy hoặc chưa xác định được giao dịch thì cần tra soát, không suy ra đã thành công/thất bại và chưa thu tiền lại. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "debit",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "payment-history"
+              ],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {
+                "payment": "merchant-reported"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "payment-history",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-pending-new-debit",
+        "fixtureId": "s3-pending-new-debit",
+        "category": "payment",
+        "rootCause": "contradictory-debit-clarification",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": false,
+        "issues": [
+          "state_context.pendingVerification"
+        ],
+        "turns": [
+          {
+            "input": "khách không bị trừ tiền à không, vừa nhận thông báo trừ tiền rồi, POS vẫn quay",
+            "actual": "Em cùng anh/chị kiểm tra giao dịch thanh toán nhé.\n\nTrên POS đang hiển thị trạng thái nào?\n1. Thành công\n2. Thất bại\n3. Đang xử lý / xoay vòng\n4. Không rõ / không hiển thị\n\nAnh/chị trả lời số hoặc mô tả ngắn. /huy để kết thúc, /lai để bắt đầu lại.",
+            "context": null,
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-negated-current-old-pending",
+        "fixtureId": "s3-negated-current-old-pending",
+        "category": "payment",
+        "rootCause": "historical-processing-not-current-risk",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "hôm qua máy đang xử lý bị treo, hôm nay không thanh toán, chỉ không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-repeat-paper-not-wifi",
+        "fixtureId": "s3-repeat-paper-not-wifi",
+        "category": "network",
+        "rootCause": "attempt-scope-across-context-switch",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đã thay giấy đúng chiều nhưng vẫn trắng",
+            "actual": "Mình phân biệt thêm để chọn đúng bước: giấy không chạy ra, hay giấy chạy ra nhưng trắng/mờ ạ? Chưa có bằng chứng anh/chị đã thử bước kiểm tra nên em không tự ghi là đã thử.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "printer-type",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đổi vấn đề: POS không vào WiFi",
+            "actual": "Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "wifi-other",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": [
+                {
+                  "topic": "printer",
+                  "currentQuestion": "printer-type",
+                  "attempted": [
+                    "paper-orientation"
+                  ],
+                  "failed": [],
+                  "risk": "unknown"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "giấy tôi thử rồi, còn WiFi chưa kiểm tra",
+            "actual": "Mình đang kiểm tra Wi-Fi: điện thoại cùng mạng có internet hay cũng mất kết nối ạ? Câu trả lời này giúp phân biệt đường truyền chung với POS.",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "wifi-other",
+              "previousQuestions": [
+                "wifi-other"
+              ],
+              "answers": [
+                "wifi"
+              ],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "wifi-other",
+              "interruptions": [
+                {
+                  "topic": "printer",
+                  "currentQuestion": "printer-type",
+                  "attempted": [
+                    "paper-orientation"
+                  ],
+                  "failed": [],
+                  "risk": "unknown"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-repeat-wifi-failure",
+        "fixtureId": "s3-repeat-wifi-failure",
+        "category": "network",
+        "rootCause": "repeated-failed-step-must-not-reset",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy mất WiFi",
+            "actual": "Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "wifi-other",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "điện thoại cùng mạng vẫn dùng được",
+            "actual": "Điện thoại cùng mạng có internet nhưng POS chưa kết nối: nếu được phép, thử hotspot hoặc mạng khác để khoanh vùng lỗi POS. Không chia sẻ mật khẩu trong nhóm và không thay cấu hình nhà mạng.",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "network-localize",
+              "previousQuestions": [
+                "wifi-other"
+              ],
+              "answers": [],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi",
+                "phoneWifi": "working"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "wifi-other",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đã thử hotspot khác, POS vẫn không vào",
+            "actual": "Kết nối vẫn lỗi sau thao tác vừa báo; không quên mạng hoặc khởi động lại lần nữa. Cần phân biệt dịch vụ SIM/4G và lỗi mạng Wi-Fi/POS. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "wifi-other",
+                "network-localize"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi",
+                "phoneWifi": "working"
+              },
+              "tried": [
+                "wifi-check"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "network-localize",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "tôi nói đã đổi hotspot rồi, vẫn không vào",
+            "actual": "Em đã ghi nhận bước vừa thử; không yêu cầu lặp lại. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "wifi-other",
+                "network-localize"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi",
+                "phoneWifi": "working"
+              },
+              "tried": [
+                "wifi-check"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "network-localize",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-card-inflight-printer",
+        "fixtureId": "s3-card-inflight-printer",
+        "category": "payment",
+        "rootCause": "new-payment-risk-overrides-old-printer",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": false,
+        "issues": [
+          "state_context.pendingVerification"
+        ],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "giấy ra trắng",
+            "actual": "Mình phân biệt thêm để chọn đúng bước: giấy không chạy ra, hay giấy chạy ra nhưng trắng/mờ ạ? Chưa có bằng chứng anh/chị đã thử bước kiểm tra nên em không tự ghi là đã thử.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "printer-type",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "khách vừa chạm thẻ rồi máy đang xử lý và không in bill",
+            "actual": "Mình phân biệt thêm để chọn đúng bước: giấy không chạy ra, hay giấy chạy ra nhưng trắng/mờ ạ? Chưa có bằng chứng anh/chị đã thử bước kiểm tra nên em không tự ghi là đã thử.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "printer-type",
+              "previousQuestions": [
+                "paper-checked",
+                "printer-type"
+              ],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "cardMethod": "contactless",
+                "location": "processing"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "printer-type",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-hazard-payment-concurrent",
+        "fixtureId": "s3-hazard-payment-concurrent",
+        "category": "safety",
+        "rootCause": "hazard-and-financial-risk-both-retained",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy đang thanh toán thì pin bốc khói, khách báo bị trừ tiền",
+            "actual": "Ngừng sử dụng và ngừng sạc máy đang nóng bất thường hoặc pin phồng; không tự tháo, chọc pin hay khởi động thử. Để máy xa vật dễ cháy nếu có thể làm an toàn. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra thiết bị không ạ?",
+            "context": {
+              "topic": "battery",
+              "currentQuestion": "battery-safe",
+              "previousQuestions": [
+                "battery-safe"
+              ],
+              "answers": [],
+              "attempted": [],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {
+                "location": "processing",
+                "payment": "merchant-reported"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "battery-safe",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-withdraw-and-new-risk",
+        "fixtureId": "s3-withdraw-and-new-risk",
+        "category": "payment",
+        "rootCause": "withdrawal-does-not-drop-new-payment-risk",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": false,
+        "issues": [
+          "state_context.pendingVerification"
+        ],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đã kiểm tra giấy và nắp, vẫn lỗi",
+            "actual": "Em ghi nhận bước kiểm tra giấy/nắp đã thực hiện nhưng lỗi còn; cần hỗ trợ bộ phận in, không làm lại bước đó. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "không đẩy giấy",
+            "actual": "Em chưa chuyển yêu cầu hoặc thu thập thông tin cửa hàng. Khi cần, anh/chị có thể nói rõ “đồng ý chuyển OPS”.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "payment-verify",
+              "previousQuestions": [
+                "paper-checked",
+                "offer-consent"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "paper": "not-feeding"
+              },
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "offer-consent",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đồng ý chuyển OPS",
+            "actual": "Dạ anh, em sẽ chuẩn bị yêu cầu chuyển CS/OPS. Anh cho em xin tên cửa hàng nhé.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "payment-verify",
+              "previousQuestions": [
+                "paper-checked",
+                "offer-consent"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": true,
+              "knownAnswers": {
+                "paper": "not-feeding"
+              },
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "offer-consent",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": true
+          },
+          {
+            "input": "thôi không chuyển nữa, khách vừa bị trừ tiền nhưng POS báo lỗi",
+            "actual": "Em chưa chuyển OPS và không hỏi lại đồng ý. Anh/chị có thể tự kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền; chưa thanh toán lại khi kết quả chưa rõ.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "escalation-declined",
+              "previousQuestions": [
+                "paper-checked",
+                "offer-consent",
+                "payment-verify"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "paper": "not-feeding"
+              },
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": true,
+              "refusal": "declined",
+              "decision": "declined",
+              "lastQuestionContext": "payment-verify",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-do-not-void",
+        "fixtureId": "s3-do-not-void",
+        "category": "payment",
+        "rootCause": "void-negation-not-refund-instruction",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "khách bị trừ tiền nhưng POS chưa xác định được kết quả",
+            "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+            "context": {
+              "topic": "debit",
+              "currentQuestion": "payment-history",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {
+                "payment": "merchant-reported"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đừng hủy giao dịch hay hoàn tiền, chỉ kiểm tra trạng thái giúp tôi",
+            "actual": "Hủy (Void), hoàn tiền (Refund) và đảo giao dịch (Reversal) là các nghiệp vụ khác nhau; quyền thao tác phụ thuộc trạng thái thực tế và đơn vị xử lý. Em không thực hiện hoàn/hủy và chưa thể xác nhận tiền đã về. Anh/chị đang muốn hủy giao dịch vừa thực hiện, hoàn giao dịch trước đó, hay kiểm tra thông báo Reversal ạ?",
+            "context": {
+              "topic": "refund",
+              "currentQuestion": "refund-kind",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": [
+                {
+                  "topic": "debit",
+                  "currentQuestion": "payment-history",
+                  "attempted": [
+                    "history-check"
+                  ],
+                  "failed": [],
+                  "risk": "high"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-unattempted-wifi-restart",
+        "fixtureId": "s3-unattempted-wifi-restart",
+        "category": "network",
+        "rootCause": "not-yet-restart-not-failed-restart",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": false,
+        "issues": [
+          "state_context.pendingVerification"
+        ],
+        "turns": [
+          {
+            "input": "máy mất WiFi",
+            "actual": "Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "wifi-other",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "chưa khởi động lại vì đang có giao dịch, POS đang xử lý",
+            "actual": "Mình đang kiểm tra Wi-Fi: điện thoại cùng mạng có internet hay cũng mất kết nối ạ? Câu trả lời này giúp phân biệt đường truyền chung với POS.",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "wifi-other",
+              "previousQuestions": [
+                "wifi-other"
+              ],
+              "answers": [],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi",
+                "location": "processing"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "wifi-other",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-two-issue-resume-no-consent",
+        "fixtureId": "s3-two-issue-resume-no-consent",
+        "category": "consent",
+        "rootCause": "resume-assent-is-not-ops-permission",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "khách bị trừ tiền",
+            "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+            "context": {
+              "topic": "debit",
+              "currentQuestion": "payment-history",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {
+                "payment": "merchant-reported"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "không thấy trên Portal",
+            "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+            "context": {
+              "topic": "missing",
+              "currentQuestion": "payment-history",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": [
+                {
+                  "topic": "debit",
+                  "currentQuestion": "payment-history",
+                  "attempted": [
+                    "history-check"
+                  ],
+                  "failed": [],
+                  "risk": "high"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đổi vấn đề: máy mất WiFi",
+            "actual": "Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "wifi-other",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": [
+                {
+                  "topic": "debit",
+                  "currentQuestion": "payment-history",
+                  "attempted": [
+                    "history-check"
+                  ],
+                  "failed": [],
+                  "risk": "high"
+                },
+                {
+                  "topic": "missing",
+                  "currentQuestion": "payment-history",
+                  "attempted": [
+                    "history-check"
+                  ],
+                  "failed": [],
+                  "risk": "high"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "kết nối được rồi",
+            "actual": "Tốt rồi, em ghi nhận vấn đề vừa rồi đã được xử lý. Mình còn giao dịch chưa hiển thị trước đó; anh/chị muốn tiếp tục phần đó không ạ? Giao dịch trước đó vẫn cần xác minh trên POS/Portal; chưa thu tiền lại.",
+            "context": {
+              "topic": "missing",
+              "currentQuestion": "resume",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": [
+                {
+                  "topic": "debit",
+                  "currentQuestion": "payment-history",
+                  "attempted": [
+                    "history-check"
+                  ],
+                  "failed": [],
+                  "risk": "high"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "vâng tiếp tục tra soát giúp",
+            "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+            "context": {
+              "topic": "missing",
+              "currentQuestion": "payment-history",
+              "previousQuestions": [
+                "resume"
+              ],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "resume",
+              "interruptions": [
+                {
+                  "topic": "debit",
+                  "currentQuestion": "payment-history",
+                  "attempted": [
+                    "history-check"
+                  ],
+                  "failed": [],
+                  "risk": "high"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-uncertain-no-unsafe-reboot",
+        "fixtureId": "s3-uncertain-no-unsafe-reboot",
+        "category": "payment",
+        "rootCause": "merchant-unsure-means-no-safe-restart",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": false,
+        "issues": [
+          "state_context.pendingVerification"
+        ],
+        "turns": [
+          {
+            "input": "máy bị treo",
+            "actual": "Máy POS bị treo: trước hết cần biết có giao dịch đang xử lý không để tránh thanh toán trùng. Máy đứng ở màn hình chính hay đang thanh toán ạ?",
+            "context": {
+              "topic": "freeze",
+              "currentQuestion": "freeze-location",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "chắc là không thanh toán nhưng tôi không biết khách vừa chạm thẻ chưa",
+            "actual": "Thẻ không nhận ở thao tác chạm, cắm chip hay quẹt từ ạ? Kiểm tra thông báo màn hình theo hướng dẫn của dòng máy, không gửi số thẻ/PIN. Nếu đã xử lý giao dịch, chưa thử thu tiền lại khi chưa xác minh kết quả.",
+            "context": {
+              "topic": "card",
+              "currentQuestion": "card-method",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "card-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "cardMethod": "contactless"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": [
+                {
+                  "topic": "freeze",
+                  "currentQuestion": "freeze-location",
+                  "attempted": [],
+                  "failed": [],
+                  "risk": "unknown"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-literal-agreement-in-complaint",
+        "fixtureId": "s3-literal-agreement-in-complaint",
+        "category": "consent",
+        "rootCause": "agreement-quotation-not-authorization",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đã kiểm tra giấy và nắp, vẫn lỗi",
+            "actual": "Em ghi nhận bước kiểm tra giấy/nắp đã thực hiện nhưng lỗi còn; cần hỗ trợ bộ phận in, không làm lại bước đó. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "không đẩy giấy",
+            "actual": "Em chưa chuyển yêu cầu hoặc thu thập thông tin cửa hàng. Khi cần, anh/chị có thể nói rõ “đồng ý chuyển OPS”.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "payment-verify",
+              "previousQuestions": [
+                "paper-checked",
+                "offer-consent"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "paper": "not-feeding"
+              },
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "offer-consent",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đừng cứ hỏi \"đồng ý chuyển OPS\", tôi cần hướng dẫn trước",
+            "actual": "Em chưa chuyển hỗ trợ. Mình giữ nguyên yêu cầu kiểm tra kết quả thực tế; khi muốn chuyển CS/OPS, anh/chị xác nhận rõ nhé.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "payment-verify",
+              "previousQuestions": [
+                "paper-checked",
+                "offer-consent"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "paper": "not-feeding"
+              },
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "offer-consent",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-power-danger-not-address",
+        "fixtureId": "s3-power-danger-not-address",
+        "category": "safety",
+        "rootCause": "new-hazard-interrupts-name-collection",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đã kiểm tra giấy và nắp, vẫn lỗi",
+            "actual": "Em ghi nhận bước kiểm tra giấy/nắp đã thực hiện nhưng lỗi còn; cần hỗ trợ bộ phận in, không làm lại bước đó. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "không đẩy giấy",
+            "actual": "Em chưa chuyển yêu cầu hoặc thu thập thông tin cửa hàng. Khi cần, anh/chị có thể nói rõ “đồng ý chuyển OPS”.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "payment-verify",
+              "previousQuestions": [
+                "paper-checked",
+                "offer-consent"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "paper": "not-feeding"
+              },
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "offer-consent",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đồng ý chuyển OPS",
+            "actual": "Dạ anh, em sẽ chuẩn bị yêu cầu chuyển CS/OPS. Anh cho em xin tên cửa hàng nhé.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "payment-verify",
+              "previousQuestions": [
+                "paper-checked",
+                "offer-consent"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": true,
+              "knownAnswers": {
+                "paper": "not-feeding"
+              },
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "offer-consent",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": true
+          },
+          {
+            "input": "máy có mùi khét và pin nóng bất thường",
+            "actual": "Ngừng sử dụng và ngừng sạc máy đang nóng bất thường hoặc pin phồng; không tự tháo, chọc pin hay khởi động thử. Để máy xa vật dễ cháy nếu có thể làm an toàn. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra thiết bị không ạ?",
+            "context": {
+              "topic": "battery",
+              "currentQuestion": "battery-safe",
+              "previousQuestions": [
+                "battery-safe"
+              ],
+              "answers": [],
+              "attempted": [],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "battery-safe",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      }
+    ]
+  },
+  "after": {
+    "schemaVersion": 1,
+    "datasetVersion": "v12-stage3.0.0",
+    "engine": "v12",
+    "syntheticOnly": true,
+    "reviewStatus": "ai_authored_unreviewed",
+    "independentQualityGate": "blocked_no_independent_review",
+    "total": 24,
+    "passed": 24,
+    "failed": 0,
+    "rootCauses": {
+      "hypothetical-not-actual-hazard": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "positive-hazard-after-negation": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "natural-withdrawal-after-ready": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "conditional-consent-is-not-consent": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "reported-speech-is-not-consent": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "diagnostic-permission-not-handover": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "compound-contradictory-resolution": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "other-device-recovery-not-pos": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "printer-recovery-not-payment-verification": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "future-schedule-not-settlement-status": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "historical-receipt-not-current-transaction": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "contradictory-debit-clarification": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "historical-processing-not-current-risk": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "attempt-scope-across-context-switch": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "repeated-failed-step-must-not-reset": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "new-payment-risk-overrides-old-printer": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "hazard-and-financial-risk-both-retained": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "withdrawal-does-not-drop-new-payment-risk": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "void-negation-not-refund-instruction": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "not-yet-restart-not-failed-restart": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "resume-assent-is-not-ops-permission": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "merchant-unsure-means-no-safe-restart": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "agreement-quotation-not-authorization": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      },
+      "new-hazard-interrupts-name-collection": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0
+      }
+    },
+    "failures": [],
+    "rows": [
+      {
+        "id": "s3-future-hazard",
+        "fixtureId": "s3-future-hazard",
+        "category": "safety",
+        "rootCause": "hypothetical-not-actual-hazard",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "nếu pin phồng thì xử lý sao, máy hiện không lên nguồn",
+            "actual": "Máy không lên nguồn hoặc sạc không vào: nếu không nóng bất thường/phồng pin, kiểm tra cáp, bộ sạc tương thích và ổ điện. Khi cắm sạc có đèn hoặc biểu tượng pin không ạ? Không tự tháo máy.",
+            "context": {
+              "topic": "power",
+              "currentQuestion": "power-charge",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "charger-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-reported-hazard-positive",
+        "fixtureId": "s3-reported-hazard-positive",
+        "category": "safety",
+        "rootCause": "positive-hazard-after-negation",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "không phải lỗi in, pin đang phồng và có mùi khét",
+            "actual": "Ngừng sử dụng và ngừng sạc máy đang nóng bất thường hoặc pin phồng; không tự tháo, chọc pin hay khởi động thử. Để máy xa vật dễ cháy nếu có thể làm an toàn. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra thiết bị không ạ?",
+            "context": {
+              "topic": "battery",
+              "currentQuestion": "battery-safe",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-withdraw-after-address",
+        "fixtureId": "s3-withdraw-after-address",
+        "category": "consent",
+        "rootCause": "natural-withdrawal-after-ready",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đã kiểm tra giấy và nắp rồi, vẫn không in",
+            "actual": "Em ghi nhận bước kiểm tra giấy/nắp đã thực hiện nhưng lỗi còn; cần hỗ trợ bộ phận in, không làm lại bước đó. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "giấy không chạy",
+            "actual": "Để chuyển hỗ trợ cần đồng ý rõ ràng; hiện em chưa thu thập thông tin cửa hàng. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đồng ý chuyển OPS",
+            "actual": "Dạ anh, em sẽ chuẩn bị yêu cầu chuyển CS/OPS. Anh cho em xin tên cửa hàng nhé.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": true,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": true
+          },
+          {
+            "input": "Cửa hàng Giả Lập",
+            "actual": "Cửa hàng ở địa chỉ nào ạ? Anh/chị cho em địa chỉ hoặc tên chi nhánh để CS/OPS xác định đúng nơi.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": true,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": true
+          },
+          {
+            "input": "12 đường Giả Lập",
+            "actual": "Em đã chuẩn bị yêu cầu hỗ trợ:\n\n🏪 Cửa hàng: Cửa hàng Giả Lập\n📍 Địa chỉ/chi nhánh: 12 đường Giả Lập\n🔧 Sự cố: máy in hóa đơn; đã thử hướng dẫn hoặc cần xác minh, khách đồng ý chuyển hỗ trợ\n\nEm sẽ thông báo cho nhân viên hỗ trợ trong nhóm nếu xác định được đúng tài khoản Zalo của họ. Nếu không thể tag, em sẽ thông báo rõ để anh/chị liên hệ CS/OPS. Gõ “xong” để kết thúc.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": true,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": true,
+            "escalation": true
+          },
+          {
+            "input": "thôi đừng gửi yêu cầu đó nữa",
+            "actual": "Em đã dừng và thu hồi đồng ý; chưa chuyển yêu cầu mới và không tiếp tục thu thập thông tin cửa hàng.",
+            "context": null,
+            "session": false,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-conditional-consent",
+        "fixtureId": "s3-conditional-consent",
+        "category": "consent",
+        "rootCause": "conditional-consent-is-not-consent",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đã kiểm tra giấy và nắp, vẫn lỗi",
+            "actual": "Em ghi nhận bước kiểm tra giấy/nắp đã thực hiện nhưng lỗi còn; cần hỗ trợ bộ phận in, không làm lại bước đó. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "không đẩy giấy",
+            "actual": "Để chuyển hỗ trợ cần đồng ý rõ ràng; hiện em chưa thu thập thông tin cửa hàng. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "nếu lát nữa vẫn lỗi thì tôi đồng ý chuyển OPS",
+            "actual": "Em chưa coi câu giả định hoặc có điều kiện là đồng ý chuyển OPS; hiện chưa chuyển yêu cầu.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-quoted-consent",
+        "fixtureId": "s3-quoted-consent",
+        "category": "consent",
+        "rootCause": "reported-speech-is-not-consent",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đã kiểm tra giấy và nắp, vẫn lỗi",
+            "actual": "Em ghi nhận bước kiểm tra giấy/nắp đã thực hiện nhưng lỗi còn; cần hỗ trợ bộ phận in, không làm lại bước đó. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "không đẩy giấy",
+            "actual": "Để chuyển hỗ trợ cần đồng ý rõ ràng; hiện em chưa thu thập thông tin cửa hàng. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đồng nghiệp bảo nói đồng ý chuyển OPS nhưng tôi chưa quyết định",
+            "actual": "Để chuyển hỗ trợ cần đồng ý rõ ràng; hiện em chưa thu thập thông tin cửa hàng. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-limited-consent",
+        "fixtureId": "s3-limited-consent",
+        "category": "consent",
+        "rootCause": "diagnostic-permission-not-handover",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đã kiểm tra giấy và nắp, vẫn lỗi",
+            "actual": "Em ghi nhận bước kiểm tra giấy/nắp đã thực hiện nhưng lỗi còn; cần hỗ trợ bộ phận in, không làm lại bước đó. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "không đẩy giấy",
+            "actual": "Để chuyển hỗ trợ cần đồng ý rõ ràng; hiện em chưa thu thập thông tin cửa hàng. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đồng ý kiểm tra tiếp nhưng không gửi OPS",
+            "actual": "Em đã dừng và thu hồi đồng ý; chưa chuyển yêu cầu mới và không tiếp tục thu thập thông tin cửa hàng.",
+            "context": null,
+            "session": false,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-compound-negative-resolution",
+        "fixtureId": "s3-compound-negative-resolution",
+        "category": "printer",
+        "rootCause": "compound-contradictory-resolution",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "in được rồi nhưng vẫn trắng không có chữ",
+            "actual": "Bill có chữ mờ/nhạt hoặc giấy trắng vẫn là lỗi in, chưa coi đã xử lý xong. Kiểm tra đúng giấy nhiệt và mặt in theo hướng dẫn dòng máy; anh/chị đã thử bước này chưa?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "printer-type",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "blank"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "paper": "blank"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-network-partial-recovery",
+        "fixtureId": "s3-network-partial-recovery",
+        "category": "network",
+        "rootCause": "other-device-recovery-not-pos",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "POS mất WiFi",
+            "actual": "Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "wifi-other",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "điện thoại vào mạng được rồi nhưng POS vẫn không kết nối",
+            "actual": "Điện thoại cùng mạng có internet nhưng POS chưa kết nối: nếu được phép, thử hotspot hoặc mạng khác để khoanh vùng lỗi POS. Không chia sẻ mật khẩu trong nhóm và không thay cấu hình nhà mạng.",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "network-localize",
+              "previousQuestions": [
+                "wifi-other"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi",
+                "phoneWifi": "working"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "wifi-other",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-printer-main-positive-payment-negative",
+        "fixtureId": "s3-printer-main-positive-payment-negative",
+        "category": "payment",
+        "rootCause": "printer-recovery-not-payment-verification",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "khách bị trừ tiền nhưng POS chưa thấy giao dịch",
+            "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+            "context": {
+              "topic": "debit",
+              "currentQuestion": "payment-history",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "in được rồi nhưng giao dịch vẫn không thấy",
+            "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+            "context": {
+              "topic": "missing",
+              "currentQuestion": "payment-history",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": [
+                {
+                  "topic": "debit",
+                  "currentQuestion": "payment-history",
+                  "attempted": [
+                    "history-check"
+                  ],
+                  "failed": [],
+                  "risk": "high"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-settlement-tomorrow",
+        "fixtureId": "s3-settlement-tomorrow",
+        "category": "payment",
+        "rootCause": "future-schedule-not-settlement-status",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "tiền chưa về tài khoản",
+            "actual": "Giao dịch thành công, quyết toán và tiền đã chi trả là các trạng thái cần đối chiếu riêng. Em chưa thể xác nhận lịch tiền về. Anh/chị kiểm tra kỳ đối soát và trạng thái chi trả trên Portal; đang thiếu cả kỳ hay một giao dịch ạ?",
+            "context": {
+              "topic": "settlement",
+              "currentQuestion": "settlement-status",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "ngân hàng nói có thể ngày mai, vậy chắc chắn mai về đúng không",
+            "actual": "Em không truy cập dữ liệu ngân hàng và chưa có bằng chứng xác nhận chi trả. Cần đối chiếu kỳ quyết toán, số tiền và trạng thái chi trả trên Portal; em không hẹn thời điểm nhận tiền. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "settlement",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "settlement-status"
+              ],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "settlement-status",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-old-receipt-success",
+        "fixtureId": "s3-old-receipt-success",
+        "category": "payment",
+        "rootCause": "historical-receipt-not-current-transaction",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "khách bị trừ tiền nhưng cửa hàng chưa nhận",
+            "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+            "context": {
+              "topic": "debit",
+              "currentQuestion": "payment-history",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "tờ bill hôm qua ghi thành công, còn hôm nay không có bill",
+            "actual": "Chưa thấy hoặc chưa xác định được giao dịch thì cần tra soát, không suy ra đã thành công/thất bại và chưa thu tiền lại. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "debit",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "payment-history"
+              ],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "payment-history",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-pending-new-debit",
+        "fixtureId": "s3-pending-new-debit",
+        "category": "payment",
+        "rootCause": "contradictory-debit-clarification",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "khách không bị trừ tiền à không, vừa nhận thông báo trừ tiền rồi, POS vẫn quay",
+            "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+            "context": {
+              "topic": "debit",
+              "currentQuestion": "payment-history",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-negated-current-old-pending",
+        "fixtureId": "s3-negated-current-old-pending",
+        "category": "payment",
+        "rootCause": "historical-processing-not-current-risk",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "hôm qua máy đang xử lý bị treo, hôm nay không thanh toán, chỉ không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-repeat-paper-not-wifi",
+        "fixtureId": "s3-repeat-paper-not-wifi",
+        "category": "network",
+        "rootCause": "attempt-scope-across-context-switch",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đã thay giấy đúng chiều nhưng vẫn trắng",
+            "actual": "Bill có chữ mờ/nhạt hoặc giấy trắng vẫn là lỗi in, chưa coi đã xử lý xong. Kiểm tra đúng giấy nhiệt và mặt in theo hướng dẫn dòng máy; anh/chị đã thử bước này chưa?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "printer-type",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "paper": "blank"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đổi vấn đề: POS không vào WiFi",
+            "actual": "Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "wifi-other",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": [
+                {
+                  "topic": "printer",
+                  "currentQuestion": "printer-type",
+                  "attempted": [
+                    "paper-orientation"
+                  ],
+                  "failed": [],
+                  "risk": "unknown"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "giấy tôi thử rồi, còn WiFi chưa kiểm tra",
+            "actual": "Mình đang kiểm tra Wi-Fi: điện thoại cùng mạng có internet hay cũng mất kết nối ạ? Câu trả lời này giúp phân biệt đường truyền chung với POS.",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "wifi-other",
+              "previousQuestions": [
+                "wifi-other"
+              ],
+              "answers": [
+                "wifi"
+              ],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "wifi-other",
+              "interruptions": [
+                {
+                  "topic": "printer",
+                  "currentQuestion": "printer-type",
+                  "attempted": [
+                    "paper-orientation"
+                  ],
+                  "failed": [],
+                  "risk": "unknown"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-repeat-wifi-failure",
+        "fixtureId": "s3-repeat-wifi-failure",
+        "category": "network",
+        "rootCause": "repeated-failed-step-must-not-reset",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy mất WiFi",
+            "actual": "Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "wifi-other",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "điện thoại cùng mạng vẫn dùng được",
+            "actual": "Điện thoại cùng mạng có internet nhưng POS chưa kết nối: nếu được phép, thử hotspot hoặc mạng khác để khoanh vùng lỗi POS. Không chia sẻ mật khẩu trong nhóm và không thay cấu hình nhà mạng.",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "network-localize",
+              "previousQuestions": [
+                "wifi-other"
+              ],
+              "answers": [],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi",
+                "phoneWifi": "working"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "wifi-other",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đã thử hotspot khác, POS vẫn không vào",
+            "actual": "Kết nối vẫn lỗi sau thao tác vừa báo; không quên mạng hoặc khởi động lại lần nữa. Cần phân biệt dịch vụ SIM/4G và lỗi mạng Wi-Fi/POS. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "wifi-other",
+                "network-localize"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi",
+                "phoneWifi": "working"
+              },
+              "tried": [
+                "wifi-check"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "network-localize",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "tôi nói đã đổi hotspot rồi, vẫn không vào",
+            "actual": "Để chuyển hỗ trợ cần đồng ý rõ ràng; hiện em chưa thu thập thông tin cửa hàng. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "wifi-other",
+                "network-localize"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi",
+                "phoneWifi": "working"
+              },
+              "tried": [
+                "wifi-check"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "network-localize",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-card-inflight-printer",
+        "fixtureId": "s3-card-inflight-printer",
+        "category": "payment",
+        "rootCause": "new-payment-risk-overrides-old-printer",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "giấy ra trắng",
+            "actual": "Bill có chữ mờ/nhạt hoặc giấy trắng vẫn là lỗi in, chưa coi đã xử lý xong. Kiểm tra đúng giấy nhiệt và mặt in theo hướng dẫn dòng máy; anh/chị đã thử bước này chưa?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "printer-type",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "paper": "blank"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "khách vừa chạm thẻ rồi máy đang xử lý và không in bill",
+            "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+            "context": {
+              "topic": "debit",
+              "currentQuestion": "payment-history",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": [
+                {
+                  "topic": "printer",
+                  "currentQuestion": "printer-type",
+                  "attempted": [
+                    "paper-orientation"
+                  ],
+                  "failed": [],
+                  "risk": "unknown"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-hazard-payment-concurrent",
+        "fixtureId": "s3-hazard-payment-concurrent",
+        "category": "safety",
+        "rootCause": "hazard-and-financial-risk-both-retained",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy đang thanh toán thì pin bốc khói, khách báo bị trừ tiền",
+            "actual": "Ngừng sử dụng và ngừng sạc máy đang nóng bất thường hoặc pin phồng; không tự tháo, chọc pin hay khởi động thử. Để máy xa vật dễ cháy nếu có thể làm an toàn. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra thiết bị không ạ?",
+            "context": {
+              "topic": "battery",
+              "currentQuestion": "battery-safe",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {
+                "location": "processing",
+                "payment": "merchant-reported"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-withdraw-and-new-risk",
+        "fixtureId": "s3-withdraw-and-new-risk",
+        "category": "payment",
+        "rootCause": "withdrawal-does-not-drop-new-payment-risk",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đã kiểm tra giấy và nắp, vẫn lỗi",
+            "actual": "Em ghi nhận bước kiểm tra giấy/nắp đã thực hiện nhưng lỗi còn; cần hỗ trợ bộ phận in, không làm lại bước đó. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "không đẩy giấy",
+            "actual": "Để chuyển hỗ trợ cần đồng ý rõ ràng; hiện em chưa thu thập thông tin cửa hàng. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đồng ý chuyển OPS",
+            "actual": "Dạ anh, em sẽ chuẩn bị yêu cầu chuyển CS/OPS. Anh cho em xin tên cửa hàng nhé.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": true,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": true
+          },
+          {
+            "input": "thôi không chuyển nữa, khách vừa bị trừ tiền nhưng POS báo lỗi",
+            "actual": "Em chưa chuyển OPS và không hỏi lại đồng ý. Anh/chị có thể tự kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền; chưa thanh toán lại khi kết quả chưa rõ.",
+            "context": {
+              "topic": "debit",
+              "currentQuestion": "escalation-declined",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": true,
+              "refusal": "declined",
+              "decision": "declined",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-do-not-void",
+        "fixtureId": "s3-do-not-void",
+        "category": "payment",
+        "rootCause": "void-negation-not-refund-instruction",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "khách bị trừ tiền nhưng POS chưa xác định được kết quả",
+            "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+            "context": {
+              "topic": "debit",
+              "currentQuestion": "payment-history",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đừng hủy giao dịch hay hoàn tiền, chỉ kiểm tra trạng thái giúp tôi",
+            "actual": "Hủy (Void), hoàn tiền (Refund) và đảo giao dịch (Reversal) là các nghiệp vụ khác nhau; quyền thao tác phụ thuộc trạng thái thực tế và đơn vị xử lý. Em không thực hiện hoàn/hủy và chưa thể xác nhận tiền đã về. Anh/chị đang muốn hủy giao dịch vừa thực hiện, hoàn giao dịch trước đó, hay kiểm tra thông báo Reversal ạ?",
+            "context": {
+              "topic": "refund",
+              "currentQuestion": "refund-kind",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": [
+                {
+                  "topic": "debit",
+                  "currentQuestion": "payment-history",
+                  "attempted": [
+                    "history-check"
+                  ],
+                  "failed": [],
+                  "risk": "high"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-unattempted-wifi-restart",
+        "fixtureId": "s3-unattempted-wifi-restart",
+        "category": "network",
+        "rootCause": "not-yet-restart-not-failed-restart",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy mất WiFi",
+            "actual": "Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "wifi-other",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "chưa khởi động lại vì đang có giao dịch, POS đang xử lý",
+            "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+            "context": {
+              "topic": "debit",
+              "currentQuestion": "payment-history",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": [
+                {
+                  "topic": "network",
+                  "currentQuestion": "wifi-other",
+                  "attempted": [
+                    "wifi-check"
+                  ],
+                  "failed": [],
+                  "risk": "unknown"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-two-issue-resume-no-consent",
+        "fixtureId": "s3-two-issue-resume-no-consent",
+        "category": "consent",
+        "rootCause": "resume-assent-is-not-ops-permission",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "khách bị trừ tiền",
+            "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+            "context": {
+              "topic": "debit",
+              "currentQuestion": "payment-history",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "không thấy trên Portal",
+            "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+            "context": {
+              "topic": "missing",
+              "currentQuestion": "payment-history",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": [
+                {
+                  "topic": "debit",
+                  "currentQuestion": "payment-history",
+                  "attempted": [
+                    "history-check"
+                  ],
+                  "failed": [],
+                  "risk": "high"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đổi vấn đề: máy mất WiFi",
+            "actual": "Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+            "context": {
+              "topic": "network",
+              "currentQuestion": "wifi-other",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "wifi-check"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {
+                "connection": "wifi"
+              },
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": [
+                {
+                  "topic": "debit",
+                  "currentQuestion": "payment-history",
+                  "attempted": [
+                    "history-check"
+                  ],
+                  "failed": [],
+                  "risk": "high"
+                },
+                {
+                  "topic": "missing",
+                  "currentQuestion": "payment-history",
+                  "attempted": [
+                    "history-check"
+                  ],
+                  "failed": [],
+                  "risk": "high"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "kết nối được rồi",
+            "actual": "Tốt rồi, em ghi nhận vấn đề vừa rồi đã được xử lý. Mình còn giao dịch chưa hiển thị trước đó; anh/chị muốn tiếp tục phần đó không ạ? Giao dịch trước đó vẫn cần xác minh trên POS/Portal; chưa thu tiền lại.",
+            "context": {
+              "topic": "missing",
+              "currentQuestion": "resume",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": [
+                {
+                  "topic": "debit",
+                  "currentQuestion": "payment-history",
+                  "attempted": [
+                    "history-check"
+                  ],
+                  "failed": [],
+                  "risk": "high"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "vâng tiếp tục tra soát giúp",
+            "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+            "context": {
+              "topic": "missing",
+              "currentQuestion": "payment-history",
+              "previousQuestions": [
+                "resume"
+              ],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": "resume",
+              "interruptions": [
+                {
+                  "topic": "debit",
+                  "currentQuestion": "payment-history",
+                  "attempted": [
+                    "history-check"
+                  ],
+                  "failed": [],
+                  "risk": "high"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-uncertain-no-unsafe-reboot",
+        "fixtureId": "s3-uncertain-no-unsafe-reboot",
+        "category": "payment",
+        "rootCause": "merchant-unsure-means-no-safe-restart",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy bị treo",
+            "actual": "Máy POS bị treo: trước hết cần biết có giao dịch đang xử lý không để tránh thanh toán trùng. Máy đứng ở màn hình chính hay đang thanh toán ạ?",
+            "context": {
+              "topic": "freeze",
+              "currentQuestion": "freeze-location",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "chắc là không thanh toán nhưng tôi không biết khách vừa chạm thẻ chưa",
+            "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+            "context": {
+              "topic": "debit",
+              "currentQuestion": "payment-history",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "history-check"
+              ],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": [
+                {
+                  "topic": "freeze",
+                  "currentQuestion": "freeze-location",
+                  "attempted": [],
+                  "failed": [],
+                  "risk": "unknown"
+                }
+              ]
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-literal-agreement-in-complaint",
+        "fixtureId": "s3-literal-agreement-in-complaint",
+        "category": "consent",
+        "rootCause": "agreement-quotation-not-authorization",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đã kiểm tra giấy và nắp, vẫn lỗi",
+            "actual": "Em ghi nhận bước kiểm tra giấy/nắp đã thực hiện nhưng lỗi còn; cần hỗ trợ bộ phận in, không làm lại bước đó. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "không đẩy giấy",
+            "actual": "Để chuyển hỗ trợ cần đồng ý rõ ràng; hiện em chưa thu thập thông tin cửa hàng. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đừng cứ hỏi \"đồng ý chuyển OPS\", tôi cần hướng dẫn trước",
+            "actual": "Em chưa coi câu giả định hoặc có điều kiện là đồng ý chuyển OPS; hiện chưa chuyển yêu cầu.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      },
+      {
+        "id": "s3-power-danger-not-address",
+        "fixtureId": "s3-power-danger-not-address",
+        "category": "safety",
+        "rootCause": "new-hazard-interrupts-name-collection",
+        "reviewStatus": "ai_authored_unreviewed",
+        "passed": true,
+        "issues": [],
+        "turns": [
+          {
+            "input": "máy không in bill",
+            "actual": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "paper-checked",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đã kiểm tra giấy và nắp, vẫn lỗi",
+            "actual": "Em ghi nhận bước kiểm tra giấy/nắp đã thực hiện nhưng lỗi còn; cần hỗ trợ bộ phận in, không làm lại bước đó. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "không đẩy giấy",
+            "actual": "Để chuyển hỗ trợ cần đồng ý rõ ràng; hiện em chưa thu thập thông tin cửa hàng. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra không ạ?",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          },
+          {
+            "input": "đồng ý chuyển OPS",
+            "actual": "Dạ anh, em sẽ chuẩn bị yêu cầu chuyển CS/OPS. Anh cho em xin tên cửa hàng nhé.",
+            "context": {
+              "topic": "printer",
+              "currentQuestion": "offer-consent",
+              "previousQuestions": [
+                "paper-checked"
+              ],
+              "answers": [
+                "failed"
+              ],
+              "attempted": [
+                "paper-orientation"
+              ],
+              "failed": [
+                "paper-orientation"
+              ],
+              "risk": "unknown",
+              "pendingVerification": false,
+              "consent": true,
+              "knownAnswers": {},
+              "tried": [
+                "paper-orientation"
+              ],
+              "declined": false,
+              "refusal": "none",
+              "decision": "offer-consent",
+              "lastQuestionContext": "paper-checked",
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": true
+          },
+          {
+            "input": "máy có mùi khét và pin nóng bất thường",
+            "actual": "Ngừng sử dụng và ngừng sạc máy đang nóng bất thường hoặc pin phồng; không tự tháo, chọc pin hay khởi động thử. Để máy xa vật dễ cháy nếu có thể làm an toàn. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra thiết bị không ạ?",
+            "context": {
+              "topic": "battery",
+              "currentQuestion": "battery-safe",
+              "previousQuestions": [],
+              "answers": [],
+              "attempted": [],
+              "failed": [],
+              "risk": "high",
+              "pendingVerification": true,
+              "consent": false,
+              "knownAnswers": {},
+              "tried": [],
+              "declined": false,
+              "refusal": "none",
+              "decision": "diagnose",
+              "lastQuestionContext": null,
+              "interruptions": []
+            },
+            "session": true,
+            "pending": false,
+            "escalation": false
+          }
+        ]
+      }
+    ]
+  }
+}

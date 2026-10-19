@@ -28,6 +28,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      - name: V12.2 offline frozen contracts (synthetic only)
+        run: npm run qa:v12
       - run: npm run qa:language
       - run: node qa-v3.js --self-test
       - run: npm run qa:legacy
@@ -39,6 +41,11 @@ jobs:
         env:
           QH_V11_ENABLED: 'true'
         run: node scripts/v11-evaluate.cjs --fail-on-regression > qa-reports/v11.json
+      - name: V12.2 compatibility with frozen V11 conversations
+        env:
+          QH_V12_ENABLED: 'true'
+          QH_V11_ENABLED: 'false'
+        run: node scripts/v11-evaluate.cjs --fail-on-regression > qa-reports/v12-compatibility.json
       - name: Security policy checks (suppress paths in job logs)
         run: node scripts/security-check.cjs > qa-reports/security.json
       - name: Ensure tracked files unchanged by QA

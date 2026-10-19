@@ -1,0 +1,1528 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "v12-stage1.0.0",
+  "reviewNote": "AI-authored synthetic regression candidates; not independently reviewed; shared root causes intentionally grouped",
+  "fixtures": [
+    {
+      "id": "printer-untried-not-assumed-01",
+      "category": "printer",
+      "rootCause": "printer-untried-not-assumed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "printer-untried-not-assumed: dùng câu trả lời “vẫn chưa được” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không in được bill",
+        "vẫn chưa được"
+      ],
+      "must": [
+        "giấy.*(?:chạy|ra)|(?:chạy|ra).*giấy"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý|sau các bước đã thử"
+      ],
+      "state": {}
+    },
+    {
+      "id": "printer-untried-not-assumed-02",
+      "category": "printer",
+      "rootCause": "printer-untried-not-assumed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "printer-untried-not-assumed: dùng câu trả lời “vẫn chưa được” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy in không được",
+        "vẫn chưa được"
+      ],
+      "must": [
+        "giấy.*(?:chạy|ra)|(?:chạy|ra).*giấy"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý|sau các bước đã thử"
+      ],
+      "state": {}
+    },
+    {
+      "id": "printer-untried-not-assumed-03",
+      "category": "printer",
+      "rootCause": "printer-untried-not-assumed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "printer-untried-not-assumed: dùng câu trả lời “vẫn chưa được” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không in hóa đơn được",
+        "vẫn chưa được"
+      ],
+      "must": [
+        "giấy.*(?:chạy|ra)|(?:chạy|ra).*giấy"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý|sau các bước đã thử"
+      ],
+      "state": {}
+    },
+    {
+      "id": "printer-untried-not-assumed-04",
+      "category": "printer",
+      "rootCause": "printer-untried-not-assumed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "printer-untried-not-assumed: dùng câu trả lời “vẫn chưa được” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy in báo lỗi",
+        "vẫn chưa được"
+      ],
+      "must": [
+        "giấy.*(?:chạy|ra)|(?:chạy|ra).*giấy"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý|sau các bước đã thử"
+      ],
+      "state": {}
+    },
+    {
+      "id": "printer-untried-not-assumed-05",
+      "category": "printer",
+      "rootCause": "printer-untried-not-assumed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "printer-untried-not-assumed: dùng câu trả lời “vẫn chưa được” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy in bị lỗi",
+        "vẫn chưa được"
+      ],
+      "must": [
+        "giấy.*(?:chạy|ra)|(?:chạy|ra).*giấy"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý|sau các bước đã thử"
+      ],
+      "state": {}
+    },
+    {
+      "id": "printer-untried-not-assumed-06",
+      "category": "printer",
+      "rootCause": "printer-untried-not-assumed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "printer-untried-not-assumed: dùng câu trả lời “vẫn chưa được” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không in được hóa đơn",
+        "vẫn chưa được"
+      ],
+      "must": [
+        "giấy.*(?:chạy|ra)|(?:chạy|ra).*giấy"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý|sau các bước đã thử"
+      ],
+      "state": {}
+    },
+    {
+      "id": "printer-untried-not-assumed-07",
+      "category": "printer",
+      "rootCause": "printer-untried-not-assumed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "printer-untried-not-assumed: dùng câu trả lời “vẫn chưa được” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "bill không in được",
+        "vẫn chưa được"
+      ],
+      "must": [
+        "giấy.*(?:chạy|ra)|(?:chạy|ra).*giấy"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý|sau các bước đã thử"
+      ],
+      "state": {}
+    },
+    {
+      "id": "printer-untried-not-assumed-08",
+      "category": "printer",
+      "rootCause": "printer-untried-not-assumed",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "printer-untried-not-assumed: dùng câu trả lời “vẫn chưa được” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy in gặp lỗi",
+        "vẫn chưa được"
+      ],
+      "must": [
+        "giấy.*(?:chạy|ra)|(?:chạy|ra).*giấy"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý|sau các bước đã thử"
+      ],
+      "state": {}
+    },
+    {
+      "id": "printer-no-feed-diagnostic-01",
+      "category": "printer",
+      "rootCause": "printer-no-feed-diagnostic",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "printer-no-feed-diagnostic: dùng câu trả lời “giấy không chạy ra” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không in bill",
+        "giấy không chạy ra"
+      ],
+      "must": [
+        "giấy|nắp"
+      ],
+      "mustNot": [
+        "sau bước kiểm tra|đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "printer-no-feed-diagnostic-02",
+      "category": "printer",
+      "rootCause": "printer-no-feed-diagnostic",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "printer-no-feed-diagnostic: dùng câu trả lời “giấy không ra” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không in bill",
+        "giấy không ra"
+      ],
+      "must": [
+        "giấy|nắp"
+      ],
+      "mustNot": [
+        "sau bước kiểm tra|đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "printer-no-feed-diagnostic-03",
+      "category": "printer",
+      "rootCause": "printer-no-feed-diagnostic",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "printer-no-feed-diagnostic: dùng câu trả lời “không đẩy giấy” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không in bill",
+        "không đẩy giấy"
+      ],
+      "must": [
+        "giấy|nắp"
+      ],
+      "mustNot": [
+        "sau bước kiểm tra|đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "printer-no-feed-diagnostic-04",
+      "category": "printer",
+      "rootCause": "printer-no-feed-diagnostic",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "printer-no-feed-diagnostic: dùng câu trả lời “giấy bị kẹt” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không in bill",
+        "giấy bị kẹt"
+      ],
+      "must": [
+        "giấy|nắp"
+      ],
+      "mustNot": [
+        "sau bước kiểm tra|đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "printer-no-feed-diagnostic-05",
+      "category": "printer",
+      "rootCause": "printer-no-feed-diagnostic",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "printer-no-feed-diagnostic: dùng câu trả lời “không chạy giấy” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không in bill",
+        "không chạy giấy"
+      ],
+      "must": [
+        "giấy|nắp"
+      ],
+      "mustNot": [
+        "sau bước kiểm tra|đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "printer-no-feed-diagnostic-06",
+      "category": "printer",
+      "rootCause": "printer-no-feed-diagnostic",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "printer-no-feed-diagnostic: dùng câu trả lời “giấy không đẩy ra” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không in bill",
+        "giấy không đẩy ra"
+      ],
+      "must": [
+        "giấy|nắp"
+      ],
+      "mustNot": [
+        "sau bước kiểm tra|đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "printer-no-feed-diagnostic-07",
+      "category": "printer",
+      "rootCause": "printer-no-feed-diagnostic",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "printer-no-feed-diagnostic: dùng câu trả lời “kẹt giấy rồi em” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không in bill",
+        "kẹt giấy rồi em"
+      ],
+      "must": [
+        "giấy|nắp"
+      ],
+      "mustNot": [
+        "sau bước kiểm tra|đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "printer-no-feed-diagnostic-08",
+      "category": "printer",
+      "rootCause": "printer-no-feed-diagnostic",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "printer-no-feed-diagnostic: dùng câu trả lời “không ra giấy” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không in bill",
+        "không ra giấy"
+      ],
+      "must": [
+        "giấy|nắp"
+      ],
+      "mustNot": [
+        "sau bước kiểm tra|đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "failure-not-restart-proof-01",
+      "category": "freeze",
+      "rootCause": "failure-not-restart-proof",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "failure-not-restart-proof: dùng câu trả lời “máy treo chưa khởi động lại” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy treo chưa khởi động lại"
+      ],
+      "must": [
+        "đang.*(?:thanh toán|giao dịch)|màn hình"
+      ],
+      "mustNot": [
+        "sau bước đã thử|không yêu cầu khởi động lại nữa|đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "failure-not-restart-proof-03",
+      "category": "freeze",
+      "rootCause": "failure-not-restart-proof",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "failure-not-restart-proof: dùng câu trả lời “máy treo không được nhưng chưa thử gì” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy treo không được nhưng chưa thử gì"
+      ],
+      "must": [
+        "đang.*(?:thanh toán|giao dịch)|màn hình"
+      ],
+      "mustNot": [
+        "sau bước đã thử|không yêu cầu khởi động lại nữa|đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "failure-not-restart-proof-06",
+      "category": "freeze",
+      "rootCause": "failure-not-restart-proof",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "failure-not-restart-proof: dùng câu trả lời “máy treo vẫn chưa thử gì” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy treo vẫn chưa thử gì"
+      ],
+      "must": [
+        "đang.*(?:thanh toán|giao dịch)|màn hình"
+      ],
+      "mustNot": [
+        "sau bước đã thử|không yêu cầu khởi động lại nữa|đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "sim-answer-used-01",
+      "category": "network",
+      "rootCause": "sim-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "sim-answer-used: dùng câu trả lời “có cột sóng 4G” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy mất mạng dùng SIM",
+        "có cột sóng 4G"
+      ],
+      "must": [
+        "SIM|4G|dịch vụ|sóng"
+      ],
+      "mustNot": [
+        "đã thử|sau bước đã thử|quên mạng|Điện thoại dùng được cùng Wi-Fi"
+      ],
+      "state": {}
+    },
+    {
+      "id": "sim-answer-used-02",
+      "category": "network",
+      "rootCause": "sim-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "sim-answer-used: dùng câu trả lời “có sóng nhưng không kết nối được” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy mất mạng dùng SIM",
+        "có sóng nhưng không kết nối được"
+      ],
+      "must": [
+        "SIM|4G|dịch vụ|sóng"
+      ],
+      "mustNot": [
+        "đã thử|sau bước đã thử|quên mạng|Điện thoại dùng được cùng Wi-Fi"
+      ],
+      "state": {}
+    },
+    {
+      "id": "sim-answer-used-03",
+      "category": "network",
+      "rootCause": "sim-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "sim-answer-used: dùng câu trả lời “máy vẫn có sóng” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy mất mạng dùng SIM",
+        "máy vẫn có sóng"
+      ],
+      "must": [
+        "SIM|4G|dịch vụ|sóng"
+      ],
+      "mustNot": [
+        "đã thử|sau bước đã thử|quên mạng|Điện thoại dùng được cùng Wi-Fi"
+      ],
+      "state": {}
+    },
+    {
+      "id": "sim-answer-used-04",
+      "category": "network",
+      "rootCause": "sim-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "sim-answer-used: dùng câu trả lời “4G có sóng đầy” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy mất mạng dùng SIM",
+        "4G có sóng đầy"
+      ],
+      "must": [
+        "SIM|4G|dịch vụ|sóng"
+      ],
+      "mustNot": [
+        "đã thử|sau bước đã thử|quên mạng|Điện thoại dùng được cùng Wi-Fi"
+      ],
+      "state": {}
+    },
+    {
+      "id": "sim-answer-used-05",
+      "category": "network",
+      "rootCause": "sim-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "sim-answer-used: dùng câu trả lời “SIM còn sóng” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy mất mạng dùng SIM",
+        "SIM còn sóng"
+      ],
+      "must": [
+        "SIM|4G|dịch vụ|sóng"
+      ],
+      "mustNot": [
+        "đã thử|sau bước đã thử|quên mạng|Điện thoại dùng được cùng Wi-Fi"
+      ],
+      "state": {}
+    },
+    {
+      "id": "sim-answer-used-06",
+      "category": "network",
+      "rootCause": "sim-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "sim-answer-used: dùng câu trả lời “có biểu tượng 4G” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy mất mạng dùng SIM",
+        "có biểu tượng 4G"
+      ],
+      "must": [
+        "SIM|4G|dịch vụ|sóng"
+      ],
+      "mustNot": [
+        "đã thử|sau bước đã thử|quên mạng|Điện thoại dùng được cùng Wi-Fi"
+      ],
+      "state": {}
+    },
+    {
+      "id": "sim-answer-used-07",
+      "category": "network",
+      "rootCause": "sim-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "sim-answer-used: dùng câu trả lời “sóng yếu một vạch” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy mất mạng dùng SIM",
+        "sóng yếu một vạch"
+      ],
+      "must": [
+        "SIM|4G|dịch vụ|sóng"
+      ],
+      "mustNot": [
+        "đã thử|sau bước đã thử|quên mạng|Điện thoại dùng được cùng Wi-Fi"
+      ],
+      "state": {}
+    },
+    {
+      "id": "sim-answer-used-08",
+      "category": "network",
+      "rootCause": "sim-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "sim-answer-used: dùng câu trả lời “không có dịch vụ” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy mất mạng dùng SIM",
+        "không có dịch vụ"
+      ],
+      "must": [
+        "SIM|4G|dịch vụ|sóng"
+      ],
+      "mustNot": [
+        "đã thử|sau bước đã thử|quên mạng|Điện thoại dùng được cùng Wi-Fi"
+      ],
+      "state": {}
+    },
+    {
+      "id": "wifi-shared-outage-01",
+      "category": "network",
+      "rootCause": "wifi-shared-outage",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "wifi-shared-outage: dùng câu trả lời “điện thoại cũng không vào mạng được” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy mất mạng wifi",
+        "điện thoại cũng không vào mạng được"
+      ],
+      "must": [
+        "đường truyền|router|bộ phát|mạng.*(?:chung|Wi-Fi)|cùng.*mạng"
+      ],
+      "mustNot": [
+        "Điện thoại dùng được|đã thử|CS/OPS.*đồng ý|đồng ý.*CS/OPS"
+      ],
+      "state": {}
+    },
+    {
+      "id": "wifi-shared-outage-02",
+      "category": "network",
+      "rootCause": "wifi-shared-outage",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "wifi-shared-outage: dùng câu trả lời “điện thoại cùng wifi cũng mất mạng” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy mất mạng wifi",
+        "điện thoại cùng wifi cũng mất mạng"
+      ],
+      "must": [
+        "đường truyền|router|bộ phát|mạng.*(?:chung|Wi-Fi)|cùng.*mạng"
+      ],
+      "mustNot": [
+        "Điện thoại dùng được|đã thử|CS/OPS.*đồng ý|đồng ý.*CS/OPS"
+      ],
+      "state": {}
+    },
+    {
+      "id": "wifi-shared-outage-03",
+      "category": "network",
+      "rootCause": "wifi-shared-outage",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "wifi-shared-outage: dùng câu trả lời “cả điện thoại cũng không được” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy mất mạng wifi",
+        "cả điện thoại cũng không được"
+      ],
+      "must": [
+        "đường truyền|router|bộ phát|mạng.*(?:chung|Wi-Fi)|cùng.*mạng"
+      ],
+      "mustNot": [
+        "Điện thoại dùng được|đã thử|CS/OPS.*đồng ý|đồng ý.*CS/OPS"
+      ],
+      "state": {}
+    },
+    {
+      "id": "wifi-shared-outage-04",
+      "category": "network",
+      "rootCause": "wifi-shared-outage",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "wifi-shared-outage: dùng câu trả lời “điện thoại cũng không có internet” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy mất mạng wifi",
+        "điện thoại cũng không có internet"
+      ],
+      "must": [
+        "đường truyền|router|bộ phát|mạng.*(?:chung|Wi-Fi)|cùng.*mạng"
+      ],
+      "mustNot": [
+        "Điện thoại dùng được|đã thử|CS/OPS.*đồng ý|đồng ý.*CS/OPS"
+      ],
+      "state": {}
+    },
+    {
+      "id": "wifi-shared-outage-05",
+      "category": "network",
+      "rootCause": "wifi-shared-outage",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "wifi-shared-outage: dùng câu trả lời “mạng wifi điện thoại cũng lỗi” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy mất mạng wifi",
+        "mạng wifi điện thoại cũng lỗi"
+      ],
+      "must": [
+        "đường truyền|router|bộ phát|mạng.*(?:chung|Wi-Fi)|cùng.*mạng"
+      ],
+      "mustNot": [
+        "Điện thoại dùng được|đã thử|CS/OPS.*đồng ý|đồng ý.*CS/OPS"
+      ],
+      "state": {}
+    },
+    {
+      "id": "wifi-shared-outage-06",
+      "category": "network",
+      "rootCause": "wifi-shared-outage",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "wifi-shared-outage: dùng câu trả lời “điện thoại cùng mạng không vào được” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy mất mạng wifi",
+        "điện thoại cùng mạng không vào được"
+      ],
+      "must": [
+        "đường truyền|router|bộ phát|mạng.*(?:chung|Wi-Fi)|cùng.*mạng"
+      ],
+      "mustNot": [
+        "Điện thoại dùng được|đã thử|CS/OPS.*đồng ý|đồng ý.*CS/OPS"
+      ],
+      "state": {}
+    },
+    {
+      "id": "wifi-answer-used-01",
+      "category": "network",
+      "rootCause": "wifi-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "wifi-answer-used: dùng câu trả lời “điện thoại cùng mạng có internet” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy mất mạng wifi",
+        "điện thoại cùng mạng có internet"
+      ],
+      "must": [
+        "hotspot|mạng.*khác|POS.*kết nối"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "wifi-answer-used-02",
+      "category": "network",
+      "rootCause": "wifi-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "wifi-answer-used: dùng câu trả lời “điện thoại vào được” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy mất mạng wifi",
+        "điện thoại vào được"
+      ],
+      "must": [
+        "hotspot|mạng.*khác|POS.*kết nối"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "wifi-answer-used-03",
+      "category": "network",
+      "rootCause": "wifi-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "wifi-answer-used: dùng câu trả lời “điện thoại wifi dùng bình thường” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy mất mạng wifi",
+        "điện thoại wifi dùng bình thường"
+      ],
+      "must": [
+        "hotspot|mạng.*khác|POS.*kết nối"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "wifi-answer-used-04",
+      "category": "network",
+      "rootCause": "wifi-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "wifi-answer-used: dùng câu trả lời “điện thoại truy cập bình thường” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy mất mạng wifi",
+        "điện thoại truy cập bình thường"
+      ],
+      "must": [
+        "hotspot|mạng.*khác|POS.*kết nối"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "wifi-answer-used-05",
+      "category": "network",
+      "rootCause": "wifi-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "wifi-answer-used: dùng câu trả lời “có mạng trên điện thoại” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy mất mạng wifi",
+        "có mạng trên điện thoại"
+      ],
+      "must": [
+        "hotspot|mạng.*khác|POS.*kết nối"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "battery-not-secret-pin-01",
+      "category": "battery",
+      "rootCause": "battery-not-secret-pin",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "battery-not-secret-pin: dùng câu trả lời “pin máy tụt nhanh” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "pin máy tụt nhanh"
+      ],
+      "must": [
+        "sạc|cáp|nguồn|biểu tượng"
+      ],
+      "mustNot": [
+        "Không chia sẻ mã PIN|không.*(?:gửi|chia sẻ).*(?:PIN|OTP)|mã bảo mật"
+      ],
+      "state": {
+        "session": true
+      }
+    },
+    {
+      "id": "battery-not-secret-pin-03",
+      "category": "battery",
+      "rootCause": "battery-not-secret-pin",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "battery-not-secret-pin: dùng câu trả lời “máy sạc không vào” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy sạc không vào"
+      ],
+      "must": [
+        "sạc|cáp|nguồn|biểu tượng"
+      ],
+      "mustNot": [
+        "Không chia sẻ mã PIN|không.*(?:gửi|chia sẻ).*(?:PIN|OTP)|mã bảo mật"
+      ],
+      "state": {
+        "session": true
+      }
+    },
+    {
+      "id": "battery-not-secret-pin-05",
+      "category": "battery",
+      "rootCause": "battery-not-secret-pin",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "battery-not-secret-pin: dùng câu trả lời “máy POS hết pin” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy POS hết pin"
+      ],
+      "must": [
+        "sạc|cáp|nguồn|biểu tượng"
+      ],
+      "mustNot": [
+        "Không chia sẻ mã PIN|không.*(?:gửi|chia sẻ).*(?:PIN|OTP)|mã bảo mật"
+      ],
+      "state": {
+        "session": true
+      }
+    },
+    {
+      "id": "partial-printer-resolution-01",
+      "category": "printer",
+      "rootCause": "partial-printer-resolution",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "partial-printer-resolution: dùng câu trả lời “in được rồi nhưng chữ còn mờ” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không in bill",
+        "in được rồi nhưng chữ còn mờ"
+      ],
+      "must": [
+        "mờ|chữ|kẹt|lỗi|nhạt"
+      ],
+      "mustNot": [
+        "sự cố đã được xử lý|không bắt đầu lại"
+      ],
+      "state": {
+        "session": true,
+        "context.topic": "printer"
+      }
+    },
+    {
+      "id": "partial-printer-resolution-02",
+      "category": "printer",
+      "rootCause": "partial-printer-resolution",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "partial-printer-resolution: dùng câu trả lời “in được rồi nhưng vẫn mất chữ” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không in bill",
+        "in được rồi nhưng vẫn mất chữ"
+      ],
+      "must": [
+        "mờ|chữ|kẹt|lỗi|nhạt"
+      ],
+      "mustNot": [
+        "sự cố đã được xử lý|không bắt đầu lại"
+      ],
+      "state": {
+        "session": true,
+        "context.topic": "printer"
+      }
+    },
+    {
+      "id": "partial-printer-resolution-03",
+      "category": "printer",
+      "rootCause": "partial-printer-resolution",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "partial-printer-resolution: dùng câu trả lời “in được rồi nhưng giấy ra mờ” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không in bill",
+        "in được rồi nhưng giấy ra mờ"
+      ],
+      "must": [
+        "mờ|chữ|kẹt|lỗi|nhạt"
+      ],
+      "mustNot": [
+        "sự cố đã được xử lý|không bắt đầu lại"
+      ],
+      "state": {
+        "session": true,
+        "context.topic": "printer"
+      }
+    },
+    {
+      "id": "partial-printer-resolution-04",
+      "category": "printer",
+      "rootCause": "partial-printer-resolution",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "partial-printer-resolution: dùng câu trả lời “in được rồi nhưng bị thiếu chữ” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không in bill",
+        "in được rồi nhưng bị thiếu chữ"
+      ],
+      "must": [
+        "mờ|chữ|kẹt|lỗi|nhạt"
+      ],
+      "mustNot": [
+        "sự cố đã được xử lý|không bắt đầu lại"
+      ],
+      "state": {
+        "session": true,
+        "context.topic": "printer"
+      }
+    },
+    {
+      "id": "partial-printer-resolution-05",
+      "category": "printer",
+      "rootCause": "partial-printer-resolution",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "partial-printer-resolution: dùng câu trả lời “in được rồi nhưng hóa đơn không đủ chữ” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không in bill",
+        "in được rồi nhưng hóa đơn không đủ chữ"
+      ],
+      "must": [
+        "mờ|chữ|kẹt|lỗi|nhạt"
+      ],
+      "mustNot": [
+        "sự cố đã được xử lý|không bắt đầu lại"
+      ],
+      "state": {
+        "session": true,
+        "context.topic": "printer"
+      }
+    },
+    {
+      "id": "partial-printer-resolution-07",
+      "category": "printer",
+      "rootCause": "partial-printer-resolution",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "partial-printer-resolution: dùng câu trả lời “in được rồi nhưng máy còn lỗi” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không in bill",
+        "in được rồi nhưng máy còn lỗi"
+      ],
+      "must": [
+        "mờ|chữ|kẹt|lỗi|nhạt"
+      ],
+      "mustNot": [
+        "sự cố đã được xử lý|không bắt đầu lại"
+      ],
+      "state": {
+        "session": true,
+        "context.topic": "printer"
+      }
+    },
+    {
+      "id": "partial-printer-resolution-08",
+      "category": "printer",
+      "rootCause": "partial-printer-resolution",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "partial-printer-resolution: dùng câu trả lời “in được rồi nhưng chữ bị nhạt” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không in bill",
+        "in được rồi nhưng chữ bị nhạt"
+      ],
+      "must": [
+        "mờ|chữ|kẹt|lỗi|nhạt"
+      ],
+      "mustNot": [
+        "sự cố đã được xử lý|không bắt đầu lại"
+      ],
+      "state": {
+        "session": true,
+        "context.topic": "printer"
+      }
+    },
+    {
+      "id": "financial-definition-not-escalation-01",
+      "category": "knowledge",
+      "rootCause": "financial-definition-not-escalation",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "financial-definition-not-escalation: dùng câu trả lời “refund là gì” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "refund là gì"
+      ],
+      "must": [
+        "(?:hoàn|hủy|đảo)"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý|Anh/chị đang muốn|giao dịch có hiển thị"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "financial-definition-not-escalation-02",
+      "category": "knowledge",
+      "rootCause": "financial-definition-not-escalation",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "financial-definition-not-escalation: dùng câu trả lời “void là gì” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "void là gì"
+      ],
+      "must": [
+        "(?:hoàn|hủy|đảo)"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý|Anh/chị đang muốn|giao dịch có hiển thị"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "financial-definition-not-escalation-03",
+      "category": "knowledge",
+      "rootCause": "financial-definition-not-escalation",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "financial-definition-not-escalation: dùng câu trả lời “reversal là gì” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "reversal là gì"
+      ],
+      "must": [
+        "(?:hoàn|hủy|đảo)"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý|Anh/chị đang muốn|giao dịch có hiển thị"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "financial-definition-not-escalation-04",
+      "category": "knowledge",
+      "rootCause": "financial-definition-not-escalation",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "financial-definition-not-escalation: dùng câu trả lời “hoàn tiền là gì” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "hoàn tiền là gì"
+      ],
+      "must": [
+        "(?:hoàn|hủy|đảo)"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý|Anh/chị đang muốn|giao dịch có hiển thị"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "financial-definition-not-escalation-05",
+      "category": "knowledge",
+      "rootCause": "financial-definition-not-escalation",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "financial-definition-not-escalation: dùng câu trả lời “hủy giao dịch là gì” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "hủy giao dịch là gì"
+      ],
+      "must": [
+        "(?:hoàn|hủy|đảo)"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý|Anh/chị đang muốn|giao dịch có hiển thị"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "financial-definition-not-escalation-06",
+      "category": "knowledge",
+      "rootCause": "financial-definition-not-escalation",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "financial-definition-not-escalation: dùng câu trả lời “đảo giao dịch là gì” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "đảo giao dịch là gì"
+      ],
+      "must": [
+        "(?:hoàn|hủy|đảo)"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý|Anh/chị đang muốn|giao dịch có hiển thị"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "financial-definition-not-escalation-07",
+      "category": "knowledge",
+      "rootCause": "financial-definition-not-escalation",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "financial-definition-not-escalation: dùng câu trả lời “refund khác void thế nào” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "refund khác void thế nào"
+      ],
+      "must": [
+        "(?:hoàn|hủy|đảo)"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý|Anh/chị đang muốn|giao dịch có hiển thị"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "financial-definition-not-escalation-08",
+      "category": "knowledge",
+      "rootCause": "financial-definition-not-escalation",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "financial-definition-not-escalation: dùng câu trả lời “void khác reversal thế nào” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "void khác reversal thế nào"
+      ],
+      "must": [
+        "(?:hoàn|hủy|đảo)"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý|Anh/chị đang muốn|giao dịch có hiển thị"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "financial-definition-not-escalation-09",
+      "category": "knowledge",
+      "rootCause": "financial-definition-not-escalation",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "financial-definition-not-escalation: dùng câu trả lời “refund và reversal khác nhau thế nào” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "refund và reversal khác nhau thế nào"
+      ],
+      "must": [
+        "(?:hoàn|hủy|đảo)"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý|Anh/chị đang muốn|giao dịch có hiển thị"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "financial-definition-not-escalation-10",
+      "category": "knowledge",
+      "rootCause": "financial-definition-not-escalation",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "financial-definition-not-escalation: dùng câu trả lời “giải thích refund void reversal” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "giải thích refund void reversal"
+      ],
+      "must": [
+        "(?:hoàn|hủy|đảo)"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý|Anh/chị đang muốn|giao dịch có hiển thị"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "consent-withdrawal-01",
+      "category": "consent",
+      "rootCause": "consent-withdrawal",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "consent-withdrawal: dùng câu trả lời “tôi rút lại đồng ý” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "khách bị trừ tiền",
+        "không thấy",
+        "đồng ý",
+        "tôi rút lại đồng ý"
+      ],
+      "must": [
+        "chưa chuyển|dừng|hủy|không.*chuyển|thu hồi"
+      ],
+      "mustNot": [
+        "địa chỉ.*nào|đã chuẩn bị yêu cầu"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "consent-withdrawal-02",
+      "category": "consent",
+      "rootCause": "consent-withdrawal",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "consent-withdrawal: dùng câu trả lời “không chuyển OPS nữa” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "khách bị trừ tiền",
+        "không thấy",
+        "đồng ý",
+        "không chuyển OPS nữa"
+      ],
+      "must": [
+        "chưa chuyển|dừng|hủy|không.*chuyển|thu hồi"
+      ],
+      "mustNot": [
+        "địa chỉ.*nào|đã chuẩn bị yêu cầu"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "consent-withdrawal-06",
+      "category": "consent",
+      "rootCause": "consent-withdrawal",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "consent-withdrawal: dùng câu trả lời “hủy yêu cầu chuyển OPS” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "khách bị trừ tiền",
+        "không thấy",
+        "đồng ý",
+        "hủy yêu cầu chuyển OPS"
+      ],
+      "must": [
+        "chưa chuyển|dừng|hủy|không.*chuyển|thu hồi"
+      ],
+      "mustNot": [
+        "địa chỉ.*nào|đã chuẩn bị yêu cầu"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "new-topic-breaks-consent-loop-01",
+      "category": "context",
+      "rootCause": "new-topic-breaks-consent-loop",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "new-topic-breaks-consent-loop: dùng câu trả lời “máy không in bill” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "khách bị trừ tiền",
+        "không thấy",
+        "máy không in bill"
+      ],
+      "must": [
+        "giấy|Wi-Fi|sạc|Ngừng|màn hình|thanh toán"
+      ],
+      "mustNot": [
+        "Em đã ghi nhận bước vừa thử; không yêu cầu lặp lại. Anh/chị đồng ý"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "new-topic-breaks-consent-loop-02",
+      "category": "context",
+      "rootCause": "new-topic-breaks-consent-loop",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "new-topic-breaks-consent-loop: dùng câu trả lời “máy mất mạng wifi” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "khách bị trừ tiền",
+        "không thấy",
+        "máy mất mạng wifi"
+      ],
+      "must": [
+        "giấy|Wi-Fi|sạc|Ngừng|màn hình|thanh toán"
+      ],
+      "mustNot": [
+        "Em đã ghi nhận bước vừa thử; không yêu cầu lặp lại. Anh/chị đồng ý"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "new-topic-breaks-consent-loop-05",
+      "category": "context",
+      "rootCause": "new-topic-breaks-consent-loop",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "new-topic-breaks-consent-loop: dùng câu trả lời “máy in giấy trắng” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "khách bị trừ tiền",
+        "không thấy",
+        "máy in giấy trắng"
+      ],
+      "must": [
+        "giấy|Wi-Fi|sạc|Ngừng|màn hình|thanh toán"
+      ],
+      "mustNot": [
+        "Em đã ghi nhận bước vừa thử; không yêu cầu lặp lại. Anh/chị đồng ý"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "new-topic-breaks-consent-loop-06",
+      "category": "context",
+      "rootCause": "new-topic-breaks-consent-loop",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "new-topic-breaks-consent-loop: dùng câu trả lời “máy POS bị treo” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "khách bị trừ tiền",
+        "không thấy",
+        "máy POS bị treo"
+      ],
+      "must": [
+        "giấy|Wi-Fi|sạc|Ngừng|màn hình|thanh toán"
+      ],
+      "mustNot": [
+        "Em đã ghi nhận bước vừa thử; không yêu cầu lặp lại. Anh/chị đồng ý"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "decline-new-topic-01",
+      "category": "context",
+      "rootCause": "decline-new-topic",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "decline-new-topic: dùng câu trả lời “không phải lỗi mạng mà máy không in bill” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "khách bị trừ tiền",
+        "không thấy",
+        "không",
+        "không phải lỗi mạng mà máy không in bill"
+      ],
+      "must": [
+        "giấy|sạc|chip|thẻ"
+      ],
+      "mustNot": [
+        "Mình giữ nguyên yêu cầu kiểm tra kết quả thực tế"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "decline-new-topic-02",
+      "category": "context",
+      "rootCause": "decline-new-topic",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "decline-new-topic: dùng câu trả lời “đổi vấn đề máy không lên nguồn” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "khách bị trừ tiền",
+        "không thấy",
+        "không",
+        "đổi vấn đề máy không lên nguồn"
+      ],
+      "must": [
+        "giấy|sạc|chip|thẻ"
+      ],
+      "mustNot": [
+        "Mình giữ nguyên yêu cầu kiểm tra kết quả thực tế"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "card-method-followup-01",
+      "category": "card",
+      "rootCause": "card-method-followup",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "card-method-followup: dùng câu trả lời “cắm chip” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không đọc thẻ",
+        "cắm chip"
+      ],
+      "must": [
+        "chip|chạm|từ"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "card-method-followup-02",
+      "category": "card",
+      "rootCause": "card-method-followup",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "card-method-followup: dùng câu trả lời “thẻ chạm” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không đọc thẻ",
+        "thẻ chạm"
+      ],
+      "must": [
+        "chip|chạm|từ"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "card-method-followup-03",
+      "category": "card",
+      "rootCause": "card-method-followup",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "card-method-followup: dùng câu trả lời “quẹt từ” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không đọc thẻ",
+        "quẹt từ"
+      ],
+      "must": [
+        "chip|chạm|từ"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "card-method-followup-04",
+      "category": "card",
+      "rootCause": "card-method-followup",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "card-method-followup: dùng câu trả lời “máy không đọc chip” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không đọc thẻ",
+        "máy không đọc chip"
+      ],
+      "must": [
+        "chip|chạm|từ"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "card-method-followup-05",
+      "category": "card",
+      "rootCause": "card-method-followup",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "card-method-followup: dùng câu trả lời “chạm thẻ không nhận” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không đọc thẻ",
+        "chạm thẻ không nhận"
+      ],
+      "must": [
+        "chip|chạm|từ"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý"
+      ],
+      "state": {}
+    },
+    {
+      "id": "qr-stage-answer-used-01",
+      "category": "qr",
+      "rootCause": "qr-stage-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "qr-stage-answer-used: dùng câu trả lời “chưa hiện mã QR” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy QR bị lỗi",
+        "chưa hiện mã QR"
+      ],
+      "must": [
+        "mạng|ứng dụng|kết nối|thông báo lỗi"
+      ],
+      "mustNot": [
+        "Cần xác định QR không hiển thị hay đã quét"
+      ],
+      "state": {}
+    },
+    {
+      "id": "qr-stage-answer-used-02",
+      "category": "qr",
+      "rootCause": "qr-stage-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "qr-stage-answer-used: dùng câu trả lời “không hiển thị mã” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy QR bị lỗi",
+        "không hiển thị mã"
+      ],
+      "must": [
+        "mạng|ứng dụng|kết nối|thông báo lỗi"
+      ],
+      "mustNot": [
+        "Cần xác định QR không hiển thị hay đã quét"
+      ],
+      "state": {}
+    },
+    {
+      "id": "qr-stage-answer-used-03",
+      "category": "qr",
+      "rootCause": "qr-stage-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "qr-stage-answer-used: dùng câu trả lời “không tạo được mã” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy QR bị lỗi",
+        "không tạo được mã"
+      ],
+      "must": [
+        "mạng|ứng dụng|kết nối|thông báo lỗi"
+      ],
+      "mustNot": [
+        "Cần xác định QR không hiển thị hay đã quét"
+      ],
+      "state": {}
+    },
+    {
+      "id": "qr-stage-answer-used-04",
+      "category": "qr",
+      "rootCause": "qr-stage-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "qr-stage-answer-used: dùng câu trả lời “màn hình không có QR” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy QR bị lỗi",
+        "màn hình không có QR"
+      ],
+      "must": [
+        "mạng|ứng dụng|kết nối|thông báo lỗi"
+      ],
+      "mustNot": [
+        "Cần xác định QR không hiển thị hay đã quét"
+      ],
+      "state": {}
+    },
+    {
+      "id": "power-indicator-answer-used-01",
+      "category": "power",
+      "rootCause": "power-indicator-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "power-indicator-answer-used: dùng câu trả lời “cắm sạc có biểu tượng pin” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không lên nguồn",
+        "cắm sạc có biểu tượng pin"
+      ],
+      "must": [
+        "đèn|biểu tượng|màn hình"
+      ],
+      "mustNot": [
+        "Cần xác định biểu tượng sạc|đồng ý.*CS/OPS|CS/OPS.*đồng ý",
+        "Khi cắm sạc có đèn hoặc biểu tượng pin không"
+      ],
+      "state": {}
+    },
+    {
+      "id": "power-indicator-answer-used-02",
+      "category": "power",
+      "rootCause": "power-indicator-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "power-indicator-answer-used: dùng câu trả lời “có đèn sạc” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không lên nguồn",
+        "có đèn sạc"
+      ],
+      "must": [
+        "đèn|biểu tượng|màn hình"
+      ],
+      "mustNot": [
+        "Cần xác định biểu tượng sạc|đồng ý.*CS/OPS|CS/OPS.*đồng ý",
+        "Khi cắm sạc có đèn hoặc biểu tượng pin không"
+      ],
+      "state": {}
+    },
+    {
+      "id": "power-indicator-answer-used-03",
+      "category": "power",
+      "rootCause": "power-indicator-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "power-indicator-answer-used: dùng câu trả lời “máy có biểu tượng sạc nhưng không lên nguồn” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không lên nguồn",
+        "máy có biểu tượng sạc nhưng không lên nguồn"
+      ],
+      "must": [
+        "đèn|biểu tượng|màn hình"
+      ],
+      "mustNot": [
+        "Cần xác định biểu tượng sạc|đồng ý.*CS/OPS|CS/OPS.*đồng ý",
+        "Khi cắm sạc có đèn hoặc biểu tượng pin không"
+      ],
+      "state": {}
+    },
+    {
+      "id": "power-indicator-answer-used-04",
+      "category": "power",
+      "rootCause": "power-indicator-answer-used",
+      "reviewStatus": "ai_authored_unreviewed",
+      "rationale": "power-indicator-answer-used: dùng câu trả lời “đèn sạc sáng nhưng màn hình tối” để kiểm tra bước tiếp theo; không suy diễn bước đã thử hoặc trạng thái tiền.",
+      "turns": [
+        "máy không lên nguồn",
+        "đèn sạc sáng nhưng màn hình tối"
+      ],
+      "must": [
+        "đèn|biểu tượng|màn hình"
+      ],
+      "mustNot": [
+        "Cần xác định biểu tượng sạc|đồng ý.*CS/OPS|CS/OPS.*đồng ý",
+        "Khi cắm sạc có đèn hoặc biểu tượng pin không"
+      ],
+      "state": {}
+    }
+  ],
+  "freezeNote": "Assertions frozen before V12 implementation; selected after auditing baseline 180adac actual synthetic responses. Scenario counts are not distinct root-cause counts."
+}

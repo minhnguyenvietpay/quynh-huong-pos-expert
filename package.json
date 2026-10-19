@@ -16,7 +16,8 @@
     "monitor:dashboard": "node scripts/online-qa-server.cjs",
     "improve:plan": "node scripts/improve.cjs plan",
     "agents:roles": "node -e \"for(const r of require('./agents/roles.json'))console.log(r.id+': '+r.sandbox)\"",
-    "qa:v11": "node scripts/v11-evaluate.cjs --fail-on-regression"
+    "qa:v11": "node scripts/v11-evaluate.cjs --fail-on-regression",
+    "qa:v12": "node --test tests/v12*.test.cjs tests/program-regression.test.cjs"
   },
   "dependencies": {
     "zca-js": "*"
