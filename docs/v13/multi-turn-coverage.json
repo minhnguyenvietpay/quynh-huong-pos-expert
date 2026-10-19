@@ -1,0 +1,25 @@
+{
+  "syntheticOnly": true,
+  "externalGroundTruth": false,
+  "frozenFixtureCount": 91,
+  "frozenMultiTurnCount": 88,
+  "frozenSingleTurnProbes": [
+    "r1-greeting-payment-mixed",
+    "r5-social-payment-same-turn",
+    "r5-hazard-secret-offer"
+  ],
+  "frozenFixturesModified": false,
+  "followupCoverage": {
+    "test": "tests/v13-multi-turn-followups.test.cjs",
+    "sha256": "d83fe8440f0a5078ad03a58c6894d1d7c58f886db267baed4a10015f7fa413e4",
+    "counterparts": [
+      "r1-greeting-payment-mixed",
+      "r5-social-payment-same-turn",
+      "r5-hazard-secret-offer"
+    ],
+    "total": 3,
+    "passed": 3,
+    "authoredAfterRuntimeFixes": true,
+    "purpose": "Three multi-turn regression counterparts expand the three single-turn frozen guard probes. These are not three new independent semantic cases, holdout quality improvements, or externally validated merchant conversations."
+  }
+}

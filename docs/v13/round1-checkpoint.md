@@ -13,3 +13,5 @@ PAUSE đã được Safety review: nếu đã đồng ý cho cùng sự cố th�
 File runtime: intent.js, dialogue.js, listener.mjs, lib/v12/engine.cjs. Không đổi module V11, credential, corpus hoặc lockfile. Không deploy/merge/gửi Zalo thật.
 
 Phần còn yếu: default legacy vẫn có thể mất ngữ cảnh payment ở các lượt mơ hồ như “chưa rõ”; chưa kiểm tra sâu giấy hết, kết nối thay đổi, Portal nhiều chi nhánh. Vòng2 ưu tiên chẩn đoán thiết bị và bước đã thử; các vòng sau thanh toán, vận hành và đối kháng.
+
+Đính chính coverage khi bàn giao:18 fixture khóa gồm17 đa lượt và1 mixed-intent probe một lượt. Probe giữ nguyên hash/assertion; đã bổ sung counterpart đa lượt sau sửa trong tests/v13-multi-turn-followups.test.cjs, không tính là ca độc lập mới.

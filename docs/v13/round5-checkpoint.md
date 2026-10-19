@@ -25,3 +25,7 @@ GitHub Actions cấu hình Node22/24, chạy runner bằng file arguments (hỗ 
 Đã làm đủ5 vòng có thay đổi runtime và regression riêng, không phải5 lần sinh thêm test. Chỉ có91 hội thoại synthetic mới; chưa đạt mục tiêu500 core/5000 hội thoại/10000 biến thể. Không nhân bản cho đủ số. Chưa có chuyên gia OPS bên ngoài duyệt ground truth, chưa chứng minh chất lượng merchant thật hoặc Windows/Zalo live. Corpus vẫn0 verified. Rule-based NLU, nguồn/model SOP và các cách nói chưa gặp còn giới hạn.
 
 Không deploy/merge, không đọc/gửi tin Zalo thật hoặc thay credential/session. Tiếp theo lưu so sánh baseline main với V13 cùng91 ca, báo cáo tiếng Việt, hướng dẫn Windows/rollback và PR review. Bật cờ12 không phục hồi mã V12.2 sau khi đã cập nhật V13 vì hai cờ dùng cùng engine; rollback đầy đủ cần commit deployment/baseline đã ghi, xem WINDOWS-UPDATE-VI.md. Không có auto-resume hoặc coding API trả phí được cấu hình.
+
+Đính chính coverage khi bàn giao:21 fixture khóa gồm19 đa lượt và2 probe một lượt. Cả chương trình91 fixture gồm88 đa lượt+3 probe; bổ sung3 counterpart đa lượt sau sửa, giữ nguyên mọi hash, không gọi chúng là holdout hoặc3 cải thiện độc lập. Xem multi-turn-coverage.json.
+
+Kiểm chứng bàn giao sau bổ sung3 counterpart: full npm test359/359, qa:v13 56/56, scanner208 file0 vi phạm; không đổi runtime sau commit84de999.
