@@ -104,9 +104,11 @@ function processMessage(chatId,userId,input,options={}){
   return /lai|restart/.test(q)?'Đã bắt đầu lại. Anh/chị mô tả sự cố mới nhé.':'Đã kết thúc phiên hỗ trợ. Khi cần, anh/chị mô tả sự cố mới nhé.';
  }
  const batteryContext=v11Enabled()&&/\bpin\b/.test(q)&&/sac|nong|phong|chai|het|tut|may|pos/.test(q)&&!/otp|cvv|mat khau|password|ma pin|so pin|pin code|pin the|pin ngan hang|pin\s*\d/.test(q);
+ if(/api[ -]?key|access[ _-]?token|bearer |session[ _-]?(?:key|token|cookie)|cookie[ :=]|sk-proj-|zalo.*(?:session|token)/i.test(raw))return 'Không chia sẻ khóa API, token, cookie hoặc phiên đăng nhập trong nhóm. Em không lưu thông tin này vào yêu cầu hỗ trợ.';
  if((isSensitive(q)&&!batteryContext)||/(?:\d[ -]?){13,19}/.test(raw))return '⚠️ Không chia sẻ OTP, PIN, CVV, mật khẩu hay mã xác thực trong nhóm. Nếu cần hỗ trợ, liên hệ CS/OPS qua kênh chính thức.';
  if(/^\/ticket\b/i.test(raw))return createTicket(raw.slice(7));
- if(process.env.QH_V12_ENABLED==='true'&&/(rut lai|thu hoi|huy.*(?:dong y|yeu cau.*chuyen)|chua cho phep.*(?:gui|chuyen)|khong.*dong y|dung chuyen|ngung chuyen|khong chuyen|chua chuyen)/.test(q)){escalation.delete(k);pendingHandover.delete(k);v11.clear(chatId,userId);return 'Em đã dừng và thu hồi đồng ý; chưa chuyển yêu cầu mới và không tiếp tục thu thập thông tin cửa hàng.';}
+ if(process.env.QH_V12_ENABLED==='true'&&/(rut lai|thu hoi|huy.*(?:dong y|yeu cau.*chuyen)|(?:khong|dung|thoi khoi|ngung).*gui)/.test(q)){escalation.delete(k);pendingHandover.delete(k);v11.clear(chatId,userId);return 'Em đã dừng và thu hồi đồng ý; chưa chuyển yêu cầu mới và không tiếp tục thu thập thông tin cửa hàng.';}
+ if(process.env.QH_V12_ENABLED==='true'&&/khong.*dong y|dung.*(?:hoi.*ops|chuyen)|ngung chuyen|khong chuyen|chua chuyen|chua cho phep.*(?:gui|chuyen)|(?:dia chi|ten cua hang).*(?:chua muon|khong muon|khong cung cap)/.test(q)){escalation.delete(k);pendingHandover.delete(k);return v12Module?.reply(chatId,userId,raw)||'Em chưa chuyển yêu cầu và tôn trọng việc chưa cung cấp thông tin.';}
  // Resolution/closure must preempt pending handover and all diagnostic modules.
  if(!/^\//.test(raw) && /^(binh thuong roi|may binh thuong roi|chay binh thuong roi|on roi|ok roi em|ok roi|het loi roi|in duoc roi|duoc roi|da xu ly xong|khong can ho tro nua)( em| anh)?$/.test(q)){
    escalation.delete(k);pendingHandover.delete(k);sessions.delete(k);v12.clear(chatId,userId);

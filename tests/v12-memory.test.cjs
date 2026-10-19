@@ -99,3 +99,15 @@ test('V12 registers next diagnostic questions without retaining merchant text', 
     assert.equal(memory.get('g', 'u').currentQuestion, currentQuestion);
   }
 });
+
+test('V12 retains finite card method across subsequent diagnostic turns', () => {
+  const memory = createMemory();
+  for (const cardMethod of ['chip', 'contactless', 'swipe', 'unknown']) {
+    memory.set('g', 'u', { topic: 'card', currentQuestion: 'card-message', knownAnswers: { cardMethod } });
+    const state = memory.get('g', 'u');
+    memory.set('g', 'u', { ...state, lastQuestionContext: 'card-message' });
+    assert.equal(memory.get('g', 'u').knownAnswers.cardMethod, cardMethod);
+  }
+  assert.throws(() => memory.set('g', 'u', { knownAnswers: { cardMethod: 'máy hiện mã05' } }), TypeError);
+  assert.throws(() => memory.set('g', 'u', { knownAnswers: { cardMethod: '4111111111111111' } }), TypeError);
+});

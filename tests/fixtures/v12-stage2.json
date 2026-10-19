@@ -1,0 +1,435 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "v12-stage2.0.0",
+  "reviewNote": "20 new synthetic AI-authored runtime challenges; not external merchant or OPS review. Contracts frozen before Stage2 runtime changes.",
+  "fixtures": [
+    {
+      "id": "s2-resume-not-consent",
+      "category": "consent",
+      "rootCause": "resumed-question-consent-confusion",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Có trả lời câu hỏi tiếp tục vấn đề cũ, không phải đồng ý chuyển OPS.",
+      "turns": [
+        "khách bị trừ tiền",
+        "không thấy",
+        "máy không in bill",
+        "in được rồi",
+        "có"
+      ],
+      "must": [
+        "POS|Portal|giao dịch"
+      ],
+      "mustNot": [
+        "xin tên cửa hàng|chuẩn bị yêu cầu chuyển"
+      ],
+      "state": {
+        "escalation": false,
+        "pending": false
+      }
+    },
+    {
+      "id": "s2-printer-recovered-after-attempt",
+      "category": "printer",
+      "rootCause": "attempt-success-misclassified-failure",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Bước đã thử kèm kết quả thành công không chứng minh lỗi còn.",
+      "turns": [
+        "máy không in bill",
+        "đã kiểm tra giấy xong và in được rồi"
+      ],
+      "must": [
+        "ghi nhận|tốt|xử lý|in được"
+      ],
+      "mustNot": [
+        "nhưng lỗi còn|cần hỗ trợ bộ phận in|đồng ý.*CS/OPS"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "s2-network-recovered-after-attempt",
+      "category": "network",
+      "rootCause": "network-attempt-success-misclassified",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Kết nối phục hồi sau đổi mạng cần ghi nhận phục hồi, không báo thất bại.",
+      "turns": [
+        "máy mất mạng Wi-Fi",
+        "đã thử mạng khác rồi, POS kết nối được rồi"
+      ],
+      "must": [
+        "ghi nhận|tốt|kết nối được|xử lý"
+      ],
+      "mustNot": [
+        "vẫn lỗi|đồng ý.*CS/OPS"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "s2-phone-pos-subjects",
+      "category": "network",
+      "rootCause": "phone-pos-negation-scope",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Không áp dụng phủ định của POS sang kết quả điện thoại.",
+      "turns": [
+        "máy mất mạng Wi-Fi",
+        "điện thoại vào được nhưng POS không vào được"
+      ],
+      "must": [
+        "POS|hotspot|mạng khác"
+      ],
+      "mustNot": [
+        "Điện thoại.*cũng mất mạng|đường truyền chung/bộ phát"
+      ],
+      "state": {
+        "context.knownAnswers.phoneWifi": "working"
+      }
+    },
+    {
+      "id": "s2-no-more-consent-prompts",
+      "category": "consent",
+      "rootCause": "natural-language-escalation-refusal",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Tôn trọng từ chối rõ ràng và cung cấp kiểm tra an toàn thay vì lặp xin consent.",
+      "turns": [
+        "khách bị trừ tiền",
+        "không thấy",
+        "đừng hỏi chuyển OPS nữa, hướng dẫn tôi tự kiểm tra"
+      ],
+      "must": [
+        "POS|Portal|lịch sử"
+      ],
+      "mustNot": [
+        "đồng ý.*CS/OPS|CS/OPS.*đồng ý|bước vừa thử"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "s2-address-refusal-not-address",
+      "category": "consent",
+      "rootCause": "handover-refusal-treated-as-location",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Không lưu câu từ chối như địa chỉ và không hoàn thành yêu cầu với dữ liệu đó.",
+      "turns": [
+        "khách bị trừ tiền",
+        "không thấy",
+        "đồng ý",
+        "Cửa hàng Tổng hợp Minh chứng",
+        "địa chỉ chưa muốn cung cấp"
+      ],
+      "must": [
+        "chưa|không|tôn trọng|chi nhánh"
+      ],
+      "mustNot": [
+        "đã chuẩn bị yêu cầu hỗ trợ|Địa chỉ/chi nhánh: địa chỉ chưa"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "s2-refusal-retains-payment",
+      "category": "context",
+      "rootCause": "consent-withdrawal-erases-payment-context",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Từ chối chuyển OPS không có nghĩa xóa sự cố giao dịch đang cần tự kiểm tra.",
+      "turns": [
+        "khách bị trừ tiền",
+        "không thấy",
+        "không đồng ý chuyển OPS",
+        "kiểm tra lịch sử ở đâu"
+      ],
+      "must": [
+        "POS|Portal"
+      ],
+      "mustNot": [
+        "có muốn.*chuyển CS/OPS|đồng ý.*CS/OPS"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "s2-double-debit-priority",
+      "category": "payment",
+      "rootCause": "double-debit-hidden-by-generic-debit",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Cần phân biệt hai lần thu thực tế với thông báo trùng, không kết luận tiền đã thu.",
+      "turns": [
+        "khách bị trừ tiền hai lần cho một đơn hàng"
+      ],
+      "must": [
+        "một hay hai|hai giao dịch|trùng thông báo|thông báo lặp"
+      ],
+      "mustNot": [
+        "đã thu hai lần|đảm bảo.*hoàn"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "s2-settlement-not-missing-sale",
+      "category": "settlement",
+      "rootCause": "settlement-shortfall-hidden-by-missing",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Thiếu tiền đối soát cần đối chiếu kỳ/chi trả, không tự suy rằng mất bản ghi giao dịch.",
+      "turns": [
+        "đối soát thiếu tiền",
+        "chỉ một giao dịch ở chi nhánh A, cả kỳ còn lại đã đủ"
+      ],
+      "must": [
+        "kỳ|chi trả|quyết toán|đối soát"
+      ],
+      "mustNot": [
+        "Chưa thấy hoặc chưa xác định được giao dịch"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "s2-card-method-retained",
+      "category": "card",
+      "rootCause": "card-method-answer-not-remembered",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Đã biết phương thức chip; phản hồi mã lỗi cần dùng ngữ cảnh thay vì hỏi phương thức lại.",
+      "turns": [
+        "máy không đọc thẻ",
+        "cắm chip",
+        "máy hiện mã 05"
+      ],
+      "must": [
+        "05|thông báo|chip"
+      ],
+      "mustNot": [
+        "cho em biết phương thức|đang phân biệt quẹt từ"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "s2-qr-uncreated-known-first-turn",
+      "category": "qr",
+      "rootCause": "known-initial-qr-stage-ignored",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Merchant đã nói rõ chưa tạo được mã; cần bước mạng/ứng dụng thay vì hỏi lại giai đoạn.",
+      "turns": [
+        "máy không tạo được mã QR"
+      ],
+      "must": [
+        "mạng|kết nối|thông báo lỗi|ứng dụng"
+      ],
+      "mustNot": [
+        "không hiện mã hay khách đã quét"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "s2-charge-indicator-known-first-turn",
+      "category": "power",
+      "rootCause": "known-initial-charge-indicator-ignored",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Thông tin biểu tượng pin có trong câu đầu, không hỏi lại cùng thông tin.",
+      "turns": [
+        "máy không lên nguồn nhưng cắm sạc có biểu tượng pin"
+      ],
+      "must": [
+        "màn hình|thao tác bật|ghi nhận"
+      ],
+      "mustNot": [
+        "Khi cắm sạc có đèn hoặc biểu tượng pin không"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "s2-processing-card-prioritized",
+      "category": "payment",
+      "rootCause": "initial-processing-card-lacks-verification",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Giao dịch đang xử lý phải kích hoạt kiểm tra giao dịch thay vì chẩn đoán phương thức đọc thẻ.",
+      "turns": [
+        "POS đang processing sau khi cắm chip, khách đang chờ"
+      ],
+      "must": [
+        "POS/Portal|lịch sử|xác minh"
+      ],
+      "mustNot": [
+        "không nhận ở thao tác chạm|cắm chip hay quẹt từ"
+      ],
+      "state": {
+        "context.pendingVerification": true
+      }
+    },
+    {
+      "id": "s2-portal-login-not-filters",
+      "category": "portal",
+      "rootCause": "portal-login-routed-to-report-filters",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Không truy cập Portal khác với thiếu giao dịch trên báo cáo; không xin mật khẩu/OTP.",
+      "turns": [
+        "không đăng nhập được Merchant Portal"
+      ],
+      "must": [
+        "đăng nhập|truy cập|tài khoản|khôi phục"
+      ],
+      "mustNot": [
+        "kiểm tra bộ lọc ngày|Giao dịch tương ứng có trên lịch sử POS"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "s2-reprint-copy-not-hardware",
+      "category": "printer",
+      "rootCause": "receipt-copy-routed-to-print-failure",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Yêu cầu bản sao hóa đơn không đồng nghĩa lỗi giấy, không thực hiện thu tiền lần nữa.",
+      "turns": [
+        "giao dịch POS thành công nhưng chỉ in một bill, cần in lại bản sao"
+      ],
+      "must": [
+        "bản sao|in lại|in thêm"
+      ],
+      "mustNot": [
+        "Giấy không chạy ra hay chạy ra nhưng trắng"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "s2-reported-pending-not-absent",
+      "category": "payment",
+      "rootCause": "reported-pending-called-not-found",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Ghi nhận trạng thái merchant báo pending mà không xác nhận kết quả từ hệ thống.",
+      "turns": [
+        "khách bị trừ tiền",
+        "POS báo pending cùng số tiền và thời điểm"
+      ],
+      "must": [
+        "pending|đang xử lý"
+      ],
+      "mustNot": [
+        "Chưa thấy hoặc chưa xác định được giao dịch"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "s2-withdraw-void-new-printer",
+      "category": "context",
+      "rootCause": "negated-void-hides-new-topic",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Ý định hủy bị phủ định; xử lý sự cố máy in mới mà không đề nghị chuyển nghiệp vụ hủy.",
+      "turns": [
+        "muốn hủy giao dịch",
+        "không hủy giao dịch nữa, máy không in bill"
+      ],
+      "must": [
+        "giấy|nắp|in bill"
+      ],
+      "mustNot": [
+        "Anh/chị đồng ý.*CS/OPS"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "s2-authorization-capture-explanation",
+      "category": "payment-literacy",
+      "rootCause": "authorization-capture-not-explained",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Câu hỏi kiến thức cần phân biệt phê duyệt/ủy quyền với bước ghi nhận/thu tiền; không mở luồng thu thông tin cửa hàng.",
+      "turns": [
+        "authorization khác capture thế nào"
+      ],
+      "must": [
+        "ủy quyền|chấp thuận|giữ|phê duyệt"
+      ],
+      "mustNot": [
+        "xin tên cửa hàng"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "s2-dispute-safe-guidance",
+      "category": "dispute",
+      "rootCause": "dispute-intent-generic-fallback",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Cần nhận diện tranh chấp giao dịch và hướng dẫn kênh chính thức an toàn, không đảm bảo kết quả.",
+      "turns": [
+        "khách nói không thực hiện giao dịch và muốn khiếu nại chargeback"
+      ],
+      "must": [
+        "khiếu nại|tra soát|tranh chấp"
+      ],
+      "mustNot": [
+        "chắc chắn.*hoàn|đảm bảo.*hoàn"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "s2-payout-substantive-definition",
+      "category": "payment-literacy",
+      "rootCause": "payout-defined-only-by-name",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Cần giải thích chi trả cho đơn vị chấp nhận thanh toán, không chỉ lặp tên hoặc xác nhận tiền đã về.",
+      "turns": [
+        "payout là gì"
+      ],
+      "must": [
+        "chuyển|chi trả.*(?:cửa hàng|đơn vị|tài khoản)|(?:cửa hàng|đơn vị|tài khoản).*chi trả"
+      ],
+      "mustNot": [
+        "đã về tài khoản"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    }
+  ]
+}

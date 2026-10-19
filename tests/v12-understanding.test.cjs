@@ -53,3 +53,22 @@ test('V12 prior restart does not require the word lại',()=>{
  for(const text of ['máy POS vẫn treo đã khởi động rồi','khởi động rồi máy vẫn treo','đã khởi động lại rồi']) assert.equal(analyze(text).facts.previousAttempt,true,text);
  assert.equal(analyze('chưa khởi động máy vẫn treo').facts.previousAttempt,false);
 });
+
+test('V12 successful reported checks resolve printing and networking',()=>{
+ for(const text of ['đã kiểm tra giấy xong và in được rồi','đã thử mạng khác rồi, POS kết nối được rồi']) {
+  const r=analyze(text);assert.equal(r.signals.resolved,true,text);assert.equal(r.signals.failed,false,text);assert.equal(r.facts.previousAttempt,true,text);
+ }
+});
+for(const [operation,id] of [['hủy giao dịch','void'],['hoàn tiền','refund'],['đảo giao dịch','reversal']])test('V12 declined operation does not hijack active printer: '+id,()=>{
+ const r=analyze('không '+operation+' nữa, máy không in bill');assert.equal(r.primary,'printer');assert.equal(r.intents.some(x=>x.id===id),false);
+ assert.ok(analyze(operation+' không được').intents.some(x=>x.id===id));
+ assert.ok(analyze('không '+operation+' được').intents.some(x=>x.id===id));
+ assert.ok(analyze('không '+operation+' nữa nhưng khách khác cần '+operation).intents.some(x=>x.id===id));
+});
+
+for(const symptom of ['chữ còn mờ','vẫn mất chữ','giấy ra mờ','bị thiếu chữ','hóa đơn không đủ chữ','máy còn lỗi','chữ nhạt','chữ bị nhạt','giấy vẫn kẹt'])test('V12 partial printer recovery retains residual defect: '+symptom,()=>{
+ const r=analyze('in được rồi nhưng '+symptom,{topic:'printer'});assert.equal(r.signals.resolved,false);assert.equal(r.signals.failed,true);assert.equal(r.facts.scopedResolution,true);assert.equal(r.facts.residualDefect,true);
+});
+test('V12 full successful printing is distinct from a denied residual defect',()=>{
+ for(const text of ['đã kiểm tra giấy xong và in được rồi','in được rồi, chữ không còn mờ','in được rồi, không còn thiếu chữ'])assert.equal(analyze(text,{topic:'printer'}).signals.resolved,true,text);
+});
