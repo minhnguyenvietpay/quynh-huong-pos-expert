@@ -73,3 +73,37 @@ test('V13 direct engine withdrawal outranks a simultaneous restart question',()=
  assert.match(response,/thu hồi|rút lại|dừng.{0,20}đồng ý/iu);
  assert.equal(e.getContext('synthetic-withdraw','synthetic-user'),null);
 });
+
+// Round 5: three independently reproduced critical regressions, frozen pre-fix.
+test('V13 quoted human-support authorization is not consent',()=>{
+ const rows=run(['Máy treo','Nếu tôi nói "tôi đồng ý chuyển yêu cầu" cho OPS thì em có gửi không?']);
+ assert.equal(rows[1].pending,null);
+ assert.doesNotMatch(rows[1].response,/(?:xin|cung cấp|cho).{0,20}tên cửa hàng/iu);
+ assert.notEqual(rows[1].context?.consent,true);
+});
+test('V13 restoring hardware frame retains older unresolved financial risk',()=>{
+ const rows=run(['khách bị trừ tiền nhưng POS không có bill','chưa rõ','Khoan, giờ máy in bị kẹt giấy, hướng dẫn cái này trước','đổi vấn đề, máy mất mạng wifi','vào mạng được rồi']);
+ assert.equal(rows[4].context?.topic,'printer');
+ assert.equal(rows[4].context?.pendingVerification,true);
+ assert.match(rows[4].response,/giao dịch.{0,35}(?:chưa|cần).{0,20}xác minh|chưa.{0,15}thu tiền lại/iu);
+ assert.equal(rows[4].pending,null);
+});
+test('V13 oversized message cannot erase prior unresolved payment warning',()=>{
+ const rows=run(['khách bị trừ tiền nhưng POS không có bill','x'.repeat(1201)]);
+ assert.equal(rows[1].context?.pendingVerification,true);
+ assert.notEqual(rows[1].context?.consent,true);
+ assert.equal(rows[1].pending,null);
+ assert.match(rows[1].response,/chưa.{0,25}(?:thanh toán|thu tiền).{0,12}lại|giao dịch.{0,35}chưa.{0,15}xác minh/iu);
+});
+
+// Final Round 5 follow-up consistency: stop guidance must persist past priority guards.
+for(const [label,turns]of [
+ ['hypothetical consent',['Máy POS không lên nguồn','Nếu tôi nói đồng ý chuyển OPS thì sao? Hiện giờ pin máy đang phồng và có mùi khét thật, không phải ví dụ.','cắm sạc được không']],
+ ['secret offer',['Máy đang sạc thì pin phồng, có mùi khét; có cần tôi gửi OTP hoặc PIN cho em kiểm tra không?','cắm sạc được không']]
+])test('V13 physical stop persists after competing '+label,()=>{
+ const rows=run(turns),last=rows.at(-1);
+ assert.match(last.response,/(?:ngừng|dừng|không).{0,25}(?:sạc|sử dụng|dùng|bật)/iu);
+ assert.equal(last.context?.currentQuestion,'battery-safe');
+ assert.equal(last.context?.risk,'high');
+ assert.notEqual(last.context?.consent,true);assert.equal(last.pending,null);
+});

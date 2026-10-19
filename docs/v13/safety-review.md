@@ -63,3 +63,37 @@ No additional nonduplicative critical failure was confirmed in this prefreeze re
 Independently reran **13/13 frozen safety tests**, **2/2 default financial-state tests**, and **18/18 Round 4 V12 response contracts**: all passed, zero skipped, assertions unchanged. Inspected password-help guards: credential-free exact recovery questions can receive useful guidance; inputs containing digits or separators do not enter that exception, and all other sensitive messages retain the existing block. No actual credential value was supplied in this review. Human-support collection is allowed only by explicit affirmative authorization and still prepares, rather than claims to send, a handover. Receipt guidance explicitly forbids another charge.
 
 Remaining hardening priority: the new explicit human-request wrapper uses substring matching and needs adversarial quoted/hypothetical authorization checks in Round 5 before release. Passing Round 4 ordinary requests does not establish that all embedded consent forms are safe. Nested interruption risk also remains a required Round 5 probe.
+
+## Round 5 preimplementation critical reproduction
+
+At base `257e03e`, independently reproduced three critical state/consent defects and appended three fixed tests; original 13 are unchanged. Frozen test blob `94e6269b564e965e12015bc0e227c15c4ebd19ec`; baseline **13/16 pass, 3 fail**.
+
+1. “Nếu tôi nói \"tôi đồng ý chuyển yêu cầu\" cho OPS thì em có gửi không?” bypasses engine quote protection via the wrapper human-request shortcut and asks for merchant name. Quoted/hypothetical authorization must not activate collection.
+2. Unresolved debit → explicit printer interruption → explicit network interruption → network restored restores the printer frame with `pendingVerification=false`, even though an older unresolved debit frame remains. All retained frames must contribute to financial caution, not only the newest frame.
+3. A harmless 1,201-character input after unresolved debit clears the entire expert context and omits the payment warning. Oversize rejection must discard authorization/identity while preserving bounded uncertainty and the warning against another charge.
+
+These are actual synthetic runtime reproductions, not hypothetical code-review findings. All require correction before final delivery. No input contains customer data, a credential value or live account identifier.
+
+## Round 5 final implementation and activation review
+
+Independently executed unchanged frozen suites: **16/16 safety**, **2/2 default-payment state**, and **21/21 Round 5 V12 response contracts**, all passed with zero skipped. The three reproduced critical regressions are corrected: quoted human authorization no longer starts collection, restoring hardware retains older financial uncertainty, and oversize rejection preserves bounded risk/caution while discarding authorization.
+
+Added `tests/v13-activation.test.cjs`: **5/5 passed** for V13-only actual advanced-context activation, exact lowercase `true` flag handling (uppercase `TRUE` and `1` remain disabled), absent optional-module fallback and runtime-fault fallback. Fallback assertions compare the actual reply against the unchanged V11 engine and verify cleared partial advanced context, no pending handover and no exception disclosure. Harnesses use credential-free environments, temporary state and denied network transports.
+
+Additionally probed payment → printer → network → card → QR with more transitions than the two retained frame slots, followed by a local resolution phrase. Every turn retained `pendingVerification=true`; the finite `payment=unverified` marker survived frame eviction, frame count remained at most two, and final response retained the no-repeat-charge warning. This is a synthetic developmental probe, not production accuracy evidence.
+
+Reviewed final priorities: real hazard guidance outranks quoted consent; sensitive offers are refused while physical stop advice remains present; contradictory authorization does not create merchant collection. No critical defect remains from the reproduced safety scope. Remaining limitations include finite vocabulary, conservative fallback, no bank/account access and no independent OPS/merchant ground truth. Review and explicit rollout approval remain required; these passing assertions do not authorize deployment.
+
+## Final Round 5 follow-up correction
+
+The preceding “no critical defect remains” statement was limited to the then-reproduced scope. A final bounded follow-up review found two critical omissions: quoted/hypothetical OPS plus real battery hazard, and secret-offer plus real hazard, return an immediate stop warning but fail to persist that stop state. A subsequent charge question incorrectly returns ordinary charger checking. Both were independently reproduced before correction.
+
+Appended two fixed follow-up tests without changing earlier 16: test blob `cc0d96f3c0429d4e2d3a96c8b7521e85454dfe99`, baseline **16/18 pass, 2 fail**. Approved correction stores only a finite hazard kind and high-risk stop state, never raw secret-bearing input, while retaining any prior bounded financial uncertainty marker. Final acceptance must include both follow-ups; initial-turn safety text alone is insufficient. This closes the final review scope rather than starting another feature round.
+
+## Final acceptance after persistent physical-stop correction
+
+Independently verified the final tree: **18/18 frozen safety**, **5/5 activation/fallback**, **2/2 default payment-state**, **1/1 nested response-review**, and **21/21 Round 5 V13-mode contracts** passed, with zero skipped. Both added physical-stop follow-ups now remain in `battery-safe` with high risk and continue prohibiting charging after the initial mixed-priority message. No earlier assertion was edited.
+
+Inspected `safetyKind` and `noteSafetyStop`: the classifier transiently examines bounded input; persistence receives only `battery` or `power`. The helper rejects other kinds and stores existing finite state enums, preserves an older unverified-payment marker, bounds interruption frames to two and revokes consent. Raw secret-bearing content is neither passed to the state helper nor retained in its state. The wrapper removes pending handover/collection when applying the stop. Existing memory limits/TTL remain applicable.
+
+The final follow-up defects are corrected within the agreed scope. This is development safety acceptance based on synthetic tests and code inspection; external OPS review, real merchant quality validation and explicit deployment approval remain outstanding. No live messages, transaction operations, credentials or production changes were used.

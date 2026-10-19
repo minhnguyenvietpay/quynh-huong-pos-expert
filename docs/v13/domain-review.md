@@ -55,6 +55,18 @@ An explicit contextual request for human help plus agreement permits preparation
 
 Approved frozen Round 4 SHA-256: `3fa70aa3e46d7cc4c5bf896e2ad1ed71d78d1b0b83a6cfc2343c24d2df0cb26d`.
 
+## Round 5 adversarial prefreeze review
+
+Reviewed 20 Simulator inputs and the 21 QA draft contracts (including the added real-hazard/hypothetical-OPS combination). Approved domain boundaries: older unresolved financial risk survives nested hardware/network detours; social acknowledgment and improved equipment do not verify payment; later source corrections replace stale reported success; quoted or hypothetical agreement cannot authorize a handover; contradictory consent permits conservative refusal or clarification. An explicit later consent for a new incident can supersede an older refusal within that new scope.
+
+Repeated failed steps require acknowledgment and an honest limit rather than invented repair procedures. Secret refusal and actual physical-hazard instructions must both survive competing intent priorities. Raised one prefreeze assertion defect: the unscoped forbidden phrase `tiếp tục sạc` would reject safe `không tiếp tục sạc`; requested a positive-command pattern instead. This changes contract correctness before freeze, not assertions after runtime failure.
+
+Inspected both corrected positive-command patterns and approved all 21 final contracts before freeze. Frozen Round 5 SHA-256: `a8d174dc4036866c62c29f5e8f83242b609805bea10b477aac41109ff29ba1db`.
+
+### Final domain limitations
+
+All reviewed cases are synthetic development-role contracts, not externally approved merchant truth. No authoritative model-specific SOP, bank policy, fee, timeline, live transaction access or independently validated corpus has been added. Lexical and bounded-memory diagnostics can still miss unseen Vietnamese formulations, interleaved incidents beyond the supported context, ambiguous referents or unusual device behavior. A remembered uncertainty flag protects against false confirmation but does not reconcile actual transactions. OPS/domain approval, verified source review and approved rollout remain necessary; these reviews do not authorize production changes.
+
 ## Remaining evidence limitations
 
 Synthetic fixtures can verify executable safety and response contracts. They cannot demonstrate bank policy correctness, device compatibility, actual merchant satisfaction, or independent business approval. OPS/domain owners must review future authoritative sources before corpus promotion or production rollout.

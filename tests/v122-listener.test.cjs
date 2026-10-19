@@ -21,19 +21,19 @@ async function worker(options){
  let source=fs.readFileSync('listener.mjs','utf8');
  for(const statement of ["import { Zalo, ThreadType } from 'zca-js';","import { createRequire } from 'node:module';","import fs from 'node:fs';",'const require = createRequire(import.meta.url);'])source=source.replace(statement,'');
  const context=vm.createContext({Zalo:class{async loginQR(){return api;}},ThreadType:{Group:1},require:name=>{assert.ok(Object.hasOwn(modules,name));return modules[name];},fs:{appendFileSync:deny},
-  process:{env:{QH_V12_ENABLED:options.mode==='default'?'false':'true',QH_V11_ENABLED:'false',LOG_UNKNOWN:'false',TYPING_ENABLED:'false',COOLDOWN_MS:'0',REPLY_DELAY_MIN_MS:'0',REPLY_DELAY_MAX_MS:'0',STAFF_ZALO_IDS:'111,222',GROUP_MODE:'allowlist',ALLOWED_GROUP_IDS:'synthetic-group',AUTO_REPLY:options.dry?'false':'true'}},
+  process:{env:{QH_V13_ENABLED:options.mode==='v13'?'true':'false',QH_V12_ENABLED:['default','v13'].includes(options.mode)?'false':'true',QH_V11_ENABLED:'false',LOG_UNKNOWN:'false',TYPING_ENABLED:'false',COOLDOWN_MS:'0',REPLY_DELAY_MIN_MS:'0',REPLY_DELAY_MAX_MS:'0',STAFF_ZALO_IDS:'111,222',GROUP_MODE:'allowlist',ALLOWED_GROUP_IDS:'synthetic-group',AUTO_REPLY:options.dry?'false':'true'}},
   console:{log(){},warn(){},error:()=>errors.push('handler-error')},setTimeout:fn=>{fn();return 0;}});
  await vm.runInContext(`(async()=>{${source}\n})()`,context);
  for(const [i,item] of options.messages.entries()){
   const message=typeof item==='string'?{text:item}:item;
   await handlers.message({type:1,threadId:message.group||'synthetic-group',data:{uidFrom:'synthetic-user',content:message.text,msgId:message.id||'synthetic-'+i}});
  }
- return {sent,inputs,marked,ticketCount:tickets.length,errors,context:d.v12Context('synthetic-group','synthetic-user')};
+ return {sent,inputs,marked,ticketCount:tickets.length,errors,context:d.v13Context?.('synthetic-group','synthetic-user')||d.v12Context('synthetic-group','synthetic-user')};
 }
 function isolated(options){
  const temp=fs.mkdtempSync(path.join(os.tmpdir(),'qh-v122-listener-'));
  try{
-  const result=spawnSync(process.execPath,['-e',`(${worker.toString()})(${JSON.stringify(options)}).then(r=>process.stdout.write(JSON.stringify(r))).catch(()=>process.exit(1));`],{cwd:path.join(__dirname,'..'),encoding:'utf8',timeout:20000,env:{PATH:process.env.PATH,QH_V12_ENABLED:options.mode==='default'?'false':'true',QH_V11_ENABLED:'false',QH_GAP_LOG:'0',POS_CARE_STATE_FILE:path.join(temp,'state.json'),POS_CARE_EVENTS_FILE:path.join(temp,'events.jsonl'),POS_CARE_TICKETS_FILE:path.join(temp,'tickets.jsonl')}});
+  const result=spawnSync(process.execPath,['-e',`(${worker.toString()})(${JSON.stringify(options)}).then(r=>process.stdout.write(JSON.stringify(r))).catch(()=>process.exit(1));`],{cwd:path.join(__dirname,'..'),encoding:'utf8',timeout:20000,env:{PATH:process.env.PATH,QH_V13_ENABLED:options.mode==='v13'?'true':'false',QH_V12_ENABLED:['default','v13'].includes(options.mode)?'false':'true',QH_V11_ENABLED:'false',QH_GAP_LOG:'0',POS_CARE_STATE_FILE:path.join(temp,'state.json'),POS_CARE_EVENTS_FILE:path.join(temp,'events.jsonl'),POS_CARE_TICKETS_FILE:path.join(temp,'tickets.jsonl')}});
   assert.equal(result.status,0,'isolated SDK-mocked listener completed');
   return JSON.parse(result.stdout);
  }finally{fs.rmSync(temp,{recursive:true,force:true});}
@@ -64,7 +64,7 @@ test('V12 transport retains allowlist, admin authorization, dedupe and dry-run c
  const dry=isolated({dry:true,messages:[text]});assert.equal(dry.sent.length,0);assert.equal(dry.inputs.length,0);
 });
 
-for(const mode of ['default','v12']){
+for(const mode of ['default','v12','v13']){
  test('V13 reported greeting/introduction/decline uses real listener without OPS: '+mode,()=>{
   const result=isolated({mode,normalize:true,messages:['@Quỳnh Hương hi em','@Quỳnh Hương em giới thiệu đi','Không']});
   assert.deepEqual(result.errors,[]);
@@ -77,3 +77,11 @@ for(const mode of ['default','v12']){
   assert.doesNotMatch(result.sent.map(p=>p.msg).join(' '),/đồng ý.{0,30}(?:CS|OPS)|(?:xin|cung cấp).{0,20}(?:tên cửa hàng|địa chỉ)/iu);
  });
 }
+
+test('V13 flag alone routes real listener into the expert path and preserves original input',()=>{
+ const raw='máy không in bill, chưa kiểm tra giấy';
+ const result=isolated({mode:'v13',normalize:true,messages:[raw]});
+ assert.deepEqual(result.errors,[]);assert.equal(result.inputs[0],raw);
+ assert.equal(result.context?.topic,'printer');assert.deepEqual(result.context?.failed,[]);
+ assert.equal(result.ticketCount,0);assert.match(result.sent[0].msg,/giấy|bill/iu);
+});

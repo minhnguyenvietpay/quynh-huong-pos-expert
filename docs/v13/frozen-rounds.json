@@ -48,6 +48,20 @@
       ],
       "fixtures": 18,
       "baselineCommit": "2e1db67"
+    },
+    {
+      "round": 5,
+      "dataset": "tests/fixtures/v13-round5.json",
+      "sha256": "a8d174dc4036866c62c29f5e8f83242b609805bea10b477aac41109ff29ba1db",
+      "modes": [
+        "v12"
+      ],
+      "fixtures": 21,
+      "baselineCommit": "257e03e"
     }
-  ]
+  ],
+  "aliasModes": [
+    "v13"
+  ],
+  "aliasNote": "QH_V13_ENABLED exact true must use the same frozen expert contracts and produce the same response/state as QH_V12_ENABLED. Baseline modes remain unchanged."
 }

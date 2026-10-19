@@ -2,7 +2,7 @@ import { Zalo, ThreadType } from 'zca-js';
 import { createRequire } from 'node:module';
 import fs from 'node:fs';
 const require = createRequire(import.meta.url);
-const { processMessage, hasSession, hasSocialSession, hasEscalation, closing, greetingOnly, getPendingHandover, markHandoverDone, shouldRespondV11, shouldRespondV12 } = require('./dialogue.js');
+const { processMessage, hasSession, hasSocialSession, hasEscalation, closing, greetingOnly, getPendingHandover, markHandoverDone, shouldRespondV11, shouldRespondV12, shouldRespondV13 } = require('./dialogue.js');
 const { normalize, detect, isIntroduction, isCompliment, isAddressed, stripAddress, socialIntent } = require('./intent.js');
 const state=require('./state.js');
 const tickets=require('./incident.js');
@@ -143,11 +143,12 @@ api.listener.on('message', async m => {
     const norm = normalize(question);
     const direct = explicit || directlyAddressed(raw);
     const posFallback = clearPosRequest(question);
-    const useV12 = process.env.QH_V12_ENABLED === 'true';
+    const useV13 = process.env.QH_V13_ENABLED === 'true';
+    const useV12 = useV13 || process.env.QH_V12_ENABLED === 'true';
     const useV11 = useV12 || process.env.QH_V11_ENABLED === 'true';
     // Opt-in offline eligibility only; existing transport and handover controls remain authoritative.
     let v11Eligible = false;
-    const expertEligibility = useV12 ? shouldRespondV12 : shouldRespondV11;
+    const expertEligibility = useV13 ? shouldRespondV13 : useV12 ? shouldRespondV12 : shouldRespondV11;
     if (useV11 && typeof expertEligibility === 'function') {
       try { v11Eligible = expertEligibility(originalQuestion, { ongoing, explicit: direct }) === true; }
       catch { /* Keep the established routing if the optional analyzer fails. */ }

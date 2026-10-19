@@ -1,0 +1,17 @@
+{
+  "round": 5,
+  "baselineCommit": "257e03e",
+  "dataset": "tests/fixtures/v13-round5.json",
+  "sha256": "a8d174dc4036866c62c29f5e8f83242b609805bea10b477aac41109ff29ba1db",
+  "frozenBeforeRuntimeChanges": true,
+  "syntheticOnly": true,
+  "externalReview": false,
+  "modes": {
+    "v12": {
+      "total": 21,
+      "passed": 11,
+      "failed": 10,
+      "report": "round5-before-v12.json"
+    }
+  }
+}

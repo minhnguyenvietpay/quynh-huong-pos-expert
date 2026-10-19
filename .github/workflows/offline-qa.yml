@@ -30,6 +30,8 @@ jobs:
       - run: npm test
       - name: V12.2 offline frozen contracts (synthetic only)
         run: npm run qa:v12
+      - name: V13 five-round frozen merchant regression (synthetic only)
+        run: npm run qa:v13
       - run: npm run qa:language
       - run: node qa-v3.js --self-test
       - run: npm run qa:legacy
@@ -46,6 +48,12 @@ jobs:
           QH_V12_ENABLED: 'true'
           QH_V11_ENABLED: 'false'
         run: node scripts/v11-evaluate.cjs --fail-on-regression > qa-reports/v12-compatibility.json
+      - name: V13 flag compatibility with frozen V11 conversations
+        env:
+          QH_V13_ENABLED: 'true'
+          QH_V12_ENABLED: 'false'
+          QH_V11_ENABLED: 'false'
+        run: node scripts/v11-evaluate.cjs --fail-on-regression > qa-reports/v13-compatibility.json
       - name: Security policy checks (suppress paths in job logs)
         run: node scripts/security-check.cjs > qa-reports/security.json
       - name: Ensure tracked files unchanged by QA

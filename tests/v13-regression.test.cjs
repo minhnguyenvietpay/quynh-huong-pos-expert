@@ -8,8 +8,12 @@ for(const round of manifest.rounds){
   assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),round.sha256);assert.equal(d.fixtures.length,round.fixtures);
  });
  if(round.complementaryDefaultTests)test('V13 Round'+round.round+' default payment assertions stay frozen',()=>{const c=round.complementaryDefaultTests;assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(root,c.file))).digest('hex'),c.sha256);});
- for(const mode of round.modes)test('V13 Round'+round.round+' actual merchant responses pass in '+mode+' mode',()=>{
+ for(const mode of [...round.modes,...(manifest.aliasModes||[])])test('V13 Round'+round.round+' actual merchant responses pass in '+mode+' mode',()=>{
   const report=evaluate({root,datasetPath:path.join(root,round.dataset),engine:mode});
   assert.equal(report.total,round.fixtures);assert.equal(report.failed,0,JSON.stringify(report.failures));assert.equal(report.syntheticOnly,true);assert.equal(report.independentQualityGate,'blocked_no_independent_review');
  });
 }
+
+test('V13 flag alias preserves actual V12 expert outputs and safety context on every frozen round',()=>{
+ for(const round of manifest.rounds){const args={root,datasetPath:path.join(root,round.dataset)};const old=evaluate({...args,engine:'v12'}),current=evaluate({...args,engine:'v13'});assert.deepEqual(current.rows.map(r=>r.turns),old.rows.map(r=>r.turns),'Round'+round.round+' runtime alias differs');}
+});
