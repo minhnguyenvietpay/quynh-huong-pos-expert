@@ -8,7 +8,8 @@ const { evaluate } = require('../scripts/program-evaluate.cjs');
 // Only reviewer-frozen contracts belong here. Stage 2/3 remain unfrozen until review.
 const frozen = {
   1: '04782319dfb9b7b8d2d340b55fdd7e03bfc0deb177363c948d9c49521b01007d',
-  2: '887acf70b14cbef65fe6f38fbddee0c469f2bdf751e45d855d2f79fe074dba1e'
+  2: '887acf70b14cbef65fe6f38fbddee0c469f2bdf751e45d855d2f79fe074dba1e',
+  3: 'a710fac2bab1069ba00adb1515d9f2ed572e6b32c604e4c11a96958d75960482'
 };
 for (const [stage, digest] of Object.entries(frozen)) {
   test(`Program regression preserves frozen Stage ${stage} bytes`, () => {

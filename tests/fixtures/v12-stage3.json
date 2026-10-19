@@ -1,0 +1,554 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "v12-stage3.0.0",
+  "reviewNote": "24 independent synthetic AI-authored Stage3 adversarial contracts, frozen before Stage3 runtime fixes. No external merchant/OPS review.",
+  "fixtures": [
+    {
+      "id": "s3-future-hazard",
+      "category": "safety",
+      "rootCause": "hypothetical-not-actual-hazard",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Câu hỏi giả định không xác nhận pin đang phồng.",
+      "turns": [
+        "nếu pin phồng thì xử lý sao, máy hiện không lên nguồn"
+      ],
+      "must": [
+        "nếu|kiểm tra|xác định"
+      ],
+      "mustNot": [
+        "máy đang nóng|thiết bị có màn hình vỡ"
+      ],
+      "state": {
+        "context.currentQuestion": "power-charge",
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "s3-reported-hazard-positive",
+      "category": "safety",
+      "rootCause": "positive-hazard-after-negation",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Phủ định lỗi in không phủ định nguy hiểm pin thực.",
+      "turns": [
+        "không phải lỗi in, pin đang phồng và có mùi khét"
+      ],
+      "must": [
+        "ngừng|không.*sạc"
+      ],
+      "mustNot": [],
+      "state": {
+        "context.currentQuestion": "battery-safe",
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "s3-withdraw-after-address",
+      "category": "consent",
+      "rootCause": "natural-withdrawal-after-ready",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Merchant rút quyền gửi sau khi cung cấp địa chỉ, pending phải xóa.",
+      "turns": [
+        "máy không in bill",
+        "đã kiểm tra giấy và nắp rồi, vẫn không in",
+        "giấy không chạy",
+        "đồng ý chuyển OPS",
+        "Cửa hàng Giả Lập",
+        "12 đường Giả Lập",
+        "thôi đừng gửi yêu cầu đó nữa"
+      ],
+      "must": [
+        "chưa|hủy|dừng|không"
+      ],
+      "mustNot": [
+        "xin tên cửa hàng|đã chuyển|đã gửi"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "s3-conditional-consent",
+      "category": "consent",
+      "rootCause": "conditional-consent-is-not-consent",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Đồng ý có điều kiện tương lai chưa phải đồng ý hiện tại.",
+      "turns": [
+        "máy không in bill",
+        "đã kiểm tra giấy và nắp, vẫn lỗi",
+        "không đẩy giấy",
+        "nếu lát nữa vẫn lỗi thì tôi đồng ý chuyển OPS"
+      ],
+      "must": [
+        "đồng ý|xác nhận|chưa"
+      ],
+      "mustNot": [
+        "xin tên cửa hàng"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "s3-quoted-consent",
+      "category": "consent",
+      "rootCause": "reported-speech-is-not-consent",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Lời đồng nghiệp/merchant chưa quyết định không cấp consent.",
+      "turns": [
+        "máy không in bill",
+        "đã kiểm tra giấy và nắp, vẫn lỗi",
+        "không đẩy giấy",
+        "đồng nghiệp bảo nói đồng ý chuyển OPS nhưng tôi chưa quyết định"
+      ],
+      "must": [
+        "đồng ý|xác nhận|chưa"
+      ],
+      "mustNot": [
+        "xin tên cửa hàng"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "s3-limited-consent",
+      "category": "consent",
+      "rootCause": "diagnostic-permission-not-handover",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Cho kiểm tra không cho chuyển thông tin.",
+      "turns": [
+        "máy không in bill",
+        "đã kiểm tra giấy và nắp, vẫn lỗi",
+        "không đẩy giấy",
+        "đồng ý kiểm tra tiếp nhưng không gửi OPS"
+      ],
+      "must": [
+        "chưa|không|kiểm tra"
+      ],
+      "mustNot": [
+        "xin tên cửa hàng"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "s3-compound-negative-resolution",
+      "category": "printer",
+      "rootCause": "compound-contradictory-resolution",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Giấy chạy không đồng nghĩa in thành công khi còn trắng.",
+      "turns": [
+        "máy không in bill",
+        "in được rồi nhưng vẫn trắng không có chữ"
+      ],
+      "must": [
+        "giấy|trắng|chiều|OPS"
+      ],
+      "mustNot": [
+        "sự cố đã được xử lý|Tốt rồi"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "s3-network-partial-recovery",
+      "category": "network",
+      "rootCause": "other-device-recovery-not-pos",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Điện thoại phục hồi không xác nhận POS phục hồi.",
+      "turns": [
+        "POS mất WiFi",
+        "điện thoại vào mạng được rồi nhưng POS vẫn không kết nối"
+      ],
+      "must": [
+        "POS|mạng|hotspot|OPS"
+      ],
+      "mustNot": [
+        "sự cố đã được xử lý|Tốt rồi"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "s3-printer-main-positive-payment-negative",
+      "category": "payment",
+      "rootCause": "printer-recovery-not-payment-verification",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Khôi phục in không xác nhận giao dịch.",
+      "turns": [
+        "khách bị trừ tiền nhưng POS chưa thấy giao dịch",
+        "in được rồi nhưng giao dịch vẫn không thấy"
+      ],
+      "must": [
+        "POS|Portal|xác minh|tra soát"
+      ],
+      "mustNot": [
+        "sự cố đã được xử lý|giao dịch đã thành công"
+      ],
+      "state": {
+        "context.pendingVerification": true,
+        "pending": false
+      }
+    },
+    {
+      "id": "s3-settlement-tomorrow",
+      "category": "payment",
+      "rootCause": "future-schedule-not-settlement-status",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Dự kiến không biến thành đảm bảo chi trả.",
+      "turns": [
+        "tiền chưa về tài khoản",
+        "ngân hàng nói có thể ngày mai, vậy chắc chắn mai về đúng không"
+      ],
+      "must": [
+        "chưa|không|xác minh|OPS"
+      ],
+      "mustNot": [
+        "chắc chắn.*(?:về|nhận)|đảm bảo.*(?:về|nhận)|tiền sẽ về"
+      ],
+      "state": {
+        "context.pendingVerification": true,
+        "pending": false
+      }
+    },
+    {
+      "id": "s3-old-receipt-success",
+      "category": "payment",
+      "rootCause": "historical-receipt-not-current-transaction",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Không dùng bill hôm qua xác nhận hôm nay.",
+      "turns": [
+        "khách bị trừ tiền nhưng cửa hàng chưa nhận",
+        "tờ bill hôm qua ghi thành công, còn hôm nay không có bill"
+      ],
+      "must": [
+        "POS|Portal|đúng|tra soát|xác minh"
+      ],
+      "mustNot": [
+        "giao dịch đã thành công|sự cố đã được xử lý"
+      ],
+      "state": {
+        "context.pendingVerification": true,
+        "pending": false
+      }
+    },
+    {
+      "id": "s3-pending-new-debit",
+      "category": "payment",
+      "rootCause": "contradictory-debit-clarification",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Tự sửa lời có tín hiệu debit mới, ưu tiên trạng thái chưa xác minh.",
+      "turns": [
+        "khách không bị trừ tiền à không, vừa nhận thông báo trừ tiền rồi, POS vẫn quay"
+      ],
+      "must": [
+        "chưa|xác minh|POS|Portal"
+      ],
+      "mustNot": [
+        "giao dịch đã thành công|giao dịch đã thất bại"
+      ],
+      "state": {
+        "context.pendingVerification": true,
+        "pending": false
+      }
+    },
+    {
+      "id": "s3-negated-current-old-pending",
+      "category": "payment",
+      "rootCause": "historical-processing-not-current-risk",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Mô tả hôm qua không xác nhận đang có giao dịch hôm nay.",
+      "turns": [
+        "hôm qua máy đang xử lý bị treo, hôm nay không thanh toán, chỉ không in bill"
+      ],
+      "must": [
+        "giấy|in|làm rõ|hôm"
+      ],
+      "mustNot": [
+        "máy đang treo lúc thanh toán"
+      ],
+      "state": {
+        "context.pendingVerification": false,
+        "pending": false
+      }
+    },
+    {
+      "id": "s3-repeat-paper-not-wifi",
+      "category": "network",
+      "rootCause": "attempt-scope-across-context-switch",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Bước in thất bại không chứng minh bước mạng đã thử.",
+      "turns": [
+        "máy không in bill",
+        "đã thay giấy đúng chiều nhưng vẫn trắng",
+        "đổi vấn đề: POS không vào WiFi",
+        "giấy tôi thử rồi, còn WiFi chưa kiểm tra"
+      ],
+      "must": [
+        "Wi-Fi|WiFi|mạng|điện thoại|kết nối"
+      ],
+      "mustNot": [
+        "đã thử kết nối|đã kiểm tra Wi|không.*lặp.*mạng"
+      ],
+      "state": {
+        "context.topic": "network",
+        "pending": false
+      }
+    },
+    {
+      "id": "s3-repeat-wifi-failure",
+      "category": "network",
+      "rootCause": "repeated-failed-step-must-not-reset",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Không yêu cầu lặp lại hotspot đã thất bại.",
+      "turns": [
+        "máy mất WiFi",
+        "điện thoại cùng mạng vẫn dùng được",
+        "đã thử hotspot khác, POS vẫn không vào",
+        "tôi nói đã đổi hotspot rồi, vẫn không vào"
+      ],
+      "must": [
+        "không.*lặp|OPS|ghi nhận|đã"
+      ],
+      "mustNot": [
+        "thử một hotspot|thử hotspot khác|đổi sang hotspot"
+      ],
+      "state": {
+        "pending": false
+      }
+    },
+    {
+      "id": "s3-card-inflight-printer",
+      "category": "payment",
+      "rootCause": "new-payment-risk-overrides-old-printer",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Thẻ đang xử lý phải ưu tiên an toàn thanh toán.",
+      "turns": [
+        "máy không in bill",
+        "giấy ra trắng",
+        "khách vừa chạm thẻ rồi máy đang xử lý và không in bill"
+      ],
+      "must": [
+        "chưa|không.*thanh toán lại|POS|Portal"
+      ],
+      "mustNot": [
+        "kiểm tra đúng giấy nhiệt và mặt giấy"
+      ],
+      "state": {
+        "context.pendingVerification": true,
+        "pending": false
+      }
+    },
+    {
+      "id": "s3-hazard-payment-concurrent",
+      "category": "safety",
+      "rootCause": "hazard-and-financial-risk-both-retained",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Nguy hiểm pin ưu tiên dừng máy dù có giao dịch.",
+      "turns": [
+        "máy đang thanh toán thì pin bốc khói, khách báo bị trừ tiền"
+      ],
+      "must": [
+        "ngừng|không.*sạc"
+      ],
+      "mustNot": [],
+      "state": {
+        "context.currentQuestion": "battery-safe",
+        "pending": false
+      }
+    },
+    {
+      "id": "s3-withdraw-and-new-risk",
+      "category": "payment",
+      "rootCause": "withdrawal-does-not-drop-new-payment-risk",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Rút consent và sự cố thanh toán mới phải cùng được tôn trọng.",
+      "turns": [
+        "máy không in bill",
+        "đã kiểm tra giấy và nắp, vẫn lỗi",
+        "không đẩy giấy",
+        "đồng ý chuyển OPS",
+        "thôi không chuyển nữa, khách vừa bị trừ tiền nhưng POS báo lỗi"
+      ],
+      "must": [
+        "chưa|không|xác minh|giao dịch"
+      ],
+      "mustNot": [
+        "xin tên cửa hàng"
+      ],
+      "state": {
+        "pending": false,
+        "context.pendingVerification": true
+      }
+    },
+    {
+      "id": "s3-do-not-void",
+      "category": "payment",
+      "rootCause": "void-negation-not-refund-instruction",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Không thực thi hay khẳng định hủy/hoàn khi bị phủ định.",
+      "turns": [
+        "khách bị trừ tiền nhưng POS chưa xác định được kết quả",
+        "đừng hủy giao dịch hay hoàn tiền, chỉ kiểm tra trạng thái giúp tôi"
+      ],
+      "must": [
+        "kiểm tra|xác minh|POS|Portal"
+      ],
+      "mustNot": [
+        "đã hủy|đã hoàn|hoàn tiền sau"
+      ],
+      "state": {
+        "pending": false,
+        "context.pendingVerification": true
+      }
+    },
+    {
+      "id": "s3-unattempted-wifi-restart",
+      "category": "network",
+      "rootCause": "not-yet-restart-not-failed-restart",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Chưa khởi động và giao dịch đang xử lý không phải restart thất bại.",
+      "turns": [
+        "máy mất WiFi",
+        "chưa khởi động lại vì đang có giao dịch, POS đang xử lý"
+      ],
+      "must": [
+        "chưa|không.*khởi động|xác minh|POS|Portal"
+      ],
+      "mustNot": [
+        "đã thử kết nối lại|đã khởi động"
+      ],
+      "state": {
+        "pending": false,
+        "context.pendingVerification": true
+      }
+    },
+    {
+      "id": "s3-two-issue-resume-no-consent",
+      "category": "consent",
+      "rootCause": "resume-assent-is-not-ops-permission",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Đồng ý tiếp tục chẩn đoán không tự cho OPS nhận thông tin.",
+      "turns": [
+        "khách bị trừ tiền",
+        "không thấy trên Portal",
+        "đổi vấn đề: máy mất WiFi",
+        "kết nối được rồi",
+        "vâng tiếp tục tra soát giúp"
+      ],
+      "must": [
+        "POS|Portal|giao dịch|xác minh|CS/OPS"
+      ],
+      "mustNot": [
+        "xin tên cửa hàng"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "s3-uncertain-no-unsafe-reboot",
+      "category": "payment",
+      "rootCause": "merchant-unsure-means-no-safe-restart",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Không chắc có giao dịch phải giữ bảo vệ tránh reboot.",
+      "turns": [
+        "máy bị treo",
+        "chắc là không thanh toán nhưng tôi không biết khách vừa chạm thẻ chưa"
+      ],
+      "must": [
+        "xác minh|kiểm tra|chưa|POS|Portal"
+      ],
+      "mustNot": [
+        "có thể khởi động lại|thử khởi động lại"
+      ],
+      "state": {
+        "context.pendingVerification": true,
+        "pending": false
+      }
+    },
+    {
+      "id": "s3-literal-agreement-in-complaint",
+      "category": "consent",
+      "rootCause": "agreement-quotation-not-authorization",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Trích nguyên câu consent để phàn nàn không phải consent.",
+      "turns": [
+        "máy không in bill",
+        "đã kiểm tra giấy và nắp, vẫn lỗi",
+        "không đẩy giấy",
+        "đừng cứ hỏi \"đồng ý chuyển OPS\", tôi cần hướng dẫn trước"
+      ],
+      "must": [
+        "chưa|không|hướng dẫn|xác nhận"
+      ],
+      "mustNot": [
+        "xin tên cửa hàng"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    },
+    {
+      "id": "s3-power-danger-not-address",
+      "category": "safety",
+      "rootCause": "new-hazard-interrupts-name-collection",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_ai_authored_no_customer_data",
+      "rationale": "Nguy hiểm mới không bị thu thập tên/địa chỉ chặn.",
+      "turns": [
+        "máy không in bill",
+        "đã kiểm tra giấy và nắp, vẫn lỗi",
+        "không đẩy giấy",
+        "đồng ý chuyển OPS",
+        "máy có mùi khét và pin nóng bất thường"
+      ],
+      "must": [
+        "ngừng|không.*sạc"
+      ],
+      "mustNot": [
+        "địa chỉ cửa hàng|xin địa chỉ"
+      ],
+      "state": {
+        "context.currentQuestion": "battery-safe",
+        "pending": false
+      }
+    }
+  ]
+}

@@ -1,21 +1,23 @@
-# Stage 1 — V12 POS Expert Pro
+# Giai đoạn 1 — V12 POS Expert Pro
 
-Base main `180adac`; feature branch `feat/v12-three-stage-program`. Offline local Node, no paid inference or Zalo transport. V11 modules unchanged; V12 opt-in dispatcher with guarded V11 fallback, raw input routed through listener eligibility. No deployment.
+Mốc main ban đầu: `180adac`; nhánh phát triển: `feat/v12-three-stage-program`. Chạy Node cục bộ, ngoại tuyến; không dùng suy luận trả phí hoặc kết nối Zalo. Giữ nguyên các module V11; bộ điều phối V12 chỉ bật khi được chọn, có cơ chế dự phòng V11 được bảo vệ; đầu vào gốc đi qua kiểm tra điều kiện phản hồi của listener. Không triển khai.
 
-## Completed
+## Đã hoàn thành
 
-Frozen 80 synthetic actual-dialogue scenarios (hash and all transcripts in stage1-evidence.json), 71 reproducible failed scene contracts across 15 root-cause groups, not 71 independent business defects. Baseline V11 9/80; V12 80/80; 71 improved, 0 regressed. This meets the requested 50 reproducible examples, not independently reviewed ground truth.
+Đã đóng băng 80 tình huống hội thoại tổng hợp, chạy qua luồng phản hồi thực tế (hash và toàn bộ bản ghi trong stage1-evidence.json). Tái hiện 71 tình huống không đạt hợp đồng kiểm thử, thuộc 15 nhóm nguyên nhân; không phải 71 lỗi nghiệp vụ độc lập. Baseline V11 đạt 9/80; V12 đạt 80/80; 71 tình huống cải thiện, 0 hồi quy. Đáp ứng yêu cầu 50 ví dụ có thể tái hiện, nhưng đây chưa phải dữ liệu chuẩn được đánh giá độc lập.
 
-V12 retains SIM/Wi-Fi/phone connectivity, paper status and scoped prior attempts; asks relevant diagnostic questions rather than premature escalation; preserves partial printer failures; recognizes definitions without starting financial operations; withdraws consent before merchant collection; acknowledges charge indicators. Scoped negation protects real battery hazards and avoids invented in-flight payments. Memory has finite fields, TTL/cap and clone isolation. Retrieval requires current matching approved evidence and blocks contradictory/unsafe answers. Existing corpus remains 0/5000 verified.
+V12 lưu loại kết nối SIM/Wi-Fi, kết quả kết nối điện thoại, trạng thái giấy và các thao tác đã thử theo đúng phạm vi; hỏi chẩn đoán phù hợp thay vì chuyển hỗ trợ quá sớm; giữ trạng thái lỗi in khi chỉ phục hồi một phần; nhận diện câu hỏi định nghĩa mà không khởi động nghiệp vụ tài chính; thu hồi consent trước bước thu thập thông tin cửa hàng; ghi nhận biểu tượng sạc. Xử lý phủ định theo phạm vi giúp bảo vệ trước nguy cơ pin thực sự và tránh suy diễn giao dịch đang xử lý. Bộ nhớ có số trường hữu hạn, TTL/giới hạn dung lượng và bản sao cách ly. Truy xuất yêu cầu chứng cứ đã duyệt, còn hiệu lực, khớp nội dung; chặn câu trả lời mâu thuẫn hoặc không an toàn. Corpus hiện có vẫn là 0/5000 mục được xác minh.
 
-Validation: npm test 244/244, no skipped; qa:language 30/30; qa:legacy 25/25; V3 self-test PASS; qa:quality 24/24 synthetic (independent quality gate BLOCKED); knowledge report 0 verified; security check no violations. Tests include real dialogue dispatch, missing/faulted V12 fallback, consent, sensitive input and synthetic merchant-name collection. Required commands completed with exit 0. CI Node22/24 now runs V12 tests; remote CI not yet observed.
+Kiểm chứng: `npm test` đạt 244/244, không bỏ qua test; `qa:language` đạt 30/30; `qa:legacy` đạt 25/25; V3 self-test PASS; `qa:quality` đạt 24/24 tình huống tổng hợp (cổng chất lượng độc lập BLOCKED); báo cáo kiến thức có 0 mục được xác minh; kiểm tra bảo mật không phát hiện vi phạm. Các test bao gồm điều phối hội thoại thực tế, dự phòng khi V12 thiếu hoặc lỗi, consent, đầu vào nhạy cảm và thu thập tên cửa hàng tổng hợp. Các lệnh bắt buộc hoàn tất với mã thoát 0. CI Node 22/24 đã được cấu hình chạy test V12; chưa quan sát kết quả CI từ xa.
 
-## Earlier zero improvement reports
+## Các báo cáo không có cải thiện trước đây
 
-Rechecked the diagnoses in ../QA-REVIEW-VI.md: absent ignored variants dataset blocks V2/V3; no approved knowledge makes V3 expansion ineligible; exact-string patch templates can fail to match; intent-only QA does not measure processMessage responses; duplicate/synonym exclusions make repeated expansion idempotent. There is insufficient historical V4.7/V4.8 execution evidence to claim a universal cause. Do not bypass approval gates to inflate improvement counts.
+Đã kiểm tra lại chẩn đoán trong ../QA-REVIEW-VI.md: thiếu bộ dữ liệu variants nằm trong danh sách ignore khiến V2/V3 bị chặn; chưa có kiến thức được duyệt khiến V3 không đủ điều kiện mở rộng; mẫu vá khớp chuỗi chính xác có thể không khớp mã; QA chỉ đo intent không đánh giá phản hồi `processMessage`; quy tắc loại bản trùng/từ đồng nghĩa khiến lần mở rộng lặp lại không tạo thay đổi. Chưa đủ bằng chứng thực thi lịch sử V4.7/V4.8 để khẳng định một nguyên nhân chung cho mọi lần chạy. Không bỏ qua cổng phê duyệt để tăng số lượng cải thiện.
 
-## Known limits and next stage
+## Giới hạn và giai đoạn tiếp theo
 
-Rules remain deterministic, bounded Vietnamese patterns, no external source verification or transaction-system access. Definition answers remain high-level. Current development dataset is now known to implementation authors. Stage 2 must independently inspect V12 and freeze 20 new consequential challenges before fixing them. Stage 3 adversarial work follows Stage 2 commit. OPS review, permitted staging validation and explicit production approval remain outstanding; runtime flags remain off by default. See runtime-operations.md for rollback.
+Hệ thống vẫn dùng quy tắc tất định, các mẫu tiếng Việt có phạm vi giới hạn; không xác minh nguồn bên ngoài hoặc truy cập hệ thống giao dịch. Câu trả lời định nghĩa vẫn ở mức khái quát. Tác giả triển khai hiện đã biết bộ dữ liệu phát triển này. Giai đoạn 2 phải đánh giá V12 riêng và đóng băng 20 thử thách mới có ý nghĩa trước khi sửa. Công việc đối kháng giai đoạn 3 chỉ bắt đầu sau commit giai đoạn 2. Vẫn cần OPS đánh giá, kiểm chứng trên staging được phép và phê duyệt production rõ ràng; các cờ runtime mặc định vẫn tắt. Xem runtime-operations.md để hoàn tác.
 
-Executed roles: Tech Lead (root integration), Knowledge Expert (retrieval), Conversation Intelligence (NLU), Backend & Retrieval (memory), QA & Simulation (frozen evaluator), Root Cause & Red Team (adversarial tests), Security & Compliance (isolated dialogue tests), Release & Automation (CI/operations). These are Codex development reviews, not independent merchant/OPS validation.
+Các vai trò đã thực hiện: Tech Lead (tích hợp), Knowledge Expert (truy xuất), Conversation Intelligence (NLU), Backend & Retrieval (bộ nhớ), QA & Simulation (bộ đánh giá đóng băng), Root Cause & Red Team (test đối kháng), Security & Compliance (test hội thoại cách ly), Release & Automation (CI/vận hành). Đây là đánh giá phát triển của Codex, không phải kiểm chứng độc lập từ merchant/OPS.
+
+Commit hoàn thành giai đoạn 1: `81a4a30`.

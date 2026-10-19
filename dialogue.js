@@ -43,7 +43,9 @@ function closing(q){if(/^(cam on|cam on em|thanks|thank you|thank|thank u|tks|th
 function greetingOnly(q){return /^(xin chao|chao|hello|hi|hey|alo|chao bot|chao pos care|pos care oi|bot oi|co ai ho tro khong)$/.test(q);}
 const TTL=30*60*1000, MAX_SESSIONS=2000;
 const key=(chat,user)=>JSON.stringify([String(chat),String(user)]);
-function prune(){ /* state.js prunes expired sessions */ }
+let lastTransientPrune=0;
+function prune(){const time=now();if(time>=lastTransientPrune&&time-lastTransientPrune<60000)return;lastTransientPrune=time;for(const map of [escalation,pendingHandover])for(const [k,value] of map)if(time-value.time>TTL)map.delete(k);}
+function boundedTransientSet(map,k,value){map.delete(k);map.set(k,value);while(map.size>MAX_SESSIONS)map.delete(map.keys().next().value);}
 function hasSession(chat,user){prune();return (v11Enabled()&&v11.hasSession(chat,user))||sessions.has(key(chat,user));}
 function moduleContextV12(chat,user){try{return v12Module?.getContext(chat,user)||null;}catch{return null;}}
 function sessionInfo(chat,user){if(v11Enabled()){const context=v11.getContext(chat,user);if(context)return {flowId:process.env.QH_V12_ENABLED==='true'&&moduleContextV12(chat,user)?'qh_v12':'qh_v11',topic:context.topic,step:context.currentQuestion};}prune();const s=sessions.get(key(chat,user));return s?{flowId:s.flowId,step:s.step,ageSeconds:Math.floor((now()-s.time)/1000)}:null;}
@@ -82,7 +84,7 @@ function escalationReply(k,raw,q){
  if(e.step==='address'){
   if(q.length<5)return 'Anh/chị cho em địa chỉ cửa hàng hoặc tên chi nhánh cụ thể hơn nhé.';
   e.address=raw.slice(0,180);e.step='handover';e.time=now();
-  pendingHandover.set(k,{name:e.name,address:e.address,issue:e.issue,time:now()});
+  boundedTransientSet(pendingHandover,k,{name:e.name,address:e.address,issue:e.issue,time:now()});
   return `Em đã chuẩn bị yêu cầu hỗ trợ:\n\n🏪 Cửa hàng: ${e.name}\n📍 Địa chỉ/chi nhánh: ${e.address}\n🔧 Sự cố: ${e.issue}\n\nEm sẽ thông báo cho nhân viên hỗ trợ trong nhóm nếu xác định được đúng tài khoản Zalo của họ. Nếu không thể tag, em sẽ thông báo rõ để anh/chị liên hệ CS/OPS. Gõ “xong” để kết thúc.`;
  }
  if(e.step==='handover'||e.step==='confirm'){
@@ -92,11 +94,13 @@ function escalationReply(k,raw,q){
  return undefined;
 }
 function offerEscalation(k,issue,consented=false){
- escalation.set(k,{step:consented?'name':'consent',issue:String(issue||'Chưa rõ sự cố').slice(0,350),time:now()});
+ boundedTransientSet(escalation,k,{step:consented?'name':'consent',issue:String(issue||'Chưa rõ sự cố').slice(0,350),time:now()});
  return consented?'Dạ anh, em sẽ chuẩn bị yêu cầu chuyển CS/OPS. Anh cho em xin tên cửa hàng nhé.':'Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.';
 }
 function processMessage(chatId,userId,input,options={}){
- prune();const raw=String(input||'').trim().slice(0,1200),q=norm(raw),k=key(chatId,userId);
+ prune();
+ if(typeof input!=='string'||input.length>1200){if(process.env.QH_V12_ENABLED==='true'){const rejectedKey=key(chatId,userId);escalation.delete(rejectedKey);pendingHandover.delete(rejectedKey);v11.clear(chatId,userId);}return 'Tin nhắn quá dài hoặc không đúng dạng văn bản. Không chia sẻ thông tin nhạy cảm; anh/chị gửi lại mô tả ngắn; em chưa ghi nhận đồng ý hay chuyển yêu cầu từ tin này.';}
+ const raw=input.trim(),q=norm(raw),k=key(chatId,userId);
  if(!raw)return 'Anh/chị mô tả lỗi POS/QR/Portal để em hỗ trợ nhé.';
  // Session controls must precede consent/name/address handling.
  if(/^(\/(huy|done|reset|lai|restart)|huy|ket thuc|bat dau lai)$/.test(raw.toLowerCase()) || /^(huy|ket thuc|bat dau lai)$/.test(q)){
@@ -104,11 +108,13 @@ function processMessage(chatId,userId,input,options={}){
   return /lai|restart/.test(q)?'Đã bắt đầu lại. Anh/chị mô tả sự cố mới nhé.':'Đã kết thúc phiên hỗ trợ. Khi cần, anh/chị mô tả sự cố mới nhé.';
  }
  const batteryContext=v11Enabled()&&/\bpin\b/.test(q)&&/sac|nong|phong|chai|het|tut|may|pos/.test(q)&&!/otp|cvv|mat khau|password|ma pin|so pin|pin code|pin the|pin ngan hang|pin\s*\d/.test(q);
+ const sensitiveRevocation=process.env.QH_V12_ENABLED==='true'&&/rut lai|thu hoi|huy.*(?:dong y|chuyen)|(?:khong|dung|thoi khoi|ngung).*(?:gui|chuyen)|khong.*dong y/.test(q);
+ if(sensitiveRevocation&&(isSensitive(q)||/api[ -]?key|access[ _-]?token|bearer |session|cookie|sk-proj-/i.test(raw))){escalation.delete(k);pendingHandover.delete(k);v11.clear(chatId,userId);}
  if(/api[ -]?key|access[ _-]?token|bearer |session[ _-]?(?:key|token|cookie)|cookie[ :=]|sk-proj-|zalo.*(?:session|token)/i.test(raw))return 'Không chia sẻ khóa API, token, cookie hoặc phiên đăng nhập trong nhóm. Em không lưu thông tin này vào yêu cầu hỗ trợ.';
  if((isSensitive(q)&&!batteryContext)||/(?:\d[ -]?){13,19}/.test(raw))return '⚠️ Không chia sẻ OTP, PIN, CVV, mật khẩu hay mã xác thực trong nhóm. Nếu cần hỗ trợ, liên hệ CS/OPS qua kênh chính thức.';
  if(/^\/ticket\b/i.test(raw))return createTicket(raw.slice(7));
  if(process.env.QH_V12_ENABLED==='true'&&/(rut lai|thu hoi|huy.*(?:dong y|yeu cau.*chuyen)|(?:khong|dung|thoi khoi|ngung).*gui)/.test(q)){escalation.delete(k);pendingHandover.delete(k);v11.clear(chatId,userId);return 'Em đã dừng và thu hồi đồng ý; chưa chuyển yêu cầu mới và không tiếp tục thu thập thông tin cửa hàng.';}
- if(process.env.QH_V12_ENABLED==='true'&&/khong.*dong y|dung.*(?:hoi.*ops|chuyen)|ngung chuyen|khong chuyen|chua chuyen|chua cho phep.*(?:gui|chuyen)|(?:dia chi|ten cua hang).*(?:chua muon|khong muon|khong cung cap)/.test(q)){escalation.delete(k);pendingHandover.delete(k);return v12Module?.reply(chatId,userId,raw)||'Em chưa chuyển yêu cầu và tôn trọng việc chưa cung cấp thông tin.';}
+ if(process.env.QH_V12_ENABLED==='true'&&/khong.*dong y|dung.*(?:hoi.*ops|chuyen)|ngung chuyen|khong chuyen|chua chuyen|chua cho phep.*(?:gui|chuyen)|(?:dia chi|ten cua hang).*(?:chua muon|khong muon|khong cung cap)/.test(q)){escalation.delete(k);pendingHandover.delete(k);try{const refusal=v12Module?.reply(chatId,userId,raw);if(typeof refusal==='string'&&refusal.trim())return refusal;}catch{v11.clear(chatId,userId);}return 'Em chưa chuyển yêu cầu và tôn trọng việc chưa cung cấp thông tin.';}
  // Resolution/closure must preempt pending handover and all diagnostic modules.
  if(!/^\//.test(raw) && /^(binh thuong roi|may binh thuong roi|chay binh thuong roi|on roi|ok roi em|ok roi|het loi roi|in duoc roi|duoc roi|da xu ly xong|khong can ho tro nua)( em| anh)?$/.test(q)){
    escalation.delete(k);pendingHandover.delete(k);sessions.delete(k);v12.clear(chatId,userId);

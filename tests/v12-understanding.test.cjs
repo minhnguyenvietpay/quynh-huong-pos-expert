@@ -72,3 +72,29 @@ for(const symptom of ['chữ còn mờ','vẫn mất chữ','giấy ra mờ','b�
 test('V12 full successful printing is distinct from a denied residual defect',()=>{
  for(const text of ['đã kiểm tra giấy xong và in được rồi','in được rồi, chữ không còn mờ','in được rồi, không còn thiếu chữ'])assert.equal(analyze(text,{topic:'printer'}).signals.resolved,true,text);
 });
+
+test('V12 hypothetical hazard does not erase separately reported actual power fault',()=>{
+ const r=analyze('nếu pin phồng thì xử lý sao, máy hiện không lên nguồn');assert.equal(r.facts.hotBattery,false);assert.equal(r.primary,'power');assert.equal(r.signals.quotedOrHypothetical,true);
+ assert.equal(analyze('pin phồng, máy hiện không lên nguồn').facts.hotBattery,true);
+});
+test('V12 blank output is partial recovery rather than resolved printing',()=>{
+ const r=analyze('in được rồi nhưng vẫn trắng không có chữ',{topic:'printer'});assert.equal(r.signals.resolved,false);assert.equal(r.signals.failed,true);assert.equal(r.facts.scopedResolution,true);
+});
+test('V12 explicit debit correction and spinning terminal retain payment risk',()=>{
+ const r=analyze('khách không bị trừ tiền à không, vừa nhận thông báo trừ tiền rồi, POS vẫn quay');assert.equal(r.facts.debit,'yes');assert.equal(r.facts.inFlight,true);assert.equal(r.signals.resolved,false);
+ assert.equal(analyze('khách không bị trừ tiền, khách khác nhận thông báo trừ tiền rồi').facts.debit,'unknown');
+ assert.equal(analyze('POS không còn vẫn quay').facts.inFlight,false);
+});
+test('V12 missing settlement wording outranks generic account mention',()=>{
+ assert.equal(analyze('tiền chưa về tài khoản').primary,'settlement');
+ assert.equal(analyze('tiền vẫn chưa về tài khoản').primary,'settlement');
+});
+
+test('V12 reports forgetting and reconnecting network as a previous attempt',()=>{
+ assert.equal(analyze('đã quên mạng kết nối lại rồi vẫn lỗi').facts.previousAttempt,true);
+ assert.equal(analyze('chưa quên mạng chưa kết nối lại').facts.previousAttempt,false);
+});
+test('V12 network recovery cannot close a remaining blank printer issue',()=>{
+ const r=analyze('mạng được rồi nhưng in ra giấy trắng');assert.equal(r.signals.resolved,false);assert.equal(r.signals.failed,true);assert.equal(r.primary,'printer');
+ assert.equal(analyze('đã thử mạng khác rồi, POS kết nối được rồi').signals.resolved,true);
+});

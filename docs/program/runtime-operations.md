@@ -1,6 +1,6 @@
-# V12 Stage 1: vận hành và quay lại V11
+# V12.2: vận hành và quay lại V11
 
-Stage 1 chỉ được kiểm chứng ngoại tuyến. Không coi test synthetic hoặc lịch CI là bằng chứng Zalo live đã chạy. Stage 2 chưa được bật bởi tài liệu này. Codex chỉ là công cụ phát triển; runtime không gọi inference trả phí và không cần AI API key.
+Cả ba giai đoạn chỉ được kiểm chứng ngoại tuyến. Không coi test synthetic hoặc lịch CI là bằng chứng Zalo live đã chạy. Tài liệu này không bật phiên bản nào trong production. Codex chỉ là công cụ phát triển; runtime không gọi inference trả phí và không cần AI API key.
 
 ## Cờ mặc định và fallback
 
@@ -12,7 +12,7 @@ Quay lại V11 ở cấu hình runtime đã được duyệt bằng cách đặt
 
 Người vận hành ghi lại commit hiện hành và commit ứng viên, cấu hình cờ hiện tại chỉ gồm tên/giá trị không nhạy cảm và cách phục hồi deployment theo nền tảng đang dùng. Không đoán tên service, máy chủ hoặc lệnh restart. Xác nhận trước tác động của restart: context hội thoại trong bộ nhớ bị xóa, nên không suy diễn rằng đồng ý chuyển OPS trước restart còn hiệu lực. Không tự gửi lại ticket hoặc yêu cầu thương nhân gửi lại dữ liệu nhạy cảm.
 
-Trên checkout ngoại tuyến, chạy `npm ci`, `npm test`, `npm run qa:v12`, `npm run qa:v11`, `npm run qa:language`, `npm run qa:legacy`, `node qa-v3.js --self-test`, `npm run qa:quality`, `npm run knowledge:report` và `npm run security:check`. Bộ `qa:v12` bao gồm các file `tests/v12-*.test.cjs`, đánh giá understanding, memory, retrieval, bảo mật và red team bằng dữ liệu tổng hợp. `npm test` cũng thu thập các file này. Bước CI riêng giúp nhận diện lỗi V12 trên Node 22 và 24; không gọi listener hoặc tài khoản Zalo.
+Trên checkout ngoại tuyến, chạy `npm ci`, `npm test`, `npm run qa:v12`, `QH_V11_ENABLED=true QH_V12_ENABLED=false npm run qa:v11`, `npm run qa:language`, `npm run qa:legacy`, `node qa-v3.js --self-test`, `npm run qa:quality`, `npm run knowledge:report` và `npm run security:check`. Bộ `qa:v12` bao gồm các file `tests/v12*.test.cjs` và hợp đồng hội thoại cố định cả ba giai đoạn, đánh giá understanding, memory, retrieval, bảo mật và red team bằng dữ liệu tổng hợp. `npm test` cũng thu thập các file này. Bước CI riêng giúp nhận diện lỗi V12 trên Node 22 và 24; không gọi listener hoặc tài khoản Zalo.
 
 Giữ báo cáo thô ở đường dẫn ignore nội bộ; chỉ đưa số lượng và lỗi đã làm sạch vào PR. Chưa có ground truth được duyệt độc lập thì cổng đánh giá chất lượng độc lập vẫn bị chặn, dù test đạt. Chỉ sau khi chủ hệ thống duyệt commit, phạm vi bật cờ và kế hoạch rollback mới được thao tác live; tài liệu này không cấp quyền triển khai.
 
