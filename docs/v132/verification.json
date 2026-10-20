@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "evaluatedDate": "2026-10-20",
+  "scope": "offline synthetic only; actual dialogue and VM listener; no Zalo login or paid inference",
+  "node": "24.19.0",
+  "npmCi": {
+    "exitCode": 0,
+    "command": "npm ci --cache /tmp/qh-npm-cache",
+    "sdkVersion": "2.2.0",
+    "lockfileUnchanged": true
+  },
+  "checks": {
+    "npm test": {
+      "passed": 413,
+      "failed": 0,
+      "skipped": 0
+    },
+    "npm run qa:v132": {
+      "passed": 54,
+      "failed": 0,
+      "skipped": 0
+    },
+    "npm run qa:language": {
+      "passed": 30,
+      "failed": 0
+    },
+    "npm run qa:legacy": {
+      "passed": 25,
+      "failed": 0
+    },
+    "node qa-v3.js --self-test": {
+      "status": "PASS",
+      "syntheticTemporaryKnowledge": true
+    },
+    "npm run qa:quality": {
+      "passed": 24,
+      "failed": 0,
+      "externalGate": "blocked"
+    },
+    "npm run knowledge:report": {
+      "total": 5000,
+      "verified": 0,
+      "reviewItems": 5003
+    },
+    "npm run security:check": {
+      "violations": 0
+    },
+    "frozen V11 in each mode11/12/13": {
+      "passedEach": 56,
+      "failedEach": 0
+    }
+  },
+  "externalQualityGate": "blocked_no_OPS_ground_truth",
+  "liveZaloVerified": false,
+  "windowsVerified": false,
+  "sourceSha256": {
+    "dialogue.js": "46e3531a77bf763c65b33d894a7d370d7a2991f3a1d9e45e3fb8e9ec0dc8e46d",
+    "intent.js": "1c9527e22be07878ac462fda71c0606098563b485e40034dd0a46b922a160f02",
+    "listener.mjs": "f065027b735140a4dc8a243f8049cfa3dac0a90ca0dd462851cea8568ef117cb",
+    "search.js": "7fb68b1bab81c119b131088717a2fecd1e2ed8ef8109114e6aeb6691ae7656ed",
+    "lib/error-code.cjs": "3969ba410f0b8923efd617823fda18e93942000f3119c2d3cbfb7f4ca3599a1c",
+    "lib/reply-context.cjs": "00a4fa18a11bde582093d8a2982c0c569245f40aafae9efcdb730e9df039d30b",
+    "lib/v12/engine.cjs": "f0d1b8c4ebf96875b4aa7012814f881278a8956c0b37ab17fb72c3c5226d3250",
+    "lib/v12/understanding.cjs": "44bcbb4b077760c3282345afc71c08bc49245281cd9e15e30c6b857f8548e0bd",
+    "lib/v12/retrieval.cjs": "50efa895322225a2b8e63fede10cd2f6c29d56a957cba97c12a7be6618a5ac4a",
+    "package-lock.json": "27d1ac6296e724ada18c2a063a864d2b428033768cfdca16e4e427a5734a494f"
+  }
+}

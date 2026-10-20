@@ -1,0 +1,129 @@
+{
+  "baselineCommit": "1a33422e34beb25747238c24214097de4465e5c1",
+  "syntheticOnly": true,
+  "externalGroundTruthGate": "blocked",
+  "beforePassed": 1,
+  "afterPassed": 14,
+  "total": 14,
+  "improved": [
+    "c2-payment-reply",
+    "c2-code-reply",
+    "c2-network-reply",
+    "c2-printer-instruction",
+    "c2-draft-answer",
+    "c2-ops-question",
+    "c2-see-message",
+    "c2-no-reference",
+    "c2-unavailable-reference",
+    "c2-untrusted-role",
+    "c2-followup",
+    "c2-case-switch",
+    "c2-duplicate-reply"
+  ],
+  "regressed": [],
+  "rows": [
+    {
+      "id": "c2-payment-reply",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+      "after": "Tóm tắt theo tin được reply: khách báo bị trừ tiền, chưa xác minh kết quả giao dịch; POS báo giao dịch thất bại; máy không in bill.\nVấn đề: rủi ro giao dịch chưa xác minh.\nGiả thuyết (chưa xác minh): Kết quả giao dịch có thể chưa được xác minh đầy đủ; cần đối chiếu POS/Portal, chưa kết luận ngân hàng.\nHướng xử lý: Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa khởi động lại máy khi giao dịch còn chưa xác minh. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?\nThông tin còn thiếu: kết quả đối chiếu lịch sử POS/Portal; không gửi dữ liệu thanh toán nhạy cảm.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu."
+    },
+    {
+      "id": "c2-code-reply",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+      "after": "Tóm tắt theo tin được reply: máy POS báo lỗi 03; model model-a; ngân hàng acquirer-a.\nVấn đề: mã lỗi cần đúng phạm vi.\nGiả thuyết (chưa xác minh): Ý nghĩa mã phụ thuộc model và đơn vị xử lý; chưa có nguồn xác minh phù hợp.\nHướng xử lý: Em ghi nhận mã lỗi 03; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Em đã ghi nhận dòng máy và đơn vị xử lý; không cần cung cấp lại. Cần tài liệu đúng cấu hình được người phụ trách xác minh trước khi hướng dẫn theo mã.\nThông tin còn thiếu: chỉ bổ sung model/đơn vị xử lý nếu chưa có; cần tài liệu đúng cấu hình được xác minh.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu."
+    },
+    {
+      "id": "c2-network-reply",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+      "after": "Tóm tắt theo tin được reply: máy POS mất kết nối mạng; máy dùng WiFi.\nVấn đề: kết nối mạng.\nGiả thuyết (chưa xác minh): Có thể do đường truyền hoặc kết nối của POS; cần phân biệt hai phía.\nHướng xử lý: Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.\nThông tin còn thiếu: bước đã kiểm tra và kết quả; tình trạng giao dịch nếu chưa rõ.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu."
+    },
+    {
+      "id": "c2-printer-instruction",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+      "after": "Tóm tắt theo tin được reply: máy in bill ra giấy trắng.\nVấn đề: in hóa đơn.\nGiả thuyết (chưa xác minh): Có thể liên quan mặt giấy nhiệt hoặc đường giấy; cần kiểm tra thực tế.\nHướng xử lý: Giấy chạy nhưng trắng/mờ thường cần kiểm tra loại giấy nhiệt và chiều mặt in theo hướng dẫn đúng dòng máy. Anh/chị đã kiểm tra hai điểm này chưa? Nếu vừa thanh toán, thiếu chữ trên bill không xác định được kết quả giao dịch.\nThông tin còn thiếu: bước đã kiểm tra và kết quả; tình trạng giao dịch nếu chưa rõ.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu."
+    },
+    {
+      "id": "c2-draft-answer",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+      "after": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa khởi động lại máy khi giao dịch còn chưa xác minh. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?"
+    },
+    {
+      "id": "c2-ops-question",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+      "after": "Tóm tắt theo tin được reply: máy POS báo lỗi 06.\nVấn đề: mã lỗi cần đúng phạm vi.\nGiả thuyết (chưa xác minh): Ý nghĩa mã phụ thuộc model và đơn vị xử lý; chưa có nguồn xác minh phù hợp.\nHướng xử lý: Em ghi nhận mã lỗi 06; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị.\nThông tin còn thiếu: chỉ bổ sung model/đơn vị xử lý nếu chưa có; cần tài liệu đúng cấu hình được xác minh.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu."
+    },
+    {
+      "id": "c2-see-message",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+      "after": "Tóm tắt theo tin được reply: máy POS đang thanh toán, chưa xác minh kết quả; máy POS bị đơ.\nVấn đề: rủi ro giao dịch chưa xác minh.\nGiả thuyết (chưa xác minh): Kết quả giao dịch có thể chưa được xác minh đầy đủ; cần đối chiếu POS/Portal, chưa kết luận ngân hàng.\nHướng xử lý: Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa khởi động lại máy khi giao dịch còn chưa xác minh. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?\nThông tin còn thiếu: kết quả đối chiếu lịch sử POS/Portal; không gửi dữ liệu thanh toán nhạy cảm.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu."
+    },
+    {
+      "id": "c2-no-reference",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+      "after": "Anh/chị reply đúng tin nhắn gốc cần xem và tag Quỳnh Hương nhé. Em chưa tìm thấy tin gốc hợp lệ trong các tin đã nhận; không dùng tin gần nhất để đoán."
+    },
+    {
+      "id": "c2-unavailable-reference",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+      "after": "Anh/chị reply đúng tin nhắn gốc cần xem và tag Quỳnh Hương nhé. Em chưa tìm thấy tin gốc hợp lệ trong các tin đã nhận; không dùng tin gần nhất để đoán."
+    },
+    {
+      "id": "c2-untrusted-role",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Em thấy nhiều tình huống gần giống nhau. Anh/chị cho biết lỗi xảy ra trên POS, QR hay Portal và thông báo đang hiển thị ạ?",
+      "after": "Em ghi nhận mã lỗi 02; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị."
+    },
+    {
+      "id": "c2-followup",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS không ạ? Trả lời “có” hoặc “không” nhé.",
+      "after": "Em đã dừng case này. Anh/chị reply tin nhắn gốc của case khác và tag em để xem tiếp nhé."
+    },
+    {
+      "id": "c2-case-switch",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS không ạ? Trả lời “có” hoặc “không” nhé.",
+      "after": "Tóm tắt theo tin được reply: máy in bill ra giấy trắng.\nVấn đề: in hóa đơn.\nGiả thuyết (chưa xác minh): Có thể liên quan mặt giấy nhiệt hoặc đường giấy; cần kiểm tra thực tế.\nHướng xử lý: Giấy chạy nhưng trắng/mờ thường cần kiểm tra loại giấy nhiệt và chiều mặt in theo hướng dẫn đúng dòng máy. Anh/chị đã kiểm tra hai điểm này chưa? Nếu vừa thanh toán, thiếu chữ trên bill không xác định được kết quả giao dịch.\nThông tin còn thiếu: bước đã kiểm tra và kết quả; tình trạng giao dịch nếu chưa rõ.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu."
+    },
+    {
+      "id": "c2-no-mention",
+      "beforePassed": true,
+      "afterPassed": true,
+      "before": "Máy POS bị treo: trước hết cần biết có giao dịch đang xử lý không để tránh thanh toán trùng. Máy đứng ở màn hình chính hay đang thanh toán ạ?",
+      "after": "Máy POS bị treo: trước hết cần biết có giao dịch đang xử lý không để tránh thanh toán trùng. Máy đứng ở màn hình chính hay đang thanh toán ạ?"
+    },
+    {
+      "id": "c2-duplicate-reply",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+      "after": "Tóm tắt theo tin được reply: máy POS báo lỗi 06.\nVấn đề: mã lỗi cần đúng phạm vi.\nGiả thuyết (chưa xác minh): Ý nghĩa mã phụ thuộc model và đơn vị xử lý; chưa có nguồn xác minh phù hợp.\nHướng xử lý: Em ghi nhận mã lỗi 06; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị.\nThông tin còn thiếu: chỉ bổ sung model/đơn vị xử lý nếu chưa có; cần tài liệu đúng cấu hình được xác minh.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu."
+    }
+  ],
+  "postimplementationReview": {
+    "initialPassed": 0,
+    "finalPassed": 2,
+    "totalTests": 2
+  }
+}

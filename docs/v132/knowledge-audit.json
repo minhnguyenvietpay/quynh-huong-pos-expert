@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "corpusSha256": "406244f09be279880fa1217a46a1898349801cb2cc06c47714dc010234e0085c",
+  "total": 5000,
+  "codeBearingRecords": 121,
+  "publicationUsable": 0,
+  "evidenceVerifiedUsable": 0,
+  "verifiedUsableCodeRecords": 0,
+  "draftOrUnverifiedRecords": 5000,
+  "reviewStatuses": {
+    "draft_needs_ops_validation": 4862,
+    "reference_requires_ops_validation": 17,
+    "requires_bank_mapping_validation": 121
+  },
+  "requestedCodes": {
+    "02": {
+      "records": 1,
+      "verifiedUsable": 0,
+      "missingVerified": true
+    },
+    "03": {
+      "records": 1,
+      "verifiedUsable": 0,
+      "missingVerified": true
+    },
+    "06": {
+      "records": 1,
+      "verifiedUsable": 0,
+      "missingVerified": true
+    }
+  },
+  "sameCodeScopePossibleConflictGroups": 0,
+  "allKnowledgePossibleContradictionGroups": 0,
+  "verifiedCodeRecordsNotReachableByLegacyIdFormat": 0,
+  "legacyRouteRisk": {
+    "genericExpertBeforeCodeRouter": true,
+    "verifiedCodeRecordsAffected": 0,
+    "note": "Baseline V13 dialogue.js expert return precedes explicit-code/search branch; zero verified records means actual verified blockage cannot be demonstrated from corpus."
+  },
+  "realVerifiedCodeCoverage": {
+    "denominator": 0,
+    "vacuous": true,
+    "independentDomainAccuracy": "blocked_no_external_OPS_ground_truth"
+  }
+}

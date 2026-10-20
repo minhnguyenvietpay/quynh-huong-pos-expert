@@ -2,7 +2,7 @@
 // Explicit file arguments work in Windows PowerShell/cmd and Unix shells alike.
 const fs=require('node:fs'),path=require('node:path'),{spawnSync}=require('node:child_process');
 const root=path.resolve(__dirname,'..'),profile=process.argv[2]||'all';
-const profiles={all:name=>/\.test\.cjs$/.test(name),v12:name=>/^v12.*\.test\.cjs$/.test(name)||name==='program-regression.test.cjs',v13:name=>/^v13.*\.test\.cjs$/.test(name)||name==='v122-listener.test.cjs'};
+const profiles={all:name=>/\.test\.cjs$/.test(name),v12:name=>/^v12.*\.test\.cjs$/.test(name)||name==='program-regression.test.cjs',v13:name=>/^v13.*\.test\.cjs$/.test(name)||name==='v122-listener.test.cjs',v132:name=>/^v132.*\.test\.cjs$/.test(name)};
 if(!Object.hasOwn(profiles,profile)){console.error('Unknown test profile');process.exitCode=1;}
 else{
  const files=fs.readdirSync(path.join(root,'tests')).filter(profiles[profile]).sort().map(name=>path.join(root,'tests',name));

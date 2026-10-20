@@ -44,13 +44,21 @@ function classify(input){
  return {intent:best.score>=0.65?best.intent:null,score:best.score,ambiguous:best.score>=0.65&&second.score>=0.65&&best.score-second.score<0.04,reason:best.score>=0.65?'matched':'insufficient_signal'};
 }
 const SUPPORT_TERMS=['pos','may pos','may quet the','giao dich','thanh toan','qr','portal','refund','hoan tien','doi soat','settlement','payout','bill','tid','mid','the','quet the','may','bao cao','cuoi ca'];
-function extractErrorCode(input){
- const n=normalize(input);
- const m=n.match(/(?:\b(?:ma\s+)?loi|\bma|\bcode|\berror)\s*(?:so\s*)?(?:e\s*)?(\d{2,3})\b/);
- if(m) return m[1];
- const p=n.match(/\b(?:pos|may pos|terminal)\b.{0,45}\b(?:bao|bi|hien|hien thi)?\s*loi\s*(\d{2,3})\b/);
- return p?.[1]||null;
+function extractErrorCodes(input){
+ const withoutDates=String(input||'').replace(/\b\d{1,2}\s*([/.-])\s*\d{1,2}(?:\s*\1\s*\d{2,4})?\b/g,' ');
+ const n=normalize(withoutDates),codes=[];
+ // Explicit errors or a device display marker are required. Never infer from a bare number.
+ const re=/\b(?:(?:ma\s+)?loi|code|error)\s*(?:so\s*)?(?:e\s*)?(\d{2,3})\b|\be(\d{2,3})\b|\b(?:pos|terminal|may(?: pos)?)\s+(?:luc\s+)?(?:bao|hien|hien thi)\s+(\d{2,3})\b/g;
+ for(const m of n.matchAll(re)){
+  const value=m.slice(1).find(Boolean);
+  if(!/^(?: trieu| nghin| dong| vnd)\b/.test(n.slice(m.index+m[0].length))&&!codes.includes(value))codes.push(value);
+ }
+ // Alternating display codes belong to the same explicit device report, not amounts or references.
+ if(codes.length&&/\b(?:pos|terminal|may)\b/.test(n))for(const m of n.matchAll(/\bluc (?:bao|hien|hien thi)\s+(\d{2,3})\b/g))if(!codes.includes(m[1]))codes.push(m[1]);
+ return codes.slice(0,4);
 }
+function extractErrorCode(input){return extractErrorCodes(input).at(-1)||null;}
+
 function stripAddress(input){
  let s=String(input||'');
  // Remove direct name/mention in any position; preserve rest of request.
@@ -76,6 +84,7 @@ function socialIntent(input){
  const n=normalize(stripAddress(input));
  if(/^(?:xin chao|chao|hello|hi|hiem|hey|alo)(?: (?:em|bot|chi|anh))?(?: (?:a|nhe|nha|oi))?(?: (?:chi|anh) quay lai roi)?$/.test(n))return 'greeting';
  if(/^(?:khoan )?(?:(?:em|ban|bot) )?(?:tu )?gioi thieu(?: (?:ve em|ban than))?(?: (?:di|nhe|a))?$/.test(n)||/^(?:em|ban|bot) la ai(?: vay)?$/.test(n))return 'introduction';
+ if(/^(?:(?:em|ban|bot) )?(?:co the )?kiem tra(?: duoc)? (?:nhung (?:viec )?gi|gi)(?: a| vay)?$/.test(n))return 'capability';
  if(/^(?:(?:em|ban|bot) )?(?:co the )?ho tro(?: duoc)? (?:nhung (?:viec )?gi|nhung viec gi|loi nao|gi)(?: a| vay)?$/.test(n))return 'capability';
  if(/^(?:ok |oke |da )?(?:cam on|thanks|thank you)(?: (?:em|bot))?(?: (?:nhieu|nhe|nha|a))?$/.test(n))return 'thanks';
  if(/^(?:(?:chi|anh|toi) )?chua co su co(?: hoi de biet thoi)?$/.test(n))return 'no-incident';
@@ -94,4 +103,4 @@ function detect(input,{ongoing=false,explicit=false}={}){
  const hasDomain=SUPPORT_TERMS.some(t=>wordMatch(n,t))||(c.intent==='payment'&&(wordMatch(n,'tru tien')||wordMatch(n,'khach')))||(c.intent==='frozen'&&wordMatch(n,'may'));
  return {respond:Boolean(c.intent&&hasDomain&&!c.ambiguous),...c,reason:c.ambiguous?'ambiguous':(c.intent&&hasDomain?'domain_intent':'no_clear_request')};
 }
-module.exports={normalize,classify,detect,extractErrorCode,isIntroduction,isCompliment,isAddressed,stripAddress,socialIntent};
+module.exports={normalize,classify,detect,extractErrorCode,extractErrorCodes,isIntroduction,isCompliment,isAddressed,stripAddress,socialIntent};

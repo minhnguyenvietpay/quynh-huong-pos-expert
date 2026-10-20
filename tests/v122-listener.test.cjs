@@ -10,6 +10,7 @@ async function worker(options){
  const d=require('./dialogue.js'),realIntent=require('./intent.js');
  const handlers={},sent=[],inputs=[],marked=[],tickets=[],errors=[];
  const modules={
+  './lib/reply-context.cjs':require('./lib/reply-context.cjs'),
   './dialogue.js':{...d,processMessage:(g,u,text)=>{inputs.push(text);return d.processMessage(g,u,text);},markHandoverDone:(...args)=>{marked.push(args);return d.markHandoverDone(...args);}},
   './intent.js':{...realIntent,detect:()=>({respond:false,reason:'synthetic-legacy-miss'})},
   './state.js':{isDisabled:()=>false,setDisabled:()=>{throw Error('unauthorized state change');}},

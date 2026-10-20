@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "v132-cycle3-scope-review.0.0",
+  "reviewNote": "Independent QA criteria for code-review counterexample discovered afterC1, frozen beforeC3fix. Not blind simulator or external groundtruth.",
+  "fixtures": [
+    {
+      "id": "c3-review-code-network-resurrection",
+      "category": "review-discovered",
+      "rootCause": "stale-code-context",
+      "reviewStatus": "ai_authored_unreviewed",
+      "provenance": "synthetic_no_customer_data",
+      "rationale": "Explicit network symptom supersedes old code; bare failure must not revive abandonedcode.",
+      "turns": [
+        "máy lỗi 03",
+        "network error",
+        "vẫn lỗi"
+      ],
+      "must": [
+        "mạng|kết nối|Wi.?Fi|SIM|4G"
+      ],
+      "mustNot": [
+        "mã lỗi 03"
+      ],
+      "state": {
+        "pending": false,
+        "escalation": false
+      }
+    }
+  ]
+}

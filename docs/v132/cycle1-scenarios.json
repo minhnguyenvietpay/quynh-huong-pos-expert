@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "cycle": 1,
+  "provenance": "Synthetic inputs authored independently by Merchant Simulator from the explicitly reported V13 failures. No live messages, customer data, operational ground truth or implementation-derived expectations. QA Judge defines assertions separately.",
+  "scope": "Actual direct-dialogue failures, code extraction, minimum clarifications and topic changes; code variants form one cluster, not independent business defects.",
+  "scenarios": [
+    {
+      "id": "c1-capability-real",
+      "inputs": [
+        "em có thể kiểm tra gì"
+      ],
+      "merchantIntent": "Find out practical support capabilities and limits.",
+      "origin": "confirmed user-reported wording"
+    },
+    {
+      "id": "c1-network-real",
+      "inputs": [
+        "nó ghi network error"
+      ],
+      "merchantIntent": "Explain a connection error without prematurely handing off.",
+      "origin": "confirmed user-reported wording"
+    },
+    {
+      "id": "c1-code03-real",
+      "inputs": [
+        "máy báo lỗi 03"
+      ],
+      "merchantIntent": "Ask about exact POS error 03.",
+      "origin": "confirmed user-reported wording"
+    },
+    {
+      "id": "c1-code02-real",
+      "inputs": [
+        "máy bị lỗi 02"
+      ],
+      "merchantIntent": "Ask about exact POS error 02.",
+      "origin": "confirmed user-reported wording"
+    },
+    {
+      "id": "c1-code06-real",
+      "inputs": [
+        "máy bị lỗi 06"
+      ],
+      "merchantIntent": "Ask about exact POS error 06.",
+      "origin": "confirmed user-reported wording"
+    },
+    {
+      "id": "c1-social-real",
+      "inputs": [
+        "hi em",
+        "em giới thiệu đi"
+      ],
+      "merchantIntent": "Meet the assistant naturally.",
+      "origin": "confirmed user-reported sequence"
+    },
+    {
+      "id": "c1-topic-real",
+      "inputs": [
+        "máy bị đơ",
+        "thôi em cho anh hỏi về settlement"
+      ],
+      "merchantIntent": "Abandon freeze diagnosis and learn about settlement.",
+      "origin": "confirmed user-reported sequence"
+    },
+    {
+      "id": "c1-code-formats",
+      "inputs": [
+        "POS báo 03",
+        "máy hiện E03",
+        "màn hình ghi error 03"
+      ],
+      "merchantIntent": "Repeated clarification of the same literal code across supported forms.",
+      "origin": "synthetic challenge"
+    },
+    {
+      "id": "c1-code-known-device",
+      "inputs": [
+        "Máy giả lập Model-A báo lỗi 03",
+        "Máy Model-A, bên Acquirer-A",
+        "vẫn là lỗi 03 đó em"
+      ],
+      "merchantIntent": "Keep information already supplied; model/acquirer names are synthetic scope labels, not operational claims.",
+      "origin": "synthetic challenge"
+    },
+    {
+      "id": "c1-code-context-followup",
+      "inputs": [
+        "máy báo lỗi 02",
+        "Model-A",
+        "Acquirer-A",
+        "em chưa có hướng dẫn xác minh thì cần gì nữa?"
+      ],
+      "merchantIntent": "Supply missing device and acquirer one at a time, then ask about source limits.",
+      "origin": "synthetic challenge"
+    },
+    {
+      "id": "c1-code-payment-risk",
+      "inputs": [
+        "Máy báo E06, khách đã bị trừ tiền nhưng không có bill",
+        "Có nên quẹt lại cho nhanh không?"
+      ],
+      "merchantIntent": "Get payment-safe help despite an explicit error code.",
+      "origin": "synthetic challenge"
+    },
+    {
+      "id": "c1-network-context",
+      "inputs": [
+        "Máy POS dùng WiFi, hiện network error",
+        "Không có giao dịch nào đang chạy, khách chưa thanh toán",
+        "Điện thoại cũng không vào được WiFi này"
+      ],
+      "merchantIntent": "Provide network and payment state progressively.",
+      "origin": "synthetic challenge"
+    },
+    {
+      "id": "c1-network-risk",
+      "inputs": [
+        "Khách đang quẹt thì máy ghi network error",
+        "khách bảo đã trừ tiền rồi"
+      ],
+      "merchantIntent": "Connection failure during an unresolved payment.",
+      "origin": "synthetic challenge"
+    },
+    {
+      "id": "c1-not-code-amount",
+      "inputs": [
+        "POS có giao dịch 03 triệu, chị hỏi cách in lại bill"
+      ],
+      "merchantIntent": "Receipt operation with a numeric amount, no error code.",
+      "origin": "synthetic challenge"
+    },
+    {
+      "id": "c1-not-code-date",
+      "inputs": [
+        "Đối soát ngày 03/06 em hướng dẫn sao?"
+      ],
+      "merchantIntent": "Reconciliation question containing date numbers.",
+      "origin": "synthetic challenge"
+    },
+    {
+      "id": "c1-not-code-identifiers",
+      "inputs": [
+        "Mã giao dịch giả lập 030206, không phải mã lỗi; chị muốn xem lịch sử giao dịch"
+      ],
+      "merchantIntent": "Transaction-reference discussion, not an error-code lookup.",
+      "origin": "synthetic challenge"
+    },
+    {
+      "id": "c1-code-correction",
+      "inputs": [
+        "máy lỗi 03",
+        "à không, em nhìn nhầm, là 06"
+      ],
+      "merchantIntent": "Correct a code and avoid stale code guidance.",
+      "origin": "synthetic challenge"
+    },
+    {
+      "id": "c1-code-topic-switch",
+      "inputs": [
+        "máy lỗi 03",
+        "thôi bỏ lỗi đó, hướng dẫn em vào Merchant Portal"
+      ],
+      "merchantIntent": "Explicitly leave code investigation for a new operation.",
+      "origin": "synthetic challenge"
+    }
+  ]
+}

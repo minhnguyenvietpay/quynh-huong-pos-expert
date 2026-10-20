@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "cycles": [
+    {
+      "cycle": 3,
+      "dataset": "tests/fixtures/v132-cycle3.json",
+      "sha256": "f02c65cca4ff9b2d9c9d72d4d2ff8829b137edfa80fbee3e5ca0cc95a14cc67d",
+      "fixtures": 10,
+      "modes": [
+        "v13"
+      ]
+    },
+    {
+      "cycle": "3-review",
+      "dataset": "tests/fixtures/v132-cycle3-scope-review.json",
+      "sha256": "13abad20652ce1cb68aa8ad95a6175711a360cd2a9d6c0fc3ca8601703ae1042",
+      "fixtures": 1,
+      "modes": [
+        "v13"
+      ]
+    }
+  ],
+  "eventContracts": [
+    {
+      "cycle": 2,
+      "scenarios": "docs/v132/cycle2-scenarios.json",
+      "scenarioSha256": "b3690ea25af2fa51abdc9e6b1df6a8b713175d94867b765f9a50be2136fa0066",
+      "contracts": "docs/v132/cycle2-contracts.json",
+      "contractSha256": "4c45d4a16da39f47b8bd48f081c4a2f6cf371c2b566a185a24b7a70a70afa729",
+      "scenarioCount": 14,
+      "executionOwner": "Director actual listener VM + independent Safety Auditor module tests",
+      "baseline": "Actual VM feature-absence evidence required; not counted as14 executed failures",
+      "evaluator": "scripts/v132-listener-evaluate.cjs",
+      "evaluatorSha256": "2ea10c022cdbb683f1af5eef8e4009ec33b5f2cb809f2826769a0a2fe57ceac2"
+    },
+    {
+      "cycle": 3,
+      "scenarios": "docs/v132/cycle3-scenarios.json",
+      "scenarioSha256": "35f8d67c7940708642c49fe5fe69edc4d21bfafa47241a3ee843c824d6515026",
+      "evaluator": "scripts/v132-listener-evaluate.cjs",
+      "evaluatorSha256": "2ea10c022cdbb683f1af5eef8e4009ec33b5f2cb809f2826769a0a2fe57ceac2",
+      "scenarioCount": 6
+    }
+  ]
+}

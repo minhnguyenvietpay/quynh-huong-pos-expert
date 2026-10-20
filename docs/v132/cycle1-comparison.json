@@ -1,0 +1,151 @@
+{
+  "baselineCommit": "1a33422e34beb25747238c24214097de4465e5c1",
+  "syntheticOnly": true,
+  "externalGroundTruthGate": "blocked",
+  "beforePassed": 6,
+  "afterPassed": 18,
+  "total": 18,
+  "improved": [
+    "c1-capability-real",
+    "c1-network-real",
+    "c1-code03-real",
+    "c1-code02-real",
+    "c1-code06-real",
+    "c1-code-formats",
+    "c1-code-known-device",
+    "c1-code-context-followup",
+    "c1-network-risk",
+    "c1-not-code-identifiers",
+    "c1-code-correction",
+    "c1-code-topic-switch"
+  ],
+  "regressed": [],
+  "rows": [
+    {
+      "id": "c1-capability-real",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+      "after": "Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ sử dụng POS, máy in, mạng, QR, thẻ, tra soát, đối soát/settlement và Merchant Portal; em không truy cập ngân hàng theo thời gian thực, kết quả giao dịch cần đối chiếu trên POS/Portal. Anh/chị cần hỗ trợ phần nào ạ?"
+    },
+    {
+      "id": "c1-network-real",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+      "after": "Máy mất mạng đang dùng Wi-Fi hay SIM/4G ạ? Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal."
+    },
+    {
+      "id": "c1-code03-real",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Máy đang lỗi nguồn, in bill, kết nối hay giao dịch thanh toán ạ? Anh/chị mô tả thông báo trên màn hình, không gửi dữ liệu thẻ hoặc mã bảo mật nhé.",
+      "after": "Em ghi nhận mã lỗi 03; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị."
+    },
+    {
+      "id": "c1-code02-real",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Máy đang lỗi nguồn, in bill, kết nối hay giao dịch thanh toán ạ? Anh/chị mô tả thông báo trên màn hình, không gửi dữ liệu thẻ hoặc mã bảo mật nhé.",
+      "after": "Em ghi nhận mã lỗi 02; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị."
+    },
+    {
+      "id": "c1-code06-real",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Máy đang lỗi nguồn, in bill, kết nối hay giao dịch thanh toán ạ? Anh/chị mô tả thông báo trên màn hình, không gửi dữ liệu thẻ hoặc mã bảo mật nhé.",
+      "after": "Em ghi nhận mã lỗi 06; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị."
+    },
+    {
+      "id": "c1-social-real",
+      "beforePassed": true,
+      "afterPassed": true,
+      "before": "Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ kiểm tra máy in, mạng, QR, thẻ và Merchant Portal; kết quả giao dịch cần đối chiếu trên POS/Portal, em không tự xác nhận trạng thái tiền. Anh/chị cần hỗ trợ phần nào ạ?",
+      "after": "Em là Quỳnh Hương, trợ lý hỗ trợ POS và thanh toán của Vietpay. Em hỗ trợ sử dụng POS, máy in, mạng, QR, thẻ, tra soát, đối soát/settlement và Merchant Portal; em không truy cập ngân hàng theo thời gian thực, kết quả giao dịch cần đối chiếu trên POS/Portal. Anh/chị cần hỗ trợ phần nào ạ?"
+    },
+    {
+      "id": "c1-topic-real",
+      "beforePassed": true,
+      "afterPassed": true,
+      "before": "Giao dịch thành công, quyết toán và tiền đã chi trả là các trạng thái cần đối chiếu riêng. Em chưa thể xác nhận lịch tiền về. Anh/chị kiểm tra kỳ đối soát và trạng thái chi trả trên Portal; đang thiếu cả kỳ hay một giao dịch ạ?",
+      "after": "Giao dịch thành công, quyết toán và tiền đã chi trả là các trạng thái cần đối chiếu riêng. Em chưa thể xác nhận lịch tiền về. Anh/chị kiểm tra kỳ đối soát và trạng thái chi trả trên Portal; đang thiếu cả kỳ hay một giao dịch ạ?"
+    },
+    {
+      "id": "c1-code-formats",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS không ạ? Trả lời “có” hoặc “không” nhé.",
+      "after": "Em ghi nhận mã lỗi 03; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị."
+    },
+    {
+      "id": "c1-code-known-device",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Máy POS bị treo: trước hết cần biết có giao dịch đang xử lý không để tránh thanh toán trùng. Máy đứng ở màn hình chính hay đang thanh toán ạ?",
+      "after": "Em ghi nhận mã lỗi 03; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Em đã ghi nhận dòng máy và đơn vị xử lý; không cần cung cấp lại. Cần tài liệu đúng cấu hình được người phụ trách xác minh trước khi hướng dẫn theo mã."
+    },
+    {
+      "id": "c1-code-context-followup",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Em chưa có đủ chi tiết để chọn bước an toàn. Máy lỗi nguồn, in hóa đơn, kết nối hay đang xử lý giao dịch ạ?",
+      "after": "Em ghi nhận mã lỗi 02; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Em đã ghi nhận dòng máy và đơn vị xử lý; không cần cung cấp lại. Cần tài liệu đúng cấu hình được người phụ trách xác minh trước khi hướng dẫn theo mã."
+    },
+    {
+      "id": "c1-code-payment-risk",
+      "beforePassed": true,
+      "afterPassed": true,
+      "before": "Chưa quẹt lại hoặc thanh toán lại khi kết quả trước chưa xác minh, kể cả để lấy bill. Đối chiếu lịch sử POS/Portal đúng giao dịch; dùng chức năng in lại theo quyền được cấp nếu có, không tạo giao dịch mới.",
+      "after": "Chưa quẹt hoặc thanh toán lại, khởi động lại hay tắt máy khi kết quả giao dịch còn chưa xác minh. Kiểm tra lịch sử POS/Portal đúng giao dịch và chưa yêu cầu khách thanh toán lại; em không tự xác nhận trạng thái tiền."
+    },
+    {
+      "id": "c1-network-context",
+      "beforePassed": true,
+      "afterPassed": true,
+      "before": "Điện thoại cùng Wi-Fi cũng mất mạng thì ưu tiên kiểm tra đường truyền chung/bộ phát (router), không quy ngay lỗi POS. Kiểm tra đèn kết nối của bộ phát hoặc kênh mạng nội bộ được phép; chưa thanh toán lại khi giao dịch chưa rõ kết quả.",
+      "after": "Điện thoại cùng Wi-Fi cũng mất mạng thì ưu tiên kiểm tra đường truyền chung/bộ phát (router), không quy ngay lỗi POS. Kiểm tra đèn kết nối của bộ phát hoặc kênh mạng nội bộ được phép; chưa thanh toán lại khi giao dịch chưa rõ kết quả."
+    },
+    {
+      "id": "c1-network-risk",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Chưa thấy hoặc chưa xác định được giao dịch thì cần tra soát, không suy ra đã thành công/thất bại và chưa thu tiền lại. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+      "after": "Em ghi nhận khách báo đã trừ tiền, chưa xác nhận kết quả giao dịch. Kiểm tra đúng giao dịch trên lịch sử POS/Portal; chưa thanh toán lại để tránh thu trùng. Lịch sử đang hiển thị trạng thái gì ạ?"
+    },
+    {
+      "id": "c1-not-code-amount",
+      "beforePassed": true,
+      "afterPassed": true,
+      "before": "Không quẹt thẻ lại hoặc thu tiền mới để in bản sao. Tìm đúng giao dịch trong lịch sử, đối chiếu thời điểm và số tiền rồi dùng chức năng in lại theo dòng máy/quyền được cấp nếu có; em chưa xác nhận kết quả tiền từ tin nhắn.",
+      "after": "Không quẹt thẻ lại hoặc thu tiền mới để in bản sao. Tìm đúng giao dịch trong lịch sử, đối chiếu thời điểm và số tiền rồi dùng chức năng in lại theo dòng máy/quyền được cấp nếu có; em chưa xác nhận kết quả tiền từ tin nhắn."
+    },
+    {
+      "id": "c1-not-code-date",
+      "beforePassed": true,
+      "afterPassed": true,
+      "before": "Giao dịch thành công, quyết toán và tiền đã chi trả là các trạng thái cần đối chiếu riêng. Em chưa thể xác nhận lịch tiền về. Anh/chị kiểm tra kỳ đối soát và trạng thái chi trả trên Portal; đang thiếu cả kỳ hay một giao dịch ạ?",
+      "after": "Giao dịch thành công, quyết toán và tiền đã chi trả là các trạng thái cần đối chiếu riêng. Em chưa thể xác nhận lịch tiền về. Anh/chị kiểm tra kỳ đối soát và trạng thái chi trả trên Portal; đang thiếu cả kỳ hay một giao dịch ạ?"
+    },
+    {
+      "id": "c1-not-code-identifiers",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+      "after": "Để xem lịch sử giao dịch, dùng chức năng lịch sử trên POS hoặc Portal theo quyền được cấp; chọn đúng thời gian và đối chiếu phương thức, số tiền, trạng thái. Không cần gửi mã giao dịch hay dữ liệu khách hàng trong nhóm."
+    },
+    {
+      "id": "c1-code-correction",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Em chưa có đủ chi tiết để chọn bước an toàn. Máy lỗi nguồn, in hóa đơn, kết nối hay đang xử lý giao dịch ạ?",
+      "after": "Em ghi nhận mã lỗi 06; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị."
+    },
+    {
+      "id": "c1-code-topic-switch",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Máy POS bị treo: trước hết cần biết có giao dịch đang xử lý không để tránh thanh toán trùng. Máy đứng ở màn hình chính hay đang thanh toán ạ?",
+      "after": "Mình ưu tiên truy cập trang trước khi lọc báo cáo: kiểm tra đúng địa chỉ Portal được cung cấp, kết nối và thông báo trình duyệt. Nếu được phép, thử tải lại hoặc trình duyệt/mạng được phép khác; trang chưa tải không chứng minh thiếu giao dịch. Không gửi mật khẩu, OTP hay phiên đăng nhập."
+    }
+  ]
+}

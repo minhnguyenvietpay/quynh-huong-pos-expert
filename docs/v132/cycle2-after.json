@@ -1,0 +1,614 @@
+{
+  "schemaVersion": 1,
+  "syntheticOnly": true,
+  "independentQualityGate": "blocked_no_external_ground_truth",
+  "datasetVersion": "v132-cycle2",
+  "total": 14,
+  "passed": 14,
+  "failed": 0,
+  "rows": [
+    {
+      "id": "c2-payment-reply",
+      "passed": true,
+      "issues": [],
+      "last": "Tóm tắt theo tin được reply: khách báo bị trừ tiền, chưa xác minh kết quả giao dịch; POS báo giao dịch thất bại; máy không in bill.\nVấn đề: rủi ro giao dịch chưa xác minh.\nGiả thuyết (chưa xác minh): Kết quả giao dịch có thể chưa được xác minh đầy đủ; cần đối chiếu POS/Portal, chưa kết luận ngân hàng.\nHướng xử lý: Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa khởi động lại máy khi giao dịch còn chưa xác minh. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?\nThông tin còn thiếu: kết quả đối chiếu lịch sử POS/Portal; không gửi dữ liệu thanh toán nhạy cảm.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu.",
+      "result": {
+        "sent": [
+          {
+            "msg": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa khởi động lại máy khi giao dịch còn chưa xác minh. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?"
+          },
+          {
+            "msg": "Tóm tắt theo tin được reply: khách báo bị trừ tiền, chưa xác minh kết quả giao dịch; POS báo giao dịch thất bại; máy không in bill.\nVấn đề: rủi ro giao dịch chưa xác minh.\nGiả thuyết (chưa xác minh): Kết quả giao dịch có thể chưa được xác minh đầy đủ; cần đối chiếu POS/Portal, chưa kết luận ngân hàng.\nHướng xử lý: Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa khởi động lại máy khi giao dịch còn chưa xác minh. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?\nThông tin còn thiếu: kết quả đối chiếu lịch sử POS/Portal; không gửi dữ liệu thanh toán nhạy cảm.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu."
+          }
+        ],
+        "inputs": [
+          {
+            "group": "G-A",
+            "user": "301",
+            "text": "Máy POS báo thất bại nhưng khách đã bị trừ tiền, không có bill."
+          },
+          {
+            "group": "[\"qh-reply\",\"G-A\",\"111\",\"301\",\"1001\",\"11001\"]",
+            "user": "111",
+            "text": "khách báo bị trừ tiền, chưa xác minh kết quả giao dịch; POS báo giao dịch thất bại; máy không in bill"
+          }
+        ],
+        "tickets": 0,
+        "errors": [],
+        "snapshots": [
+          {
+            "sent": 1,
+            "inputs": 1,
+            "tickets": 0
+          },
+          {
+            "sent": 2,
+            "inputs": 2,
+            "tickets": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-code-reply",
+      "passed": true,
+      "issues": [],
+      "last": "Tóm tắt theo tin được reply: máy POS báo lỗi 03; model model-a; ngân hàng acquirer-a.\nVấn đề: mã lỗi cần đúng phạm vi.\nGiả thuyết (chưa xác minh): Ý nghĩa mã phụ thuộc model và đơn vị xử lý; chưa có nguồn xác minh phù hợp.\nHướng xử lý: Em ghi nhận mã lỗi 03; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Em đã ghi nhận dòng máy và đơn vị xử lý; không cần cung cấp lại. Cần tài liệu đúng cấu hình được người phụ trách xác minh trước khi hướng dẫn theo mã.\nThông tin còn thiếu: chỉ bổ sung model/đơn vị xử lý nếu chưa có; cần tài liệu đúng cấu hình được xác minh.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu.",
+      "result": {
+        "sent": [
+          {
+            "msg": "Em ghi nhận mã lỗi 03; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Em đã ghi nhận dòng máy và đơn vị xử lý; không cần cung cấp lại. Cần tài liệu đúng cấu hình được người phụ trách xác minh trước khi hướng dẫn theo mã."
+          },
+          {
+            "msg": "Tóm tắt theo tin được reply: máy POS báo lỗi 03; model model-a; ngân hàng acquirer-a.\nVấn đề: mã lỗi cần đúng phạm vi.\nGiả thuyết (chưa xác minh): Ý nghĩa mã phụ thuộc model và đơn vị xử lý; chưa có nguồn xác minh phù hợp.\nHướng xử lý: Em ghi nhận mã lỗi 03; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Em đã ghi nhận dòng máy và đơn vị xử lý; không cần cung cấp lại. Cần tài liệu đúng cấu hình được người phụ trách xác minh trước khi hướng dẫn theo mã.\nThông tin còn thiếu: chỉ bổ sung model/đơn vị xử lý nếu chưa có; cần tài liệu đúng cấu hình được xác minh.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu."
+          }
+        ],
+        "inputs": [
+          {
+            "group": "G-A",
+            "user": "301",
+            "text": "Máy Model-A bên Acquirer-A báo E03."
+          },
+          {
+            "group": "[\"qh-reply\",\"G-A\",\"111\",\"301\",\"1001\",\"11001\"]",
+            "user": "111",
+            "text": "máy POS báo lỗi 03; model model-a; ngân hàng acquirer-a"
+          }
+        ],
+        "tickets": 0,
+        "errors": [],
+        "snapshots": [
+          {
+            "sent": 1,
+            "inputs": 1,
+            "tickets": 0
+          },
+          {
+            "sent": 2,
+            "inputs": 2,
+            "tickets": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-network-reply",
+      "passed": true,
+      "issues": [],
+      "last": "Tóm tắt theo tin được reply: máy POS mất kết nối mạng; máy dùng WiFi.\nVấn đề: kết nối mạng.\nGiả thuyết (chưa xác minh): Có thể do đường truyền hoặc kết nối của POS; cần phân biệt hai phía.\nHướng xử lý: Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.\nThông tin còn thiếu: bước đã kiểm tra và kết quả; tình trạng giao dịch nếu chưa rõ.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu.",
+      "result": {
+        "sent": [
+          {
+            "msg": "Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal."
+          },
+          {
+            "msg": "Tóm tắt theo tin được reply: máy POS mất kết nối mạng; máy dùng WiFi.\nVấn đề: kết nối mạng.\nGiả thuyết (chưa xác minh): Có thể do đường truyền hoặc kết nối của POS; cần phân biệt hai phía.\nHướng xử lý: Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.\nThông tin còn thiếu: bước đã kiểm tra và kết quả; tình trạng giao dịch nếu chưa rõ.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu."
+          }
+        ],
+        "inputs": [
+          {
+            "group": "G-A",
+            "user": "301",
+            "text": "nó ghi network error, máy dùng WiFi"
+          },
+          {
+            "group": "[\"qh-reply\",\"G-A\",\"111\",\"301\",\"1001\",\"11001\"]",
+            "user": "111",
+            "text": "máy POS mất kết nối mạng; máy dùng WiFi"
+          }
+        ],
+        "tickets": 0,
+        "errors": [],
+        "snapshots": [
+          {
+            "sent": 1,
+            "inputs": 1,
+            "tickets": 0
+          },
+          {
+            "sent": 2,
+            "inputs": 2,
+            "tickets": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-printer-instruction",
+      "passed": true,
+      "issues": [],
+      "last": "Tóm tắt theo tin được reply: máy in bill ra giấy trắng.\nVấn đề: in hóa đơn.\nGiả thuyết (chưa xác minh): Có thể liên quan mặt giấy nhiệt hoặc đường giấy; cần kiểm tra thực tế.\nHướng xử lý: Giấy chạy nhưng trắng/mờ thường cần kiểm tra loại giấy nhiệt và chiều mặt in theo hướng dẫn đúng dòng máy. Anh/chị đã kiểm tra hai điểm này chưa? Nếu vừa thanh toán, thiếu chữ trên bill không xác định được kết quả giao dịch.\nThông tin còn thiếu: bước đã kiểm tra và kết quả; tình trạng giao dịch nếu chưa rõ.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu.",
+      "result": {
+        "sent": [
+          {
+            "msg": "Giấy chạy nhưng trắng/mờ thường cần kiểm tra loại giấy nhiệt và chiều mặt in theo hướng dẫn đúng dòng máy. Anh/chị đã kiểm tra hai điểm này chưa? Nếu vừa thanh toán, thiếu chữ trên bill không xác định được kết quả giao dịch."
+          },
+          {
+            "msg": "Tóm tắt theo tin được reply: máy in bill ra giấy trắng.\nVấn đề: in hóa đơn.\nGiả thuyết (chưa xác minh): Có thể liên quan mặt giấy nhiệt hoặc đường giấy; cần kiểm tra thực tế.\nHướng xử lý: Giấy chạy nhưng trắng/mờ thường cần kiểm tra loại giấy nhiệt và chiều mặt in theo hướng dẫn đúng dòng máy. Anh/chị đã kiểm tra hai điểm này chưa? Nếu vừa thanh toán, thiếu chữ trên bill không xác định được kết quả giao dịch.\nThông tin còn thiếu: bước đã kiểm tra và kết quả; tình trạng giao dịch nếu chưa rõ.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu."
+          }
+        ],
+        "inputs": [
+          {
+            "group": "G-A",
+            "user": "301",
+            "text": "Máy in bill ra giấy trắng, giấy vẫn chạy bình thường."
+          },
+          {
+            "group": "[\"qh-reply\",\"G-A\",\"111\",\"301\",\"1001\",\"11001\"]",
+            "user": "111",
+            "text": "máy in bill ra giấy trắng"
+          }
+        ],
+        "tickets": 0,
+        "errors": [],
+        "snapshots": [
+          {
+            "sent": 1,
+            "inputs": 1,
+            "tickets": 0
+          },
+          {
+            "sent": 2,
+            "inputs": 2,
+            "tickets": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-draft-answer",
+      "passed": true,
+      "issues": [],
+      "last": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa khởi động lại máy khi giao dịch còn chưa xác minh. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+      "result": {
+        "sent": [
+          {
+            "msg": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa khởi động lại máy khi giao dịch còn chưa xác minh. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?"
+          },
+          {
+            "msg": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa khởi động lại máy khi giao dịch còn chưa xác minh. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?"
+          }
+        ],
+        "inputs": [
+          {
+            "group": "G-A",
+            "user": "301",
+            "text": "QR báo lỗi, khách nói đã trừ tiền rồi."
+          },
+          {
+            "group": "[\"qh-reply\",\"G-A\",\"111\",\"301\",\"1001\",\"11001\"]",
+            "user": "111",
+            "text": "khách báo bị trừ tiền, chưa xác minh kết quả giao dịch; QR báo lỗi"
+          }
+        ],
+        "tickets": 0,
+        "errors": [],
+        "snapshots": [
+          {
+            "sent": 1,
+            "inputs": 1,
+            "tickets": 0
+          },
+          {
+            "sent": 2,
+            "inputs": 2,
+            "tickets": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-ops-question",
+      "passed": true,
+      "issues": [],
+      "last": "Tóm tắt theo tin được reply: máy POS báo lỗi 06.\nVấn đề: mã lỗi cần đúng phạm vi.\nGiả thuyết (chưa xác minh): Ý nghĩa mã phụ thuộc model và đơn vị xử lý; chưa có nguồn xác minh phù hợp.\nHướng xử lý: Em ghi nhận mã lỗi 06; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị.\nThông tin còn thiếu: chỉ bổ sung model/đơn vị xử lý nếu chưa có; cần tài liệu đúng cấu hình được xác minh.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu.",
+      "result": {
+        "sent": [
+          {
+            "msg": "Em ghi nhận mã lỗi 06; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị."
+          },
+          {
+            "msg": "Tóm tắt theo tin được reply: máy POS báo lỗi 06.\nVấn đề: mã lỗi cần đúng phạm vi.\nGiả thuyết (chưa xác minh): Ý nghĩa mã phụ thuộc model và đơn vị xử lý; chưa có nguồn xác minh phù hợp.\nHướng xử lý: Em ghi nhận mã lỗi 06; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị.\nThông tin còn thiếu: chỉ bổ sung model/đơn vị xử lý nếu chưa có; cần tài liệu đúng cấu hình được xác minh.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu."
+          }
+        ],
+        "inputs": [
+          {
+            "group": "G-A",
+            "user": "301",
+            "text": "POS báo lỗi 06 chưa rõ nguyên nhân."
+          },
+          {
+            "group": "[\"qh-reply\",\"G-A\",\"111\",\"301\",\"1001\",\"11001\"]",
+            "user": "111",
+            "text": "máy POS báo lỗi 06"
+          }
+        ],
+        "tickets": 0,
+        "errors": [],
+        "snapshots": [
+          {
+            "sent": 1,
+            "inputs": 1,
+            "tickets": 0
+          },
+          {
+            "sent": 2,
+            "inputs": 2,
+            "tickets": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-see-message",
+      "passed": true,
+      "issues": [],
+      "last": "Tóm tắt theo tin được reply: máy POS đang thanh toán, chưa xác minh kết quả; máy POS bị đơ.\nVấn đề: rủi ro giao dịch chưa xác minh.\nGiả thuyết (chưa xác minh): Kết quả giao dịch có thể chưa được xác minh đầy đủ; cần đối chiếu POS/Portal, chưa kết luận ngân hàng.\nHướng xử lý: Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa khởi động lại máy khi giao dịch còn chưa xác minh. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?\nThông tin còn thiếu: kết quả đối chiếu lịch sử POS/Portal; không gửi dữ liệu thanh toán nhạy cảm.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu.",
+      "result": {
+        "sent": [
+          {
+            "msg": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa khởi động lại máy khi giao dịch còn chưa xác minh. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?"
+          },
+          {
+            "msg": "Tóm tắt theo tin được reply: máy POS đang thanh toán, chưa xác minh kết quả; máy POS bị đơ.\nVấn đề: rủi ro giao dịch chưa xác minh.\nGiả thuyết (chưa xác minh): Kết quả giao dịch có thể chưa được xác minh đầy đủ; cần đối chiếu POS/Portal, chưa kết luận ngân hàng.\nHướng xử lý: Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa khởi động lại máy khi giao dịch còn chưa xác minh. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?\nThông tin còn thiếu: kết quả đối chiếu lịch sử POS/Portal; không gửi dữ liệu thanh toán nhạy cảm.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu."
+          }
+        ],
+        "inputs": [
+          {
+            "group": "G-A",
+            "user": "301",
+            "text": "Máy bị đơ ở màn hình thanh toán, chưa biết đã thành công chưa."
+          },
+          {
+            "group": "[\"qh-reply\",\"G-A\",\"111\",\"301\",\"1001\",\"11001\"]",
+            "user": "111",
+            "text": "máy POS đang thanh toán, chưa xác minh kết quả; máy POS bị đơ"
+          }
+        ],
+        "tickets": 0,
+        "errors": [],
+        "snapshots": [
+          {
+            "sent": 1,
+            "inputs": 1,
+            "tickets": 0
+          },
+          {
+            "sent": 2,
+            "inputs": 2,
+            "tickets": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-no-reference",
+      "passed": true,
+      "issues": [],
+      "last": "Anh/chị reply đúng tin nhắn gốc cần xem và tag Quỳnh Hương nhé. Em chưa tìm thấy tin gốc hợp lệ trong các tin đã nhận; không dùng tin gần nhất để đoán.",
+      "result": {
+        "sent": [
+          {
+            "msg": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn."
+          },
+          {
+            "msg": "Anh/chị reply đúng tin nhắn gốc cần xem và tag Quỳnh Hương nhé. Em chưa tìm thấy tin gốc hợp lệ trong các tin đã nhận; không dùng tin gần nhất để đoán."
+          }
+        ],
+        "inputs": [
+          {
+            "group": "G-A",
+            "user": "301",
+            "text": "Máy POS không in bill."
+          }
+        ],
+        "tickets": 0,
+        "errors": [],
+        "snapshots": [
+          {
+            "sent": 1,
+            "inputs": 1,
+            "tickets": 0
+          },
+          {
+            "sent": 2,
+            "inputs": 1,
+            "tickets": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-unavailable-reference",
+      "passed": true,
+      "issues": [],
+      "last": "Anh/chị reply đúng tin nhắn gốc cần xem và tag Quỳnh Hương nhé. Em chưa tìm thấy tin gốc hợp lệ trong các tin đã nhận; không dùng tin gần nhất để đoán.",
+      "result": {
+        "sent": [
+          {
+            "msg": "Anh/chị reply đúng tin nhắn gốc cần xem và tag Quỳnh Hương nhé. Em chưa tìm thấy tin gốc hợp lệ trong các tin đã nhận; không dùng tin gần nhất để đoán."
+          }
+        ],
+        "inputs": [],
+        "tickets": 0,
+        "errors": [],
+        "snapshots": [
+          {
+            "sent": 1,
+            "inputs": 0,
+            "tickets": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-untrusted-role",
+      "passed": true,
+      "issues": [],
+      "last": "Em ghi nhận mã lỗi 02; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị.",
+      "result": {
+        "sent": [
+          {
+            "msg": "Em ghi nhận mã lỗi 02; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị."
+          },
+          {
+            "msg": "Em ghi nhận mã lỗi 02; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị."
+          }
+        ],
+        "inputs": [
+          {
+            "group": "G-A",
+            "user": "301",
+            "text": "Máy POS báo lỗi 02."
+          },
+          {
+            "group": "[\"qh-reply\",\"G-A\",\"401\",\"301\",\"1001\",\"11001\"]",
+            "user": "401",
+            "text": "máy POS báo lỗi 02"
+          }
+        ],
+        "tickets": 0,
+        "errors": [],
+        "snapshots": [
+          {
+            "sent": 1,
+            "inputs": 1,
+            "tickets": 0
+          },
+          {
+            "sent": 2,
+            "inputs": 2,
+            "tickets": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-followup",
+      "passed": true,
+      "issues": [],
+      "last": "Em đã dừng case này. Anh/chị reply tin nhắn gốc của case khác và tag em để xem tiếp nhé.",
+      "result": {
+        "sent": [
+          {
+            "msg": "Giấy không chạy hoặc bị kẹt: khi không có giao dịch đang xử lý, kiểm tra cuộn giấy và nắp theo hướng dẫn dòng máy. Không kéo mạnh hoặc tự tháo bộ phận in. Anh/chị đã kiểm tra giấy/nắp chưa?"
+          },
+          {
+            "msg": "Tóm tắt theo tin được reply: máy không in bill, giấy không chạy ra.\nVấn đề: in hóa đơn.\nGiả thuyết (chưa xác minh): Có thể liên quan mặt giấy nhiệt hoặc đường giấy; cần kiểm tra thực tế.\nHướng xử lý: Giấy không chạy hoặc bị kẹt: khi không có giao dịch đang xử lý, kiểm tra cuộn giấy và nắp theo hướng dẫn dòng máy. Không kéo mạnh hoặc tự tháo bộ phận in. Anh/chị đã kiểm tra giấy/nắp chưa?\nThông tin còn thiếu: bước đã kiểm tra và kết quả; tình trạng giao dịch nếu chưa rõ.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu."
+          },
+          {
+            "msg": "Khách đã thử bước nào và kết quả cụ thể ra sao ạ? Em giữ đúng case đang xem, chưa kết luận đã xử lý hoặc chuyển OPS."
+          },
+          {
+            "msg": "Em đã dừng case này. Anh/chị reply tin nhắn gốc của case khác và tag em để xem tiếp nhé."
+          }
+        ],
+        "inputs": [
+          {
+            "group": "G-A",
+            "user": "301",
+            "text": "Máy không in bill, giấy không chạy ra."
+          },
+          {
+            "group": "[\"qh-reply\",\"G-A\",\"111\",\"301\",\"1001\",\"11001\"]",
+            "user": "111",
+            "text": "máy không in bill, giấy không chạy ra"
+          }
+        ],
+        "tickets": 0,
+        "errors": [],
+        "snapshots": [
+          {
+            "sent": 1,
+            "inputs": 1,
+            "tickets": 0
+          },
+          {
+            "sent": 2,
+            "inputs": 2,
+            "tickets": 0
+          },
+          {
+            "sent": 3,
+            "inputs": 2,
+            "tickets": 0
+          },
+          {
+            "sent": 4,
+            "inputs": 2,
+            "tickets": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-case-switch",
+      "passed": true,
+      "issues": [],
+      "last": "Tóm tắt theo tin được reply: máy in bill ra giấy trắng.\nVấn đề: in hóa đơn.\nGiả thuyết (chưa xác minh): Có thể liên quan mặt giấy nhiệt hoặc đường giấy; cần kiểm tra thực tế.\nHướng xử lý: Giấy chạy nhưng trắng/mờ thường cần kiểm tra loại giấy nhiệt và chiều mặt in theo hướng dẫn đúng dòng máy. Anh/chị đã kiểm tra hai điểm này chưa? Nếu vừa thanh toán, thiếu chữ trên bill không xác định được kết quả giao dịch.\nThông tin còn thiếu: bước đã kiểm tra và kết quả; tình trạng giao dịch nếu chưa rõ.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu.",
+      "result": {
+        "sent": [
+          {
+            "msg": "Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal."
+          },
+          {
+            "msg": "Máy không in bill: kiểm tra giấy nhiệt đúng chiều và nắp máy đã đóng kín. Giấy không chạy ra hay chạy ra nhưng trắng ạ? Không thu tiền lại chỉ vì chưa in được hóa đơn."
+          },
+          {
+            "msg": "Tóm tắt theo tin được reply: máy POS mất kết nối mạng; máy dùng WiFi.\nVấn đề: kết nối mạng.\nGiả thuyết (chưa xác minh): Có thể do đường truyền hoặc kết nối của POS; cần phân biệt hai phía.\nHướng xử lý: Với Wi-Fi, kiểm tra điện thoại cùng mạng có truy cập được không để phân biệt lỗi mạng và lỗi POS. Không gửi mật khẩu Wi-Fi trong nhóm. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.\nThông tin còn thiếu: bước đã kiểm tra và kết quả; tình trạng giao dịch nếu chưa rõ.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu."
+          },
+          {
+            "msg": "Tóm tắt theo tin được reply: máy in bill ra giấy trắng.\nVấn đề: in hóa đơn.\nGiả thuyết (chưa xác minh): Có thể liên quan mặt giấy nhiệt hoặc đường giấy; cần kiểm tra thực tế.\nHướng xử lý: Giấy chạy nhưng trắng/mờ thường cần kiểm tra loại giấy nhiệt và chiều mặt in theo hướng dẫn đúng dòng máy. Anh/chị đã kiểm tra hai điểm này chưa? Nếu vừa thanh toán, thiếu chữ trên bill không xác định được kết quả giao dịch.\nThông tin còn thiếu: bước đã kiểm tra và kết quả; tình trạng giao dịch nếu chưa rõ.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu."
+          }
+        ],
+        "inputs": [
+          {
+            "group": "G-A",
+            "user": "301",
+            "text": "POS mất WiFi."
+          },
+          {
+            "group": "G-A",
+            "user": "302",
+            "text": "Bill in ra trắng."
+          },
+          {
+            "group": "[\"qh-reply\",\"G-A\",\"111\",\"301\",\"1001\",\"11001\"]",
+            "user": "111",
+            "text": "máy POS mất kết nối mạng; máy dùng WiFi"
+          },
+          {
+            "group": "[\"qh-reply\",\"G-A\",\"111\",\"302\",\"1002\",\"11002\"]",
+            "user": "111",
+            "text": "máy in bill ra giấy trắng"
+          }
+        ],
+        "tickets": 0,
+        "errors": [],
+        "snapshots": [
+          {
+            "sent": 1,
+            "inputs": 1,
+            "tickets": 0
+          },
+          {
+            "sent": 2,
+            "inputs": 2,
+            "tickets": 0
+          },
+          {
+            "sent": 3,
+            "inputs": 3,
+            "tickets": 0
+          },
+          {
+            "sent": 4,
+            "inputs": 4,
+            "tickets": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-no-mention",
+      "passed": true,
+      "issues": [],
+      "last": "Máy POS bị treo: trước hết cần biết có giao dịch đang xử lý không để tránh thanh toán trùng. Máy đứng ở màn hình chính hay đang thanh toán ạ?",
+      "result": {
+        "sent": [
+          {
+            "msg": "Máy POS bị treo: trước hết cần biết có giao dịch đang xử lý không để tránh thanh toán trùng. Máy đứng ở màn hình chính hay đang thanh toán ạ?"
+          }
+        ],
+        "inputs": [
+          {
+            "group": "G-A",
+            "user": "301",
+            "text": "Máy bị đơ."
+          }
+        ],
+        "tickets": 0,
+        "errors": [],
+        "snapshots": [
+          {
+            "sent": 1,
+            "inputs": 1,
+            "tickets": 0
+          },
+          {
+            "sent": 1,
+            "inputs": 1,
+            "tickets": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-duplicate-reply",
+      "passed": true,
+      "issues": [],
+      "last": "Tóm tắt theo tin được reply: máy POS báo lỗi 06.\nVấn đề: mã lỗi cần đúng phạm vi.\nGiả thuyết (chưa xác minh): Ý nghĩa mã phụ thuộc model và đơn vị xử lý; chưa có nguồn xác minh phù hợp.\nHướng xử lý: Em ghi nhận mã lỗi 06; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị.\nThông tin còn thiếu: chỉ bổ sung model/đơn vị xử lý nếu chưa có; cần tài liệu đúng cấu hình được xác minh.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu.",
+      "result": {
+        "sent": [
+          {
+            "msg": "Em ghi nhận mã lỗi 06; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị."
+          },
+          {
+            "msg": "Tóm tắt theo tin được reply: máy POS báo lỗi 06.\nVấn đề: mã lỗi cần đúng phạm vi.\nGiả thuyết (chưa xác minh): Ý nghĩa mã phụ thuộc model và đơn vị xử lý; chưa có nguồn xác minh phù hợp.\nHướng xử lý: Em ghi nhận mã lỗi 06; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị.\nThông tin còn thiếu: chỉ bổ sung model/đơn vị xử lý nếu chưa có; cần tài liệu đúng cấu hình được xác minh.\nChỉ cân nhắc CS/OPS khi rủi ro hoặc lỗi còn tồn tại sau kiểm tra an toàn và khách đồng ý; phân tích này chưa chuyển yêu cầu."
+          }
+        ],
+        "inputs": [
+          {
+            "group": "G-A",
+            "user": "301",
+            "text": "Máy lỗi E06."
+          },
+          {
+            "group": "[\"qh-reply\",\"G-A\",\"111\",\"301\",\"1001\",\"11001\"]",
+            "user": "111",
+            "text": "máy POS báo lỗi 06"
+          }
+        ],
+        "tickets": 0,
+        "errors": [],
+        "snapshots": [
+          {
+            "sent": 1,
+            "inputs": 1,
+            "tickets": 0
+          },
+          {
+            "sent": 2,
+            "inputs": 2,
+            "tickets": 0
+          },
+          {
+            "sent": 2,
+            "inputs": 2,
+            "tickets": 0
+          }
+        ]
+      }
+    }
+  ]
+}

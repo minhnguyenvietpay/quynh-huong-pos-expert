@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "v132-cycle3-scope-review.0.0",
+  "engine": "v13",
+  "syntheticOnly": true,
+  "mode": "v13",
+  "contractReview": "separate_development_agents_only",
+  "reviewStatus": "ai_authored_unreviewed",
+  "independentQualityGate": "blocked_no_independent_review",
+  "total": 1,
+  "passed": 0,
+  "failed": 1,
+  "rootCauses": {
+    "stale-code-context": {
+      "total": 1,
+      "passed": 0,
+      "failed": 1
+    }
+  },
+  "failures": [
+    {
+      "id": "c3-review-code-network-resurrection",
+      "fixtureId": "c3-review-code-network-resurrection",
+      "category": "review-discovered",
+      "rootCause": "stale-code-context",
+      "issues": [
+        "required_response_0",
+        "forbidden_response_0"
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "id": "c3-review-code-network-resurrection",
+      "fixtureId": "c3-review-code-network-resurrection",
+      "category": "review-discovered",
+      "rootCause": "stale-code-context",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": false,
+      "issues": [
+        "required_response_0",
+        "forbidden_response_0"
+      ],
+      "turns": [
+        {
+          "input": "máy lỗi 03",
+          "actual": "Em ghi nhận mã lỗi 03; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "network error",
+          "actual": "Máy mất mạng đang dùng Wi-Fi hay SIM/4G ạ? Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "network-mode",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "vẫn lỗi",
+          "actual": "Em ghi nhận mã lỗi 03; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "network-mode",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    }
+  ]
+}
