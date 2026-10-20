@@ -21,3 +21,15 @@ Rủi ro thanh toán đứng trước tra mã: đã trừ tiền/chưa rõ kết
 ## Bằng chứng kiểm thử
 
 `tests/v132-knowledge.test.cjs` tách (1) kiểm tra corpus và coverage mã đã xác minh thật, (2) fixture giả lập có metadata bằng chứng để kiểm tra cơ chế, không phải nguồn tri thức xuất bản hay chứng nhận nghiệp vụ ngân hàng. Coverage mã thật có mẫu số 0: vacuous, không được ghi là 100% sử dụng tri thức. Các fixture scoped không được ghi vào knowledge.json. Đánh giá độ đúng nghiệp vụ độc lập vẫn bị chặn do chưa có ground truth OPS bên ngoài.
+
+## Chu kỳ 3: phản biện độc lập trước sửa
+
+Sau checkpoint C2 `2bd2f53`, bổ sung ba kiểm thử hành vi trước khi Code Engineer sửa nhánh phạm vi/rủi ro. Baseline: 8 đạt, 3 thất bại. Các câu đều giả lập, không lấy tin khách hàng.
+
+1. Phủ định hoặc nhiều khả năng về model/ngân hàng vẫn được parser lấy lựa chọn đầu. Ví dụ `Máy báo lỗi 03, không phải PAX A920, ngân hàng SyntheticBank` vẫn trả hướng dẫn fixture chỉ áp dụng PAX A920. Tiêu chí: không chọn bản ghi scoped khi phạm vi bị phủ định hoặc chưa phân định; không suy ra lựa chọn từ thứ tự câu.
+2. Sau khi ghi nhớ model/ngân hàng, câu `Không phải PAX A920` hoặc `Không phải ngân hàng SyntheticBank` vẫn giữ bản ghi đã chọn. Tiêu chí: vô hiệu hóa phạm vi bị bác bỏ và selectedRecordId, hỏi lại tối thiểu nếu cần; không lấy phạm vi cũ làm bằng chứng.
+3. Giao dịch trước chưa xác minh, sau đó hỏi mã có fixture đã duyệt hướng dẫn khởi động lại: runtime trả `Hãy khởi động lại máy theo tài liệu thiết bị` rồi nối cảnh báo `chưa ... khởi động lại`. Tiêu chí: phải chặn hướng dẫn mâu thuẫn ngay từ đầu; nối cảnh báo không khắc phục được lời khuyên nguy hiểm. Kiểm thử truyền scope thực do parser thu nhận, không preset scope trong injection.
+
+Các fixture chứng minh cơ chế ưu tiên an toàn/phạm vi; không chứng minh tri thức thật đã được duyệt. Corpus vẫn 0 bản mã đã xác minh.
+
+Retest C3: `node --test tests/v132-knowledge.test.cjs` đạt 11/11; cùng byte kiểm thử C3 SHA-256 `0ec337df02b6ca405c7f58076968999aa4236c845a8ce45c9de903c07029e854`, không đổi tiêu chí sau sửa. Ba nhóm mới từ thất bại chuyển sang đạt. Parser dùng giá trị null để bác bỏ/không phân định phạm vi thay vì giữ phạm vi cũ; rủi ro giao dịch chặn trả hướng dẫn mã trước khi truy xuất. Chưa đánh giá mọi cách phủ định tiếng Việt: parser có tập mẫu/model hữu hạn và tên đơn vị xử lý một token, nên tên thương mại nhiều từ hoặc cách nói chưa hỗ trợ có thể cần hỏi lại. Đây là giới hạn độ hiểu, không phải lý do suy diễn ý nghĩa mã hoặc nâng trạng thái tri thức.

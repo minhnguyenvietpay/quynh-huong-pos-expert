@@ -10,3 +10,9 @@ for(const cycle of manifest.cycles){
   const report=evaluate({root,datasetPath:path.join(root,cycle.dataset),engine});assert.equal(report.failed,0,JSON.stringify(report.failures));assert.equal(report.total,cycle.fixtures);assert.equal(report.independentQualityGate,'blocked_no_independent_review');
  });
 }
+
+test('V13.2 additional manual-review assertion files retain independent contracts',()=>{
+ const probes=JSON.parse(fs.readFileSync(path.join(root,'docs/v132/additional-review-probes.json')));
+ for(const probe of probes.probes)assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(root,probe.file))).digest('hex'),probe.sha256,probe.file);
+ assert.equal(probes.externalGroundTruthGate,'blocked');
+});

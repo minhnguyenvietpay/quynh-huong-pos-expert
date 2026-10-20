@@ -470,13 +470,11 @@
         },
         {
           "input": "Có nên quẹt lại cho nhanh không?",
-          "actual": "Chưa quẹt lại hoặc thanh toán lại khi kết quả trước chưa xác minh, kể cả để lấy bill. Đối chiếu lịch sử POS/Portal đúng giao dịch; dùng chức năng in lại theo quyền được cấp nếu có, không tạo giao dịch mới.",
+          "actual": "Chưa quẹt hoặc thanh toán lại, khởi động lại hay tắt máy khi kết quả giao dịch còn chưa xác minh. Kiểm tra lịch sử POS/Portal đúng giao dịch và chưa yêu cầu khách thanh toán lại; em không tự xác nhận trạng thái tiền.",
           "context": {
             "topic": "debit",
             "currentQuestion": "payment-history",
-            "previousQuestions": [
-              "payment-history"
-            ],
+            "previousQuestions": [],
             "answers": [],
             "attempted": [
               "history-check"
@@ -492,7 +490,7 @@
             "declined": false,
             "refusal": "none",
             "decision": "diagnose",
-            "lastQuestionContext": "payment-history",
+            "lastQuestionContext": null,
             "interruptions": []
           },
           "session": true,

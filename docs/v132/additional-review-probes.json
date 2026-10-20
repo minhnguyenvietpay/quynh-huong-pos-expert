@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "externalGroundTruthGate": "blocked",
+  "warning": "Node test counts are assertion groups, not independently verified merchant-scenario accuracy or distinct defects.",
+  "probes": [
+    {
+      "file": "tests/v132-reply-review.test.cjs",
+      "sha256": "42d7eeafb8f047e821546b53041cb8a3d9eb61d074337c57257f661aa1ab3be9",
+      "provenance": "cycle2 manual response review",
+      "timing": "Written after initial implementation review and before its corrective fix; not blind preimplementation corpus",
+      "beforePassed": 0,
+      "totalTests": 2
+    },
+    {
+      "file": "tests/v132-adversarial-review.test.cjs",
+      "sha256": "f676442aa3fb07796257dfd05e3fbe09af4e67483615e9cdc5576987aed9fac7",
+      "provenance": "cycle3 manual response review",
+      "timing": "Written after initial implementation review and before its corrective fix; not blind preimplementation corpus",
+      "beforePassed": 0,
+      "totalTests": 2
+    },
+    {
+      "file": "tests/v132-reply-multicode.test.cjs",
+      "sha256": "e1cc9ffce73512a99c1ce7a3e6d85b51e14e6d1aa5b81e2de789c5ce0c76bf12",
+      "provenance": "cycle3 Director counterexample, independent QA assertion",
+      "timing": "Written after initial implementation review and before its corrective fix; not blind preimplementation corpus",
+      "beforePassed": 0,
+      "totalTests": 1
+    },
+    {
+      "file": "tests/v132-code-date-review.test.cjs",
+      "sha256": "04a4007e238bb2f04419635366f327e66bc31f6b5cc1191408967d37bf792087",
+      "provenance": "cycle3 Director date counterexample, independent QA assertion",
+      "timing": "Written after initial implementation review and before its corrective fix; not blind preimplementation corpus",
+      "beforePassed": 0,
+      "totalTests": 2
+    },
+    {
+      "file": "tests/v132-clarification-review.test.cjs",
+      "sha256": "73cda923bcbf87c0f794dda3ab143c4297535e8a01358cc2fa6514972fa15f2f",
+      "provenance": "cycle3 Director vague-request counterexample, independent QA assertion",
+      "timing": "Written after initial implementation review and before its corrective fix; not blind preimplementation corpus",
+      "beforePassed": 0,
+      "totalTests": 1
+    }
+  ]
+}

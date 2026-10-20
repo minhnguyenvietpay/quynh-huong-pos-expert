@@ -48,3 +48,31 @@ test('actual dialogue passes real parsed model/acquirer to code retrieval across
  const r=runDialogue([fixture()],['Máy báo lỗi 03','Máy PAX A920','Ngân hàng SyntheticBank'],{actualScope:true});
  assert.match(r.actual[0],/03/u);assert.match(r.actual[1],/ngân hàng|đơn vị/iu);assert.match(r.actual[2],/Kiểm tra màn hình chi tiết theo tài liệu thiết bị/u);assert.equal(r.context?.selectedRecordId,'synthetic-code-03');
 });
+
+// C3 independent probes frozen before scope/payment hardening. Real parser scope is forwarded unchanged.
+test('C3 negated and ambiguous model or acquirer cannot unlock scoped verified answer',()=>{
+ for(const text of [
+  'Máy báo lỗi 03, không phải PAX A920, ngân hàng SyntheticBank',
+  'Máy báo lỗi 03, PAX A920 hoặc A930, ngân hàng SyntheticBank',
+  'Máy báo lỗi 03, PAX A920, không phải ngân hàng SyntheticBank',
+  'Máy báo lỗi 03, PAX A920, ngân hàng SyntheticBank hoặc ngân hàng OtherBank'
+ ]){
+  const r=runDialogue([fixture()],[text],{actualScope:true});
+  assert.doesNotMatch(r.actual[0],/Kiểm tra màn hình chi tiết theo tài liệu thiết bị/u);
+  assert.notEqual(r.context?.selectedRecordId,'synthetic-code-03');
+ }
+});
+test('C3 explicit scope denial invalidates previously remembered device and acquirer',()=>{
+ for(const denial of ['Không phải PAX A920','Không phải ngân hàng SyntheticBank']){
+  const r=runDialogue([fixture()],['Máy báo lỗi 03, PAX A920, ngân hàng SyntheticBank',denial],{actualScope:true});
+  assert.equal(r.context?.selectedRecordId,null);
+  assert.doesNotMatch(r.actual.at(-1),/Kiểm tra màn hình chi tiết theo tài liệu thiết bị/u);
+ }
+});
+test('C3 pending payment suppresses scoped reviewed restart advice instead of appending contrary warning',()=>{
+ const answer='Hãy khởi động lại máy theo tài liệu thiết bị.';
+ const r=runDialogue([fixture({answer})],['Khách đã bị trừ tiền nhưng POS chưa rõ kết quả','POS báo lỗi 03, PAX A920, ngân hàng SyntheticBank'],{actualScope:true});
+ assert.match(r.actual.at(-1),/chưa xác minh|xác minh|đối chiếu/iu);
+ assert.doesNotMatch(r.actual.at(-1),/Hãy khởi động lại máy/iu);
+ assert.notEqual(r.context?.selectedRecordId,'synthetic-code-03');
+});

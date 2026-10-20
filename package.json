@@ -18,7 +18,8 @@
     "agents:roles": "node -e \"for(const r of require('./agents/roles.json'))console.log(r.id+': '+r.sandbox)\"",
     "qa:v11": "node scripts/v11-evaluate.cjs --fail-on-regression",
     "qa:v12": "node scripts/run-tests.cjs v12",
-    "qa:v13": "node scripts/run-tests.cjs v13"
+    "qa:v13": "node scripts/run-tests.cjs v13",
+    "qa:v132": "node scripts/run-tests.cjs v132"
   },
   "dependencies": {
     "zca-js": "*"

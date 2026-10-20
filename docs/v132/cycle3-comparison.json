@@ -1,0 +1,121 @@
+{
+  "baselineCommit": "2bd2f53",
+  "syntheticOnly": true,
+  "externalGroundTruthGate": "blocked",
+  "beforePassed": 4,
+  "afterPassed": 10,
+  "total": 10,
+  "improved": [
+    "c3-frustrated-code",
+    "c3-short-code",
+    "c3-code-vs-reference",
+    "c3-two-codes",
+    "c3-unsupported-status-demand",
+    "c3-escalation-question-not-consent"
+  ],
+  "regressed": [],
+  "rows": [
+    {
+      "id": "c3-frustrated-code",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Để chuyển hỗ trợ cần đồng ý rõ ràng; hiện em chưa thu thập thông tin cửa hàng. Anh/chị đồng ý để em chuẩn bị yêu cầu CS/OPS kiểm tra không ạ?",
+      "after": "Em ghi nhận mã lỗi 03; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Em đã ghi nhận dòng máy và đơn vị xử lý; không cần cung cấp lại. Cần tài liệu đúng cấu hình được người phụ trách xác minh trước khi hướng dẫn theo mã."
+    },
+    {
+      "id": "c3-short-code",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+      "after": "Em ghi nhận mã lỗi 03; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Em đã ghi nhận dòng máy và đơn vị xử lý; không cần cung cấp lại. Cần tài liệu đúng cấu hình được người phụ trách xác minh trước khi hướng dẫn theo mã."
+    },
+    {
+      "id": "c3-code-typos",
+      "beforePassed": true,
+      "afterPassed": true,
+      "before": "Máy mất mạng đang dùng Wi-Fi hay SIM/4G ạ? Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+      "after": "Máy mất mạng đang dùng Wi-Fi hay SIM/4G ạ? Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal."
+    },
+    {
+      "id": "c3-conflicting-payment",
+      "beforePassed": true,
+      "afterPassed": true,
+      "before": "Chưa khởi động lại hoặc tắt máy khi kết quả giao dịch còn chưa xác minh. Kiểm tra lịch sử POS/Portal đúng giao dịch và chưa yêu cầu khách thanh toán lại; em không tự xác nhận trạng thái tiền.",
+      "after": "Chưa quẹt hoặc thanh toán lại, khởi động lại hay tắt máy khi kết quả giao dịch còn chưa xác minh. Kiểm tra lịch sử POS/Portal đúng giao dịch và chưa yêu cầu khách thanh toán lại; em không tự xác nhận trạng thái tiền."
+    },
+    {
+      "id": "c3-topic-with-risk",
+      "beforePassed": true,
+      "afterPassed": true,
+      "before": "Bill có chữ mờ/nhạt hoặc giấy trắng vẫn là lỗi in, chưa coi đã xử lý xong. Kiểm tra đúng giấy nhiệt và mặt in theo hướng dẫn dòng máy; anh/chị đã thử bước này chưa?",
+      "after": "Chưa quẹt hoặc thanh toán lại, khởi động lại hay tắt máy khi kết quả giao dịch còn chưa xác minh. Kiểm tra lịch sử POS/Portal đúng giao dịch và chưa yêu cầu khách thanh toán lại; em không tự xác nhận trạng thái tiền."
+    },
+    {
+      "id": "c3-repeated-failed-network",
+      "beforePassed": true,
+      "afterPassed": true,
+      "before": "Điện thoại cùng mạng có internet nhưng POS chưa kết nối: nếu được phép, thử hotspot hoặc mạng khác để khoanh vùng lỗi POS. Không chia sẻ mật khẩu trong nhóm và không thay cấu hình nhà mạng.",
+      "after": "Em đã ghi nhận thông tin Wi-Fi và bước mạng trước đó; không hỏi lại hay yêu cầu thử lại cùng bước. Nếu lỗi còn tồn tại thì cần kiểm tra qua kênh hỗ trợ được phép. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?"
+    },
+    {
+      "id": "c3-code-vs-reference",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+      "after": "Em ghi nhận mã lỗi 02; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị."
+    },
+    {
+      "id": "c3-two-codes",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS không ạ? Trả lời “có” hoặc “không” nhé.",
+      "after": "Em ghi nhận các mã 02 và 06 luân phiên, chưa đủ cơ sở chọn một mã hay kết luận ý nghĩa. Hiện màn hình đang hiển thị mã nào và ở bước nào ạ? Không tạo giao dịch mới để thử mã."
+    },
+    {
+      "id": "c3-unsupported-status-demand",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Em chưa thể xử lý chắc chắn trường hợp này bằng hướng dẫn hiện có. Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS của Vietpay không ạ? Trả lời “có” hoặc “không”.",
+      "after": "Em không thể xác nhận kết quả giao dịch hay tiền về từ tin nhắn hoặc mã lỗi. Cần kiểm tra lịch sử POS/Portal và đối chiếu qua kênh được phép; em không tự truy cập dữ liệu ngân hàng."
+    },
+    {
+      "id": "c3-escalation-question-not-consent",
+      "beforePassed": false,
+      "afterPassed": true,
+      "before": "Anh/chị có muốn em chuẩn bị yêu cầu để chuyển CS/OPS không ạ? Trả lời “có” hoặc “không” nhé.",
+      "after": "Em chưa chuyển OPS và không hỏi lại đồng ý. Anh/chị có thể tự kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền; chưa thanh toán lại khi kết quả chưa rõ."
+    }
+  ],
+  "separateScopeReview": {
+    "beforePassed": 0,
+    "afterPassed": 1,
+    "total": 1
+  },
+  "listenerAdversarial": {
+    "beforePassed": 6,
+    "afterPassed": 6,
+    "total": 6
+  },
+  "additionalReviewTests": {
+    "manualResponse": {
+      "beforePassed": 0,
+      "afterPassed": 2,
+      "total": 2
+    },
+    "quotedMulticode": {
+      "beforePassed": 0,
+      "afterPassed": 1,
+      "total": 1
+    },
+    "dateBoundary": {
+      "beforePassed": 0,
+      "afterPassed": 2,
+      "total": 2
+    },
+    "vagueClarification": {
+      "beforePassed": 0,
+      "afterPassed": 1,
+      "total": 1
+    }
+  }
+}

@@ -1,0 +1,730 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "v132-cycle3.0.0",
+  "engine": "v13",
+  "syntheticOnly": true,
+  "mode": "v13",
+  "contractReview": "separate_development_agents_only",
+  "reviewStatus": "ai_authored_unreviewed",
+  "independentQualityGate": "blocked_no_independent_review",
+  "total": 10,
+  "passed": 10,
+  "failed": 0,
+  "rootCauses": {
+    "frustrated-code": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "short-code": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "code-typos": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "conflicting-payment": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "topic-with-risk": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "repeated-failed-network": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "code-vs-reference": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "two-codes": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "unsupported-status-demand": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "escalation-question-not-consent": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    }
+  },
+  "failures": [],
+  "rows": [
+    {
+      "id": "c3-frustrated-code",
+      "fixtureId": "c3-frustrated-code",
+      "category": "independent-adversarial",
+      "rootCause": "frustrated-code",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "máy báo 03 đó, sao cứ hỏi nguồn hay giấy hoài vậy em?",
+          "actual": "Em ghi nhận mã lỗi 03; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "là Model-A bên Acquirer-A, chị vừa nói rồi",
+          "actual": "Em ghi nhận mã lỗi 03; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Em đã ghi nhận dòng máy và đơn vị xử lý; không cần cung cấp lại. Cần tài liệu đúng cấu hình được người phụ trách xác minh trước khi hướng dẫn theo mã.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "03 vẫn y vậy",
+          "actual": "Em ghi nhận mã lỗi 03; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Em đã ghi nhận dòng máy và đơn vị xử lý; không cần cung cấp lại. Cần tài liệu đúng cấu hình được người phụ trách xác minh trước khi hướng dẫn theo mã.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "c3-short-code",
+      "fixtureId": "c3-short-code",
+      "category": "independent-adversarial",
+      "rootCause": "short-code",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "E03",
+          "actual": "Em ghi nhận mã lỗi 03; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Model-A",
+          "actual": "Em ghi nhận mã lỗi 03; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Em đã ghi nhận dòng máy. Máy đang dùng ứng dụng của ngân hàng/đơn vị xử lý nào ạ?",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Acquirer-A",
+          "actual": "Em ghi nhận mã lỗi 03; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Em đã ghi nhận dòng máy và đơn vị xử lý; không cần cung cấp lại. Cần tài liệu đúng cấu hình được người phụ trách xác minh trước khi hướng dẫn theo mã.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "03",
+          "actual": "Em ghi nhận mã lỗi 03; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Em đã ghi nhận dòng máy và đơn vị xử lý; không cần cung cấp lại. Cần tài liệu đúng cấu hình được người phụ trách xác minh trước khi hướng dẫn theo mã.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "c3-code-typos",
+      "fixtureId": "c3-code-typos",
+      "category": "independent-adversarial",
+      "rootCause": "code-typos",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "may pos bao loi 06",
+          "actual": "Em ghi nhận mã lỗi 06; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "m ko bit model, tren may ghi network error nua",
+          "actual": "Máy mất mạng đang dùng Wi-Fi hay SIM/4G ạ? Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "network-mode",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "c3-conflicting-payment",
+      "fixtureId": "c3-conflicting-payment",
+      "category": "independent-adversarial",
+      "rootCause": "conflicting-payment",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Máy báo network error, không có ai thanh toán",
+          "actual": "Máy mất mạng đang dùng Wi-Fi hay SIM/4G ạ? Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "network-mode",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "À không, có một khách đang quẹt, khách vừa báo trừ tiền rồi",
+          "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa khởi động lại máy khi giao dịch còn chưa xác minh. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "payment-history",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {
+              "payment": "unverified"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": [
+              {
+                "topic": "network",
+                "currentQuestion": "network-mode",
+                "attempted": [],
+                "failed": [],
+                "risk": "unknown",
+                "knownAnswers": {}
+              }
+            ]
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "khởi động lại được chưa?",
+          "actual": "Chưa quẹt hoặc thanh toán lại, khởi động lại hay tắt máy khi kết quả giao dịch còn chưa xác minh. Kiểm tra lịch sử POS/Portal đúng giao dịch và chưa yêu cầu khách thanh toán lại; em không tự xác nhận trạng thái tiền.",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "payment-history",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {
+              "payment": "unverified"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": [
+              {
+                "topic": "network",
+                "currentQuestion": "network-mode",
+                "attempted": [],
+                "failed": [],
+                "risk": "unknown",
+                "knownAnswers": {}
+              }
+            ]
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "c3-topic-with-risk",
+      "fixtureId": "c3-topic-with-risk",
+      "category": "independent-adversarial",
+      "rootCause": "topic-with-risk",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Khách bị trừ tiền mà POS thất bại",
+          "actual": "Thông báo trừ tiền hoặc chuyển khoản chưa đủ để xác nhận kết quả giao dịch. Chưa khởi động lại máy khi giao dịch còn chưa xác minh. Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal. Kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền. Giao dịch có hiển thị không ạ?",
+          "context": {
+            "topic": "debit",
+            "currentQuestion": "payment-history",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "history-check"
+            ],
+            "failed": [],
+            "risk": "high",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {
+              "payment": "unverified"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "thôi cho hỏi máy in giấy trắng",
+          "actual": "Giấy chạy nhưng trắng/mờ thường cần kiểm tra loại giấy nhiệt và chiều mặt in theo hướng dẫn đúng dòng máy. Anh/chị đã kiểm tra hai điểm này chưa? Nếu vừa thanh toán, thiếu chữ trên bill không xác định được kết quả giao dịch. Giao dịch trước vẫn chưa xác minh; kiểm tra POS/Portal và chưa thu tiền lại.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "printer-type",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {
+              "payment": "unverified",
+              "paper": "blank"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": [
+              {
+                "topic": "debit",
+                "currentQuestion": "payment-history",
+                "attempted": [
+                  "history-check"
+                ],
+                "failed": [],
+                "risk": "high",
+                "knownAnswers": {
+                  "payment": "unverified"
+                }
+              }
+            ]
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "xong rồi, quẹt lại luôn nhé?",
+          "actual": "Chưa quẹt hoặc thanh toán lại, khởi động lại hay tắt máy khi kết quả giao dịch còn chưa xác minh. Kiểm tra lịch sử POS/Portal đúng giao dịch và chưa yêu cầu khách thanh toán lại; em không tự xác nhận trạng thái tiền.",
+          "context": {
+            "topic": "printer",
+            "currentQuestion": "printer-type",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [
+              "paper-orientation"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": true,
+            "consent": false,
+            "knownAnswers": {
+              "payment": "unverified",
+              "paper": "blank"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": [
+              {
+                "topic": "debit",
+                "currentQuestion": "payment-history",
+                "attempted": [
+                  "history-check"
+                ],
+                "failed": [],
+                "risk": "high",
+                "knownAnswers": {
+                  "payment": "unverified"
+                }
+              }
+            ]
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "c3-repeated-failed-network",
+      "fixtureId": "c3-repeated-failed-network",
+      "category": "independent-adversarial",
+      "rootCause": "repeated-failed-network",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "network error",
+          "actual": "Máy mất mạng đang dùng Wi-Fi hay SIM/4G ạ? Chưa yêu cầu khách thanh toán lại khi chưa xác minh kết quả trên POS/Portal.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "network-mode",
+            "previousQuestions": [],
+            "answers": [],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {},
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": null,
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "WiFi, không có giao dịch đang chạy",
+          "actual": "Mình đang kiểm tra Wi-Fi: điện thoại cùng mạng có internet hay cũng mất kết nối ạ? Câu trả lời này giúp phân biệt đường truyền chung với POS.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "wifi-other",
+            "previousQuestions": [
+              "network-mode"
+            ],
+            "answers": [
+              "wifi"
+            ],
+            "attempted": [],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "connection": "wifi"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "network-mode",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "đã kiểm tra rồi, điện thoại vẫn vào mạng bình thường",
+          "actual": "Điện thoại cùng mạng có internet nhưng POS chưa kết nối: nếu được phép, thử hotspot hoặc mạng khác để khoanh vùng lỗi POS. Không chia sẻ mật khẩu trong nhóm và không thay cấu hình nhà mạng.",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "network-localize",
+            "previousQuestions": [
+              "network-mode",
+              "wifi-other"
+            ],
+            "answers": [
+              "wifi"
+            ],
+            "attempted": [
+              "wifi-check"
+            ],
+            "failed": [],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "connection": "wifi",
+              "phoneWifi": "working"
+            },
+            "tried": [],
+            "declined": false,
+            "refusal": "none",
+            "decision": "diagnose",
+            "lastQuestionContext": "wifi-other",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "đã thử rồi vẫn lỗi",
+          "actual": "Em ghi nhận anh/chị đã thử nhưng kết nối vẫn lỗi; không yêu cầu lặp lại bước mạng vừa hướng dẫn. Cần ghi rõ bước đã thử và thông báo lỗi hiện tại để người hỗ trợ kiểm tra đúng phạm vi. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "network-mode",
+              "wifi-other",
+              "network-localize"
+            ],
+            "answers": [
+              "wifi",
+              "failed"
+            ],
+            "attempted": [
+              "wifi-check"
+            ],
+            "failed": [
+              "wifi-check"
+            ],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "connection": "wifi",
+              "phoneWifi": "working"
+            },
+            "tried": [
+              "wifi-check"
+            ],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "network-localize",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "đừng hỏi lại WiFi nữa",
+          "actual": "Em đã ghi nhận thông tin Wi-Fi và bước mạng trước đó; không hỏi lại hay yêu cầu thử lại cùng bước. Nếu lỗi còn tồn tại thì cần kiểm tra qua kênh hỗ trợ được phép. Anh/chị đồng ý để em chuẩn bị yêu cầu chuyển CS/OPS kiểm tra không ạ?",
+          "context": {
+            "topic": "network",
+            "currentQuestion": "offer-consent",
+            "previousQuestions": [
+              "network-mode",
+              "wifi-other",
+              "network-localize",
+              "offer-consent"
+            ],
+            "answers": [
+              "wifi",
+              "failed",
+              "wifi"
+            ],
+            "attempted": [
+              "wifi-check"
+            ],
+            "failed": [
+              "wifi-check"
+            ],
+            "risk": "unknown",
+            "pendingVerification": false,
+            "consent": false,
+            "knownAnswers": {
+              "connection": "wifi",
+              "phoneWifi": "working"
+            },
+            "tried": [
+              "wifi-check"
+            ],
+            "declined": false,
+            "refusal": "none",
+            "decision": "offer-consent",
+            "lastQuestionContext": "offer-consent",
+            "interruptions": []
+          },
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "c3-code-vs-reference",
+      "fixtureId": "c3-code-vs-reference",
+      "category": "independent-adversarial",
+      "rootCause": "code-vs-reference",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Mã giao dịch giả lập là 0306, màn hình báo E02",
+          "actual": "Em ghi nhận mã lỗi 02; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "đừng lấy 0306 làm lỗi nhé",
+          "actual": "Em ghi nhận mã lỗi 02; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "c3-two-codes",
+      "fixtureId": "c3-two-codes",
+      "category": "independent-adversarial",
+      "rootCause": "two-codes",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "Máy lúc hiện 02 lúc hiện 06, em tra mã nào?",
+          "actual": "Em ghi nhận các mã 02 và 06 luân phiên, chưa đủ cơ sở chọn một mã hay kết luận ý nghĩa. Hiện màn hình đang hiển thị mã nào và ở bước nào ạ? Không tạo giao dịch mới để thử mã.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "cùng một máy Model-A, chưa có khách thanh toán",
+          "actual": "Em ghi nhận các mã 02 và 06 luân phiên, chưa đủ cơ sở chọn một mã hay kết luận ý nghĩa. Hiện màn hình đang hiển thị mã nào và ở bước nào ạ? Không tạo giao dịch mới để thử mã.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "c3-unsupported-status-demand",
+      "fixtureId": "c3-unsupported-status-demand",
+      "category": "independent-adversarial",
+      "rootCause": "unsupported-status-demand",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "POS lỗi 03, em xác nhận giao dịch thành công giúp anh đi",
+          "actual": "Em ghi nhận mã lỗi 03; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "Anh cần em nói chắc là tiền đã về rồi",
+          "actual": "Em không thể xác nhận kết quả giao dịch hay tiền về từ tin nhắn hoặc mã lỗi. Cần kiểm tra lịch sử POS/Portal và đối chiếu qua kênh được phép; em không tự truy cập dữ liệu ngân hàng.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    },
+    {
+      "id": "c3-escalation-question-not-consent",
+      "fixtureId": "c3-escalation-question-not-consent",
+      "category": "independent-adversarial",
+      "rootCause": "escalation-question-not-consent",
+      "reviewStatus": "ai_authored_unreviewed",
+      "passed": true,
+      "issues": [],
+      "turns": [
+        {
+          "input": "máy lỗi 06",
+          "actual": "Em ghi nhận mã lỗi 06; chưa có hướng dẫn đã xác minh phù hợp để kết luận ý nghĩa mã này. Máy đang dùng dòng/model nào ạ? Không cần gửi mã thiết bị.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "OPS là gì, có cần chuyển không?",
+          "actual": "CS/OPS là bộ phận hỗ trợ xử lý và xác minh qua kênh được phép. Chỉ cân nhắc chuyển khi còn lỗi hoặc rủi ro sau kiểm tra an toàn, và khách đồng ý rõ ràng; câu hỏi này chưa phải đồng ý, em chưa chuyển yêu cầu.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        },
+        {
+          "input": "chị chưa đồng ý chuyển đâu",
+          "actual": "Em chưa chuyển OPS và không hỏi lại đồng ý. Anh/chị có thể tự kiểm tra lịch sử POS/Portal đúng thời điểm và số tiền; chưa thanh toán lại khi kết quả chưa rõ.",
+          "context": null,
+          "session": true,
+          "pending": false,
+          "escalation": false
+        }
+      ]
+    }
+  ]
+}

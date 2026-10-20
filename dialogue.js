@@ -123,7 +123,7 @@ function processMessage(chatId,userId,input,options={}){
  if(/mid|tid|so the/.test(q)&&/can gui|co can|phai gui|can cung cap|can doc/.test(q))return 'MID/TID và số thẻ không cần chia sẻ trong nhóm; CS/OPS tự tra cứu qua kênh được phép. Chỉ tên cửa hàng/chi nhánh tối thiểu khi anh/chị đã đồng ý chuyển hỗ trợ.';
  if(/^\/ticket\b/i.test(raw))return createTicket(raw.slice(7));
  if(expertEnabled()&&/(rut lai|thu hoi|huy.*(?:dong y|yeu cau.*chuyen)|(?:khong|dung|thoi khoi|ngung).*gui)/.test(q)){escalation.delete(k);pendingHandover.delete(k);try{v12Module?.revokeConsent(chatId,userId);}catch{v11.clear(chatId,userId);}return 'Em đã dừng và thu hồi đồng ý; chưa chuyển yêu cầu mới và không tiếp tục thu thập thông tin cửa hàng.';}
- if(/khong.*dong y|dung.*(?:hoi.*ops|chuyen)|ngung chuyen|khong chuyen|chua chuyen|chua cho phep.*(?:gui|chuyen)|(?:dia chi|ten cua hang).*(?:chua muon|khong muon|khong cung cap)/.test(q)){escalation.delete(k);pendingHandover.delete(k);try{const refusal=expertEnabled()?v12Module?.reply(chatId,userId,raw):null;if(typeof refusal==='string'&&refusal.trim())return refusal;}catch{v11.clear(chatId,userId);}return 'Em chưa chuyển yêu cầu và không chuyển khi chưa có đồng ý; em tôn trọng việc chưa cung cấp thông tin.';}
+ if(/(?:khong|chua).*dong y|dung.*(?:hoi.*ops|chuyen)|ngung chuyen|khong chuyen|chua chuyen|chua cho phep.*(?:gui|chuyen)|(?:dia chi|ten cua hang).*(?:chua muon|khong muon|khong cung cap)/.test(q)){escalation.delete(k);pendingHandover.delete(k);try{const refusal=expertEnabled()?v12Module?.reply(chatId,userId,raw):null;if(typeof refusal==='string'&&refusal.trim())return refusal;}catch{v11.clear(chatId,userId);}return 'Em chưa chuyển yêu cầu và không chuyển khi chưa có đồng ý; em tôn trọng việc chưa cung cấp thông tin.';}
  if((/["“”]/.test(raw)||/\b(?:neu|gia su|vi du|ke lai)\b/.test(q))&&/dong y|chuyen.*ops|chua cung cap.*ten cua hang/.test(q)){
   pendingHandover.delete(k);escalation.delete(k);try{v12Module?.interruptSocial(chatId,userId);}catch{}
   return 'Em chưa coi câu trích dẫn hoặc giả định là đồng ý hay thông tin cửa hàng thực tế; chưa ghi tên cửa hàng từ ví dụ.'+safetyAdvice(raw,chatId,userId);
@@ -174,6 +174,7 @@ function processMessage(chatId,userId,input,options={}){
  // Codes precede generic diagnostics in every runtime mode; payment/hazard signals retain priority.
  const codeReply=expertEnabled()?codeRouter.route(chatId,userId,raw,{retriever:options.codeRetriever,paymentPending:!!moduleContextV12(chatId,userId)?.pendingVerification||sessions.get(k)?.kind==='payment'}):null;
  if(codeReply){escalation.delete(k);pendingHandover.delete(k);markWelcomed(k);return codeReply;}
+ if(expertEnabled()&&!hasSession(chatId,userId)&&!escalation.has(k)&&!classify(raw).intent&&/xem cai nay|xem giup|kiem tra giup|giup.*(?:cai nay|truong hop nay)|ho tro.*(?:cai nay|giup)/.test(q))return 'Anh/chị muốn em kiểm tra vấn đề nào ạ? Mình mô tả thông báo hoặc triệu chứng ngắn; nếu đang nhắc một tin nhắn, anh/chị reply đúng tin đó và tag em nhé.';
  // V11 is selected here in the existing listener -> dialogue path; never at login/send.
  if(v11Enabled()){
   // A new explicit incident must not be collected as the merchant's name/address.

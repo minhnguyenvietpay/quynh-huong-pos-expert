@@ -1,6 +1,5 @@
 {
   "baselineCommit": "1a33422e34beb25747238c24214097de4465e5c1",
-  "mode": "v13",
   "syntheticOnly": true,
   "externalGroundTruthGate": "blocked",
   "beforePassed": 6,
@@ -97,7 +96,7 @@
       "beforePassed": true,
       "afterPassed": true,
       "before": "Chưa quẹt lại hoặc thanh toán lại khi kết quả trước chưa xác minh, kể cả để lấy bill. Đối chiếu lịch sử POS/Portal đúng giao dịch; dùng chức năng in lại theo quyền được cấp nếu có, không tạo giao dịch mới.",
-      "after": "Chưa quẹt lại hoặc thanh toán lại khi kết quả trước chưa xác minh, kể cả để lấy bill. Đối chiếu lịch sử POS/Portal đúng giao dịch; dùng chức năng in lại theo quyền được cấp nếu có, không tạo giao dịch mới."
+      "after": "Chưa quẹt hoặc thanh toán lại, khởi động lại hay tắt máy khi kết quả giao dịch còn chưa xác minh. Kiểm tra lịch sử POS/Portal đúng giao dịch và chưa yêu cầu khách thanh toán lại; em không tự xác nhận trạng thái tiền."
     },
     {
       "id": "c1-network-context",

@@ -32,6 +32,10 @@ jobs:
         run: npm run qa:v12
       - name: V13 five-round frozen merchant regression (synthetic only)
         run: npm run qa:v13
+      - name: V13.2 actual dialogue and mocked SDK reply regression (synthetic only)
+        run: npm run qa:v132
+      - name: Evidence-aware POS code knowledge audit (aggregate only)
+        run: node scripts/v132-knowledge-audit.cjs
       - run: npm run qa:language
       - run: node qa-v3.js --self-test
       - run: npm run qa:legacy
