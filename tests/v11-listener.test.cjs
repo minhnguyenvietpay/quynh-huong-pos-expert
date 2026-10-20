@@ -11,6 +11,7 @@ async function harness(options = {}) {
   const sent = [], marked = [], logs = [], inputs = [];
   const pending = options.pending ? { issue: 'printer', consent: true } : null;
   const modules = {
+    './lib/reply-context.cjs':require('../lib/reply-context.cjs'),
     './dialogue.js': {
       processMessage: (group, user, input) => { inputs.push(input); return 'Em hỗ trợ kiểm tra máy in.'; }, hasSession: () => false,
       hasEscalation: () => false, closing: () => false, greetingOnly: () => false,

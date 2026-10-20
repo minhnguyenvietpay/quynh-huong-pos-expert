@@ -28,3 +28,21 @@ Failure reproduced: `nó ghi network error khi đang thanh toán, chưa biết t
 10. Actual listener mocked events, with network denied, must validate consent and no handover from source text independently of pure resolver tests.
 
 Release remains blocked until applicable frozen tests and independent reply/listener reviews complete. Zero verified knowledge records is not proof of verified-code retrieval coverage.
+
+## Cycle 2 independent resolver review
+
+`tests/v132-reply-safety.test.cjs`: **13/13 passed** against the implemented resolver. These tests were written after the resolver implementation, against the ten safety criteria above that were frozen before implementation. They are independent synthetic unit tests, not a baseline improvement measurement or actual listener validation.
+
+Reviewed and exercised:
+
+- Exact reference requires group, original owner, global ID and client ID; mismatches do not use quote text or the latest source.
+- Bot mention requires metadata matching the bot identity. Visible name and another person's mention do not qualify.
+- Staff analysis requires BOTH configured current sender ID and configured group; original author role and claimed role do not authorize it.
+- Quoted consent, administrative commands and injected instructions do not enter the canonical engine input.
+- Sensitive source messages fail closed; finite canonical symptoms and reference IDs are the retained representation, rather than raw customer messages.
+- Requester/group separation, case replacement, explicit reset, unrelated questions, TTL, bounded messages/cases, SDK undo and unsafe numeric IDs were exercised.
+- Staff output marks hypotheses unverified and states consent/unsent escalation; merchant mode preserves ordinary safe guidance.
+
+Retained cycle 1 safety suite now passes **13/13**, with original assertions unchanged. The former ongoing-payment/network warning failure is fixed.
+
+Integration caveat: `resolve()` currently assumes a group message from another sender; unlike `observe()` it does not itself reject self/non-group events. The actual listener must enforce these SDK-event guards before invoking it (or the resolver must independently harden them). The Safety Auditor notified the Director. No claim of listener release readiness follows from these unit results.

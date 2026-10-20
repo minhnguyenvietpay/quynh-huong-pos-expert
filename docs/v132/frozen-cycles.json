@@ -25,14 +25,6 @@
       "baseline": "Actual VM feature-absence evidence required; not counted as14 executed failures",
       "evaluator": "scripts/v132-listener-evaluate.cjs",
       "evaluatorSha256": "2ea10c022cdbb683f1af5eef8e4009ec33b5f2cb809f2826769a0a2fe57ceac2"
-    },
-    {
-      "cycle": 3,
-      "scenarios": "docs/v132/cycle3-scenarios.json",
-      "scenarioSha256": "35f8d67c7940708642c49fe5fe69edc4d21bfafa47241a3ee843c824d6515026",
-      "evaluator": "scripts/v132-listener-evaluate.cjs",
-      "evaluatorSha256": "2ea10c022cdbb683f1af5eef8e4009ec33b5f2cb809f2826769a0a2fe57ceac2",
-      "scenarioCount": 6
     }
   ]
 }

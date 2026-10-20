@@ -8,6 +8,7 @@ const state=require('./state.js');
 const tickets=require('./incident.js');
 const quality=require('./quality.js');
 const qhLanguage=require('./qh-v43-language.js');
+const {createReplyContext,renderCase}=require('./lib/reply-context.cjs');
 const STAFF_IDS = (process.env.STAFF_ZALO_IDS||'').split(',').map(x=>x.trim()).filter(Boolean);
 const STAFF_UIDS={ 'Hoàng Anh':STAFF_IDS[0]||'', 'Thu Hoài':STAFF_IDS[1]||'' };
 const STAFF_NAMES=['Hoàng Anh','Thu Hoài'];
@@ -51,6 +52,9 @@ if (GROUP_MODE === 'allowlist' && !allowed.size) throw new Error('ALLOWED_GROUP_
 console.log('[QUYNH HUONG V8.5 DEPLOYMENT]', { GROUP_MODE, AUTO_REPLY, TYPING_ENABLED, LOG_UNKNOWN, COOLDOWN });
 
 const api = await new Zalo().loginQR();
+// Offline-only resolver: never calls history APIs or trusts quote.msg as source.
+const replyContexts=createReplyContext({now:()=>Date.now(),staffIds:STAFF_IDS,staffGroups:(process.env.QH_CASE_ANALYSIS_GROUP_IDS||'').split(',').map(x=>x.trim()).filter(Boolean)});
+const BOT_ID=typeof api.getOwnId==='function'?String(api.getOwnId()||''):String(process.env.QH_BOT_ZALO_ID||'');
 const seen = new Map();
 const inflight = new Set();
 const lastSent = new Map();
@@ -132,9 +136,12 @@ api.listener.on('message', async m => {
     if(state.isDisabled(groupId))return;
     const messageId = d.msgId || d.cliMsgId || m.messageId;
     if (dedupe(messageId ? `${groupId}:${messageId}` : '')) return;
+    if(process.env.QH_V13_ENABLED==='true')replyContexts.observe(m);
     const key = JSON.stringify([groupId, userId]);
     if (inflight.has(key)) { console.log('[BUSY]', groupId); return; }
-    const ongoing = hasSession(groupId, userId) || hasEscalation(groupId, userId) || (typeof hasSocialSession === 'function' && hasSocialSession(groupId, userId));
+    const replyContext=process.env.QH_V13_ENABLED==='true'?replyContexts.resolve(m,{botId:BOT_ID}):null;
+    if(replyContext?.kind==='ignore')return;
+    const ongoing = Boolean(replyContext) || hasSession(groupId, userId) || hasEscalation(groupId, userId) || (typeof hasSocialSession === 'function' && hasSocialSession(groupId, userId));
     const explicit = isAddressed(raw);
     const originalQuestion = stripAddress(raw).replace(/@\s*quỳnh\s*hương\b/gi, '').replace(/@\s*quynh\s*huong\b/gi, '').trim();
     const parsed = qhLanguage.normalize(originalQuestion, {issue:ongoing?'active':null,stage:ongoing?'question':null});
@@ -157,7 +164,7 @@ api.listener.on('message', async m => {
     const social = (ongoing || direct) && Boolean(
       (typeof socialIntent === 'function' && socialIntent(originalQuestion)) || greetingOnly(norm) || closing(norm) || isIntroduction(raw) || isCompliment(raw)
     );
-    if (!detection.respond && !social && !posFallback && !v11Eligible && !direct && !/^\/ticket\b/i.test(question)) {
+    if (!replyContext && !detection.respond && !social && !posFallback && !v11Eligible && !direct && !/^\/ticket\b/i.test(question)) {
       console.log('[IGNORED]', detection.reason);
       appendMetric({ event: 'ignored', groupId, reason: detection.reason });
       return;
@@ -172,12 +179,15 @@ api.listener.on('message', async m => {
     if (rateLimited(groupId)) { console.log('[RATE LIMITED]', groupId); return; }
     inflight.add(key);
     try {
-      const reply = processMessage(groupId, userId, useV11 || (typeof socialIntent === 'function' && socialIntent(originalQuestion)) ? originalQuestion : question);
+      const reply = replyContext
+        ? replyContext.reply || renderCase(replyContext,processMessage(replyContext.scope,userId,replyContext.input))
+        : processMessage(groupId, userId, useV11 || (typeof socialIntent === 'function' && socialIntent(originalQuestion)) ? originalQuestion : question);
       if (typeof reply !== 'string' || !reply.trim()) return;
       await sendTyping(groupId);
       const delay = REPLY_DELAY_MIN_MS + Math.floor(Math.random() * (REPLY_DELAY_MAX_MS - REPLY_DELAY_MIN_MS + 1));
       await sleep(delay);
-      const outgoing=makeHandoverMessage(reply,groupId,userId);
+      // A referenced customer's text never authorizes a handover from the requester.
+      const outgoing=replyContext?{payload:{msg:reply},handover:false}:makeHandoverMessage(reply,groupId,userId);
       let ticket=null;
       if(outgoing.handover && outgoing.tagged){
         const pending=getPendingHandover(groupId,userId);
@@ -206,6 +216,7 @@ api.listener.on('message', async m => {
     } finally { inflight.delete(key); }
   } catch (e) { console.error('[MESSAGE ERROR]', e?.message || String(e)); }
 });
+api.listener.on('undo',event=>{if(process.env.QH_V13_ENABLED==='true')replyContexts.invalidate(event);});
 api.listener.on('error', e => console.error('[LISTENER ERROR]', e?.message || String(e)));
 api.listener.start();
 console.log('Quynh Huong: listening to ' + (GROUP_MODE === 'all' ? 'ALL groups' : 'allowed groups') + '.');
